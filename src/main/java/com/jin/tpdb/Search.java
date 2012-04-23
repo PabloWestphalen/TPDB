@@ -14,7 +14,7 @@ import com.jin.tpdb.entities.Pessoa;
 
 public class Search extends HttpServlet {
 	
-	//@PersistenceContext(unitName="jin")
+	@PersistenceContext(unitName="jin")
 	private EntityManager em;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -28,8 +28,8 @@ public class Search extends HttpServlet {
 		out.println("You searched for: " + q);
 		
 		//<add2>
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
-		EntityManager em = factory.createEntityManager();		
+		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
+		//EntityManager em = factory.createEntityManager();		
 		Pessoa p = new Pessoa();
 		p.setNome("Obama");
 		p.setCargo("President2");
