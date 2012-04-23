@@ -7,14 +7,14 @@ import java.io.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
+//import javax.persistence.PersistenceContext;
 // modified below line. added the full "com.jin.tpdb" package to what was an import of just "entities"
 import com.jin.tpdb.entities.Pessoa;
 // </add1>
 
 public class Search extends HttpServlet {
 	
-	@PersistenceContext(unitName="jin")
+	//@PersistenceContext(unitName="jin")
 	private EntityManager em;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -28,13 +28,13 @@ public class Search extends HttpServlet {
 		out.println("You searched for: " + q);
 		
 		//<add2>
-		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
-		//EntityManager em = factory.createEntityManager();		
-		//Pessoa p = new Pessoa();
-		//p.setNome("Obama");
-		//p.setCargo("President2");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
+		EntityManager em = factory.createEntityManager();		
+		Pessoa p = new Pessoa();
+		p.setNome("Obama");
+		p.setCargo("President2");
 		//em.getTransaction().begin();
-		//em.persist(p);
+		em.persist(p);
 		//em.getTransaction().commit();
 		//removed "System" from line below
 		out.println("commited");
