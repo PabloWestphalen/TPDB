@@ -35,7 +35,7 @@ public class Album {
 	
 	private String cover;
 	
-	@Column(length = 65535)
+	@Column(length = 65535, columnDefinition="Text")
 	private String description;
 	
 	private Date releaseDate;
