@@ -30,7 +30,7 @@ public class Search extends HttpServlet {
 		em.getTransaction().commit();
 		out.println("<br />commited");		*/
 		em.getTransaction().begin();
-		Artist artist = (Artist)em.find("Artist", Long(1));
+		Artist artist = (Artist)em.find("Artist", new Long(1));
 		em.getTransaction().commit();
 		
 		out.println("Artist is: " + artist.getName());
