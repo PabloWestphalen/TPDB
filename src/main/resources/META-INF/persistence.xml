@@ -7,6 +7,8 @@
 	<provider>org.hibernate.ejb.HibernatePersistence</provider> 
 	<non-jta-data-source>java:jboss/datasources/MysqlDS</non-jta-data-source>
 	<class>com.jin.tpdb.entities.Pessoa</class> 
+	<class>com.jin.tpdb.entities.Artist</class> 
+	<class>com.jin.tpdb.entities.User</class> 
 		<properties> 
 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> 
 		<property name="hibernate.hbm2ddl.auto" value="update" /> 
