@@ -29,9 +29,9 @@ public class Search extends HttpServlet {
 		em.persist(p);
 		em.getTransaction().commit();
 		out.println("<br />commited");		*/
-		em.getTransaction().begin();
-		Artist artist = (Artist)em.find("Artist", new Long(1));
-		em.getTransaction().commit();
+		
+		Artist artist = (Artist)em.find(Artist.class, 1L);
+		
 		
 		out.println("Artist is: " + artist.getName());
 		out.println("Artist's site is: " + artist.getSite());
