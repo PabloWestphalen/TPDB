@@ -2,6 +2,9 @@
 	font-family: Ubuntu;
 	src: url("../font/ubuntum.ttf");
 }
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+}
 /* top left bottom right */
 /* resets margins for elements such as headings, lists and paragraphs */
 
