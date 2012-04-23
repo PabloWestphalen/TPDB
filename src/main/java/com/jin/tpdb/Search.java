@@ -30,9 +30,9 @@ public class Search extends HttpServlet {
 		//<add2>
 		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		//EntityManager em = factory.createEntityManager();		
-		Pessoa p = new Pessoa();
-		p.setNome("Obama");
-		p.setCargo("President2");
+		//Pessoa p = new Pessoa();
+		//p.setNome("Obama");
+		//p.setCargo("President2");
 		//em.getTransaction().begin();
 		//em.persist(p);
 		//em.getTransaction().commit();
