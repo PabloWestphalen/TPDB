@@ -1,5 +1,5 @@
 package com.jin.tpdb;
-import entities.Pessoa;
+import com.jin.tpdb.entities.Pessoa;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
