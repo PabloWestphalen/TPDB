@@ -28,6 +28,6 @@ public class Artist {
 		return site;
 	}
 	public void setSite(String site) {
-		this.cargo = cargo;
+		this.site = site;
 	}
 }
