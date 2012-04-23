@@ -32,7 +32,6 @@ public class Search extends HttpServlet {
 		
 		Artist artist = (Artist)em.find(Artist.class, 1L);
 		
-		
 		out.println("Artist is: " + artist.getName());
 		out.println("Artist's site is: " + artist.getSite());
 		
