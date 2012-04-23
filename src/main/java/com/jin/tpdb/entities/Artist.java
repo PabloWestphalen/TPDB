@@ -1,9 +1,11 @@
 package com.jin.tpdb.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Column;
+
 
 @Entity
 public class Artist {
@@ -34,3 +36,4 @@ public class Artist {
 		this.site = site;
 	}
 }
+
