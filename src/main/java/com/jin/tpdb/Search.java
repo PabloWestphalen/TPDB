@@ -14,8 +14,8 @@ import com.jin.tpdb.entities.Pessoa;
 
 public class Search extends HttpServlet {
 	
-	@PersistenceContext(unitName="jin")
-	private EntityManager em;
+	//@PersistenceContext(unitName="jin")
+	//private EntityManager em;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
@@ -28,14 +28,14 @@ public class Search extends HttpServlet {
 		out.println("You searched for: " + q);
 		
 		//<add2>
-		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
-		//EntityManager em = factory.createEntityManager();		
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
+		EntityManager em = factory.createEntityManager();		
 		Pessoa p = new Pessoa();
 		p.setNome("Obama");
 		p.setCargo("President2");
-		//em.getTransaction().begin();
+		em.getTransaction().begin();
 		em.persist(p);
-		//em.getTransaction().commit();
+		em.getTransaction().commit();
 		//removed "System" from line below
 		out.println("commited");
 		//</add2>
