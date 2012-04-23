@@ -1,5 +1,6 @@
 package com.jin.tpdb;
 import com.jin.tpdb.entities.Pessoa;
+import com.jin.tpdb.entities.Artist;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
@@ -21,14 +22,26 @@ public class Search extends HttpServlet {
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		EntityManager em = factory.createEntityManager();		
-		Pessoa p = new Pessoa();
+		/*Pessoa p = new Pessoa();
 		p.setNome(q);
 		p.setCargo("teste");
 		em.getTransaction().begin();
 		em.persist(p);
 		em.getTransaction().commit();
-		out.println("<br />commited");		
+		out.println("<br />commited");		*/
+		em.getTransaction().begin();
+		Artist artist = (Artist)em.find("Artist", 1);
+		em.getTransaction().commit();
+		
+		out.println("Artist is: " + artist.getName());
+		out.println("Artist's site is: " + artist.getSite());
+		
+		
 	}	
+	
+	/*public Artist getArtist(Long id) {
+		
+	}*/
 }
 		
 		
