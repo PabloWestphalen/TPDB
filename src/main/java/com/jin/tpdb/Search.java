@@ -7,6 +7,7 @@ import java.io.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 // modified below line. added the full "com.jin.tpdb" package to what was an import of just "entities"
 import com.jin.tpdb.entities.Pessoa;
 // </add1>
