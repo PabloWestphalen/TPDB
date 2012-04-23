@@ -33,9 +33,9 @@ public class Search extends HttpServlet {
 		Pessoa p = new Pessoa();
 		p.setNome("Obama");
 		p.setCargo("President2");
-		em.getTransaction().begin();
-		em.persist(p);
-		em.getTransaction().commit();
+		//em.getTransaction().begin();
+		//em.persist(p);
+		//em.getTransaction().commit();
 		//removed "System" from line below
 		out.println("commited");
 		//</add2>
