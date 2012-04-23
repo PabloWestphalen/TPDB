@@ -18,7 +18,8 @@ div, p {
 
 
 body {
-	font: 10px/32px Ubuntu, "Tahoma", sans-serif;	
+	font: 10px/32px "Helvetica", "Arial";
+	font: 10px/32px Ubuntu, "Helvetica", "Arial", sans-serif;	
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.196);
 	font-size: 16px;
 	line-height: 160%;	
@@ -76,11 +77,10 @@ h3 {
     padding: 0 .5em 0 .5em;	
     position: absolute;
 }        
-#top_menu:before {
-	left: 0;
-}
-#top_menu:after {
-	right: 0;
+
+#top_menu li:first-child, #top_menu li:first-child:hover {
+	margin-left: -.5em;
+	padding-left: .5em;
 }
 
 #top_menu:before, #top_menu:after {
@@ -88,8 +88,20 @@ h3 {
 	position: absolute;
 	bottom: -1em;
 	z-index: -1000;
-	border: .5em solid;	
+	border: .5em solid #BFD936;	
+	border-bottom-color: transparent;
 }
+#top_menu:before {
+	left: 0;
+	border-left-color: transparent;	
+}
+
+#top_menu:after {
+	right: 0;	
+	border-right-color: transparent;	
+}
+
+
 #top_menu ul {
 	list-style: none;
 	margin-left: -10px;
