@@ -8,7 +8,7 @@
 		<property name="hibernate.hbm2ddl.auto" value="update" /> 
 		<property name="hibernate.show_sql" value="true" /> 
 		<property name="hibernate.format_sql" value="true" /> 
-		<property name="javax.persistence.jdbc.driver" value="mysql" /> 
+		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc" /> 
 		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.8.76.129:3306/pablow" /> 
 		<property name="javax.persistence.jdbc.user" value="admin" /> 
 		<property name="javax.persistence.jdbc.password" value="7TKYpxwQ24ZS" /> 
