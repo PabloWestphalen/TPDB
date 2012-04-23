@@ -3,14 +3,16 @@ package com.jin.tpdb;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
-// <add1>
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+// <add1>
 //import javax.persistence.PersistenceContext;
+// </add1>
+
 // modified below line. added the full "com.jin.tpdb" package to what was an import of just "entities"
 import com.jin.tpdb.entities.Pessoa;
-// </add1>
+
 
 public class Search extends HttpServlet {
 	
@@ -31,13 +33,13 @@ public class Search extends HttpServlet {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		EntityManager em = factory.createEntityManager();		
 		Pessoa p = new Pessoa();
-		p.setNome("Obama");
-		p.setCargo("President2");
+		p.setNome(q);
+		p.setCargo("teste");
 		em.getTransaction().begin();
 		em.persist(p);
 		em.getTransaction().commit();
 		//removed "System" from line below
-		out.println("commited");
+		out.println("<br />commited");
 		//</add2>
 		
 	}
