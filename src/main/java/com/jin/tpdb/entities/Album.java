@@ -19,10 +19,12 @@ public class Album {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	
-	@Column(nullable = false) @ManyToOne
+	//@Column(nullable = false) @ManyToOne
+	@ManyToOne
 	private Artist artist;
 	
-	@Column(nullable = false) @ManyToOne
+	//@Column(nullable = false) @ManyToOne
+	@ManyToOne
 	private User user;
 	
 	@Column(nullable = false) 
