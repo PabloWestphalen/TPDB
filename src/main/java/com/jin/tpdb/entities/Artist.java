@@ -12,7 +12,7 @@ public class Artist {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
-	@Column(nullable="false")
+	@Column(nullable=false)
 	String name;
 	@Column(length=500)
 	String site;
