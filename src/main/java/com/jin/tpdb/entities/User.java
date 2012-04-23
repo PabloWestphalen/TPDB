@@ -48,7 +48,7 @@ public class User {
 	public String getAvatar() {
 		return avatar;
 	}
-	public String setAvatar(String avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 }
