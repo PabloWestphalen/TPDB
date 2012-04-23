@@ -44,3 +44,14 @@ h3 {
 a {
 	color: #F5FFBF;
 }
+
+#top_menu:before {
+		  border-color: #BFD936;
+          border-left-color: transparent;
+          border-bottom-color: transparent;
+}
+#top_menu:after {
+		  border-color: #BFD936;
+          border-right-color: transparent;
+          border-bottom-color: transparent;
+}

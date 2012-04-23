@@ -2,10 +2,10 @@
 	font-family: Ubuntu;
 	src: url("../font/ubuntum.ttf");
 }
+
 h1,h2,h3,h4,h5,h6 {
 	font-weight: normal;
-}
-/* top left bottom right */
+}/* top left bottom right */
 /* resets margins for elements such as headings, lists and paragraphs */
 
 * {
@@ -15,20 +15,7 @@ h1,h2,h3,h4,h5,h6 {
 div, p {
 	padding: 15px;
 }
-/*
-#strip {
-	margin: 0;
-	padding: 0;
-	height: 28px;
-	width: 30px;
-	left: 260px;
-	background-color: white;
-	background: -o-linear-gradient(top, #A5CD4E 0px, #6B8F1A 100%) transparent;
-	position: fixed;
-	top: 78px;
-	display: block;
-	z-index: -1;
-}*/
+
 
 body {
 	font: 10px/32px Ubuntu, "Tahoma", sans-serif;	
@@ -56,7 +43,7 @@ h3 {
 }
 #container {
 	margin: 20px auto 0 auto;
-	width: 1040px;
+	width: 1050px;
 	padding: 0;
 }
 #main_wrapper {
@@ -67,7 +54,9 @@ h3 {
 	overflow: hidden;	
 	box-shadow: 0px 0px 20px #aaa;
 	-moz-box-shadow: 5px 5px 50px #aaa;
-	-webkit-box-shadow:5px 5px 50px #aaa;	
+	-webkit-box-shadow:5px 5px 50px #aaa;
+	
+	
 }
 #content, #header, #footer, #top_menu {
 	margin: auto;
@@ -75,12 +64,31 @@ h3 {
 }
 #content {
 	min-height: 340px;
+	padding-top: 2em;
 }
 #top_menu {
 	margin: 0;
 	padding: 0;
 	width: 800px;
 	height: 25px;
+	margin: 0 -.5em 20px;
+	box-shadow: 0 2px 0px rgba(0, 0, 0, 0.5);
+    padding: 0 .5em 0 .5em;	
+    position: absolute;
+}        
+#top_menu:before {
+	left: 0;
+}
+#top_menu:after {
+	right: 0;
+}
+
+#top_menu:before, #top_menu:after {
+	content: '';          
+	position: absolute;
+	bottom: -1em;
+	z-index: -1000;
+	border: .5em solid;	
 }
 #top_menu ul {
 	list-style: none;
@@ -129,7 +137,7 @@ h3 {
 	padding: 0;
 }
 #sidebar {
-	margin-left: 10px;
+	margin-left: 20px;
 	width: 200px;
 	float: left;
 	box-shadow: 0px 0px 20px #aaa;
