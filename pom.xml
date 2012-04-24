@@ -19,6 +19,7 @@
 		<type>pom</type>
 		<scope>provided</scope>
     </dependency>
+	<!-- i [jin] added this dependency -->
 	<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-core</artifactId>
