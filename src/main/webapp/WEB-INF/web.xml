@@ -5,13 +5,29 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false">
+		<!-- BEGIN SERVLET DECLARING -->
+		<servlet>
+			<servlet-name>IndexController</servlet-name>
+			<servlet-class>com.jin.tpdb.controller.IndexController</servlet-class>
+		</servlet>
 		<servlet> 
 			<servlet-name>Search</servlet-name>
 			<servlet-class>com.jin.tpdb.Search</servlet-class>
 		</servlet>
-  
+		<!-- BEGIN SERVLET DECLARING -->
+		
+		<!-- BEGIN SERVLET MAPPING -->
+		<servlet-mapping>
+			<servlet-name>IndexController</servlet-name>
+			<url-pattern>/Index</url-pattern>
+		</servlet-mapping>
 		<servlet-mapping>
 			<servlet-name>Search</servlet-name>
 			<url-pattern>/search</url-pattern>
 		</servlet-mapping>  
+		<!-- END SERVLET MAPPING -->
+		
+		<welcome-file-list>
+			<welcome-file>Index</welcome-file>
+		</welcome-file-list>
 </web-app>
