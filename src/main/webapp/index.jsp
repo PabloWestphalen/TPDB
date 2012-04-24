@@ -2,7 +2,12 @@
 <%@ page import="javax.persistence.*" %>
 <%@ page import="com.jin.tpdb.entities.*" %>
 <%@ page import="java.util.List" %>
-
+<%
+EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
+EntityManager em = factory.createEntityManager();				
+			
+Session hbs = (Session) em.getDelegate();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,23 +91,8 @@
 			<!--- start content -->
 			<div id="content">
 				<h2>News</h2>
-				<!--- old entry i commented
-				<div class="entry">
-					<h3>
-						<a href="news.php?id=1"> Massive Attack Promises New Material</a>
-					</h3>
-					<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-						Lorem ipsum dolor sit amet. Lorem ipsum dolor sit [...]</p>
-					<p class="entry_info">Contributed by Jinbo at april, 27 - 2011
-						| 3 Comments</p>
-				</div>--->
 				<%
-				
-				EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
-				EntityManager em = factory.createEntityManager();				
-				
-				Session hbs = (Session) em.getDelegate();
-				
+
 				List<News> newsList = hbs.createCriteria(News.class).list();
 				
 				for(News news : newsList) {
@@ -119,6 +109,23 @@
 				
 				%>
 				<h2>Latest Albums</h2>
+				<%
+
+				List<Album> albumsList = hbs.createCriteria(Album.class).list();
+				
+				for(Album album : albumsList) {
+				
+				String contributor = album.getUser().getUsername();
+				String data = String.format("%tc", album.getReleaseDate());
+				out.print("<div class=\"entry\">");
+				out.print("<h3><a href=\"#\">" + album.getArtist().getName() + " - " + album.getTitle() + "</a></h3>");
+				out.print("<p>" + album.getDescription() + "</p>");
+				out.print("<p class=\"entry_info\">Contributed by " + contributor + " at " + data + " | Z Comments</p>");
+				out.print("</div>");
+				
+				}
+				
+				%>
 				<div class="entry">
 					<h3>
 						<a href="albums.php?id=39"> Martina Topley Bird - Quixotic</a>
