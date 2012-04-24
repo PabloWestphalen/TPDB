@@ -13,7 +13,6 @@ import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.User;
 
-
 @Entity
 public class Song {
 
@@ -38,11 +37,11 @@ public class Song {
 		this.id = id;
 	}
 
-	public Album getAlbum() {
+	public Collection<Album> getAlbum() {
 		return album;
 	}
 
-	public void setAlbum(Album album) {
+	public void setAlbum(Collection<Album> album) {
 		this.album = album;
 	}
 
