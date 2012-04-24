@@ -18,7 +18,10 @@ public class IndexController extends HttpServlet {
 		String awesome = "secret powerful message =OO";
 		
 		Macaco monkey = new Macaco();		
-		request.setAttribute("monkey", monkey);
+		
+		Artist artist = em.find(Artist.class, 1);
+		
+		request.setAttribute("artist", artist);
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
 		jsp.forward(request, response);
@@ -26,8 +29,8 @@ public class IndexController extends HttpServlet {
 	}	
 }
 
-class Macaco {
-	private String nome = "Macacolouco";
+/*class Macaco {
+	String nome = "Macacolouco";
 	
 	public String getNome() {
 		return nome;
@@ -37,3 +40,5 @@ class Macaco {
 		this.nome = nome;
 	}
 }
+
+*/
