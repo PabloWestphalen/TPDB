@@ -1,3 +1,4 @@
+<%@ page import="org.hibernate.Session" %>
 <%@ page import="javax.persistence.*" %>
 <%@ page import="com.jin.tpdb.entities.*" %>
 
