@@ -14,9 +14,12 @@ public class IndexController extends HttpServlet {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		EntityManager em = factory.createEntityManager();		
 		
-		Artist artist = em.find(Artist.class, 1);
+		List<News> newsList = hbs.createCriteria(News.class).list();
+		List<Album> albumsList = hbs.createCriteria(Album.class).list();
 		
-		request.setAttribute("artist", artist);
+		request.setAttribute("news", newsList);
+		request.setAttribute("albums", albumsList);
+		
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
 		jsp.forward(request, response);

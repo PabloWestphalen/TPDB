@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="org.hibernate.Session" %>
 <%@ page import="javax.persistence.*" %>
 <%@ page import="com.jin.tpdb.entities.*" %>
@@ -73,7 +74,7 @@ Session hbs = (Session) em.getDelegate();
 	<div id="container">
 		<div id="main_wrapper">
 			<div id="header">
-				<h1>${artist.name} Trip-Hop Database</h1>
+				<h1>Trip-Hop Database</h1>
 			</div>
 			<div id="top_menu">
 				<ul>
@@ -91,23 +92,13 @@ Session hbs = (Session) em.getDelegate();
 			<!--- start content -->
 			<div id="content">
 				<h2>News</h2>
-				<%
-
-				List<News> newsList = hbs.createCriteria(News.class).list();
-				
-				for(News news : newsList) {
-				
-				String contributor = news.getUser().getUsername();
-				String data = String.format("%tc", news.getDate());
-				out.print("<div class=\"entry\">");
-				out.print("<h3><a href=\"#\">" + news.getTitle() + "</a></h3>");
-				out.print("<p>" + news.getContent() + "</p>");
-				out.print("<p class=\"entry_info\">Contributed by " + contributor + " at " + data + " | Z Comments</p>");
-				out.print("</div>");
-				
-				}
-				
-				%>
+				<c:forEach var="new" items="${news}">
+				<div class="entry">
+					<h3><a href="#">${new.title}</a></h3>
+					<p>${new.content}</p>
+					<p class="entry_info">Contributed by ${new.user.username} at ${new.date} | Z Comments</p>
+				</div>					
+				</c:forEach>
 				<h2>Latest Albums</h2>
 				<%
 
