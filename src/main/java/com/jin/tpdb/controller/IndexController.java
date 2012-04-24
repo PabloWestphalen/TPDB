@@ -26,7 +26,7 @@ public class IndexController extends HttpServlet {
 	}	
 }
 
-private class Macaco {
+class Macaco {
 	private String nome = "Macacolouco";
 	
 	public String getNome() {
