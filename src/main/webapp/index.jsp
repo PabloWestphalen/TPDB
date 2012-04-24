@@ -104,7 +104,7 @@
 				</p>
 				<p class="entry_info">Contributed by ${album.user.username} at ${album.releaseDate} | Z Comments</p>
 				</div>
-
+				</c:forEach>
 				<!--- end content -->
 			</div>
 			<div id="footer">
