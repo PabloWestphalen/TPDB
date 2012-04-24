@@ -100,10 +100,11 @@
 				EntityManager em = factory.createEntityManager();
 				
 				News news = em.find(News.class, 1);
-				
+				out.print("<div class=\"entry\">");
 				out.print("<h3><a href=\"#\">" + news.getTitle() + "</a></h3>");
 				out.print("<p>" + news.getContent() + "</p>");
 				out.print("<p class=\"entry_info\">Contributed by X at Y | Z Comments</p>");
+				out.print("</div>");
 				
 				%>
 				<h2>Latest Albums</h2>
