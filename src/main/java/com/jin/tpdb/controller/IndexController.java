@@ -15,6 +15,7 @@ public class IndexController extends HttpServlet {
 		EntityManager em = factory.createEntityManager();		
 		
 		String awesome = "secret powerful message =OO";
+		request.setAttribute("awesome", awesome);
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
 		jsp.forward(request, response);
