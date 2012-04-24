@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller;
 
 import java.io.*;
+import java.util.List;
 import com.jin.tpdb.entities.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,6 +14,7 @@ public class IndexController extends HttpServlet {
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		EntityManager em = factory.createEntityManager();		
+		Session hbs = (Session) em.getDelegate();
 		
 		List<News> newsList = hbs.createCriteria(News.class).list();
 		List<Album> albumsList = hbs.createCriteria(Album.class).list();
