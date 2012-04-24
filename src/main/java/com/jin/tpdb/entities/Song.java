@@ -1,6 +1,7 @@
 package com.jin.tpdb.entities;
 
 import java.util.Date;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Column;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.User;
+
 
 @Entity
 public class Song {
