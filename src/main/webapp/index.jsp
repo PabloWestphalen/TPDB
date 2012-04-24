@@ -127,27 +127,6 @@ Session hbs = (Session) em.getDelegate();
 				}
 				
 				%>
-				<div class="entry">
-					<h3>
-						<a href="albums.php?id=39"> Martina Topley Bird - Quixotic</a>
-					</h3>
-					<p>
-						<img src="images/albums/cover_martina_topley_bird_quixotic.jpg"
-							alt="[Dummy] Album Cover" /> Quixotic is the debut album by
-						English singer-songwriter Martina Topley-Bird. The album spans
-						several musical styles including trip-hop, electronic and rock. It
-						was co-written and produced by Topley-Bird and received positive
-						reviews from music critics upon its release and was shortlisted
-						for the 2003 Mercury Music Prize. Quixotic also includes a
-						collaboration with musician Tricky, with whom Topley-Bird
-						collaborated prior to her solo work.
-					</p>
-					<p>Quixotic was released in the United States one year later,
-						in 2004. Licensed to the Palm Pictures label, the album wa [...]</p>
-					<p class="entry_info">Contributed by: Jinbo at november 07 -
-						2011 | 0 Comments</p>
-				</div>
-
 				<!--- end content -->
 			</div>
 			<div id="footer">
