@@ -117,9 +117,10 @@ Session hbs = (Session) em.getDelegate();
 				
 				String contributor = album.getUser().getUsername();
 				String data = String.format("%tc", album.getReleaseDate());
+				String cover_path = "<img src=\"images/albums/" + album.getCover() + "\" alt=\"[" + album.getName + "] Cover\" />";
 				out.print("<div class=\"entry\">");
 				out.print("<h3><a href=\"#\">" + album.getArtist().getName() + " - " + album.getName() + "</a></h3>");
-				out.print("<p>" + album.getDescription() + "</p>");
+				out.print("<p>" + cover_path + album.getDescription() + "</p>");
 				out.print("<p class=\"entry_info\">Contributed by " + contributor + " at " + data + " | Z Comments</p>");
 				out.print("</div>");
 				
