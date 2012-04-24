@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Column;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Album;
