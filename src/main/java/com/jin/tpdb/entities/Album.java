@@ -13,14 +13,14 @@ import com.jin.tpdb.entities.User;
 //lol
 
 @Entity
-public class Album {
+public class Song {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	
 	//@Column(nullable = false) @ManyToOne
-	@ManyToOne
+	@OneToOne
 	private Artist artist;
 	
 	//@Column(nullable = false) @ManyToOne
