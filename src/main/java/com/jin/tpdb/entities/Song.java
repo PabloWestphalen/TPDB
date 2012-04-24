@@ -20,7 +20,7 @@ public class Song {
 	int id;
 
 	@ManyToMany
-	private Album album;
+	private Collection<Album> album;
 
 	private int number;
 
