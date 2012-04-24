@@ -99,7 +99,7 @@
 				EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 				EntityManager em = factory.createEntityManager();
 				
-				List<News> newsList = em.createCriteria(News.class).list();
+				List newsList = em.createCriteria(News.class).list();
 				
 				for(News news : newsList) {
 				
