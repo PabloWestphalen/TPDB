@@ -14,11 +14,6 @@ public class IndexController extends HttpServlet {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		EntityManager em = factory.createEntityManager();		
 		
-		
-		String awesome = "secret powerful message =OO";
-		
-		Macaco monkey = new Macaco();		
-		
 		Artist artist = em.find(Artist.class, 1);
 		
 		request.setAttribute("artist", artist);
