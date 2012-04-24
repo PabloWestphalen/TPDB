@@ -28,6 +28,6 @@ public class Tag {
 	}
 
 	public void setName(String name) {
-		this.user = user;
+		this.name = name;
 	}
 }
