@@ -73,7 +73,7 @@ Session hbs = (Session) em.getDelegate();
 	<div id="container">
 		<div id="main_wrapper">
 			<div id="header">
-				<h1>${monkey.getNome} Trip-Hop Database</h1>
+				<h1>${monkey.getNome()} Trip-Hop Database</h1>
 			</div>
 			<div id="top_menu">
 				<ul>
