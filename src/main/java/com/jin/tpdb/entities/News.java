@@ -1,0 +1,84 @@
+package com.jin.tpdb.entities;
+
+import java.util.Date;
+import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.Column;
+import com.jin.tpdb.entities.User;
+import com.jin.tpdb.entities.Tag;
+
+@Entity
+public class News {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int id;
+
+	@ManyToOne
+	private User user;
+
+	@ManyToMany
+	private Collection<Tag> tag;
+
+	@Column(nullable = false)
+	private Date date;
+
+	private String title;
+
+	@Column(length = 65535, columnDefinition = "Text")
+	private String content;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Collection<Tag> getTag() {
+		return tag;
+	}
+
+	public void setTag(Collection<Tag> tag) {
+		this.tag = tag;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+}
