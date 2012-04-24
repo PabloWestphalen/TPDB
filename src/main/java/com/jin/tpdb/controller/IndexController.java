@@ -6,6 +6,7 @@ import com.jin.tpdb.entities.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.persistence.*;
+import org.hibernate.Session;
 
 
 public class IndexController extends HttpServlet {
