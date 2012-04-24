@@ -100,10 +100,13 @@
 				EntityManager em = factory.createEntityManager();
 				
 				News news = em.find(News.class, 1);
+				String contributor = news.getUser().getUsername();
+				String data = String.format("%tc", news.getDate());
+				
 				out.print("<div class=\"entry\">");
 				out.print("<h3><a href=\"#\">" + news.getTitle() + "</a></h3>");
 				out.print("<p>" + news.getContent() + "</p>");
-				out.print("<p class=\"entry_info\">Contributed by X at Y | Z Comments</p>");
+				out.print("<p class=\"entry_info\">Contributed by " + contributor + " at " + data + " | Z Comments</p>");
 				out.print("</div>");
 				
 				%>
