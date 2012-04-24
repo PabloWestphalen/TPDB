@@ -99,15 +99,12 @@
 				EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 				EntityManager em = factory.createEntityManager();
 				
-				/*News news = em.find(News.class, 1);*/
-				String contributor = news.getUser().getUsername();
-				String data = String.format("%tc", news.getDate());
-				
 				List<News> newsList = em.createCriteria(News.class).list();
 				
 				for(News news : newsList) {
 				
-				
+				String contributor = news.getUser().getUsername();
+				String data = String.format("%tc", news.getDate());
 				out.print("<div class=\"entry\">");
 				out.print("<h3><a href=\"#\">" + news.getTitle() + "</a></h3>");
 				out.print("<p>" + news.getContent() + "</p>");
