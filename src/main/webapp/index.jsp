@@ -26,6 +26,7 @@ padding: 0;
 border-radius: 6px;
 -moz-border-radius: 6px;
 -webkit-border-radius: 6px;
+border-color: transparent;
 }
 
 #featured_albums img {
