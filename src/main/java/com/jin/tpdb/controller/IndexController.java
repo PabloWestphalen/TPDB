@@ -19,7 +19,8 @@ public class IndexController extends HttpServlet {
 	
 	public <T> List<T> getList(Class entity) {
 		//return em.createQuery("SELECT n FROM " + entity.getName() + " n").getResultList();
-		return (List<T>)cb.createQuery(entity);
+		List<entity> list = cb.createQuery(entity)
+		return list;
 	}
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
