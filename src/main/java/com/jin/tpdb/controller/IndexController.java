@@ -17,9 +17,9 @@ public class IndexController extends HttpServlet {
 	CriteriaBuilder cb = em.getCriteriaBuilder();
 	
 	
-	public <T> List<T> getList(Class et) {		
+	public <T> List<T> getList(Class entity) {		
 		
-		CriteriaQuery<et> query = cb.createQuery(et); 
+		CriteriaQuery<entity> query = cb.createQuery(entity.class); 
 		
 		/*TypedQuery<et.class> typedQuery = em.createQuery(
 			query.select(
@@ -40,10 +40,8 @@ public class IndexController extends HttpServlet {
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		//List<News> newsList = getList(News.class);
-		//List<Album> albumsList = getList(Album.class);
-		List<News> newsList = getList(News);
-		List<Album> albumsList = getList(Album);
+		List<News> newsList = getList(News.class);
+		List<Album> albumsList = getList(Album.class);
 		
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);
