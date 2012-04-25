@@ -19,8 +19,11 @@ div, p {
 
 body {
 	font: 10px/32px "Helvetica", "Arial";
+	/* test
 	font: 10px/32px Ubuntu, "Helvetica", "Arial", sans-serif;	
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.196);
+	*/
+	font: 10px/32px "Helvetica", "Arial", sans-serif;	
 	font-size: 16px;
 	line-height: 160%;	
 	overflow-y: scroll; /* CSS3. used to fix the center alignment by forcing the browser to display a scrollbar regardless of its necessity */	
