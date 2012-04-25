@@ -74,7 +74,7 @@ height: 100px;
           <li class="ajax"><a href="#">Contribute</a></li>
           <li class="ajax"><a href="#">Requests</a></li>
           <li class="ajax"><a href="#">Community</a></li>
-          <!---<li class="ajax"><a href="ajax.php">About the Project</a></li>
+          <!---t<li class="ajax"><a href="ajax.php">About the Project</a></li>
           <li class="ajax"><a href="ajax.php">FAQ</a></li>
           <li class="ajax"><a href="ajax.php">Contact</a></li>-->
         </ul>
