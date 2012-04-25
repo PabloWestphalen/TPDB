@@ -41,7 +41,7 @@ public class IndexController extends HttpServlet {
 		request.setAttribute("albums", albumsList);
 		
 		//transaction.commit();
-		session.close();
+		hbs.close();
 		
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
