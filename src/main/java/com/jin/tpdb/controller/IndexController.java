@@ -2,19 +2,27 @@ package com.jin.tpdb.controller;
 
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Album;
+
 import java.io.*;
-import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.persistence.*;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.criterion.Order;
+
 
 
 public class IndexController extends HttpServlet {
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
+		/*EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		EntityManager em = factory.createEntityManager();		
 		Session hbs = (Session) em.getDelegate();
 		
@@ -22,7 +30,7 @@ public class IndexController extends HttpServlet {
 		List<Album> albumsList = hbs.createCriteria(Album.class).list();
 		
 		request.setAttribute("news", newsList);
-		request.setAttribute("albums", albumsList);
+		request.setAttribute("albums", albumsList);*/
 		
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");

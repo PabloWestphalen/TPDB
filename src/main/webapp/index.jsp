@@ -3,8 +3,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="In this page i write html">
-<meta name="keywords" content="html5, first, draft">
+<meta name="description" content="Discover and share trip-hop music.">
+<meta name="keywords" content="trip-hop, database, new, release, wiki">
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/change_themes.js"></script>
 <link rel="stylesheet" href="css/layout.css" type="text/css">
