@@ -8,15 +8,18 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.persistence.*;
+import javax.persistence.criteria.*;
 
 public class IndexController extends HttpServlet {
 	
 	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
-	EntityManager em = factory.createEntityManager();	
+	EntityManager em = factory.createEntityManager();		
+	CriteriaBuilder cb = em.getCriteriaBuilder();
 	
 	
 	public <T> List<T> getList(Class entity) {
-		return em.createQuery("SELECT n FROM " + entity.getName() + " n").getResultList();
+		//return em.createQuery("SELECT n FROM " + entity.getName() + " n").getResultList();
+		return cb.createQuery(entity);
 	}
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
