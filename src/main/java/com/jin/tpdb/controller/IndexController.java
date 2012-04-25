@@ -31,6 +31,7 @@ public class IndexController extends HttpServlet {
 		
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);*/
+		sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
