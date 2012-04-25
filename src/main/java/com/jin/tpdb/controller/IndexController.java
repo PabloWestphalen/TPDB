@@ -19,7 +19,7 @@ public class IndexController extends HttpServlet {
 	
 	public <T> List<T> getList(Class et) {		
 		
-		CriteriaQuery<T> query = cb.createQuery(et.class); 
+		CriteriaQuery<T> query = cb.createQuery(et); 
 		
 		//CriteriaQuery<et> query = cb.createQuery(et.class); 
 		
