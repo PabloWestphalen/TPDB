@@ -19,7 +19,7 @@ public class IndexController extends HttpServlet {
 	
 	public <T> List<T> getList(Class entity) {		
 		
-		CriteriaQuery<entity> query = cb.createQuery(entity.class); 
+		CriteriaQuery<T> query = cb.createQuery(<T>); 
 		
 		/*TypedQuery<et.class> typedQuery = em.createQuery(
 			query.select(
