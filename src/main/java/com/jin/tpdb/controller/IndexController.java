@@ -2,7 +2,7 @@ package com.jin.tpdb.controller;
 
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Album;
-import com.jin.tpdb.DAO;
+//import com.jin.tpdb.DAO;
 import java.io.*;
 import java.util.List;
 import javax.servlet.*;
