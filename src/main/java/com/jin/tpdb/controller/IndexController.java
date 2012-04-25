@@ -17,18 +17,25 @@ public class IndexController extends HttpServlet {
 	CriteriaBuilder cb = em.getCriteriaBuilder();
 	
 	
-	public <T> List<T> getList(Class et) {
-		//return em.createQuery("SELECT n FROM " + entity.getName() + " n").getResultList();
-		//List<T> list = 
-		CriteriaQuery<et.class> query = em.createQuery(et.class); 
+	public <T> List<T> getList(Class et) {		
 		
-		TypedQuery<et.class> typedQuery = em.createQuery(
+		CriteriaQuery<et> query = cb.createQuery(et); 
+		
+		/*TypedQuery<et.class> typedQuery = em.createQuery(
 			query.select(
 				query.from(et)
 			)
-		);
+		);*/
 		
-		return typedQuery.getResultList();
+		
+		
+		
+		
+		
+		
+		
+		List<T> list = em.createQuery("SELECT n FROM " + entity.getName() + " n").getResultList();		
+		return list;
 	}
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
