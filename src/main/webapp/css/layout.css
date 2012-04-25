@@ -81,6 +81,7 @@ h3 {
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
     padding: 0 .5em 0 .5em;	
     position: absolute;
+	font-family: Ubuntu, "Helvetica", "Arial", sans-serif;	
 }        
 
 #top_menu li:first-child, #top_menu li:first-child:hover {
