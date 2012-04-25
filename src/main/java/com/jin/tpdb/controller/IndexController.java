@@ -23,7 +23,7 @@ public class IndexController extends HttpServlet {
 
 		TypedQuery<T> typedQuery = em.createQuery(
 			query.select(
-				query.from(et)
+				query.from(entity)
 			)
 		);
 		
