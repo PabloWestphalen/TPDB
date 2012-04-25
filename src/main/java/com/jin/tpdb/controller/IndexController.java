@@ -17,14 +17,14 @@ public class IndexController extends HttpServlet {
 	CriteriaBuilder cb = em.getCriteriaBuilder();
 	
 	
-	public <T> List<T> getList(Class entity) {
+	public <T> List<T> getList(Class et) {
 		//return em.createQuery("SELECT n FROM " + entity.getName() + " n").getResultList();
 		//List<T> list = 
-		CriteriaQuery<entity> query = em.createQuery(entity); 
+		CriteriaQuery<et> query = em.createQuery(et); 
 		
-		TypedQuery<entity> typedQuery = entityManager.createQuery(
+		TypedQuery<et> typedQuery = em.createQuery(
 			query.select(
-				query.from(entity)
+				query.from(et)
 			)
 		);
 		
