@@ -20,6 +20,8 @@ import org.hibernate.criterion.Order;
 
 public class IndexController extends HttpServlet {
 	
+	protected SessionFactory sessionFactory;
+	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		/*EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
@@ -31,6 +33,7 @@ public class IndexController extends HttpServlet {
 		
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);*/
+		
 		sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		
 		request.setCharacterEncoding("UTF-8");
