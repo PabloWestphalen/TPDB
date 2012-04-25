@@ -40,8 +40,10 @@ public class IndexController extends HttpServlet {
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		List<News> newsList = getList(News.class);
-		List<Album> albumsList = getList(Album.class);
+		//List<News> newsList = getList(News.class);
+		//List<Album> albumsList = getList(Album.class);
+		List<News> newsList = getList(News);
+		List<Album> albumsList = getList(Album);
 		
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);
