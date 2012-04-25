@@ -21,20 +21,27 @@ import org.hibernate.criterion.Order;
 public class IndexController extends HttpServlet {
 	
 	protected SessionFactory sessionFactory;
+	protected Session hbs = null;
+	protected Transaction transaction = null;
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		/*EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
 		EntityManager em = factory.createEntityManager();		
-		Session hbs = (Session) em.getDelegate();
+		Session hbs = (Session) em.getDelegate();*/
+		
+		sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+		hbs = sessionFactory.openSession();
+		//transaction = session.beginTransaction();
 		
 		List<News> newsList = hbs.createCriteria(News.class).list();
 		List<Album> albumsList = hbs.createCriteria(Album.class).list();
 		
 		request.setAttribute("news", newsList);
-		request.setAttribute("albums", albumsList);*/
+		request.setAttribute("albums", albumsList);
 		
-		sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+		//transaction.commit();
+		session.close();
 		
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
