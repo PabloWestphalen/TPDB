@@ -17,9 +17,9 @@ public class IndexController extends HttpServlet {
 	CriteriaBuilder cb = em.getCriteriaBuilder();
 	
 	
-	public <T> List<T> getList(Class et) {		
+	public <T> List<T> getList(Class entity) {		
 		
-		CriteriaQuery<T> query = cb.createQuery(et); 
+		CriteriaQuery<T> query = cb.createQuery(entity); 
 		
 		//CriteriaQuery<et> query = cb.createQuery(et.class); 
 		
