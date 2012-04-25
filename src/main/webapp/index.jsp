@@ -10,56 +10,6 @@
 <link rel="stylesheet" href="css/layout.css" type="text/css">
 <link rel="stylesheet" href="css/blue.css" type="text/css">
 <title>The Trip-Hop Database</title>
-<style type="text/css">
-/*.album_entry p {*/
-.entry p {
-margin: 10px;
-padding: 0;
-}
-
-#featured_albums {
-margin: 0;
-padding: 0;
-}
-
-#sidebar input[name="Search"] {
-border-radius: 6px;
--moz-border-radius: 6px;
--webkit-border-radius: 6px;
-border-color: transparent;
-}
-
-#featured_albums img {
-margin-right: 5px;
-width: 50px;
-height: 50px;
-text-align: center;
-}
-
-.entry .entry_info {
-font-size: 0.9em;
-margin-right: 15px;
-text-align: right;
-}
-
-.entry a {
-text-decoration: none;
-}
-
-.entry { //
-padding: 15px 15px 15px 15px;
-text-align: justify;
-}
-
-.entry p img {
-float: right;
-margin-left: 5px;
-border: none;
-display: block;
-width: 100px;
-height: 100px;
-}
-</style>
 </head>
 <body id="home">
   <div id="container">
