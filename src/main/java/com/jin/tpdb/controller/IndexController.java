@@ -21,10 +21,8 @@ public class IndexController extends HttpServlet {
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-	
-		//List<News> newsList = em.createQuery("SELECT n FROM News n").getResultList();
 		List<News> newsList = getList(News.class);
-		List<Album> albumsList = em.createQuery("SELECT a FROM Album a").getResultList();		
+		List<Album> albumsList = getList(Album.class);
 		
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);
