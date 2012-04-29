@@ -70,9 +70,9 @@
       </form>
       <div id="featured_albums">
         <h3>Featured Albums</h3>
-        <img src="images/albums/cover_esthero_breath_from_another.jpg" alt="Quioxic" />
-        <img src="images/albums/cover_tricky_maxinquaye.jpg" alt="Breath from Another" />
-        <img src="images/albums/cover_martina_topley_bird_quixotic.jpg"  alt="Quioxic" />
+        <img src="images/albums/cover_esthero_breath_from_another.jpg" alt="Breath from Another - Cover" title="Breath from Another" />
+        <img src="images/albums/cover_tricky_maxinquaye.jpg" alt="Maxinquaye - Cover" title="Maxinquaye" />
+        <img src="images/albums/cover_martina_topley_bird_quixotic.jpg"  alt="Quixotic - Cover" title="Quixotic" />
       </div>
       <h3>Featured Songs</h3>
       <h3>Choose a theme</h3>
