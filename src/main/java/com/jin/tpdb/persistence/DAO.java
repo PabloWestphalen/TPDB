@@ -96,8 +96,8 @@ public class DAO {
 		*/
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Integer> cq = cb.createQuery(Integer.class);
-		Root<AlbumComment> root = cq.from(AlbumComment.class);
-		cq.select(cb.count(root));
+		cq.select(cb.count(cq.from(AlbumComment.class)));
+		//cq.select(cb.count(root));
 		return 3;
 		
 		
