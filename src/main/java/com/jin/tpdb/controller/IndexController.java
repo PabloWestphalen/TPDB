@@ -3,7 +3,6 @@ package com.jin.tpdb.controller;
 import com.jin.tpdb.persistence.DAO;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Album;
-//import com.jin.tpdb.DAO;
 import java.io.*;
 import java.util.List;
 import javax.servlet.*;
@@ -12,29 +11,6 @@ import javax.persistence.*;
 import javax.persistence.criteria.*;
 
 public class IndexController extends HttpServlet {
-	
-	/*private EntityManagerFactory factory = Persistence.createEntityManagerFactory("jin");
-	EntityManager em = factory.createEntityManager();		
-	CriteriaBuilder cb = em.getCriteriaBuilder();
-	
-	
-	public <T> List<T> getList(Class entity) {		
-		// Simple JPQL
-		// em.createQuery("SELECT n FROM " + entity.getName() + " n").getResultList();		
-		
-		CriteriaQuery<T> query = cb.createQuery(entity); 
-
-		TypedQuery<T> typedQuery = em.createQuery(
-			query.select(
-				query.from(entity)
-			)
-		);
-		
-		List<T> list = typedQuery.getResultList();		
-		
-		
-		return list;
-	}*/
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
