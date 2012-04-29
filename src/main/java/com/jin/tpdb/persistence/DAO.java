@@ -96,7 +96,7 @@ public class DAO {
 		*/
 		String qs = "SELECT COUNT(ac) FROM AlbumComment ac";
 		TypedQuery<Integer> query = em.createQuery(qs, Integer.class);
-		return query.getSingleResult();		
+		return (int)query.getSingleResult();		
 		/*Root<AlbumComment> root = cq.from(AlbumComment.class);		
 		cq.select(qb.count(root));
 		Predicate predicate = qb.equal(root.get("album_id"), id);		
