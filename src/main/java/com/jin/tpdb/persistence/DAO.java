@@ -54,22 +54,17 @@ public class DAO {
 	public static <T> T load(Class c, int i) {
 		DAO dao = new DAO();
 		dao.open();
-		T result = dao.get(c, i);
 		dao.close();
-		return result;		
+		return (T)dao.find(c, i);		
 	}
 	
 	public static <T> List<T> getList(Class c) {		
 		DAO dao = new DAO();
 		dao.open();
-		List<T> results = dao.getList(c);
+		List<T> result = dao.getList(c);
 		dao.close();
-		return results;
+		return result;
 	}	
-	
-	public <T> T get(Class c, int i) {
-		return (T)em.find(c, i);
-	}
 	
 	protected <T> List<T> list(Class entity) {		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
