@@ -28,7 +28,7 @@ public class DAO {
 	public void open() {
 		try {
 			em = factory.createEntityManager();
-			em.getTransaction().begin();
+			//em.getTransaction().begin();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -36,8 +36,8 @@ public class DAO {
 	
 	public void close() {
 		try {
-			em.getTransaction().commit();
-			//em.close();
+			//em.getTransaction().commit();
+			em.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -61,7 +61,7 @@ public class DAO {
 	public static <T> List<T> getList(Class c) {		
 		DAO dao = new DAO();
 		dao.open();
-		List<T> result = dao.getList(c);
+		List<T> result = dao.list(c);
 		dao.close();
 		return result;
 	}	
