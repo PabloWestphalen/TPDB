@@ -94,13 +94,10 @@ public class DAO {
 						FROM albums, artists, users
 						WHERE artists.artist_id = albums.artist_id AND users.user_id
 		*/
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Integer> cq = cb.createQuery(Integer.class);
-		cq.select(cb.count(cq.from(AlbumComment.class)));
-		//cq.select(cb.count(root));
-		return 3;
-		
-		
+		String qs = "SELECT COUNT(ac) FROM AlbumComment ac";
+		TypedQuery<Integer> query = em.createQuery(qs, Integer.class);
+		int count = query.getSingleResult();
+		return count;
 		
 		
 		
