@@ -23,8 +23,9 @@ public class AlbumComment {
 	@ManyToOne
 	private User user;
 
-	@ManyToMany
-	private Collection<Album> album;
+	@ManyToOne
+	//private Collection<Album> album;
+	private Album album;
 
 	@Column(nullable = false)
 	private Date date;
