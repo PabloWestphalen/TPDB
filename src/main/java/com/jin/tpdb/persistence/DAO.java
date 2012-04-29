@@ -53,8 +53,8 @@ public class DAO {
 	
 	public static <T> T load(Class c, int i) {
 		DAO dao = new DAO();
-		doa.open();
-		return em.find(c.class, i);
+		dao.open();
+		return em.find(c, i);
 		dao.close();
 	}
 	
