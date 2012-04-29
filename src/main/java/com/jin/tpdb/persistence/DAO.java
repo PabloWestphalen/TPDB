@@ -102,5 +102,6 @@ public class DAO {
 		cq.select(qb.count(root));
 		cq.where(predicate);
 		return em.createQuery(cq).getSingleResult();
+	}
 }
 
