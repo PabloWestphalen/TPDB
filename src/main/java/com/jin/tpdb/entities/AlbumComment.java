@@ -46,7 +46,7 @@ public class AlbumComment {
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.user = user;	
 	}
 
 	public Album getAlbum() {

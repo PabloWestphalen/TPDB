@@ -50,7 +50,7 @@
             ${album.description}
             </p>
             <p class="entry_info">
-            Contributed by ${album.user.username} at ${album.releaseDate} | ${lol} Comments
+            Contributed by ${album.user.username} at ${album.releaseDate} | ${album.totalComments} Comments
             </p>
           </div>
         </c:forEach>

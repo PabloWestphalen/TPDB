@@ -55,7 +55,6 @@ public class Album {
 	
 	private int downloadCount;
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -167,7 +166,10 @@ public class Album {
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
 	}
+	// util methods
 	
-
+	public Long getTotalComments() {
+		return DAO.countAlbumComments(id);
+	}
 
 }
