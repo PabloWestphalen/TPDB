@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Column;
+import com.jin.tpdb.persistence.DAO;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.User;
 
