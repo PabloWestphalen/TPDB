@@ -95,7 +95,7 @@ public class DAO {
 						WHERE artists.artist_id = albums.artist_id AND users.user_id
 		*/
 		String qs = "SELECT COUNT(ac) FROM AlbumComment ac";
-		TypedQuery<Integer> query = em.createQuery(qs, Integer.class);
+		TypedQuery<Long> query = em.createQuery(qs, Long.class);
 		return (int)query.getSingleResult();		
 		/*Root<AlbumComment> root = cq.from(AlbumComment.class);		
 		cq.select(qb.count(root));
