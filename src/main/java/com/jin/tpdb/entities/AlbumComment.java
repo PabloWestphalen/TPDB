@@ -49,11 +49,11 @@ public class AlbumComment {
 		this.user = user;
 	}
 
-	public Collection<Album> getAlbum() {
+	public Album getAlbum() {
 		return album;
 	}
 
-	public void setAlbum(Collection<Album> album) {
+	public void setAlbum(Album album) {
 		this.album = album;
 	}
 
