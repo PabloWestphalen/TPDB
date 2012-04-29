@@ -94,13 +94,22 @@ public class DAO {
 						FROM albums, artists, users
 						WHERE artists.artist_id = albums.artist_id AND users.user_id
 		*/
-		CriteriaBuilder qb = em.getCriteriaBuilder();
-		CriteriaQuery<Integer> cq = qb.createQuery(Integer.class);
-		Root<AlbumComment> root = cq.from(AlbumComment.class);		
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Integer> cq = cb.createQuery(Integer.class);
+		Root<AlbumComment> root = cq.from(AlbumComment.class);
+		cq.select(cb.count(root));
+		return 3;
+		
+		
+		
+		
+		
+		
+		/*Root<AlbumComment> root = cq.from(AlbumComment.class);		
 		cq.select(qb.count(root));
 		Predicate predicate = qb.equal(root.get("album_id"), id);		
 		cq.where(predicate);
-		return em.createQuery(cq).getSingleResult();
+		return em.createQuery(cq).getSingleResult();*/
 	}
 }
 
