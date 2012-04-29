@@ -97,7 +97,7 @@ public class DAO {
 		CriteriaBuilder qb = em.getCriteriaBuilder();
 		CriteriaQuery<Integer> cq = qb.createQuery(Integer.class);
 		Root<AlbumComment> root = cq.from(AlbumComment.class);		
-		Predicate predicate = cb.equal(r.get("album_id"), id);		
+		Predicate predicate = qb.equal(root.get("album_id"), id);		
 		
 		cq.select(qb.count(root));
 		cq.where(predicate);
