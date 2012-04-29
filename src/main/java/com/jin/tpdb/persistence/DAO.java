@@ -54,8 +54,7 @@ public class DAO {
 	public static <T> T load(Class c, int i) {
 		DAO dao = new DAO();
 		dao.open();
-		Object result = em.find(c, i);
-		return result;
+		return T object = (T) em.find(c, i);
 		dao.close();
 	}
 	
