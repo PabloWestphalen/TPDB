@@ -9,13 +9,13 @@ public class DAO {
 	protected static EntityManager em;
 	
 	public DAO() {
-		//if(DAO.getManager() == null) {
+		if(DAO.getManager() == null) {
 		factory = Persistence.createEntityManagerFactory("jin");
 		em = factory.createEntityManager();
 		DAO.setManager(em);
-		/*} else {
+		} else {
 			em = DAO.getManager();
-		}*/
+		}
 	}
 	
 	protected static void setManager(EntityManager manager){
@@ -37,7 +37,7 @@ public class DAO {
 	public void close() {
 		try {
 			em.getTransaction().commit();
-			em.close();
+			//em.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
