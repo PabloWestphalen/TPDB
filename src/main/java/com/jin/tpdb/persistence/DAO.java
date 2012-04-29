@@ -107,7 +107,7 @@ public class DAO {
 	public static int countAlbumComments(int id) {
 		DAO dao = new DAO();
 		dao.open();
-		int count = dao.getAlbumTotalComments(id);
+		Long count = dao.getAlbumTotalComments(id);
 		dao.close();
 		return count;
 	}
