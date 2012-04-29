@@ -19,7 +19,13 @@ public class IndexController extends HttpServlet {
 		List<Album> featuredAlbumsList = DAO.getList(Album.class);
 		
 		for(Album fAlbum : featuredAlbumsList) {
-		String coverPath = "cover_" + fAlbum.getArtist().getName().toLowerCase() + fAlbum.getName().replace(" ", "_").toLowerCase() + ".jpg";
+		
+		String coverPath = "images/albums/cover_" + 
+							fAlbum.getArtist().getName().replace(" ", "_").toLowerCase() +
+							"_" + 
+							fAlbum.getName().replace(" ", "_").toLowerCase() +
+							".jpg";
+							
 		fAlbum.setCover(coverPath);
 		}
 		
