@@ -167,5 +167,7 @@ public class Album {
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
 	}
+	
+
 
 }

@@ -3,6 +3,7 @@ package com.jin.tpdb.persistence;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
+import com.jin.tpdb.entities.*;
 
 public class DAO {
 	protected static EntityManagerFactory factory;
@@ -83,5 +84,23 @@ public class DAO {
 				
 		return typedQuery.getResultList();
 	}
+	
+	
+    public int getNewsTotalComments(int id) {
+
+		/*$albums_query = "SELECT users.username, albums.album_id, albums.uploader_user_id,	albums.album_name,
+						albums.upload_date, albums.cover, albums.description, artists.artist_name,
+						(SELECT COUNT( comment_id ) FROM comments WHERE comments.album_id = albums.album_id) AS total_comments
+						FROM albums, artists, users
+						WHERE artists.artist_id = albums.artist_id AND users.user_id
+		*/
+		CriteriaBuilder qb = em.getCriteriaBuilder();
+		CriteriaQuery<Integer> cq = qb.createQuery(Integer.class);
+		Root<AlbumComment> root = cq.from(AlbumComment.class);		
+		Predicate predicate = cb.equal(r.get("album_id"), id);		
+		
+		cq.select(qb.count(root));
+		cq.where(predicate);
+		return em.createQuery(cq).getSingleResult();
 }
 

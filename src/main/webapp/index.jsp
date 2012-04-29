@@ -71,7 +71,7 @@
       <div id="featured_albums">
         <h3>Featured Albums</h3>
         <c:forEach var="fAlbum" items="${featuredAlbums}">
-				<img src="${fAlbum.cover}" alt="${fAlbum.artist.name} - Cover" title="${fAlbum.name}" />        
+        <img src="${fAlbum.cover}" alt="${fAlbum.artist.name} - Cover" title="${fAlbum.name}" />        
 				</c:forEach>
       </div>
       <h3>Featured Songs</h3>
