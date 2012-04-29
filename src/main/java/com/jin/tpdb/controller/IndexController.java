@@ -17,7 +17,7 @@ public class IndexController extends HttpServlet {
 		List<News> newsList = DAO.getList(News.class);
 		List<Album> albumsList = DAO.getList(Album.class);		
 		List<Album> featuredAlbumsList = DAO.getList(Album.class);
-		int lol = DAO.countAlbumComments(0);
+		Long lol = DAO.countAlbumComments(0);
 		
 		
 		for(Album fAlbum : featuredAlbumsList) {
