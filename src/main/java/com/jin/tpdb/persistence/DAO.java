@@ -5,29 +5,29 @@ import javax.persistence.*;
 import javax.persistence.criteria.*;
 
 public class DAO {
-	protected EntityManagerFactory factory;
-	protected static EntityManager em;
+	protected static EntityManagerFactory factory;
+	protected EntityManager em;
 	
 	public DAO() {
-		if(DAO.getManager() == null) {
-		factory = Persistence.createEntityManagerFactory("jin");
-		em = factory.createEntityManager();
-		DAO.setManager(em);
+		if(DAO.getManagerFactory() == null) {
+		factory = Persistence.createEntityManagerFactory("jin");		
+		DAO.setManagerFactory(factory);
 		} else {
-			em = DAO.getManager();
+			factory = DAO.getManagerFactory();
 		}
 	}
 	
-	protected static void setManager(EntityManager manager){
-        em = manager;
+	protected static void setManagerFactory(EntityManagerFactory f){
+        factory = f;
     }
 	
-	protected static EntityManager getManager() {
-		return em;
+	protected static EntityManagerFactory getManagerFactory() {
+		return factory;
 	}
 	
 	public void open() {
 		try {
+			em = factory.createEntityManager();
 			em.getTransaction().begin();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class DAO {
 	public void close() {
 		try {
 			em.getTransaction().commit();
-			//em.close();
+			em.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
