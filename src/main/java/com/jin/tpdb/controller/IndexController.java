@@ -17,8 +17,11 @@ public class IndexController extends HttpServlet {
 		List<News> newsList = DAO.getList(News.class);
 		List<Album> albumsList = DAO.getList(Album.class);
 		
+		List<Album> featuredAlbumsList = DAO.getList(Album.class);
+		
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);
+		request.setAttribute("featuredAlbums", featuredAlbumsList);
 		
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
@@ -38,3 +41,4 @@ public class IndexController extends HttpServlet {
         processRequest(request, response);
     }
 }
+
