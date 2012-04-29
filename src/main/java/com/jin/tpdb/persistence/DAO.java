@@ -109,7 +109,7 @@ public class DAO {
 		dao.open();
 		Long count = dao.getAlbumTotalComments(id);
 		dao.close();
-		return count;
+		return Integer.parseInt(count);
 	}
 }
 
