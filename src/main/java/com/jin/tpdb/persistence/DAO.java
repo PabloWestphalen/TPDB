@@ -18,11 +18,11 @@ public class DAO {
 		}
 	}
 	
-	protected static void setManager(EntityManager em){
-        this.em = em;
+	protected static void setManager(EntityManager manager){
+        em = manager;
     }
 	
-	public static void getManager() {
+	protected static EntityManager getManager() {
 		return em;
 	}
 	
