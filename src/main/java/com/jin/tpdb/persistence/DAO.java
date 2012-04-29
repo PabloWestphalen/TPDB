@@ -104,12 +104,12 @@ public class DAO {
 		return em.createQuery(cq).getSingleResult();*/
 	}
 	
-	public static int countAlbumComments(int id) {
+	public static Long countAlbumComments(int id) {
 		DAO dao = new DAO();
 		dao.open();
 		Long count = dao.getAlbumTotalComments(id);
 		dao.close();
-		return Integer.parseInt(count);
+		return count;
 	}
 }
 
