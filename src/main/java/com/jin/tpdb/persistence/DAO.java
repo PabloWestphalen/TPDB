@@ -6,7 +6,7 @@ import javax.persistence.criteria.*;
 
 public class DAO {
 	protected static EntityManagerFactory factory;
-	protected static EntityManager em;
+	protected EntityManager em;
 	
 	public DAO() {
 		if(DAO.getManagerFactory() == null) {
