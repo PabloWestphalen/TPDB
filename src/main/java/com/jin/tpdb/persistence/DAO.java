@@ -51,12 +51,12 @@ public class DAO {
 		em.getTransaction().rollback();
 	}
 	
-	public static <T> T load(Class c, int i) {
-		/*DAO dao = new DAO();
+	/*public static <T> T load(Class c, int i) {
+		DAO dao = new DAO();
 		dao.open();
 		dao.close();
-		return (T)dao.find(c, i);		*/
-	}
+		return (T)dao.find(c, i);		
+	}*/
 	
 	public static <T> List<T> getList(Class c) {		
 		DAO dao = new DAO();
