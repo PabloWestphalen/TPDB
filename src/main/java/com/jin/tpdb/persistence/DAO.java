@@ -61,12 +61,12 @@ public class DAO {
 	public static <T> List<T> getList(Class c) {		
 		DAO dao = new DAO();
 		dao.open();
-		List<T> result = dao.getList(c);
+		List<T> results = dao.getList(c);
 		dao.close();
-		return result;
+		return results;
 	}	
 	
-	protected <T> List<T> getList(Class entity) {		
+	protected <T> List<T> list(Class entity) {		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> query = cb.createQuery(entity); 
 
