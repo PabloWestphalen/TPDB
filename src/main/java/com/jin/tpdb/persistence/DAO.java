@@ -64,7 +64,7 @@ public class DAO {
 		dao.open();
 		List<T> results = dao.getList(c);
 		dao.close();
-		return result;
+		return results;
 	}	
 	
 	public <T> T get(Class c, int i) {
