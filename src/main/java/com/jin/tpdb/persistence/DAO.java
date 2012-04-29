@@ -5,8 +5,8 @@ import javax.persistence.*;
 import javax.persistence.criteria.*;
 
 public class DAO {
-	protected static EntityManagerFactory factory;
-	protected EntityManager em;
+	public static EntityManagerFactory factory;
+	public EntityManager em;
 	
 	public DAO() {
 		if(DAO.getManagerFactory() == null) {
