@@ -5,8 +5,8 @@ import javax.persistence.*;
 import javax.persistence.criteria.*;
 
 public class DAO {
-	public static EntityManagerFactory factory;
-	public EntityManager em;
+	protected static EntityManagerFactory factory;
+	protected EntityManager em;
 	
 	public DAO() {
 		if(DAO.getManagerFactory() == null) {
@@ -28,7 +28,7 @@ public class DAO {
 	public void open() {
 		try {
 			em = factory.createEntityManager();
-			//em.getTransaction().begin();
+			em.getTransaction().begin();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -36,7 +36,7 @@ public class DAO {
 	
 	public void close() {
 		try {
-			//em.getTransaction().commit();
+			em.getTransaction().commit();
 			em.close();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -51,20 +51,25 @@ public class DAO {
 		em.getTransaction().rollback();
 	}
 	
-	/*public static <T> T load(Class c, int i) {
+	public static <T> T load(Class c, int i) {
 		DAO dao = new DAO();
 		dao.open();
+		T result = dao.get(c, i);
 		dao.close();
-		return (T)dao.find(c, i);		
-	}*/
+		return result;		
+	}
 	
 	public static <T> List<T> getList(Class c) {		
 		DAO dao = new DAO();
 		dao.open();
-		List<T> result = dao.list(c);
+		List<T> results = dao.list(c);
 		dao.close();
-		return result;
+		return results;
 	}	
+	
+	public <T> T get(Class c, int i) {
+		return (T)em.find(c, i);
+	}
 	
 	protected <T> List<T> list(Class entity) {		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
