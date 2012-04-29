@@ -51,7 +51,7 @@ public class DAO {
 		em.getTransaction().rollback();
 	}
 	
-	public static <T> load(Class c, int i) {
+	public static <T> T load(Class c, int i) {
 		DAO dao = new DAO();
 		doa.open();
 		return em.find(c.class, i);
