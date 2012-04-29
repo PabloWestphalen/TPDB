@@ -36,7 +36,7 @@
             </h3>
             <p>${new.content}</p>
             <p class="entry_info">Contributed by ${new.user.username} at
-            ${new.date} | Z Comments</p>
+            ${new.date} | Comments</p>
           </div>
         </c:forEach>
         <h2>Latest Albums</h2>
@@ -50,7 +50,7 @@
             ${album.description}
             </p>
             <p class="entry_info">
-            Contributed by ${album.user.username} at ${album.releaseDate} | Z Comments
+            Contributed by ${album.user.username} at ${album.releaseDate} | ${lol} Comments
             </p>
           </div>
         </c:forEach>

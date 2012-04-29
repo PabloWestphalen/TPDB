@@ -17,6 +17,8 @@ public class IndexController extends HttpServlet {
 		List<News> newsList = DAO.getList(News.class);
 		List<Album> albumsList = DAO.getList(Album.class);		
 		List<Album> featuredAlbumsList = DAO.getList(Album.class);
+		int lol = DAO.countAlbumComments(0);
+		
 		
 		for(Album fAlbum : featuredAlbumsList) {
 		
@@ -29,6 +31,7 @@ public class IndexController extends HttpServlet {
 		fAlbum.setCover(coverPath);
 		}
 		
+		request.setAttribute("lol", lol);
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);		
 		request.setAttribute("featuredAlbums", featuredAlbumsList);

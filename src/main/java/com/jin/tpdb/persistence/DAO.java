@@ -86,7 +86,7 @@ public class DAO {
 	}
 	
 	
-    public int getNewsTotalComments(int id) {
+    public int getAlbumTotalComments(int id) {
 
 		/*$albums_query = "SELECT users.username, albums.album_id, albums.uploader_user_id,	albums.album_name,
 						albums.upload_date, albums.cover, albums.description, artists.artist_name,
@@ -96,17 +96,20 @@ public class DAO {
 		*/
 		String qs = "SELECT COUNT(ac) FROM AlbumComment ac";
 		TypedQuery<Integer> query = em.createQuery(qs, Integer.class);
-		int count = query.getSingleResult();
-		return count;
-		
-		
-		
-		
+		return query.getSingleResult();		
 		/*Root<AlbumComment> root = cq.from(AlbumComment.class);		
 		cq.select(qb.count(root));
 		Predicate predicate = qb.equal(root.get("album_id"), id);		
 		cq.where(predicate);
 		return em.createQuery(cq).getSingleResult();*/
+	}
+	
+	public static int countAlbumComments(int id) {
+		DAO dao = new DAO();
+		dao.open();
+		int count = getAlbumTotalComments(id);
+		dao.close();
+		return count;
 	}
 }
 
