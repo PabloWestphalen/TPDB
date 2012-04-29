@@ -6,7 +6,7 @@ import javax.persistence.criteria.*;
 
 public class DAO {
 	protected static EntityManagerFactory factory;
-	protected EntityManager em;
+	protected static EntityManager em;
 	
 	public DAO() {
 		if(DAO.getManagerFactory() == null) {
@@ -55,12 +55,18 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		dao.close();
-		return (T)em.find(c, i);		
+		return (T)dao.find(c, i);		
 	}
 	
-	public static <T> List<T> getList(Class entity) {		
+	public static <T> List<T> getList(Class c) {		
 		DAO dao = new DAO();
 		dao.open();
+		List<T> result = dao.getList(c);
+		dao.close();
+		return result;
+	}	
+	
+	protected <T> List<T> getList(Class entity) {		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> query = cb.createQuery(entity); 
 
@@ -70,8 +76,7 @@ public class DAO {
 			)
 		);
 				
-		dao.close();
 		return typedQuery.getResultList();
-	}	
+	}
 }
 
