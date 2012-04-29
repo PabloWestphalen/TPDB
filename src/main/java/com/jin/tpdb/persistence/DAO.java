@@ -37,7 +37,7 @@ public class DAO {
 	public void close() {
 		try {
 			em.getTransaction().commit();
-			em.close();
+			//em.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
