@@ -71,10 +71,7 @@
       <div id="featured_albums">
         <h3>Featured Albums</h3>
         <c:forEach var="fAlbum" items="${featuredAlbums}">
-				<%
-				String cover = "cover_" + fAlbum.getArtist().getName().toLowerCase() + fAlbum.getName().replace(" ", "_").toLowerCase() + ".jpg";
-				%>
-				<img src="${cover}" alt="${fAlbum.artist.name} - Cover" title="${fAlbum.name}" />        
+				<img src="${fAlbum.cover}" alt="${fAlbum.artist.name} - Cover" title="${fAlbum.name}" />        
 				</c:forEach>
       </div>
       <h3>Featured Songs</h3>
