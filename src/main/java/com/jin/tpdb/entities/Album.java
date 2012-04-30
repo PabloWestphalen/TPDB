@@ -34,7 +34,7 @@ public class Album {
 	@Column(nullable = false)
 	private String name;
 	
-	private String cover;
+	//private String cover;
 	
 	@Column(length = 65535, columnDefinition="Text")
 	private String description;
@@ -94,14 +94,6 @@ public class Album {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getCover() {
-		return cover;
-	}
-
-	public void setCover(String cover) {
-		this.cover = cover;
 	}
 
 	public String getDescription() {
@@ -171,6 +163,16 @@ public class Album {
 	
 	public Long getTotalComments() {
 		return DAO.countAlbumComments(id);
+	}
+	
+	public String getCover() {
+		String coverPath = "images/albums/cover_" + 
+							artist.getName().replace(" ", "_").toLowerCase() +
+							"_" + 
+							name.replace(" ", "_").toLowerCase() +
+							".jpg";
+							
+		return coverPath;
 	}
 
 }

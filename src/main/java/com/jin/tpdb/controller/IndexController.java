@@ -17,29 +17,14 @@ public class IndexController extends HttpServlet {
 		List<News> newsList = DAO.getList(News.class);
 		List<Album> albumsList = DAO.getList(Album.class);		
 		List<Album> featuredAlbumsList = DAO.getList(Album.class);
-		Long lol = DAO.countAlbumComments(0);
-		
-		
-		for(Album fAlbum : featuredAlbumsList) {
-		
-		String coverPath = "images/albums/cover_" + 
-							fAlbum.getArtist().getName().replace(" ", "_").toLowerCase() +
-							"_" + 
-							fAlbum.getName().replace(" ", "_").toLowerCase() +
-							".jpg";
-							
-		fAlbum.setCover(coverPath);
-		}
-		
-		request.setAttribute("lol", lol);
+
 		request.setAttribute("news", newsList);
 		request.setAttribute("albums", albumsList);		
 		request.setAttribute("featuredAlbums", featuredAlbumsList);
 		
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
-		jsp.forward(request, response);
-		
+		jsp.forward(request, response);		
 	}	
 	
 	@Override

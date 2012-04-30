@@ -47,7 +47,7 @@
               <a href="#">${album.artist.name} - ${album.name}</a>
             </h3>
             <p>
-            <img src="images/albums/${album.cover}" alt="${album.name} cover" />
+            <img src="${album.cover}" alt="${album.name} cover" />
             ${album.description}
             </p>
             <p class="entry_info">
