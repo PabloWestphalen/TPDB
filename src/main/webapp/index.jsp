@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,8 @@
             ${album.description}
             </p>
             <p class="entry_info">
-            Contributed by ${album.user.username} at ${album.releaseDate} | ${album.totalComments} Comments
+            <fmt:formatDate value="${album.releaseDate}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>  
+						Contributed by ${album.user.username} at ${album.releaseDate} | ${album.totalComments} Comments
             </p>
           </div>
         </c:forEach>
