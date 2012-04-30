@@ -37,7 +37,7 @@
             </h3>
             <p>${new.content}</p>
             <p class="entry_info">Contributed by ${new.user.username} at
-            ${new.date} | Comments</p>
+            <fmt:formatDate value="${news.date}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>   | Comments</p>
           </div>
         </c:forEach>
         <h2>Latest Albums</h2>
@@ -51,8 +51,8 @@
             ${album.description}
             </p>
             <p class="entry_info">
-            <fmt:formatDate value="${album.releaseDate}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>  
-						Contributed by ${album.user.username} at ${album.releaseDate} | ${album.totalComments} Comments
+						Contributed by ${album.user.username} at <fmt:formatDate value="${album.uploadDate}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>  
+						| ${album.totalComments} Comments
             </p>
           </div>
         </c:forEach>
