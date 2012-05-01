@@ -47,7 +47,7 @@
 				<c:forEach var="album" items="${albums}">
 					<div class="entry">
 						<h3>
-							<a href="#">${album.artist.name} - ${album.name}</a>
+							<a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
 						</h3>
 						<p>
 							<img src="${album.cover}" alt="${album.name} cover" />
