@@ -1,3 +1,4 @@
+// cubo, k19, caelum-web, caelum-java+oo
 package com.jin.tpdb.entities;
 
 import java.util.Date;
@@ -15,47 +16,47 @@ import com.jin.tpdb.entities.User;
 
 @Entity
 public class Album {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
-	//@Column(nullable = false) @ManyToOne
+
+	// @Column(nullable = false) @ManyToOne
 	@ManyToOne
 	private Artist artist;
-	
-	//@Column(nullable = false) @ManyToOne
+
+	// @Column(nullable = false) @ManyToOne
 	@ManyToOne
 	private User user;
-	
-	@Column(nullable = false) 
+
+	@Column(nullable = false)
 	private Date uploadDate;
-	
+
 	@Column(nullable = false)
 	private String name;
-	
-	//private String cover;
-	
-	@Column(length = 65535, columnDefinition="Text")
+
+	// private String cover;
+
+	@Column(length = 65535, columnDefinition = "Text")
 	private String description;
-	
+
 	private Date releaseDate;
-	
+
 	@Column(length = 6)
-	private String length;	
+	private String length;
 
 	private String label;
-	
+
 	private String downloadLink;
-	
+
 	@Column(length = 4)
 	private int bitrate;
-	
+
 	@Column(length = 5)
 	private int downloadSize;
-	
+
 	private int downloadCount;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -159,19 +160,18 @@ public class Album {
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
 	}
+
 	// util methods
-	
+
 	public Long getTotalComments() {
 		return DAO.countAlbumComments(id);
 	}
-	
+
 	public String getCover() {
-		String coverPath = "images/albums/cover_" + 
-							artist.getName().replace(" ", "_").toLowerCase() +
-							"_" + 
-							name.replace(" ", "_").toLowerCase() +
-							".jpg";
-							
+		String coverPath = "images/albums/cover_"
+				+ artist.getName().replace(" ", "_").toLowerCase() + "_"
+				+ name.replace(" ", "_").toLowerCase() + ".jpg";
+
 		return coverPath;
 	}
 
