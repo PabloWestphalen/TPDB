@@ -20,8 +20,9 @@ public class AlbumController extends HttpServlet {
 
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
-		Album album = DAO.load(Album.class,
-				Integer.parseInt(request.getAttribute("id").toString()));
+		int id = Integer.parseInt(request.getAttribute("id").toString());
+		System.out.println("Generated id is: " + id);
+		Album album = DAO.load(Album.class, id);
 
 		request.setAttribute("album", album);
 		request.setCharacterEncoding("UTF-8");
