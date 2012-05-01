@@ -20,7 +20,7 @@ public class AlbumController extends HttpServlet {
 
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
-		int id = Integer.parseInt(request.getAttribute("id").toString());
+		int id = Integer.parseInt(request.getParameter("id").toString());
 		System.out.println("Generated id is: " + id);
 		Album album = DAO.load(Album.class, id);
 
