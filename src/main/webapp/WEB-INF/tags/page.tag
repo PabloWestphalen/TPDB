@@ -42,7 +42,7 @@
 			</div>
 			<div id="top_menu">
 				<ul>
-					<li class="home"><a href="/">Home</a></li>
+					<li class="home"><a href="#">Home</a></li>
 					<li class="blackjack"><a href="#">News</a></li>
 					<li class="forms"><a href="#">Artists</a></li>
 					<li class="ajax"><a href="#">Contribute</a></li>
@@ -52,36 +52,35 @@
 			</div>
 			<div id="content">
 				<jsp:doBody />
-				<div id="footer">
-					<p>
-						This document was written by <a href="#">Pablo "Jin"
-							Westphalen</a>
-					</p>
-				</div>
 			</div>
-			<div id="sidebar">
-				<h3>Search</h3>
-				<form method="get" action="search">
-					<fieldset>
-						<input type="text" name="Search" title="Search">
-					</fieldset>
-				</form>
-				<div id="featured_albums">
-					<h3>Featured Albums</h3>
-					<c:forEach var="fAlbum" items="${featuredAlbums}">
-						<img src="${fAlbum.cover}" alt="${fAlbum.artist.name} - Cover"
-							title="${fAlbum.name}" />
-					</c:forEach>
-				</div>
-				<h3>Featured Songs</h3>
-				<h3>Choose a theme</h3>
-				<ul>
-					<li><a href="#" class="changeBlue" title="Change to Blue">Blue</a></li>
-					<li><a href="#" class="changeGreen" title="Change to Green">Green</a></li>
-					<li><a href="#" class="changeOrange" title="Change to Orange">Orange</a></li>
-					<li><a href="#" class="changeNone" title="No color">None</a></li>
-				</ul>
+			<div id="footer">
+				<p>
+					This document was written by <a href="#">Pablo "Jin" Westphalen</a>
+				</p>
 			</div>
+		</div>
+		<div id="sidebar">
+			<h3>Search</h3>
+			<form method="get" action="search">
+				<fieldset>
+					<input type="text" name="Search" title="Search">
+				</fieldset>
+			</form>
+			<div id="featured_albums">
+				<h3>Featured Albums</h3>
+				<c:forEach var="fAlbum" items="${featuredAlbums}">
+					<img src="${fAlbum.cover}" alt="${fAlbum.artist.name} - Cover"
+						title="${fAlbum.name}" />
+				</c:forEach>
+			</div>
+			<h3>Featured Songs</h3>
+			<h3>Choose a theme</h3>
+			<ul>
+				<li><a href="#" class="changeBlue" title="Change to Blue">Blue</a></li>
+				<li><a href="#" class="changeGreen" title="Change to Green">Green</a></li>
+				<li><a href="#" class="changeOrange" title="Change to Orange">Orange</a></li>
+				<li><a href="#" class="changeNone" title="No color">None</a></li>
+			</ul>
 		</div>
 	</div>
 </body>

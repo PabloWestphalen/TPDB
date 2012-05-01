@@ -89,9 +89,7 @@ public class DAO {
 		 */
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity);
-
 		List<T> results = c.list();
-		hbs.close();
 		return results;
 
 	}
