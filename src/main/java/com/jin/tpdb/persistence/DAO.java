@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 public class DAO {
@@ -87,7 +88,9 @@ public class DAO {
 		 * return typedQuery.getResultList();
 		 */
 		Session hbs = (Session) em.getDelegate();
-		List<T> results = hbs.createCriteria(entity).list();
+		Criteria c = hbs.createCriteria(entity);
+
+		List<T> results = c.list();
 		hbs.close();
 		return results;
 
