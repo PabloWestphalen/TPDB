@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page>
 	<h2>${album.name} (${album.artist.name})</h2>
@@ -16,7 +17,7 @@ ol li:nth-child(odd) {
 </style>
 	<h3>Information</h3>
 	<ul>
-		<li>Released: ${album.releaseDate}</li>
+		<li>Released: <fmt:formatDate value="${album.releaseDate}" type="date" pattern="M, d yyyy" />
 		<li>Length: ${album.length }</li>
 		<li>Label: ${album.label}</li>
 		<li>Site: ${album.artist.site }</li>
@@ -25,7 +26,7 @@ ol li:nth-child(odd) {
 	<ul>
 		<li>Bitrate: ${album.bitrate}</li>
 		<li>Size (rar): ${album.downloadSize}</li>
-		<li>Downloaded: {$album.downloadCount} times</li>
+		<li>Downloaded: ${album.downloadCount} times</li>
 		<li>Link: <a href="${album.downloadLink}">Here</a></li>
 	</ul>
 	<h3>Rating</h3>
