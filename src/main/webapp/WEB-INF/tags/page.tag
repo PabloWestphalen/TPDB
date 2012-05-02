@@ -5,8 +5,7 @@
 <%@attribute name="description"
 	description="The page's description. Show's up in google"
 	required="false"%>
-<%@attribute name="keywords"
-	description="The page's description. Show's up in google"
+<%@attribute name="keywords" description="The page's keywords."
 	required="false"%>
 <!DOCTYPE html>
 <html>

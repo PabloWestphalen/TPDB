@@ -10,10 +10,26 @@ ol {
 	list-style-position: inside;
 }
 
-ol li:nth-child(even) {
+ol li:nth-child(odd) {
 	background-color: #66A8CC;
 }
 </style>
+	<h3>Information</h3>
+	<ul>
+		<li>Released: ${album.released}</li>
+		<li>Length: ${album.length }</li>
+		<li>Label: ${album.label}</li>
+		<li>Site: ${album.site }</li>
+	</ul>
+	<h3>Download</h3>
+	<ul>
+		<li>Bitrate: ${album.bitrate}</li>
+		<li>Size (rar): ${album.downloadSize}</li>
+		<li>Downloaded: {$album.downloadCount} times</li>
+		<li>Link: <a href="${album.downloadLink}">Here</a></li>
+	</ul>
+	<h3>Rating</h3>
+	8 stars rs
 	<h3>Tracks</h3>
 	<div>
 		<ol>
