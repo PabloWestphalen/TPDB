@@ -5,10 +5,19 @@
 	<div class="entry">
 		<p>${album.description}</p>
 	</div>
+	<style>
+ol li:nth-child(odd) {
+	background-color: yellow;
+}
+
+ol li:nth-child(even) {
+	background-color: green;
+}
+</style>
 	<h3>Tracks</h3>
 	<ol>
 		<c:forEach var="song" items="${songs}">
-		<li>${song.name} - ${song.length}</li>
+			<li>${song.name} - ${song.length}</li>
 		</c:forEach>
 	</ol>
 	<div class="colmain_tracks">
