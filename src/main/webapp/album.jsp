@@ -7,11 +7,11 @@
 	</div>
 	<style>
 ol li:nth-child(odd) {
-	background-color: yellow;
+	background-color: #73BDE6;
 }
 
 ol li:nth-child(even) {
-	background-color: green;
+	background-color: #66A8CC;
 }
 </style>
 	<h3>Tracks</h3>
