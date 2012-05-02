@@ -6,8 +6,8 @@
 		<p>${album.description}</p>
 	</div>
 	<style>
-ol li:nth-child(odd) {
-	background-color: #73BDE6;
+ol {
+	list-style-position: inside;
 }
 
 ol li:nth-child(even) {
