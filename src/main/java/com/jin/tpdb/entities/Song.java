@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Song {
@@ -12,6 +13,7 @@ public class Song {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
+	@ManyToOne
 	private Album album;
 
 	private int number;
