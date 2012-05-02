@@ -1,17 +1,9 @@
 package com.jin.tpdb.entities;
 
-import java.util.Date;
-import java.util.Collection;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
-import javax.persistence.ManyToMany;
-import javax.persistence.Column;
-import com.jin.tpdb.entities.Artist;
-import com.jin.tpdb.entities.Album;
-import com.jin.tpdb.entities.User;
+import javax.persistence.Id;
 
 @Entity
 public class Song {
@@ -20,8 +12,7 @@ public class Song {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@ManyToMany
-	private Collection<Album> album;
+	private Album album;
 
 	private int number;
 
@@ -37,11 +28,11 @@ public class Song {
 		this.id = id;
 	}
 
-	public Collection<Album> getAlbum() {
+	public Album getAlbum() {
 		return album;
 	}
 
-	public void setAlbum(Collection<Album> album) {
+	public void setAlbum(Album album) {
 		this.album = album;
 	}
 

@@ -9,6 +9,9 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
+import com.jin.tpdb.entities.Song;
 
 public class DAO {
 	protected static EntityManagerFactory factory;
@@ -57,22 +60,6 @@ public class DAO {
 		em.getTransaction().rollback();
 	}
 
-	public static <T> T load(Class c, int i) {
-		DAO dao = new DAO();
-		dao.open();
-		T result = dao.get(c, i);
-		dao.close();
-		return result;
-	}
-
-	public static <T> List<T> getList(Class c) {
-		DAO dao = new DAO();
-		dao.open();
-		List<T> results = dao.list(c);
-		dao.close();
-		return results;
-	}
-
 	public <T> T get(Class c, int i) {
 		return (T) em.find(c, i);
 	}
@@ -94,7 +81,15 @@ public class DAO {
 
 	}
 
-	public Long getAlbumTotalComments(int id) {
+	protected <T> List<T> listSongs(Class entity, int id) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		c.add(Restrictions.eq("album.id", id));
+		List<T> results = c.list();
+		return results;
+	}
+
+	protected Long getAlbumTotalComments(int id) {
 
 		/*
 		 * $albums_query = "SELECT users.username, albums.album_id,
@@ -115,6 +110,22 @@ public class DAO {
 		 */
 	}
 
+	public static <T> T load(Class c, int i) {
+		DAO dao = new DAO();
+		dao.open();
+		T result = dao.get(c, i);
+		dao.close();
+		return result;
+	}
+
+	public static <T> List<T> getList(Class c) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> results = dao.list(c);
+		dao.close();
+		return results;
+	}
+
 	public static Long countAlbumComments(int id) {
 		DAO dao = new DAO();
 		dao.open();
@@ -122,4 +133,13 @@ public class DAO {
 		dao.close();
 		return count;
 	}
+
+	public static <T> List<T> getSongs(int id) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> songsList = dao.listSongs(Song.class, id);
+		dao.close();
+		return songsList;
+	}
+
 }
