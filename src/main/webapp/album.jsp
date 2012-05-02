@@ -16,10 +16,10 @@ ol li:nth-child(odd) {
 </style>
 	<h3>Information</h3>
 	<ul>
-		<li>Released: ${album.released}</li>
+		<li>Released: ${album.releaseDate}</li>
 		<li>Length: ${album.length }</li>
 		<li>Label: ${album.label}</li>
-		<li>Site: ${album.site }</li>
+		<li>Site: ${album.artist.site }</li>
 	</ul>
 	<h3>Download</h3>
 	<ul>
