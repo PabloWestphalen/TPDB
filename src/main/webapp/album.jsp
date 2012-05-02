@@ -17,7 +17,7 @@ ol li:nth-child(odd) {
 </style>
 	<h3>Information</h3>
 	<ul>
-		<li>Released: <fmt:formatDate value="${album.releaseDate}" type="date" pattern="M, d yyyy" />
+		<li>Released: <fmt:formatDate value="${album.releaseDate}" type="date" pattern="MMM d, yyyy" />
 		<li>Length: ${album.length }</li>
 		<li>Label: ${album.label}</li>
 		<li>Site: ${album.artist.site }</li>
