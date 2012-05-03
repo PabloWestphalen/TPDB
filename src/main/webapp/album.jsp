@@ -18,8 +18,7 @@ ol li:nth-child(odd) {
   <tpdb:sidebar>
     <h3>Information</h3>
     <ul>
-      <li>Released: <fmt:formatDate value="${album.releaseDate}"
-          dateStyle="long" type="date" />
+      <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />
       <li>Length: ${album.length }</li>
       <li>Label: ${album.label}</li>
       <li>Site: <a href="${album.artist.site}">${album.artist.site}</a></li>

@@ -1,12 +1,9 @@
-<%@tag description="Standard page header and footer. Body goes inside."
-  pageEncoding="UTF-8"%>
+<%@tag description="Standard page header and footer. Body goes inside." pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@attribute name="description"
-  description="The page's description. Show's up in google"
+<%@attribute name="description" description="The page's description. Show's up in google"
   required="false"%>
-<%@attribute name="keywords" description="The page's keywords."
-  required="false"%>
+<%@attribute name="keywords" description="The page's keywords." required="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +13,7 @@
     <meta name="description" content="${description}" />
   </c:when>
   <c:otherwise>
-    <meta name="description"
-      content="Discover and share trip-hop music.">
+    <meta name="description" content="Discover and share trip-hop music.">
   </c:otherwise>
 </c:choose>
 <c:choose>
@@ -25,8 +21,7 @@
     <meta name="keywords" content="${keywords}">
   </c:when>
   <c:otherwise>
-    <meta name="keywords"
-      content="trip-hop, database, new, release, wiki">
+    <meta name="keywords" content="trip-hop, database, new, release, wiki">
   </c:otherwise>
 </c:choose>
 <script type="text/javascript" src="js/cookie.js"></script>
@@ -56,8 +51,7 @@
       </div>
       <div id="footer">
         <p>
-          This document was written by <a href="#">Pablo "Jin"
-            Westphalen</a>
+          This document was written by <a href="#">Pablo "Jin" Westphalen</a>
         </p>
       </div>
     </div>
