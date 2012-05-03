@@ -7,6 +7,7 @@
 	required="false"%>
 <%@attribute name="keywords" description="The page's keywords."
 	required="false"%>
+<c:set var="sidebarContent" scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,6 +66,7 @@
 					<input type="text" name="Search" title="Search">
 				</fieldset>
 			</form>
+			${sidebarContent}
 			<div id="featured_albums">
 				<h3>Featured Albums</h3>
 				<c:forEach var="fAlbum" items="${featuredAlbums}">

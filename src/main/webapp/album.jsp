@@ -15,13 +15,14 @@ ol li:nth-child(odd) {
 	background-color: #66A8CC;
 }
 </style>
+	<tpdb:sidebar>
 	<h3>Information</h3>
 	<ul>
 		<li>Released: <fmt:formatDate value="${album.releaseDate}"
 				dateStyle="long" type="date" />
 		<li>Length: ${album.length }</li>
 		<li>Label: ${album.label}</li>
-		<li>Site: ${album.artist.site }</li>
+		<li>Site: <a href="${album.artist.site}">${album.artist.site}</a></li>
 	</ul>
 	<h3>Download</h3>
 	<ul>
@@ -32,6 +33,7 @@ ol li:nth-child(odd) {
 	</ul>
 	<h3>Rating</h3>
 	8 stars rs
+	</tpdb:sidebar>
 	<h3>Tracks</h3>
 	<div>
 		<ol>
