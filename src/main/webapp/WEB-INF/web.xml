@@ -15,13 +15,6 @@
 		<servlet-name>Search</servlet-name>
 		<servlet-class>com.jin.tpdb.Search</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>jsp</servlet-name>
-		<init-param>
-			<param-name>trimSpaces</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</servlet>
 	<servlet-mapping>
 		<servlet-name>IndexController</servlet-name>
 		<url-pattern>/Index</url-pattern>
