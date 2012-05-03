@@ -7,7 +7,6 @@
 	required="false"%>
 <%@attribute name="keywords" description="The page's keywords."
 	required="false"%>
-<c:set var="sidebarContent" scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
