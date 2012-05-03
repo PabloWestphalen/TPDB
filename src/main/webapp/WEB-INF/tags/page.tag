@@ -16,7 +16,8 @@
     <meta name="description" content="${description}" />
   </c:when>
   <c:otherwise>
-    <meta name="description" content="Discover and share trip-hop music.">
+    <meta name="description"
+      content="Discover and share trip-hop music.">
   </c:otherwise>
 </c:choose>
 <c:choose>
@@ -24,7 +25,8 @@
     <meta name="keywords" content="${keywords}">
   </c:when>
   <c:otherwise>
-    <meta name="keywords" content="trip-hop, database, new, release, wiki">
+    <meta name="keywords"
+      content="trip-hop, database, new, release, wiki">
   </c:otherwise>
 </c:choose>
 <script type="text/javascript" src="js/cookie.js"></script>
@@ -54,7 +56,8 @@
       </div>
       <div id="footer">
         <p>
-          This document was written by <a href="#">Pablo "Jin" Westphalen</a>
+          This document was written by <a href="#">Pablo "Jin"
+            Westphalen</a>
         </p>
       </div>
     </div>

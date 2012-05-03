@@ -8,11 +8,11 @@
   </div>
   <style>
 ol {
-  list-style-position: inside;
+	list-style-position: inside;
 }
 
 ol li:nth-child(odd) {
-  background-color: #66A8CC;
+	background-color: #66A8CC;
 }
 </style>
   <tpdb:sidebar>
