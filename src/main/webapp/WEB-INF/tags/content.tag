@@ -16,7 +16,7 @@
     </ul>
   </nav>
   <article>
-    <jsp:doBody>
+    <jsp:doBody />
   </article>
   <footer>
     This document was written by <a href="#">Pablo "Jin" Westphalen</a>
