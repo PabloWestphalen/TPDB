@@ -28,42 +28,9 @@
 <script type="text/javascript" src="js/change_themes.js"></script>
 <link rel="stylesheet" href="css/layout.css" type="text/css">
 <link rel="stylesheet" href="css/blue.css" type="text/css">
-<title>${title}</title>
+<title>The Trip-Hop Database</title>
 </head>
 <body id="home">
-  <div id="container">
-    <div id="main_wrapper">
-      <div id="header">
-        <h1>Trip-Hop Database</h1>
-      </div>
-      <div id="top_menu">
-        <ul>
-          <li class="home"><a href="/">Home</a></li>
-          <li class="blackjack"><a href="#">News</a></li>
-          <li class="forms"><a href="#">Artists</a></li>
-          <li class="ajax"><a href="#">Contribute</a></li>
-          <li class="ajax"><a href="#">Requests</a></li>
-          <li class="ajax"><a href="#">Community</a></li>
-        </ul>
-      </div>
-      <div id="content">
-        <jsp:doBody />
-      </div>
-      <div id="footer">
-        <p>
-          This document was written by <a href="#">Pablo "Jin" Westphalen</a>
-        </p>
-      </div>
-    </div>
-    <div id="sidebar">
-      <h3>Search</h3>
-      <form method="get" action="search">
-        <fieldset>
-          <input type="text" name="Search" title="Search">
-        </fieldset>
-      </form>
-      ${sidebarContent}
-    </div>
-  </div>
+<jsp:doBody />
 </body>
 </html>

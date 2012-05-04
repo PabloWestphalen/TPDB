@@ -2,19 +2,18 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page>
+  <tpdb:content>
   <h2>${album.name} (${album.artist.name})</h2>
   <div class="entry">
     <p>${album.description}</p>
   </div>
-  <style>
-ol {
-	list-style-position: inside;
-}
-
-ol li:nth-child(odd) {
-	background-color: #66A8CC;
-}
-</style>
+  <h3>Tracks</h3>
+  <ol>
+    <c:forEach var="song" items="${songs}">
+      <li>${song.name} - ${song.length}</li>
+    </c:forEach>
+  </ol>
+  </tpdb:content>
   <tpdb:sidebar>
     <h3>Information</h3>
     <ul>
@@ -31,16 +30,6 @@ ol li:nth-child(odd) {
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>
     <h3>Rating</h3>
-8 stars rs
-</tpdb:sidebar>
-  <h3>Tracks</h3>
-  <div>
-    <ol>
-      <c:forEach var="song" items="${songs}">
-        <li>${song.name} - ${song.length}</li>
-      </c:forEach>
-    </ol>
-  </div>
+    8 stars rs
+  </tpdb:sidebar>
 </tpdb:page>
-
-
