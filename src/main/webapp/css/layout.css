@@ -162,6 +162,11 @@ section article ol li:nth-child(odd) {
   background-color: #66A8CC;
 }
 
+section article article {
+  padding: 5px;
+}
+
+
 footer {
   border-top: solid 1px white;
 }
