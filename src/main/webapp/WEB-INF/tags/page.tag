@@ -7,28 +7,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <c:choose>
-  <c:when test="${not empty description}">
-      <meta name="description" content="${description}" />
-  </c:when>
-  <c:otherwise>
-      <meta name="description" content="Discover and share trip-hop music.">
-  </c:otherwise>
+<c:when test="${not empty description}">
+<meta name="description" content="${description}" />
+</c:when>
+<c:otherwise>
+<meta name="description" content="Discover and share trip-hop music.">
+</c:otherwise>
 </c:choose>
 <c:choose>
-  <c:when test="${not empty keywords}">
-      <meta name="keywords" content="${keywords}">
-  </c:when>
-  <c:otherwise>
-      <meta name="keywords" content="trip-hop, database, new, release, wiki">
-  </c:otherwise>
+<c:when test="${not empty keywords}">
+<meta name="keywords" content="${keywords}">
+</c:when>
+<c:otherwise>
+<meta name="keywords" content="trip-hop, database, new, release, wiki">
+</c:otherwise>
 </c:choose>
-  <script type="text/javascript" src="js/cookie.js"></script>
-  <script type="text/javascript" src="js/change_themes.js"></script>
-  <link rel="stylesheet" href="css/layout.css" type="text/css">
-  <link rel="stylesheet" href="css/blue.css" type="text/css">
-  <title>The Trip-Hop Database</title>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/change_themes.js"></script>
+<link rel="stylesheet" href="css/layout.css" type="text/css">
+<link rel="stylesheet" href="css/blue.css" type="text/css">
+<title>The Trip-Hop Database</title>
 </head>
 <body id="home">
   <jsp:doBody />
