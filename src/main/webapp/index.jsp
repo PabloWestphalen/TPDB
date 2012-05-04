@@ -5,7 +5,7 @@
 <tpdb:content>
   <h2>News</h2>
   <c:forEach var="new" items="${news}">
-    <div class="entry">
+    <article>
       <h3>
         <a href="news?id=${new.title}">${new.title}</a>
       </h3>
@@ -15,11 +15,11 @@
         <fmt:formatDate value="${new.date}" type="date" />
         | Comments
       </p>
-    </div>
+    </article>
   </c:forEach>
   <h2>Latest Albums</h2>
   <c:forEach var="album" items="${albums}">
-    <div class="entry">
+    <article>
       <h3>
         <a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
       </h3>
@@ -31,7 +31,7 @@
         <fmt:formatDate value="${album.uploadDate}" type="date" />
         | ${album.totalComments} Comments
       </p>
-    </div>
+    </article>
   </c:forEach>
   </tpdb:content>
   <tpdb:sidebar>
