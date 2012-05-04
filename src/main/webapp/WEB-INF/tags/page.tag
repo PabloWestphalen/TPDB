@@ -24,13 +24,13 @@
     <meta name="keywords" content="trip-hop, database, new, release, wiki">
   </c:otherwise>
 </c:choose>
-<script type="text/javascript" src="js/cookie.js"></script>
-<script type="text/javascript" src="js/change_themes.js"></script>
-<link rel="stylesheet" href="css/layout.css" type="text/css">
-<link rel="stylesheet" href="css/blue.css" type="text/css">
-<title>The Trip-Hop Database</title>
+  <script type="text/javascript" src="js/cookie.js"></script>
+  <script type="text/javascript" src="js/change_themes.js"></script>
+  <link rel="stylesheet" href="css/layout.css" type="text/css">
+  <link rel="stylesheet" href="css/blue.css" type="text/css">
+  <title>The Trip-Hop Database</title>
 </head>
 <body id="home">
-<jsp:doBody />
+  <jsp:doBody />
 </body>
 </html>
