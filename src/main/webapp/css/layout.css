@@ -104,48 +104,48 @@ nav li a {
   height: 100%;
 }
 
-article {
+section article {
   min-height: 340px;
   padding-top: 2em;
 }
 
-article ul{
+section article ul{
   padding: 15px;
   list-style-type: none;
 }
 
-article ul ul {
+section article ul ul {
   list-style-type: disc;
 }
 
-article li {
+section article li {
   padding: 2px;
 }
 
-article div {
+section article div {
   padding-left: 30px;
 }
 
-article p {
+section article p {
   margin: 10px;
   padding: 0;
 }
 
-article .entry_info {
+section article .entry_info {
   margin-right: 15px;
   text-align: right;
 }
 
-article a {
+section article a {
   text-decoration: none;
 }
 
-article { 
+section article { 
   padding: 40px 15px 15px 25px; 
   text-align: justify;
 }
 
-article p img {
+section article p img {
   float: right;
   margin-left: 5px;
   border: none;
@@ -154,11 +154,11 @@ article p img {
   height: 100px;
 }
 
-article ol {
+section article ol {
   list-style-position: inside;
 }
 
-article ol li:nth-child(odd) {
+section article ol li:nth-child(odd) {
   background-color: #66A8CC;
 }
 

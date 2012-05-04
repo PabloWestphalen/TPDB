@@ -12,7 +12,7 @@ h2 {
 h3 {
   color: #FFFCE6; 
 }
-article, header, footer, aside {
+section article, header, footer, aside {
   background-color: #609EBF;  
 }
 nav {
@@ -38,7 +38,7 @@ nav li:hover a {
   color: #F5FFBF;
 }
 
-article h2, h3 {
+section article h2, h3 {
   color: #FFFFBF;
 }
 a {
