@@ -163,7 +163,8 @@ section article ol li:nth-child(odd) {
 }
 
 section article article {
-  padding: 5px;
+  padding: 15px;
+  min-height: 0;
 }
 
 
