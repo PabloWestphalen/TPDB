@@ -4,9 +4,7 @@
 <tpdb:page>
   <tpdb:content>
   <h2>${album.name} (${album.artist.name})</h2>
-  <div class="entry">
     <p>${album.description}</p>
-  </div>
   <h3>Tracks</h3>
   <ol>
     <c:forEach var="song" items="${songs}">
