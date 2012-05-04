@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page>
+<tpdb:content>
   <h2>News</h2>
   <c:forEach var="new" items="${news}">
     <div class="entry">
@@ -32,6 +33,7 @@
       </p>
     </div>
   </c:forEach>
+  </tpdb:content>
   <tpdb:sidebar>
     <div id="featured_albums">
       <h3>Featured Albums</h3>

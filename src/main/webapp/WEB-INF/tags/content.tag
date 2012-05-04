@@ -1,6 +1,7 @@
 <%@ tag pageEncoding="UTF-8"%>
-<%@attribute name="description" description="The page's description. Show's up in google"
+<%@attribute name="currentPage" description="The page's description. Show's up in google"
   required="false"%>
+  
   <section>
     <header>
       <h1>The Trip-Hop Database</h1>
