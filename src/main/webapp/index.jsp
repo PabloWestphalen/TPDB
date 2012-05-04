@@ -2,10 +2,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page>
-<tpdb:content>
-  <h2>News</h2>
+<tpdb:content>  
   <c:forEach var="new" items="${news}">
     <article>
+    <h2>News</h2>
       <h3>
         <a href="news?id=${new.title}">${new.title}</a>
       </h3>
@@ -16,10 +16,10 @@
         | Comments
       </p>
     </article>
-  </c:forEach>
-  <h2>Latest Albums</h2>
+  </c:forEach>  
   <c:forEach var="album" items="${albums}">
     <article>
+    <h2>Latest Albums</h2>
       <h3>
         <a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
       </h3>
