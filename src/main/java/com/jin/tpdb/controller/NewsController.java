@@ -16,8 +16,6 @@ public class NewsController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		int id = 0;
-
 		if (!request.getParameter("id").isEmpty()) {
 			id = Integer.parseInt(request.getParameter("id"));
 		}

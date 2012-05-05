@@ -213,6 +213,10 @@ aside ul {
   list-style-type: none;  
 }
 
+aside ul li {
+  padding-right: 5px;
+}
+
 #theme_choser li {
   display: inline-block;
   margin-right: 10px;
