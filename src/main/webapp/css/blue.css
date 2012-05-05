@@ -26,7 +26,7 @@ nav li a {
 #home li.home, #news li.news, #forms li.forms, #ajax li.ajax {
   background-color: #BFD936;
 }
-#home li.home a, #blackjack li.blackjack a, #forms li.forms a, #ajax li.ajax a {
+#home li.home a, #news li.news a, #forms li.forms a, #ajax li.ajax a {
   color: #F5FFBF;
   font-weight: bold;
 }
