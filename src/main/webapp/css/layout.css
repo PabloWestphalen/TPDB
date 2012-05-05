@@ -217,12 +217,12 @@ aside ul li {
   padding-right: 5px;
 }
 
-#theme_choser li {
+#themeChoser li {
   display: inline-block;
   margin-right: 10px;
 }
 
-#theme_choser a {
+#themeChoser a {
   display: block;
   font-size: 0;
   width: 20px;
@@ -230,7 +230,7 @@ aside ul li {
   border: solid 1px white;  
 }
 
-#theme_choser a.changeNone {
+#themeChoser a.changeNone {
   display: block;
   position: relative;
   top: 9px;
