@@ -10,10 +10,10 @@
       <ul>
         <li class="home"><a href="/">Home</a></li>
         <li class="news"><a href="/news">News</a></li>
-        <li class="forms"><a href="#">Artists</a></li>
-        <li class="ajax"><a href="#">Contribute</a></li>
-        <li class="ajax"><a href="#">Requests</a></li>
-        <li class="ajax"><a href="#">Community</a></li>
+        <li class="artists"><a href="/artists">Artists</a></li>
+        <li class="contribute"><a href="#">Contribute</a></li>
+        <li class="requests"><a href="#">Requests</a></li>
+        <li class="community"><a href="#">Community</a></li>
       </ul>
     </nav>
     <article>

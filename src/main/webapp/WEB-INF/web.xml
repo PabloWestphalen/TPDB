@@ -15,6 +15,10 @@
     <servlet-name>NewsController</servlet-name>
     <servlet-class>com.jin.tpdb.controller.NewsController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ArtistsController</servlet-name>
+    <servlet-class>com.jin.tpdb.controller.ArtistsController</servlet-class>
+  </servlet>
 	<servlet>
 		<servlet-name>Search</servlet-name>
 		<servlet-class>com.jin.tpdb.Search</servlet-class>
@@ -30,6 +34,10 @@
   <servlet-mapping>
     <servlet-name>NewsController</servlet-name>
     <url-pattern>/news</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ArtistsController</servlet-name>
+    <url-pattern>/artists</url-pattern>
   </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Search</servlet-name>
