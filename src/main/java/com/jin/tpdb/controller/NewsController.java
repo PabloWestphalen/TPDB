@@ -16,9 +16,8 @@ public class NewsController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
-
-		if (id != 0) {
+		if (request.getParameter("id") != null) {
+			int id = Integer.parseInt(request.getParameter("id"));
 			News news = DAO.load(News.class, id);
 			request.setAttribute("news", news);
 			request.setCharacterEncoding("UTF-8");
