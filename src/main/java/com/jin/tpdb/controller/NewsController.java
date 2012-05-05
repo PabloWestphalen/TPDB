@@ -17,9 +17,14 @@ public class NewsController extends HttpServlet {
 			HttpServletResponse response) throws IOException, ServletException {
 
 		if (request.getParameter("id") != null) {
-			int id = Integer.parseInt(request.getParameter("id"));
-			News news = DAO.load(News.class, id);
-			request.setAttribute("news", news);
+			try {
+				int id = Integer.parseInt(request.getParameter("id"));
+				News news = DAO.load(News.class, id);
+				request.setAttribute("news", news);
+			} catch (Exception e) {
+				// irrelevant
+			}
+
 		}
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("news.jsp");
