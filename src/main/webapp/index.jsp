@@ -43,7 +43,7 @@
     </div>
     <h3>Featured Songs</h3>
     <h3>Choose a theme</h3>
-    <ul>
+    <ul id="themeChoser">
       <li><a href="#" class="changeBlue" title="Change to Blue">Blue</a></li>
       <li><a href="#" class="changeGreen" title="Change to Green">Green</a></li>
       <li><a href="#" class="changeOrange" title="Change to Orange">Orange</a></li>

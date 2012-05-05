@@ -25,7 +25,7 @@ window.onload = function() {
 		document.getElementsByTagName("link")[1].href="css/"+color+".css";
 	}*/
 
-	var sidebarLinks = document.getElementById("sidebar").getElementsByTagName("a");
+	var sidebarLinks = document.getElementById("themeChoser").getElementsByTagName("a");
 	for(var i = 0; i < sidebarLinks.length; i++) {
 		var link = sidebarLinks[i];
 		link.addEventListener("click", changeColor, false);
