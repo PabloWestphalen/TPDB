@@ -9,9 +9,9 @@
         <p>${news.content}</p>
       </c:when>
       <c:otherwise>
-        <c:forEach var="news" items="newsList">
+        <c:forEach var="n" items="newsList">
           <p>
-            -- <a href="news?id=${news.id}">${news.title}</a>
+            -- <a href="news?id=${n.id}">${n.title}</a>
           </p>
         </c:forEach>
       </c:otherwise>
