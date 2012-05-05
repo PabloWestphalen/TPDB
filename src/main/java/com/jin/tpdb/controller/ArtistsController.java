@@ -19,11 +19,6 @@ public class ArtistsController extends HttpServlet {
 		List<Artist> artists = DAO.getList(Artist.class);
 		request.setAttribute("artistsList", artists);
 
-		for (Artist n : artists) {
-			System.out.println("#####################" + n.getName()
-					+ "##############");
-		}
-
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("artists.jsp");
 		jsp.forward(request, response);
