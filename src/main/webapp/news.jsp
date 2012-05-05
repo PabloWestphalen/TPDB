@@ -3,8 +3,11 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page>
   <tpdb:content>
+    <c:if test="${not empty param.id}">
     <h2>${news.title}</h2>
     <p>${news.content}</p>
+    </c:if>
+    
   </tpdb:content>
   <tpdb:sidebar />
 </tpdb:page>

@@ -9,7 +9,7 @@
     <nav>
       <ul>
         <li class="home"><a href="/">Home</a></li>
-        <li class="blackjack"><a href="#">News</a></li>
+        <li class="blackjack"><a href="/news">News</a></li>
         <li class="forms"><a href="#">Artists</a></li>
         <li class="ajax"><a href="#">Contribute</a></li>
         <li class="ajax"><a href="#">Requests</a></li>
