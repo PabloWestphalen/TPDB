@@ -13,6 +13,7 @@
   </ol>
   </tpdb:content>
   <tpdb:sidebar>
+    <img src="${album.cover}" width="100" height="100" style="margin: auto;" />
     <h3>Information</h3>
     <ul>
       <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />

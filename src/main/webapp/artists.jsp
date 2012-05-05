@@ -5,9 +5,11 @@
   <tpdb:content>
     <h2>Artists</h2>
     <c:forEach var="artist" items="${artistsList}">
-      <p>${artist.name}</p>
+      <h3 ${artist.name}</h3>
       <c:forEach var="album" items="${artist.albums}">
-      -- <a href="/album?id=${album.id}">${album.name}</a> <br />
+        <a href="/album?id=${album.id}" title="${album.name}"><img src="${album.cover}" width="100"
+          height="100" /></a>
+        <br />
       </c:forEach>
     </c:forEach>
   </tpdb:content>
