@@ -11,7 +11,8 @@
       <c:otherwise>
         <c:forEach var="news" items="${newsList}">
           <p>
-            <a href="news?id=${news.id}">${news.title}</a>
+            <fmt:formatDate value="${news.date}" type="date" />
+            - <a href="news?id=${news.id}">${news.title}</a>
           </p>
         </c:forEach>
       </c:otherwise>
