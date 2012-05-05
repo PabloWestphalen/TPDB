@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Song;
 
 public class DAO {
@@ -108,6 +109,23 @@ public class DAO {
 		 * qb.equal(root.get("album_id"), id); cq.where(predicate); return
 		 * em.createQuery(cq).getSingleResult();
 		 */
+	}
+
+	protected List<Album> listAlbums(int id) {
+
+		String qs = "SELECT * FROM Album a WHERE a.artist_id = " + id;
+		TypedQuery<Album> query = em.createQuery(qs, Album.class);
+		List<Album> albums = query.getResultList();
+		return albums;
+
+	}
+
+	public static List<Album> getAlbums(int id) {
+		DAO dao = new DAO();
+		dao.open();
+		List<Album> albums = dao.listAlbums(id);
+		dao.close();
+		return albums;
 	}
 
 	public static <T> T load(Class c, int i) {

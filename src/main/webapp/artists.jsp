@@ -6,6 +6,9 @@
     <h2>Artists</h2>
     <c:forEach var="artist" items="${artistsList}">
       <p>${artist.name}</p>
+      <c:forEach var="album" items="${artist.albums}">
+      -- <a href="/album?id=${album.id}">${album.name}</a> <br />
+      </c:forEach>
     </c:forEach>
   </tpdb:content>
   <tpdb:sidebar />

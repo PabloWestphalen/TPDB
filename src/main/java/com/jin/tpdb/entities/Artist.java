@@ -1,10 +1,14 @@
 package com.jin.tpdb.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.jin.tpdb.persistence.DAO;
 
 @Entity
 public class Artist {
@@ -38,5 +42,10 @@ public class Artist {
 
 	public void setSite(String site) {
 		this.site = site;
+	}
+
+	public List<Album> getAlbums() {
+		List<Album> albums = DAO.getAlbums(this.id);
+		return albums;
 	}
 }
