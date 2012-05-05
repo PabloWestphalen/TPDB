@@ -18,12 +18,14 @@ public class NewsController extends HttpServlet {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		News news = DAO.load(News.class, id);
+		if (id != 0) {
+			News news = DAO.load(News.class, id);
+			request.setAttribute("news", news);
+			request.setCharacterEncoding("UTF-8");
+			RequestDispatcher jsp = request.getRequestDispatcher("news.jsp");
+			jsp.forward(request, response);
+		}
 
-		request.setAttribute("news", news);
-		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher jsp = request.getRequestDispatcher("news.jsp");
-		jsp.forward(request, response);
 	}
 
 	@Override
