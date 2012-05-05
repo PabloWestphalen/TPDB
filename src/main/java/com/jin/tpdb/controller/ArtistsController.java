@@ -17,7 +17,7 @@ public class ArtistsController extends HttpServlet {
 			HttpServletResponse response) throws IOException, ServletException {
 
 		List<Artist> artists = DAO.getList(Artist.class);
-		request.setAttribute("artists", artists);
+		request.setAttribute("artistsList", artists);
 
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("artists.jsp");

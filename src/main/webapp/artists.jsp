@@ -4,7 +4,7 @@
 <tpdb:page name="artists">
   <tpdb:content>
     <h2>Artists</h2>
-    <c:forEach var="artist" items="artists">
+    <c:forEach var="artist" items="artistsList">
       <p>${artist.name}</p>
     </c:forEach>
   </tpdb:content>
