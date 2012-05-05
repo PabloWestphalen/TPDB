@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,8 +25,11 @@ public class NewsController extends HttpServlet {
 			} catch (Exception e) {
 				// irrelevant
 			}
-
+		} else {
+			List<News> newsList = DAO.getList(News.class);
+			request.setAttribute("news", newsList);
 		}
+
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("news.jsp");
 		jsp.forward(request, response);
