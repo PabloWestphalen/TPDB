@@ -23,7 +23,7 @@ nav li a {
   color: #64006B;
   text-decoration: none;
 }
-#home li.home, #blackjack li.blackjack, #forms li.forms, #ajax li.ajax {
+#home li.home, #news li.news, #forms li.forms, #ajax li.ajax {
   background-color: #BFD936;
 }
 #home li.home a, #blackjack li.blackjack a, #forms li.forms a, #ajax li.ajax a {

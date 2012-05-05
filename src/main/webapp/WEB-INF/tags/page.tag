@@ -3,6 +3,8 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@attribute name="description" description="The page's description. Show's up in google"
   required="false"%>
+<%@attribute name="name" description="The page's name is used to mark as current in the navigation menu"
+  required="false"%>
 <%@attribute name="keywords" description="The page's keywords." required="false"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +32,7 @@
 <link rel="stylesheet" href="css/blue.css" type="text/css">
 <title>The Trip-Hop Database</title>
 </head>
-<body id="home">
+<body id="${name}">
   <jsp:doBody />
 </body>
 </html>
