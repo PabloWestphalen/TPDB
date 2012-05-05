@@ -10,17 +10,9 @@
       </c:when>
       <c:otherwise>
         <c:forEach var="news" items="${newsList}">
-          <article>
-            <h3>
-              <a href="news?id=${news.id}">${news.title}</a>
-            </h3>
-            <p>${news.content}</p>
-            <p class="entry_info">
-              Contributed by ${news.user.username} at
-              <fmt:formatDate value="${news.date}" type="date" />
-              | Comments
-            </p>
-          </article>
+          <p>
+            <a href="news?id=${news.id}">${news.title}</a>
+          </p>
         </c:forEach>
       </c:otherwise>
     </c:choose>
