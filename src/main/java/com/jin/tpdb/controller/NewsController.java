@@ -26,6 +26,8 @@ public class NewsController extends HttpServlet {
 				// irrelevant
 			}
 		} else {
+			System.out
+					.println("#####################################CAIU NO ELSE###########");
 			List<News> newsList = DAO.getList(News.class);
 			request.setAttribute("newsList", newsList);
 		}
