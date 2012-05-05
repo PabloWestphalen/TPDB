@@ -113,7 +113,7 @@ public class DAO {
 
 	protected List<Album> listAlbums(int id) {
 
-		String qs = "SELECT * FROM Album a WHERE a.artist_id = " + id;
+		String qs = "SELECT FROM Album a WHERE a.artist_id = " + id;
 		TypedQuery<Album> query = em.createQuery(qs, Album.class);
 		List<Album> albums = query.getResultList();
 		return albums;
