@@ -11,7 +11,7 @@
       <c:otherwise>
         <c:forEach var="news" items="newsList">
           <p>
-            -- ${news.title}
+            -- <a href="news?id=${news.id}">${news.title}</a>
           </p>
         </c:forEach>
       </c:otherwise>

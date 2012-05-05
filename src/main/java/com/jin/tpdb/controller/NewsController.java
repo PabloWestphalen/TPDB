@@ -27,7 +27,7 @@ public class NewsController extends HttpServlet {
 			}
 		} else {
 			List<News> newsList = DAO.getList(News.class);
-			request.setAttribute("news", newsList);
+			request.setAttribute("newsList", newsList);
 		}
 
 		request.setCharacterEncoding("UTF-8");
