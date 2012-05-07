@@ -66,24 +66,6 @@ section {
   padding-left: .5em;
 }
 
-#mainNav:before, #mainNav:after {
-  content: '';          
-  position: absolute;
-  bottom: -1em;
-  z-index: -1000;
-  border: .5em solid #BFD936; 
-  border-bottom-color: transparent;
-}
-
-#mainNav:before {
-  left: 0;
-  border-left-color: transparent; 
-}
-
-#mainNav:after {
-  right: 0; 
-  border-right-color: transparent;  
-}
 
 #mainNav ul {
   list-style: none;
@@ -187,6 +169,10 @@ aside fieldset, form, p{
   border: 0;
 }
 
+input[type="text"], textarea, input[type="submit"] {
+  border-radius: 5px;
+}
+
 aside input[name="Search"] {
   width: 100%;
   border-radius: 6px;
@@ -280,8 +266,9 @@ form p {
   padding: 10px 0;
 }
 
-input, input.input_inactive {
-  border: solid 2px #FFFCE6;
+input, input.input_inactive, textarea {
+  /*border: solid 2px #FFFCE6;*/
+  border: none;
   background-color: #eee;
   color: #999;  
 }

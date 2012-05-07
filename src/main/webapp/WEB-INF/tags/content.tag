@@ -8,7 +8,7 @@
   <header>
     <h1>The Trip-Hop Database</h1>
   </header>
-  <nav>
+  <nav id="mainNav">
     <ul>
       <li class="home"><a href="/">Home</a></li>
       <li class="news"><a href="/news">News</a></li>
