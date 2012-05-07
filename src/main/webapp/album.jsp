@@ -23,8 +23,8 @@
     </ul>
     <h3>Download</h3>
     <ul>
-      <li>Bitrate: ${album.bitrate}</li>
-      <li>Size (rar): ${album.downloadSize}</li>
+      <li>Bitrate: ${album.bitrate} kbps</li>
+      <li>Size (rar): ${album.downloadSize} MB</li>
       <li>Downloaded: ${album.downloadCount} times</li>
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>

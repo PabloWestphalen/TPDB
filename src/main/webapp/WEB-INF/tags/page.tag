@@ -6,6 +6,7 @@
 <%@attribute name="name" description="The page's name is used to mark as current in the navigation menu"
   required="false"%>
 <%@attribute name="keywords" description="The page's keywords." required="false"%>
+<%@attribute name="type" description="The page's type." required="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,9 @@
 <script type="text/javascript" src="js/change_themes.js"></script>
 <link rel="stylesheet" href="css/layout.css" type="text/css">
 <link rel="stylesheet" href="css/blue.css" type="text/css">
+<c:if test="${type == 'admin'}">
+<link rel="stylesheet" href="css/admin.css" type="text/css">
+</c:if>
 <title>The Trip-Hop Database</title>
 </head>
 <body id="${name}">

@@ -1,0 +1,96 @@
+#adminContainer {
+  padding: 0;
+  margin: 0;  
+  height: 500px;
+}
+
+#adminNav {
+  display: block;
+  background-image: -o-linear-gradient(top, #5993B3 6px, #73A4BF 100%);
+  padding: 0 10px;
+  height: 100%;
+  float: left;
+  border-right: solid 1px #aaa;
+}
+
+#adminNav a {
+  border: solid 1px #A5CD4E;
+  border-radius: 5px;
+  background-image: -o-linear-gradient(top, #EBFF80 6px, #A5CD4E 100%);
+  display: block;
+  font-family: "Ubuntu";
+  border-radius: 5px;
+  color: black;
+  text-shadow: white 1px 1px 2px;
+  font-weight: bold;
+  width: 110px;
+  padding: 1px;
+  text-align: center;
+  text-decoration: none;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#adminNav a:active {
+  background-image: -o-linear-gradient(top, #C7D96C 6px, #A5CD4E 100%);
+  position: relative;
+  left: 1px;
+  top: 1px;
+}
+
+#adminNav a:hover {
+  border: solid 1px #64006B;
+  box-shadow: grey 0px 2px 5px 0px;
+}
+
+#adminBody {
+  display: block;
+  width: 80%;
+  height: 100%;
+  background-color: #609EBF;
+  display: inline-block;
+  padding: 0;
+  box-shadow: none;
+}
+
+#adminBody form, #adminNav h3 {
+  padding: 20px;
+}
+
+#adminBody input,textarea {
+  width: 450px;
+  background-color: #A3C6D9;
+  color: white;
+  padding: 5px;
+}
+
+#adminBody textarea {
+  height: 200px;
+}
+
+#adminBody fieldset p {
+  padding-bottom: 20px;
+}
+
+#adminBody label {
+  width: 100px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#adminBody fieldset {
+  padding-left: 15px;
+}
+
+#adminBody fieldset legend {
+  padding: 5px;
+  color: #FFFFBF;
+  font-weight: bold;
+}
+
+#adminBody input[type="submit"] {
+  margin: auto;
+  margin-top: 20px;
+  margin-left: 104px;  
+  width: 100px;
+}
