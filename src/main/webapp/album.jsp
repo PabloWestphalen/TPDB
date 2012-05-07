@@ -1,3 +1,4 @@
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
@@ -13,7 +14,7 @@
   </ol>
   </tpdb:content>
   <tpdb:sidebar>
-    <img src="${album.cover}" width="100" height="100" style="display: block; margin: auto;" />
+    <img src="${album.cover}" width="100" height="100" style="margin: auto;" />
     <h3>Information</h3>
     <ul>
       <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />
@@ -23,8 +24,8 @@
     </ul>
     <h3>Download</h3>
     <ul>
-      <li>Bitrate: ${album.bitrate}</li>
-      <li>Size (rar): ${album.downloadSize}</li>
+      <li>Bitrate: ${album.bitrate} kbps</li>
+      <li>Size (rar): ${album.downloadSize} MB</li>
       <li>Downloaded: ${album.downloadCount} times</li>
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>

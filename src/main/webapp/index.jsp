@@ -1,44 +1,46 @@
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="home">
-<tpdb:content>
-  <h2>News</h2>
-  <c:forEach var="news" items="${newsList}">
-    <article>
-      <h3>
-        <a href="news?id=${news.id}">${news.title}</a>
-      </h3>
-      <p>${news.content}</p>
-      <p class="entry_info">
-        Contributed by ${news.user.username} at
-        <fmt:formatDate value="${news.date}" type="date" />
-        | Comments
-      </p>
-    </article>
-  </c:forEach>
-  <h2>Latest Albums</h2>
-  <c:forEach var="album" items="${albums}">
-    <article>
-      <h3>
-        <a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
-      </h3>
-      <p>
-        <img src="${album.cover}" alt="${album.name} cover" /> ${album.description}
-      </p>
-      <p class="entry_info">
-        Contributed by ${album.user.username} at
-        <fmt:formatDate value="${album.uploadDate}" type="date" />
-        | ${album.totalComments} Comments
-      </p>
-    </article>
-  </c:forEach>
+  <tpdb:content>
+    <h2>News</h2>
+    <c:forEach var="news" items="${newsList}">
+      <article>
+        <h3>
+          <a href="news?id=${news.id}">${news.title}</a>
+        </h3>
+        <p>${news.content}</p>
+        <p class="entry_info">
+          Contributed by ${news.user.username} at
+          <fmt:formatDate value="${news.date}" type="date" />
+          | Comments
+        </p>
+      </article>
+    </c:forEach>
+    <h2>Latest Albums</h2>
+    <c:forEach var="album" items="${albums}">
+      <article>
+        <h3>
+          <a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
+        </h3>
+        <p>
+          <img src="${album.cover}" alt="${album.name} cover" /> ${album.description}
+        </p>
+        <p class="entry_info">
+          Contributed by ${album.user.username} at
+          <fmt:formatDate value="${album.uploadDate}" type="date" />
+          | ${album.totalComments} Comments
+        </p>
+      </article>
+    </c:forEach>
   </tpdb:content>
   <tpdb:sidebar>
     <div id="featured_albums">
       <h3>Featured Albums</h3>
       <c:forEach var="fAlbum" items="${featuredAlbums}">
-        <img src="${fAlbum.cover}" alt="${fAlbum.artist.name} - Cover" title="${fAlbum.name}" />
+        <a href="/album?id=${fAlbum.id}"><img src="${fAlbum.cover}"
+          alt="${fAlbum.artist.name} - Cover" title="${fAlbum.name}" /></a>
       </c:forEach>
     </div>
     <h3>Featured Songs</h3>

@@ -37,60 +37,44 @@ body {
   font-family: "Helvetica", "Arial", sans-serif;  
   line-height: 160%;  
   overflow-y: scroll; 
+  
 }
 
 section {
   width: 800px;
   margin: auto;
   padding: 0; 
+  background-color: #609EBF;
   float: left;
   box-shadow: 0px 0px 20px #aaa;
   -moz-box-shadow: 5px 5px 50px #aaa;
   -webkit-box-shadow:5px 5px 50px #aaa; 
+  
 }
 
-nav {
+#mainNav {
   width: 800px;
   height: 25px;
-  margin: 0 -.5em 20px;
+  margin: 0 -.5em 0px;
   padding: 0 .5em 0 .5em;   
-  position: absolute;
   font-family: Ubuntu, "Helvetica", "Arial", sans-serif;    
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
 }        
 
-nav li:first-child, nav li:first-child:hover {
+#mainNav li:first-child, #mainNav li:first-child:hover {
   margin-left: -.5em;
   padding-left: .5em;
 }
 
-nav:before, nav:after {
-  content: '';          
-  position: absolute;
-  bottom: -1em;
-  z-index: -1000;
-  border: .5em solid #BFD936; 
-  border-bottom-color: transparent;
-}
 
-nav:before {
-  left: 0;
-  border-left-color: transparent; 
-}
-
-nav:after {
-  right: 0; 
-  border-right-color: transparent;  
-}
-
-nav ul {
+#mainNav ul {
   list-style: none;
   margin-left: -10px;
   font-size: 0;
   padding: 0;
   margin: 0;
 }
-nav li {
+#mainNav li {
   font-size: 16px;
   display: inline-block;
   border: none;
@@ -98,7 +82,7 @@ nav li {
   text-align: center;
   font-weight: normal;  
 }
-nav li a {
+#mainNav li a {
   display: block;
   width: 100%;
   height: 100%;
@@ -140,7 +124,6 @@ section article a {
 }
 
 section article { 
-  padding: 40px 15px 15px 25px; 
   text-align: justify;
 }
 
@@ -184,6 +167,10 @@ aside fieldset, form, p{
   padding-left: 0;
   margin-left: 0;
   border: 0;
+}
+
+input[type="text"], textarea, input[type="submit"] {
+  border-radius: 5px;
 }
 
 aside input[name="Search"] {
@@ -279,8 +266,9 @@ form p {
   padding: 10px 0;
 }
 
-input, input.input_inactive {
-  border: solid 2px #FFFCE6;
+input, input.input_inactive, textarea {
+  /*border: solid 2px #FFFCE6;*/
+  border: none;
   background-color: #eee;
   color: #999;  
 }
