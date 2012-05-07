@@ -8,6 +8,11 @@
   padding: 0; 
 }
 
+a {
+  text-decoration: none;
+}
+
+
 h1,h2,h3,h4,h5,h6 {
   font-weight: normal;
   font-family: Ubuntu, "Helvetica", "Arial", sans-serif;  
@@ -119,9 +124,7 @@ article .entry_info {
   text-align: right;
 }
 
-article a {
-  text-decoration: none;
-}
+
 
 article { 
   text-align: justify;
