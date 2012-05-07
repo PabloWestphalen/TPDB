@@ -6,7 +6,7 @@
 
 <section>
   <header>
-    <h1>The Trip-Hop Database</h1>
+    <h1>[GIT STUFF] The Trip-Hop Database</h1>
   </header>
   <nav id="mainNav">
     <ul>
