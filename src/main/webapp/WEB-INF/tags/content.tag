@@ -13,7 +13,7 @@
       <li class="home"><a href="/">Home</a></li>
       <li class="news"><a href="/news">News</a></li>
       <li class="artists"><a href="/artists">Artists</a></li>
-      <li class="contribute"><a href="/contribute/index.jsp">Contribute</a></li>
+      <li class="contribute"><a href="/contribute_index.jsp">Contribute</a></li>
       <li class="requests"><a href="#">Requests</a></li>
       <li class="community"><a href="#">Community</a></li>
     </ul>
@@ -23,7 +23,7 @@
       <div id="adminContainer">
         <nav id="adminNav">
           <h3>Contribute</h3>
-          <a href="/contribute/news.jsp">Add news</a> <a href="#">Add an Artist</a> <a href="#">Add an Album</a>
+          <a href="/contribute_news.jsp">Add news</a> <a href="#">Add an Artist</a> <a href="#">Add an Album</a>
         </nav>
         <div id="adminBody">
           <jsp:doBody />
