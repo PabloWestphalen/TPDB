@@ -88,46 +88,46 @@ section {
   height: 100%;
 }
 
-section article {
+article {
   padding-top: 2em;
 }
 
-section article ul{
+article ul{
   padding: 15px;
   list-style-type: none;
 }
 
-section article ul ul {
+article ul ul {
   list-style-type: disc;
 }
 
-section article li {
+article li {
   padding: 2px;
 }
 
-section article div {
+article div {
   padding-left: 30px;
 }
 
-section article p {
+article p {
   margin: 10px;
   padding: 0;
 }
 
-section article .entry_info {
+article .entry_info {
   margin-right: 15px;
   text-align: right;
 }
 
-section article a {
+article a {
   text-decoration: none;
 }
 
-section article { 
+article { 
   text-align: justify;
 }
 
-section article p img {
+article p img {
   float: right;
   margin-left: 5px;
   border: none;
@@ -136,15 +136,15 @@ section article p img {
   height: 100px;
 }
 
-section article ol {
+article ol {
   list-style-position: inside;
 }
 
-section article ol li:nth-child(odd) {
+article ol li:nth-child(odd) {
   background-color: #66A8CC;
 }
 
-section article article {
+article {
   padding: 15px 0px 0px 15px;
 }
 
@@ -302,4 +302,11 @@ input[type=submit] {
   padding: 4px;
   margin-left: 150px;
   color: #000;
+}
+#wrapper {
+  margin: 0;  
+  padding-left: 25px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 0;
 }

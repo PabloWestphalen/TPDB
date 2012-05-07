@@ -4,6 +4,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="home">
   <tpdb:content>
+    <div id="wrapper">
     <h2>News</h2>
     <c:forEach var="news" items="${newsList}">
       <article>
@@ -34,6 +35,7 @@
         </p>
       </article>
     </c:forEach>
+    </div>
   </tpdb:content>
   <tpdb:sidebar>
     <div id="featured_albums">

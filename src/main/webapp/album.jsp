@@ -4,6 +4,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="album">
   <tpdb:content>
+  <article>
   <h2>${album.name} (${album.artist.name})</h2>
     <p>${album.description}</p>
   <h3>Tracks</h3>
@@ -12,6 +13,7 @@
       <li>${song.name} - ${song.length}</li>
     </c:forEach>
   </ol>
+  </article>
   </tpdb:content>
   <tpdb:sidebar>
     <img src="${album.cover}" width="100" height="100" style="margin: auto;" />
