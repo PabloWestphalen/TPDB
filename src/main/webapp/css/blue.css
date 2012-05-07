@@ -15,11 +15,11 @@ h3 {
 section article, header, footer, aside {
   background-color: #609EBF;  
 }
-#mainNav {
+nav {
   background-color: #EBFF80;
   color: black;
 }
-#mainNav li a {
+nav li a {
   color: #64006B;
   text-decoration: none;
 }
@@ -30,11 +30,11 @@ section article, header, footer, aside {
   color: #F5FFBF;
   font-weight: bold;
 }
-#mainNav li:hover {
+nav li:hover {
   background-color: #96B300;
   
 }
-#mainNav li:hover a {
+nav li:hover a {
   color: #F5FFBF;
 }
 
