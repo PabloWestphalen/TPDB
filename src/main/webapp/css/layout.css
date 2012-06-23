@@ -1,7 +1,7 @@
-@font-face {
+/*@font-face {
   font-family: Ubuntu;
   src: url("../font/ubuntum.ttf");
-}
+}*/
 
 * {
   margin: 0;
@@ -42,7 +42,9 @@ body {
   font-family: "Helvetica", "Arial", sans-serif;  
   line-height: 160%;  
   overflow-y: scroll; 
-  
+  /* added background */
+  background-image: url("../images/bg.jpg"); 
+  background-size: 100%;  
 }
 
 section {
@@ -318,4 +320,13 @@ input[type=submit] {
   padding-right: 0px;
   padding-left: 15px;
   padding-bottom: 0px;
+}
+
+/* added transparency */
+section {
+  opacity: 0.98;
+}
+
+aside {
+  opacity: 0.95;
 }
