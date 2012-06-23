@@ -16,7 +16,16 @@
 #adminNav a {
   border: solid 1px #A5CD4E;
   border-radius: 5px;
-  background-image: -o-linear-gradient(top, #EBFF80 6px, #A5CD4E 100%);
+  /* chrome/webkit */
+  background-image: -webkit-linear-gradient(top, #EBFF80, #A5CD4E); 
+  /*firefox */
+  background-image: -moz-linear-gradient(top, #EBFF80, #A5CD4E);
+  /* IE */
+  background-image: -ms-linear-gradient(top, #EBFF80, #A5CD4E);
+  /*opera */
+  background-image: -o-linear-gradient(top, #EBFF80, #A5CD4E); 
+  /*fallback color */
+  background-color: #EBFF80;
   display: block;
   font-family: "Ubuntu";
   border-radius: 5px;
