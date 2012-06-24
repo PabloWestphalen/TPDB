@@ -3,7 +3,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="contribute" type="admin">
   <tpdb:content type="admin">
-    <form>
+    <form method="post" action="/contribute/news/add" >
       <fieldset>
         <legend>Add News</legend>
         <p>
