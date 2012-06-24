@@ -38,7 +38,9 @@ public class EditNewsController extends HttpServlet {
 			User user = DAO.load(User.class, 1);
 			news.setUser(user);
 			DAO dao = new DAO();
+			dao.open();
 			dao.save(news);
+			dao.close();
 		}
 	}
 
