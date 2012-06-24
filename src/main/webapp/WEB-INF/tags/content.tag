@@ -37,6 +37,6 @@
     </c:otherwise>
   </c:choose>
   <footer>
-    This document was written by <a href="#">Pablo "Jin" Westphalen</a>
+    Created by <a href="#">Pablo Westphalen - Some rights reserved.</a>
   </footer>
 </section>

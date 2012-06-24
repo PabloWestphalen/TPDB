@@ -16,7 +16,7 @@ a {
 h1,h2,h3,h4,h5,h6 {
   font-weight: normal;
   font-family: Ubuntu, "Helvetica", "Arial", sans-serif;  
-  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.196);
+  text-shadow: 1px 1px 0px #666666;
 }
 
 h1 {
