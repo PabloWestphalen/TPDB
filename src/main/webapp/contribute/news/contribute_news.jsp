@@ -7,10 +7,12 @@
       <fieldset>
         <legend>Add News</legend>
         <p>
-          <label for="title">Title: </label> <input type="text" name="title" id="title" />
+          <label for="title">Title: </label>
+          <input type="text" name="title" id="title" />
         </p>
         <p>
-          <label for="tags">Tags: </label> <input type="text" name="tags" id="tags" />
+          <label for="tags">Tags: </label>
+          <input type="text" name="tags" id="tags" />
         </p>
         <p>
           <label for="content">Content: </label>

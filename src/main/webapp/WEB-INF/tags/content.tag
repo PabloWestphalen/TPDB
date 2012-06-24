@@ -23,7 +23,9 @@
       <div id="adminContainer">
         <nav id="adminNav">
           <h3>Contribute</h3>
-          <a href="/contribute/news/add">Add news</a> <a href="#">Add an Artist</a> <a href="#">Add an Album</a>
+          <a href="/contribute/news/add">Add news</a>
+          <a href="/contribute/artist/add">Add an Artist</a>
+          <a href="#">Add an Album</a>
         </nav>
         <div id="adminBody">
           <jsp:doBody />
