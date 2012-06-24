@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="contribute" type="admin">
-  <tpdb:content>
+  <tpdb:content type="admin">
     <form method="post" action="/contribute/album/add">
       <fieldset id="fAlbum">
         <legend>Album Info</legend>
