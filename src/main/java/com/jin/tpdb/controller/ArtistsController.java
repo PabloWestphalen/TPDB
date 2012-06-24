@@ -20,7 +20,7 @@ public class ArtistsController extends HttpServlet {
 		request.setAttribute("artistsList", artists);
 
 		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher jsp = request.getRequestDispatcher("artists.jsp");
+		RequestDispatcher jsp = request.getRequestDispatcher("/artists.jsp");
 		jsp.forward(request, response);
 	}
 

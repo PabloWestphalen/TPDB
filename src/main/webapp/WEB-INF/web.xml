@@ -21,11 +21,11 @@
   </servlet>
   <servlet>
     <servlet-name>EditNewsController</servlet-name>
-    <servlet-class>com.jin.tpdb.controller.EditNewsController</servlet-class>
+    <servlet-class>com.jin.tpdb.controller.contribute.EditNewsController</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>EditArtistController</servlet-name>
-    <servlet-class>com.jin.tpdb.controller.EditArtistController</servlet-class>
+    <servlet-class>com.jin.tpdb.controller.contribute.EditArtistController</servlet-class>
   </servlet>
 	<servlet>
 		<servlet-name>Search</servlet-name>
