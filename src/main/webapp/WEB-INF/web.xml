@@ -27,6 +27,10 @@
     <servlet-name>EditArtistController</servlet-name>
     <servlet-class>com.jin.tpdb.controller.contribute.EditArtistController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>EditAlbumController</servlet-name>
+    <servlet-class>com.jin.tpdb.controller.contribute.EditAlbumController</servlet-class>
+  </servlet>
 	<servlet>
 		<servlet-name>Search</servlet-name>
 		<servlet-class>com.jin.tpdb.Search</servlet-class>
@@ -47,9 +51,13 @@
     <servlet-name>EditNewsController</servlet-name>
     <url-pattern>/contribute/news/add</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditArtistController</servlet-name>
     <url-pattern>/contribute/artist/add</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EditAlbumController</servlet-name>
+    <url-pattern>/contribute/album/add</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ArtistsController</servlet-name>

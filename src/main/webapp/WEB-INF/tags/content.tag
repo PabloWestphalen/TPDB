@@ -25,7 +25,7 @@
           <h3>Contribute</h3>
           <a href="/contribute/news/add">Add news</a>
           <a href="/contribute/artist/add">Add an Artist</a>
-          <a href="#">Add an Album</a>
+          <a href="/contribute/album/add">Add an Album</a>
         </nav>
         <div id="adminBody">
           <jsp:doBody />

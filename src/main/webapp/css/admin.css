@@ -1,16 +1,15 @@
 #adminContainer {
   padding: 0;
   margin: 0;  
-  height: 500px;
 }
 
 #adminNav {
   display: block;
   background-image: -o-linear-gradient(top, #5993B3 6px, #73A4BF 100%);
   padding: 0 10px;
-  height: 100%;
-  float: left;
+  float: left;  
   border-right: solid 1px #aaa;
+  border-bottom: solid 1px #aaa;  
 }
 
 #adminNav a {
@@ -95,6 +94,7 @@
   padding: 5px;
   color: #FFFFBF;
   font-weight: bold;
+  text-shadow: 1px 1px 0px #666666;
 }
 
 #adminBody input[type="submit"] {
@@ -102,4 +102,83 @@
   margin-top: 20px;
   margin-left: 104px;  
   width: 100px;
+}
+
+#fAlbum, #fTracks {
+  border-top: solid 1px white;
+  
+}
+
+#fAlbum legend, #fTracks legend {
+  margin-left: -15px;
+}
+
+#fTracks input:nth-child(1) {
+  width: 20px;
+  text-align: center;
+}
+#fTracks input:nth-child(2) {
+  width: 425px;
+}
+#fTracks input:nth-child(3) {
+  width: 80px;
+}
+#fTracks p {
+  margin: 0;
+  padding: 0;
+}
+#fAlbum select {
+  background-color: #A3C6D9;
+  color: #fff;
+  width: 190px;
+  border: none;
+  padding: 5px;
+}
+
+#fAlbum #date {
+  width: 180px;
+  
+}
+
+.coverLeft {
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-right: 100px;  
+}
+
+.coverFloat { 
+  width: 300px; 
+  border: solid 1px red;  
+}
+
+.cover {
+  cursor: pointer;
+}
+
+.clrl {
+  clear: left;
+}
+
+#fTracks .moreTracks {
+  text-align: right;
+  padding-right: 15px;
+}
+
+
+#fTracks .moreTracks input[type="button"] {
+  width: 50px;
+  border-radius: 5px;
+  text-align: right;
+}
+
+#albumBtn {
+  margin: 0 !important;
+  width: 120px !important;
+  margin-left: 200px !important;
+  
+}
+
+#trLength {
+  text-align: center;
 }
