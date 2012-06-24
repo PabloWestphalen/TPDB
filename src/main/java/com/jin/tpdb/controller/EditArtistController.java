@@ -17,7 +17,7 @@ public class EditArtistController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request
-				.getRequestDispatcher("contribute_artist.jsp");
+				.getRequestDispatcher("/contribute/artist.jsp");
 		jsp.forward(request, response);
 
 	}

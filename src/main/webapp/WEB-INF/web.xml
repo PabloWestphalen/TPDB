@@ -41,7 +41,7 @@
 	</servlet-mapping>
   <servlet-mapping>
     <servlet-name>NewsController</servlet-name>
-    <url-pattern>/news</url-pattern>
+    <url-pattern>/news/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EditNewsController</servlet-name>
@@ -53,7 +53,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ArtistsController</servlet-name>
-    <url-pattern>/artists</url-pattern>
+    <url-pattern>/artists/</url-pattern>
   </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Search</servlet-name>

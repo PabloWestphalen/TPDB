@@ -18,7 +18,7 @@ public class EditNewsController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request
-				.getRequestDispatcher("contribute_news.jsp");
+				.getRequestDispatcher("/contribute/news.jsp");
 		jsp.forward(request, response);
 
 	}

@@ -11,9 +11,9 @@
   <nav id="mainNav">
     <ul>
       <li class="home"><a href="/">Home</a></li>
-      <li class="news"><a href="/news">News</a></li>
-      <li class="artists"><a href="/artists">Artists</a></li>
-      <li class="contribute"><a href="/contribute_index.jsp">Contribute</a></li>
+      <li class="news"><a href="/news/">News</a></li>
+      <li class="artists"><a href="/artists/">Artists</a></li>
+      <li class="contribute"><a href="/contribute/">Contribute</a></li>
       <li class="requests"><a href="#">Requests</a></li>
       <li class="community"><a href="#">Community</a></li>
     </ul>
