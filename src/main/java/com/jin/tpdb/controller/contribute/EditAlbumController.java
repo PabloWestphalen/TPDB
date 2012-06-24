@@ -26,7 +26,6 @@ public class EditAlbumController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		dispatch(request, response);
 
 		List<Artist> artists = DAO.getList(Artist.class);
 		request.setAttribute("artists", artists);
