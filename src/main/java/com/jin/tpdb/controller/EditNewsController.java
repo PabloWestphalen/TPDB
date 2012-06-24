@@ -14,14 +14,19 @@ import com.jin.tpdb.persistence.DAO;
 
 public class EditNewsController extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest request,
+	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request
 				.getRequestDispatcher("contribute_news.jsp");
 		jsp.forward(request, response);
+
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		dispatch(request, response);
 
 	}
 
@@ -41,6 +46,7 @@ public class EditNewsController extends HttpServlet {
 			dao.open();
 			dao.save(news);
 			dao.close();
+			dispatch(request, response);
 		}
 	}
 
