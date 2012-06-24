@@ -11,7 +11,7 @@
             <label for="artist">Artist</label>
             <select name="artist" id="artist" tabindex="1">  
               <c:forEach var="artist" items="${artists}">
-               <option value="${artists.id}">${artist.name}</option>
+               <option value="${artist.id}">${artist.name}</option>
               </c:forEach>  
             </select>  
           </p>
