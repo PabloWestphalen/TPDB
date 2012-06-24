@@ -7,7 +7,7 @@
     <c:forEach var="artist" items="${artistsList}">
       <h3>${artist.name}</h3>
       <c:forEach var="album" items="${artist.albums}">
-        <a href="/album?id=${album.id}" title="${album.name}"><img src="${album.cover}" width="100"
+        <a href="/album?id=${album.id}" title="${album.name}"><img src="/${album.cover}" width="100"
           height="100" /></a>
         <br />
       </c:forEach>
