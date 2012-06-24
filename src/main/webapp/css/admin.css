@@ -89,7 +89,7 @@
 
 #adminBody fieldset {
   padding-left: 15px;
-  margin-top: solid 1px white;
+  border-top: solid 1px white;
 }
 
 #adminBody fieldset legend {
