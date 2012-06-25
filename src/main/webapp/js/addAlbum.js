@@ -15,13 +15,13 @@ $(document).ready(function(){
 	
 	$('#coverUploadButton').keypress(function(){
 	    // 13 -> ENTER
-    if( event.which = 13 ) {		
+    if( event.which = 13  ) {		
 			$('#coverUp').click();
 		}
 	});
 	
 	$('#coverUploadButton').click(function(){
-    $('#coverUp').click();
+		$('#coverUp').click();
 	});
 	
 });
