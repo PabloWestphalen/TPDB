@@ -95,6 +95,7 @@
 
 #adminBody fieldset {
   padding-left: 15px;
+  border-top: solid 1px white;
 }
 
 #adminBody fieldset legend {
@@ -102,6 +103,7 @@
   color: #FFFFBF;
   font-weight: bold;
   text-shadow: 1px 1px 0px #666666;
+  margin-left: -15px;
 }
 
 #adminBody input[type="submit"] {
