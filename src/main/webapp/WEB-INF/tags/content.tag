@@ -37,6 +37,6 @@
     </c:otherwise>
   </c:choose>
   <footer>
-    Created by <a href="#">Pablo Westphalen - Some rights reserved.</a>
+    Created by <a href="#">Pablo Westphalen</a> - Some rights reserved.
   </footer>
 </section>

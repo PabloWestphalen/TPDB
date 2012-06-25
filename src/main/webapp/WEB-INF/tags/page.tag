@@ -7,6 +7,7 @@
   required="false"%>
 <%@attribute name="keywords" description="The page's keywords." required="false"%>
 <%@attribute name="type" description="The page's type." required="false"%>
+<%@attribute name="script" description="A JavaScript file for the page" required="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,5 +39,9 @@
 </head>
 <body id="${name}">
   <jsp:doBody />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+  <c:if test="${not empty script}">
+    <script src="${script}.js"></script>
+  </c:if>
 </body>
 </html>

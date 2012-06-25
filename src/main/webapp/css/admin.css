@@ -1,16 +1,22 @@
 #adminContainer {
   padding: 0;
-  margin: 0;
-  min-height: 500px;  
+  margin: 0;  
+  min-height: 500px;
 }
 
 #adminNav {
   display: block;
-  background-image: -o-linear-gradient(top, #5993B3 6px, #73A4BF 100%);
+  /* chrome/webkit */
+  background-image: -webkit-linear-gradient(top, #5993B3, #73A4BF); 
+  /*firefox */
+  background-image: -moz-linear-gradient(top, #5993B3, #73A4BF);
+  /* IE */
+  background-image: -ms-linear-gradient(top, #5993B3, #73A4BF);
+  /*opera */
+  background-image: -o-linear-gradient(top, #5993B3, #73A4BF); 
   padding: 0 10px;
   float: left;  
-  border-right: solid 1px #aaa;
-  border-bottom: solid 1px #aaa;  
+  
 }
 
 #adminNav a {
@@ -89,7 +95,6 @@
 
 #adminBody fieldset {
   padding-left: 15px;
-  border-top: solid 1px white;
 }
 
 #adminBody fieldset legend {
@@ -111,9 +116,8 @@
   
 }
 
-#adminBody fieldset legend {
+#fAlbum legend, #fTracks legend {
   margin-left: -15px;
-  
 }
 
 #fTracks input:nth-child(1) {
@@ -147,7 +151,8 @@
   float: left;
   margin: 0;
   padding: 0;
-  margin-right: 100px;  
+  margin-right: 80px; 
+  
 }
 
 .coverFloat { 
@@ -184,4 +189,12 @@
 
 #trLength {
   text-align: center;
+}
+
+#coverUp {
+  display: inline-block;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden;             
 }
