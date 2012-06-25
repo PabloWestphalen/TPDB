@@ -17,7 +17,7 @@
           </p>
           <p>
             <label for="date">Release date</label>
-            <input id="date" name="date" value="26/12/1990" type="text" tabindex="2">
+            <input id="date" name="date" type="text" tabindex="2">
           </p>
         </div>          
         <p>
