@@ -39,6 +39,19 @@
 		<servlet-name>Search</servlet-name>
 		<servlet-class>com.jin.tpdb.Search</servlet-class>
 	</servlet>
+	<servlet>
+	 <servlet-name>fileServing</servlet-name>
+	 <servlet-class>com.jin.FileServingServlet</servlet-class>
+	 <init-param>
+	   <param-name>debug</param-name>
+	   <param-value>0</param-value>
+	 </init-param>
+	 <init-param>
+	   <param-name>listings</param-name>
+	   <param-value>false</param-value>
+	 </init-param>
+	 <load-on-startup>1</load-on-startup>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>IndexController</servlet-name>
 		<url-pattern>/Index</url-pattern>
@@ -73,9 +86,12 @@
   </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Search</servlet-name>
-		<url-pattern>/search</url-pattern>
+	<url-pattern>/search</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+	  <servlet-name>fileServing</servlet-name>
+	  <url-pattern>/images/up/*</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>Index</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
