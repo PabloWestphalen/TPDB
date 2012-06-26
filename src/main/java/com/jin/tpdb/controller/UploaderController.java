@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.*;
+import org.apache.commons.fileupload.DiskFileUpload;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUpload;
+import org.apache.commons.fileupload.FileUploadException;
 
 public class UploaderController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
@@ -25,7 +28,13 @@ public class UploaderController extends HttpServlet {
 			upload.setRepositoryPath("/");
 
 			// Parse the request
-			List items = upload.parseRequest(request);
+			List items = null;
+			try {
+				items = upload.parseRequest(request);
+			} catch (FileUploadException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			Iterator it = items.iterator();
 			while (it.hasNext()) {
