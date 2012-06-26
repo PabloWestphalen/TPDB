@@ -5,6 +5,7 @@
   <tpdb:content>
   <form method="post" enctype="multipart/form-data" action="uploader.jsp">
   <input type="file" name="cover" id="cover" />
+  <input type="submit" value="enviar" />
   </form>
   </tpdb:content>
   <tpdb:sidebar />
