@@ -25,7 +25,7 @@ public class UploaderController extends HttpServlet {
 			File file;
 			int maxFileSize = 5 * 1024 * 1024;
 			int maxMemSize = 5 * 1024 * 1024;
-			String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads";
+			String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
 
 			// Check that we have a file upload request
 			isMultipart = ServletFileUpload.isMultipartContent(request);
