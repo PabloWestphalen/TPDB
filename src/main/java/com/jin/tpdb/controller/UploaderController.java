@@ -2,6 +2,7 @@ package com.jin.tpdb.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class UploaderController extends HttpServlet {
 			File file;
 			int maxFileSize = 5 * 1024;
 			int maxMemSize = 5 * 1024;
-			String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
+			String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads";
 
 			// Check that we have a file upload request
 			isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -73,6 +74,9 @@ public class UploaderController extends HttpServlet {
 											.lastIndexOf("/") + 1));
 						}
 						fi.write(file);
+						PrintWriter out = response.getWriter();
+						out.println("<img src=\"images/covers/" + fileName
+								+ "\" id=\"previsualizar\">");
 					}
 				}
 			} catch (Exception ex) {
