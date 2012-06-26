@@ -24,7 +24,7 @@ public class UploaderController extends HttpServlet {
 			File file;
 			int maxFileSize = 5 * 1024;
 			int maxMemSize = 5 * 1024;
-			String filePath = "/";
+			String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
 
 			// Check that we have a file upload request
 			isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -33,7 +33,7 @@ public class UploaderController extends HttpServlet {
 			// maximum size that will be stored in memory
 			factory.setSizeThreshold(maxMemSize);
 			// Location to save data that is larger than maxMemSize.
-			factory.setRepository(new File("c:\\temp"));
+			factory.setRepository(new File(System.getenv("OPENSHIFT_TMP_DIR")));
 
 			// Create a new file upload handler
 			ServletFileUpload upload = new ServletFileUpload(factory);
