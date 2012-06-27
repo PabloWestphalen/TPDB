@@ -28,7 +28,7 @@ $(document).ready(function(){
     $('#coverUp').live('change',function(){
         //$('#visualizar').html('<img src="ajax-loader.gif" alt="Enviando..."/> Enviando...');
        /* Efetua o Upload sem dar refresh na pagina */
-        $('#formulario').ajaxForm({
+        $('#coverForm').ajaxForm({
            target:'#visualizar' // o callback será no elemento com o id #visualizar
         }).submit();
     });

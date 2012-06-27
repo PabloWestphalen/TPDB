@@ -200,3 +200,10 @@
   overflow: hidden !important;
   visibility: hidden;             
 }
+
+#adminBody #coverForm {
+	visibility: hidden;
+	width: 0;
+	margin: 0;
+	padding: 0;
+}
