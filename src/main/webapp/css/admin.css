@@ -202,7 +202,7 @@
   visibility: hidden;             
 }
 
-#coverUp .loading {
+#coverUploadButton .loading {
 	opacity: 0.8;
 }
 
