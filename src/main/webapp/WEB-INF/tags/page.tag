@@ -40,7 +40,7 @@
 <body id="${name}">
   <jsp:doBody />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-  <script src="http://malsup.github.com/jquery.form.js"></script> 
+  <script src="/js/jquery.form.js"></script> 
   <c:if test="${not empty script}">
     <script src="/js/${script}.js"></script>
     
