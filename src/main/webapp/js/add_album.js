@@ -18,14 +18,16 @@ $(document).ready(function(){
 		$(this).parent().before(track);
 	});
 	
-	$('#coverUploadButton').keypress(function(){
+	$('#coverUploadButton').keypress(function(event){
 	    // 13 -> ENTER
     if( event.which === 13  ) {		
-			$('#coverUp').click();
+		event.preventDefault();	
+    	$('#coverUp').click();
 		}
 	});
 	
-	$('#coverUploadButton').click(function(){
+	$('#coverUploadButton').click(function(event){
+		event.preventDefault();
 		$('#coverUp').click();
 	});
 	
