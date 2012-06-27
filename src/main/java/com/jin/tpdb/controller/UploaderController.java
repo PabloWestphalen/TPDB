@@ -75,9 +75,15 @@ public class UploaderController extends HttpServlet {
 						}
 						fi.write(file);
 						PrintWriter out = response.getWriter();
-						out.println("<img src=\"/images/covers/"
-								+ fileName
-								+ "\" width=\"85\" height=\"85\" alt=\"Cover\" class=\"cover\" tabindex=\"3\" id=\"coverUploadButton\" />");
+						/*
+						 * out.println("<img src=\"/images/covers/"
+						 * 
+						 * + fileName +
+						 * "\" width=\"85\" height=\"85\" alt=\"Cover\" class=\"cover\" tabindex=\"3\" id=\"coverUploadButton\" />"
+						 * );
+						 */
+
+						out.println(fileName);
 					}
 				}
 			} catch (Exception ex) {
