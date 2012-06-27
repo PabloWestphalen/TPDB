@@ -1,7 +1,4 @@
 function addTriggers(responseText, statusText, xhr, $form)  { 
-    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
-        '\n\nThe output div should have already been updated with the responseText.');
-    
     $('#coverUploadButton').attr("src", "/images/covers/" + responseText);
 } 
 $(document).ready(function(){
