@@ -1,3 +1,21 @@
+function addCoverTrigger() {
+
+	
+	$('#coverUploadButton').keypress(function(){
+	    // 13 -> ENTER
+    if( event.which === 13  ) {		
+			$('#coverUp').click();
+		}
+	});
+	
+	$('#coverUploadButton').click(function(){
+		$('#coverUp').click();
+	});
+	
+	
+}
+
+
 $(document).ready(function(){
 	var tabindex = 32;
 	var value = 12;
@@ -13,24 +31,16 @@ $(document).ready(function(){
 		$(this).parent().before(track);
 	});
 	
-	$('#coverUploadButton').keypress(function(){
-	    // 13 -> ENTER
-    if( event.which === 13  ) {		
-			$('#coverUp').click();
-		}
-	});
+    addCoverTrigger();
 	
-	$('#coverUploadButton').click(function(){
-		$('#coverUp').click();
-	});
-	
-    /* #imagem é o id do input, ao alterar o conteudo do input execurará a função baixo */
+	/* #imagem é o id do input, ao alterar o conteudo do input execurará a função baixo */
     $('#coverUp').live('change',function(){
         //$('#visualizar').html('<img src="ajax-loader.gif" alt="Enviando..."/> Enviando...');
        /* Efetua o Upload sem dar refresh na pagina */
         $('#coverForm').ajaxForm({
            target:'#visualizar' // o callback será no elemento com o id #visualizar
         }).submit();
+        addCoverTrigger();
     });
 	
 });
