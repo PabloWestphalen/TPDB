@@ -202,6 +202,10 @@
   visibility: hidden;             
 }
 
+#coverUp .loading {
+	opacity: 0.8;
+}
+
 #adminBody #coverForm {
 	visibility: hidden;
 	width: 0;
