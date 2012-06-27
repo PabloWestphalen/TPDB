@@ -24,9 +24,7 @@
           </p>
         </div>          
         <p>
-          <div id="visualizar">
           <img src="/images/blank_cover.png" width="85" height="85" alt="Cover" class="cover" tabindex="3" id="coverUploadButton" />
-          </div>            
           Cover
         </p>          
         <p class="clrl">
