@@ -31,7 +31,6 @@ $(document).ready(function(){
     $('#coverUp').live('change',function(){
     	$('#albumName').focus();
     	$('#coverForm').ajaxForm({
-        dataType: "jsonp",
         success: addTriggers
         }).submit();
     });
