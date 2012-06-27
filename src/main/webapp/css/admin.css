@@ -75,6 +75,7 @@
 #adminBody input,textarea {
   width: 450px;
   background-color: #A3C6D9;
+  font-family: Helvetica, Arial;
   color: white;
   padding: 5px;
 }
