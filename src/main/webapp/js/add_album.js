@@ -1,5 +1,5 @@
 function addTriggers(responseText, statusText, xhr, $form)  { 
-	$('#coverUploadButton').toggleClass(loading);
+	$('#coverUploadButton').toggleClass('loading');
 	$('#coverUploadButton').attr("src", "/images/covers/" + responseText);
     
 } 
@@ -32,7 +32,7 @@ $(document).ready(function(){
     /* #imagem é o id do input, ao alterar o conteudo do input execurará a função baixo */
     $('#coverUp').live('change',function(){
     	$('#albumName').focus();
-    	$('#coverUploadButton').toggleClass(loading);
+    	$('#coverUploadButton').toggleClass('loading');
     	$('#coverForm').ajaxForm({
         success: addTriggers
         }).submit();
