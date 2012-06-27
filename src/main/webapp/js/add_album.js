@@ -29,10 +29,10 @@ $(document).ready(function(){
 	
     /* #imagem é o id do input, ao alterar o conteudo do input execurará a função baixo */
     $('#coverUp').live('change',function(){
-        //$('#visualizar').html('<img src="ajax-loader.gif" alt="Enviando..."/> Enviando...');
-       /* Efetua o Upload sem dar refresh na pagina */
-        $('#coverForm').ajaxForm({
-        success: addTriggers        	   
+    	$('#albumName').focus();
+    	$('#coverForm').ajaxForm({
+        success: addTriggers        	
+        
         }).submit();
     });
 	

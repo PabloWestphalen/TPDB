@@ -27,7 +27,7 @@
           <img src="/images/blank_cover.png" width="85" height="85" alt="Cover" class="cover" tabindex="3" id="coverUploadButton" />
         </p>          
         <p class="clrl">
-          <label for="name">Album name</label>
+          <label for="name" id="albumName">Album name</label>
           <input id="name" name="name" type="text" tabindex="4">
         </p>
         <p>
