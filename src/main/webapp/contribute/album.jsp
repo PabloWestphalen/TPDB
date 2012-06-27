@@ -1,18 +1,22 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="contribute" type="admin" script="addAlbum">
+<tpdb:page name="contribute" type="admin" script="add_album">
   <tpdb:content type="admin">
-    <form method="post" action="/contribute/album/add">
+  <form id="formulario" method="post" enctype="multipart/form-data" action="/uploader">
+    <input type="file" name="coverUp" id="coverUp" class="testeUp" />
+    <input type="submit" value="enviar" />
+  </form>
+  <form method="post" action="/contribute/album/add">
       <fieldset id="fAlbum">
         <legend>Album Info</legend>
         <div class="coverLeft">
           <p>
             <label for="artist">Artist</label>
             <select name="artist" id="artist" tabindex="1">  
-              <option value="1" selected>Portishead</option>   
-              <option value="2">Massive Attack</option>  
-              <option value="3">Tricky</option>  
+              <c:forEach var="artist" items="${artists}">
+                <option value="${artist.id}">${artist.name}</option>
+              </c:forEach>  
             </select>  
           </p>
           <p>
@@ -21,9 +25,10 @@
           </p>
         </div>          
         <p>
-          <img src="/images/blank_cover.png" width="85" height="85" alt="Cover" class="cover" tabindex="3" id="coverUploadButton" />            
+          <div id="visualizar">
+          <img src="/images/blank_cover.png" width="85" height="85" alt="Cover" class="cover" tabindex="3" id="coverUploadButton" />
+          </div>            
           Cover
-          <input type="file" name="coverUp" id="coverUp" class="testeUp">
         </p>          
         <p class="clrl">
           <label for="name">Album name</label>
