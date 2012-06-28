@@ -36,7 +36,8 @@ $(document).ready(function(){
     	$('#albumName').focus();
     	$('#coverUploadButton').toggleClass('loading');
     	$('#coverForm').ajaxForm({
-    	dataType: "text",
+    	//dataType: "text",
+    	dataType: "jsonp",
     	crossDomain: true,
         success: addTriggers
         }).submit();
