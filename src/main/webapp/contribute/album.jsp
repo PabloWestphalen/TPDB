@@ -108,6 +108,7 @@
       </fieldset>
       <input type="submit" value="Add this album" id="albumBtn" tabindex="32" />
     </form>
+    <div id="visualizar"></div>
   </tpdb:content>
   <tpdb:sidebar />
 </tpdb:page>

@@ -4,7 +4,17 @@ function addTriggers(responseText, statusText, xhr, $form)  {
     
 } 
 $(document).ready(function(){
-	var tabindex = 32;
+    $('#coverUp').live('change',function(){
+    	$('#albumName').focus();
+    	$('#coverUploadButton').toggleClass('loading');
+    	$('#coverForm').ajaxForm({
+    	//dataType: "text",
+        //success: addTriggers()
+    		target: '#visualizar'
+        }).submit();
+    });	
+    
+    var tabindex = 32;
 	var value = 12;
 	
 	$('#btnTracks').click(function() {
@@ -32,12 +42,5 @@ $(document).ready(function(){
 	});
 	
     /* #imagem é o id do input, ao alterar o conteudo do input execurará a função baixo */
-    $('#coverUp').live('change',function(){
-    	$('#albumName').focus();
-    	$('#coverUploadButton').toggleClass('loading');
-    	$('#coverForm').ajaxForm({
-    	dataType: "text",
-        success: addTriggers()
-        }).submit();
-    });	
+
 });
