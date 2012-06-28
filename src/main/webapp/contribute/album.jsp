@@ -46,64 +46,11 @@
           <input id="tracks[]" name="tracks[]" type="text" tabindex="7" onfocus="$('html,body').animate({scrollTop: $('#fTracks').offset().top}, 1000);">           
           <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="8" >
         </p>
-        <p>
+        <p class="newTrack">
           <input type="text" value="2" disabled>
           <input id="tracks[]" name="tracks[]" type="text" tabindex="9">
           <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="10">
         </p>
-        <p>
-          <input type="text" value="3" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="11">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="12">
-        </p>
-        <p>
-          <input type="text" value="4" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="13">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="14">
-        </p>
-        <p>
-          <input type="text" value="5" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="15">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="16">
-        </p>
-        <p>
-          <input type="text" value="6" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="17">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="18">
-        </p>
-        <p>
-          <input type="text" value="7" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="19">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="20">
-        </p>
-        <p>
-          <input type="text" value="8" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="21">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="22">
-        </p>
-        <p>
-          <input type="text" value="9" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="23">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="24">
-        </p>
-        <p>
-          <input type="text" value="10" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="25">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="26">
-        </p>
-        <p>
-          <input type="text" value="11" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="27">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="28">
-        </p>
-        <p>
-          <input type="text" value="12" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="29">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="30">
-        </p>
-        <p class="moreTracks">
-        <input type="button" value="+ More" id="btnTracks" tabindex="31" />
-        </p>          
       </fieldset>
       <input type="submit" value="Add this album" id="albumBtn" tabindex="32" />
     </form>

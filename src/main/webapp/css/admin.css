@@ -213,3 +213,7 @@
 	margin: 0;
 	padding: 0;
 }
+
+.newTrack {
+  opacity: 0.5;
+}
