@@ -38,7 +38,10 @@ $(document).ready(function(){
     	$('#coverForm').ajaxForm({
     	dataType: "text",
     	crossDomain: true,
-        success: addTriggers
+    	complete: function(xhr) {
+    		alert(xhr.responseText);
+    	},
+        success: addTriggers()
         }).submit();
     });
 	
