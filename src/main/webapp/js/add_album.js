@@ -1,4 +1,4 @@
-function addTriggers(responseText, statusText, xhr, $form)  { 
+function addTriggers(responseText)  { 
 	$('#coverUploadButton').toggleClass('loading');
 	$('#coverUploadButton').attr("src", "/images/covers/" + responseText);
     
@@ -35,7 +35,7 @@ $(document).ready(function(){
     	$('#albumName').focus();
     	$('#coverUploadButton').toggleClass('loading');
     	$('#coverForm').ajaxForm({
-        success: addTriggers()
+        success: addTriggers(responseText)
         }).submit();
     });	
     
