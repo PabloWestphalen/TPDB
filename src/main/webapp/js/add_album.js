@@ -37,12 +37,7 @@ $(document).ready(function(){
     	$('#coverUploadButton').toggleClass('loading');
     	$('#coverForm').ajaxForm({
     	dataType: "text",
-    	crossDomain: true,
-    	complete: function(xhr) {
-    		alert(xhr.responseText);
-    	},
         success: addTriggers()
         }).submit();
-    });
-	
+    });	
 });
