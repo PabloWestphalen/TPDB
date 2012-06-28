@@ -5,7 +5,6 @@
   <tpdb:content type="admin">
   <form id="coverForm" method="post" enctype="multipart/form-data" action="/uploader">
     <input type="file" name="coverUp" id="coverUp" class="testeUp" />
-    <input type="submit" value="enviar" style="visibility: hidden; width: 0; height: 0" />
   </form>
   <form method="post" action="/contribute/album/add">
       <fieldset id="fAlbum">
