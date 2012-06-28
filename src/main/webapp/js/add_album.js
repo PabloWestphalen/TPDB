@@ -35,7 +35,7 @@ $(document).ready(function(){
     	$('#albumName').focus();
     	$('#coverUploadButton').toggleClass('loading');
     	$('#coverForm').ajaxForm({
-        success: addTriggers(responseText)
+        success: addTriggers
         }).submit();
     });	
     
