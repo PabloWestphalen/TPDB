@@ -37,6 +37,7 @@ $(document).ready(function(){
     	$('#coverUploadButton').toggleClass('loading');
     	$('#coverForm').ajaxForm({
     	dataType: "text",
+    	crossDomain: true,
         success: addTriggers
         }).submit();
     });
