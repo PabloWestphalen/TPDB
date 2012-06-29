@@ -8,7 +8,7 @@
   </c:forEach>  
 </select>
 <select name="year" id="year" tabindex="${tabindex+1}">
-  <c:forEach var="i" begin="1950" end="${DateUtils:getYear()}">
+  <c:forEach var="i" begin="1990" end="${DateUtils:getYear()}">
     <option value="${i}">${i}</option>
   </c:forEach>        
 </select>
