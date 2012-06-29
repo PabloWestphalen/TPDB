@@ -10,7 +10,11 @@
 </select>
 <select name="year" id="year" tabindex="${tabindex+1}">
   <option></option>
-  <c:forEach var="i" begin="${DateUtils:getYear()}" end="1990">
+  <c:forEach var="i" begin="1990" end="${DateUtils:getYear()}">
     <option value="${i}">${i}</option>
   </c:forEach>        
 </select>
+
+<c:forEach var="i" begin="100" end="20">
+<p>    ${i}</p>
+</c:forEach>
