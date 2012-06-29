@@ -2,9 +2,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@attribute name="tabindex" description="The tab index of the fields" required="false"%>
+
+
 <%
 String[] months = new DateFormatSymbols().getMonths();
 int year = Calendar.getInstance().get(Calendar.YEAR);
+request.setAttribute("months", months);
+request.setAttribute("year", year);
+
 String months2 = "i'm a string within a scriptlet";
 int year2 = 1999;
 %>
