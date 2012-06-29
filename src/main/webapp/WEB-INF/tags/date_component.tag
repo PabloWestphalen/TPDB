@@ -1,22 +1,14 @@
-<%@tag language="java" pageEncoding="UTF-8" import="java.util.Calendar, java.text.DateFormatSymbols"%>
+<%@tag language="java" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="DateUtils" prefix="DateUtils" %>
 <%@attribute name="tabindex" description="The tab index of the fields" required="false"%>
-
-
-<%
-String[] months = new DateFormatSymbols().getMonths();
-int year = Calendar.getInstance().get(Calendar.YEAR);
-request.setAttribute("months", months);
-request.setAttribute("year", year);
-%>
 <select name="month" id="month" tabindex="${tabindex}">
-  <c:forEach var="month" items="${months}" varStatus="n">
+  <c:forEach var="month" items="${DateUtils:getMonths()}" varStatus="n">
     <option value="${n}">${month}</option>
   </c:forEach>  
 </select>
 <select name="year" id="year" tabindex="${tabindex+1}">
-  <c:forEach var="i" begin="1950" end="${year}">
+  <c:forEach var="i" begin="1950" end="${DateUtils:getYear()}">
     <option value="${i}">${i}</option>
   </c:forEach>        
 </select>
