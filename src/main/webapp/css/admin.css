@@ -140,14 +140,15 @@
 #fAlbum select {
   background-color: #A3C6D9;
   color: #fff;
-  width: 190px;
   border: none;
   padding: 5px;
 }
 
-#fAlbum #date {
-  width: 180px;
-  
+#fAlbum #artist {
+  width: 190px;
+}
+#fAlbum #month {
+  width: 130px; 
 }
 
 .coverLeft {

@@ -20,10 +20,16 @@
           </p>
           <p>
             <label for="date">Release date</label>
-            <select name="date id="date" tabindex="2">
-            <option value="1">Jan</option>
+            <select name="month" id="month" tabindex="2">
+              <option value="1">Jan</option>
+              <option value="2">Novembro</option>
+              <option value="3">Mar</option>            
             </select>
-            
+            <select name="year" id="year" tabindex="3">
+              <option value="1">2012</option>
+              <option value="2">2011</option>
+              <option value="3">2010</option>           
+            </select>            
           </p>
         </div>          
         <p>
