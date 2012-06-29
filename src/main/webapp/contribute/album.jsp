@@ -43,13 +43,13 @@
         <legend>Tracks</legend>
         <p>
           <input type="text" value="1" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="7" onfocus="$('html,body').animate({scrollTop: $('#fTracks').offset().top}, 1000);">           
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="8" >
+          <input name="tracks[]" type="text" tabindex="7" >           
+          <input name="tracks_length[]" type="text" tabindex="8" >
         </p>
         <p class="newTrack">
-          <input type="text" value="2" disabled>
-          <input id="tracks[]" name="tracks[]" type="text" tabindex="9">
-          <input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="10">
+          <input id="newTrackNumber" type="text" value="2" disabled>
+          <input name="tracks[]" type="text" disabled>
+          <input  name="tracks_length[]" type="text" disabled>
         </p>
       </fieldset>
       <input type="submit" value="Add this album" id="albumBtn" tabindex="32" />
