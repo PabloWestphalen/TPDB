@@ -5,7 +5,7 @@
 <%
 String[] months = new DateFormatSymbols().getMonths();
 int year = Calendar.getInstance().get(Calendar.YEAR);
-String months2 = "aeae";
+String months2 = "i'm a string within a scriptlet";
 int year2 = 1999;
 %>
 <p>
@@ -13,6 +13,8 @@ months[1]: ${months[1]} <br />
 year: ${year} <br />
 months2: ${months2} <br />
 year2: ${year2} <br />
+
+<%= months2 %>
 </p>
 <select name="month" id="month" tabindex="${tabindex}">
   <c:forEach var="month" items="${months}" varStatus="n">
