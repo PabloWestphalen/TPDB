@@ -6,6 +6,10 @@
 String[] months = new DateFormatSymbols().getMonths();
 int year = Calendar.getInstance().get(Calendar.YEAR);
 %>
+<p>
+months[1]: ${months[1]} <br />
+year: ${year}
+</p>
 <select name="month" id="month" tabindex="${tabindex}">
   <c:forEach var="month" items="${months}" varStatus="n">
     <option value="${n}">${month}</option>
