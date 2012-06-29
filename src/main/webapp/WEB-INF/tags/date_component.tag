@@ -5,7 +5,7 @@
 <select name="month" id="month" tabindex="${tabindex}">
   <option></option>
   <c:forEach var="month" items="${DateUtils:getMonths()}" varStatus="n">
-    <option value="${n}">${month}</option>
+    <option value="${n.index}">${month}</option>
   </c:forEach>  
 </select>
 <select name="year" id="year" tabindex="${tabindex+1}">
@@ -14,7 +14,3 @@
     <option value="${i}">${i}</option>
   </c:forEach>        
 </select>
-
-<c:forEach var="i" begin="100" end="20">
-<p>    ${i}</p>
-</c:forEach>
