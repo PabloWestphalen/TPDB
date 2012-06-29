@@ -1,5 +1,5 @@
-var tabindex = 8;
-var value = 1;
+var tabindex = 9;
+var value = 2;
 	
 function addTriggers(responseText)  { 
 	$('#coverUploadButton').toggleClass('loading');
@@ -7,28 +7,24 @@ function addTriggers(responseText)  {
     
 } 
 function addTracks() {
-	var track = '<p><input type="text" value="' + (value+1) + 
+	$('p[class="newTrack"] input').unbind('focus');
+	
+	$('p[class="newTrack"]').toggleClass("newTrack") ;
+	
+	var newTrack = '<p class="newTrack"><input type="text" value="' + (value+1) + 
 	'" disabled>\n<input id="tracks[]" name="tracks[]" type="text" tabindex="' + (tabindex+1) + 
 	'">\n<input id="tracks_length[]" name="tracks_length[]" type="text" tabindex="' +(tabindex+2) + '"></p>';
-	tabindex = tabindex + 2;
-	$('#btnTracks').attr("tabindex", tabindex + 1);		
-	$('#albumBtn').attr("tabindex", tabindex + 2);		
-	value++;
-	$('#newTrackNumber').attr("value", value + 1);
 	
-	$('#fTracks p:last-child').before(track);
-	addTracksHandler();
+	$('#fTracks p:last-child').after(newTrack);
+	$('p[class="newTrack"] input').focus(addTracks);
+	
+	tabindex = tabindex + 2;	
+	value++;
 }
-function addTracksHandler() {
-	$('#fTracks p:last-child').prev().find('input[name="tracks_length[]"]').keydown(function(event) {
-		if(event.which === 9 && event.shiftKey === false) {
-			addTracks();
-		}
-	});
-}
+
 $(document).ready(function(){
 	
-	addTracksHandler();	
+	$('p[class="newTrack"] input').focus(addTracks);
 	
 	$('#coverUploadButton').keypress(function(event){
 	    // 13 -> ENTER
