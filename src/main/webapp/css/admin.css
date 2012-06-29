@@ -148,7 +148,12 @@
   width: 190px;
 }
 #fAlbum #month {
-  width: 130px; 
+  width: 100px; 
+}
+
+#falbum #year {
+	width: 60px;
+	text-align: center;
 }
 
 .coverLeft {
