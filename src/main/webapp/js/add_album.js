@@ -20,6 +20,7 @@ function addTracks() {
 	
 	tabindex = tabindex + 2;	
 	value++;
+	$('html,body').animate({scrollTop: $('footer').offset().top}, 0);
 }
 
 $(document).ready(function(){
