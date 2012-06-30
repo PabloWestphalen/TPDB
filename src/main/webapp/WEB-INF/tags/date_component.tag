@@ -3,14 +3,18 @@
 <%@taglib uri="DateUtils" prefix="DateUtils" %>
 <%@attribute name="tabindex" description="The tab index of the fields" required="false"%>
 <select name="month" id="month" tabindex="${tabindex}">
-  <option></option>
+  <option>Month</option>
+  <optgroup>  
   <c:forEach var="month" items="${DateUtils:getMonths()}" varStatus="n">
     <option value="${n.index}">${month}</option>
-  </c:forEach>  
+  </c:forEach>
+  </optgroup>  
 </select>
 <select name="year" id="year" tabindex="${tabindex+1}">
-  <option></option>
+  <option>Year</option>
+  <optgroup>  
   <c:forEach var="i" begin="1990" end="${DateUtils:getYear()}">
     <option value="${i}">${i}</option>
-  </c:forEach>        
+  </c:forEach>
+  </optgroup>        
 </select>

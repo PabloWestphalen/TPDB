@@ -33,9 +33,9 @@ public class EditArtistController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		if (!request.getParameter("name").isEmpty()) {
+		if (!request.getParameter("artist_name").isEmpty()) {
 			Artist artist = new Artist();
-			artist.setName(request.getParameter("name"));
+			artist.setName(request.getParameter("artist_name"));
 
 			if (!request.getParameter("site").isEmpty()) {
 				artist.setSite(request.getParameter("site"));

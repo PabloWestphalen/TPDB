@@ -7,8 +7,8 @@
         <fieldset>
           <legend>Add Artist</legend>
           <p>
-            <label for="name">Name: </label>
-            <input type="text" name="name" id="name" />
+            <label for="artist_name">Name: </label>
+            <input type="text" name="artist_name" id="name" />
           </p>
           <p>
             <label for="site">Site: </label>
