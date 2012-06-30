@@ -38,6 +38,7 @@
               </c:forEach>
               </optgroup>  
             </select>  
+            <input type="button" value="New" id="newArtist" />
           </p>
           <p>
             <label for="date">Release date</label>
