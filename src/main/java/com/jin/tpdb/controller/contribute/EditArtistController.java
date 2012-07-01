@@ -48,7 +48,7 @@ public class EditArtistController extends HttpServlet {
 			dao.close();
 			if (request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
 				PrintWriter out = response.getWriter();
-				out.print("yo dawg, you got it. i'm an ajax request!");
+				out.print("{ \"msg\": \"yo dawg, you got it. i'm a json response! \" }");
 			} else {
 				dispatch(request, response);
 			}

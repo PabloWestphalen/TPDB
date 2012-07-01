@@ -139,8 +139,11 @@ $(document).ready(function(){
 	});
 
     var options = { 
+            dataType:      "json",
             beforeSubmit:  showRequest,  // pre-submit callback 
-            success:       showResponse  // post-submit callback 
+            success:       showResponse,  // post-submit callback
+            target:        '#visualizar',   // target element(s) to be updated with server response
+            
      
             // other available options: 
             //url:       url         // override for form's 'action' attribute 
