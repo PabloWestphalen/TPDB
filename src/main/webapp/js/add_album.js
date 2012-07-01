@@ -123,7 +123,7 @@ $(document).ready(function(){
 	
 	
 	// quit lightbox
-	$('#lightbox, #closeWindow').click(lightBoxOff);
+	$('#closeWindow').click(lightBoxOff);
 	$('#artistPanel input, #artistPanel').keydown(function(event) {
 		if(event.which == 27) {
 			lightBoxOff();
