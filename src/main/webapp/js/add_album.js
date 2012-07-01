@@ -17,7 +17,7 @@ function showRequest(formData, jqForm, options) {
  
 // post-submit callback 
 function showResponse(responseText, statusText, xhr, $form)  { 
-	alert(xhr);
+	alert(responseText.msg);
     alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
         '\n\nThe output div should have already been updated with the responseText.'); 
 } 
