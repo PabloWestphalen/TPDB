@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller.contribute;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +46,12 @@ public class EditArtistController extends HttpServlet {
 			dao.open();
 			dao.save(artist);
 			dao.close();
-			dispatch(request, response);
+			if (request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
+				PrintWriter out = response.getWriter();
+				out.print("yo dawg, you got it. i'm an ajax request!");
+			} else {
+				dispatch(request, response);
+			}
 		}
 	}
 
