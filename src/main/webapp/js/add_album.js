@@ -53,8 +53,7 @@ function addTracks() {
 
 	
 	value++;
-	//TODO: deprecate this? $('html,body').animate({scrollTop: $('footer').offset().top}, 0);
-	window.scrollTo(0, window.scrollMaxY);
+	$('html,body').animate({scrollTop: $('footer').offset().top}, 0);
 	setTabIndex();
 }
 
