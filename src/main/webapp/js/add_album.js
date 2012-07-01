@@ -1,30 +1,14 @@
-// pre-submit callback 
-function showRequest(formData, jqForm, options) { 
-    // formData is an array; here we use $.param to convert it to a string to display it 
-    // but the form plugin does this for you automatically when it submits the data 
-    var queryString = $.param(formData); 
- 
-    // jqForm is a jQuery object encapsulating the form element.  To access the 
-    // DOM element for the form do this: 
-    // var formElement = jqForm[0]; 
- 
-    alert('About to submit: \n\n' + queryString); 
- 
-    // here we could return false to prevent the form from being submitted; 
-    // returning anything other than false will allow the form submit to continue 
-    return true; 
-} 
- 
-// post-submit callback 
-function showResponse(responseText, statusText, xhr, $form)  { 
-	alert(responseText.msg);
-    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
-        '\n\nThe output div should have already been updated with the responseText.'); 
-} 
-
-
 var value = 2;
 
+//post-submit callback 
+function showResponse(response, statusText, xhr, $form)  { 
+	var opt = '<option  id="createdArtist" value="' + response.id + '" selected="selected">' + response.name + '</option>';
+	$('#artist optgroup').append(opt);
+	$('#createdArtist').select();
+	$('#newArtist').remove();
+} 
+
+//dynamically set the tabindex for every form field in the page
 function setTabIndex() {
 	var setTabIndex = 1;
 	$('input,select, textarea, img').each(function() {
@@ -37,6 +21,7 @@ function setTabIndex() {
 	});
 }
 
+// turns off the lightbox dialog
 function lightBoxOff(success) {
 		$('#lightbox, #artistPanel').fadeOut(250);
 		$('aside').css("opacity", ".98");			
@@ -45,11 +30,16 @@ function lightBoxOff(success) {
 			$('#month').focus();
 		}			
 }
+
+//displays the uploaded image
 function addTriggers(responseText)  { 
 	$('#coverUploadButton').toggleClass('loading');
 	$('#coverUploadButton').attr("src", "/images/covers/" + responseText);   
-} 
+}
+
+//adds the fields for a new track
 function addTracks() {
+	//TODO: comment this function's steps
 	$('p[class="newTrack"] input').unbind('focus');
 	
 	$('p[class="newTrack"]').toggleClass("newTrack") ;
@@ -67,6 +57,8 @@ function addTracks() {
 	setTabIndex();
 }
 
+
+//setups the page
 $(document).ready(function(){
 	
 	// set fields' tabindex
@@ -137,27 +129,12 @@ $(document).ready(function(){
 			lightBoxOff();
 		}
 	});
-
-    var options = { 
-            dataType:      "json",
-            beforeSubmit:  showRequest,  // pre-submit callback 
-            success:       showResponse,  // post-submit callback
-            target:        '#visualizar',   // target element(s) to be updated with server response
-            
-     
-            // other available options: 
-            //url:       url         // override for form's 'action' attribute 
-            //type:      type        // 'get' or 'post', override for form's 'method' attribute 
-            //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
-            //clearForm: true        // clear all form fields after successful submit 
-            //resetForm: true        // reset the form after successful submit 
-     
-            // $.ajax options can be used here too, for example: 
-            //timeout:   3000 
-        }; 
-     
-        // bind form using 'ajaxForm' 
-        $('#addArtistForm').ajaxForm(options); 
+ 
+    // set up new artist ajax form
+    $('#addArtistForm').ajaxForm({
+    	dataType:      "json",
+        success:       showResponse,  // post-submit callback
+    }); 
 
 
 });

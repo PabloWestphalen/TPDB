@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.persistence.DAO;
 
@@ -45,13 +47,21 @@ public class EditArtistController extends HttpServlet {
 			DAO dao = new DAO();
 			dao.open();
 			dao.save(artist);
-			dao.close();
+
 			if (request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
 				PrintWriter out = response.getWriter();
-				out.print("{ \"msg\": \"yo dawg, you got it. i'm a json response! \" }");
+				response.setContentType("application/json");
+
+				JSONObject jsonResponse = new JSONObject();
+				jsonResponse.put("name", artist.getName());
+				jsonResponse.put("id", artist.getId());
+				out.print(jsonResponse);
+
 			} else {
 				dispatch(request, response);
 			}
+
+			dao.close();
 		}
 	}
 
