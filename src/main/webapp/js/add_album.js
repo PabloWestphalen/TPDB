@@ -17,7 +17,7 @@ function showRequest(formData, jqForm, options) {
  
 // post-submit callback 
 function showResponse(responseText, statusText, xhr, $form)  { 
- 
+	alert(xhr);
     alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
         '\n\nThe output div should have already been updated with the responseText.'); 
 } 
@@ -139,7 +139,6 @@ $(document).ready(function(){
 	});
 
     var options = { 
-            target:        '#visualizar',   // target element(s) to be updated with server response 
             beforeSubmit:  showRequest,  // pre-submit callback 
             success:       showResponse  // post-submit callback 
      
