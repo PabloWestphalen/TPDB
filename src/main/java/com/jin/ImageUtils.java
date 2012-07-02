@@ -44,11 +44,11 @@ public class ImageUtils {
 				image = fillTransparentPixels(image, Color.WHITE);
 			}
 
-			ImageIO.write(image, "jpg", output);
-
 			if (!keepOriginal) {
 				input.delete();
 			}
+
+			ImageIO.write(image, "jpg", output);
 
 		} catch (Exception e) {
 			e.printStackTrace();
