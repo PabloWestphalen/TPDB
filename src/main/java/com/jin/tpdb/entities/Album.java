@@ -2,15 +2,15 @@
 package com.jin.tpdb.entities;
 
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Column;
+
 import com.jin.tpdb.persistence.DAO;
-import com.jin.tpdb.entities.Artist;
-import com.jin.tpdb.entities.User;
 
 //lol
 
@@ -168,11 +168,9 @@ public class Album {
 	}
 
 	public String getCover() {
-		String coverPath = "images/albums/cover_"
-				+ artist.getName().replace(" ", "_").toLowerCase() + "_"
-				+ name.replace(" ", "_").toLowerCase() + ".jpg";
+		String coverPath = ("images/albums/" + artist.getName() + "-" + name + ".jpg")
+				.replace(" ", "_").toLowerCase();
 
 		return coverPath;
 	}
-
 }
