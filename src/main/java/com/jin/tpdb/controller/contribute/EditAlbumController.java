@@ -52,12 +52,10 @@ public class EditAlbumController extends HttpServlet {
 		album.setDescription(request.getParameter("description"));
 		album.setLabel(request.getParameter("label"));
 		String path = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
-		File cover = new File(path + request.getParameter("temp_cover_name"));
-		if (cover.exists()) {
-			String coverName = (album.getArtist().getName() + "-"
-					+ album.getName() + ".jpg").toLowerCase().replace(" ", "_");
-			System.out.println("###### renaming to: " + coverName);
-			cover.renameTo(new File(path + coverName));
+		File tempCover = new File(path
+				+ request.getParameter("temp_cover_name"));
+		if (tempCover.exists()) {
+			album.setCover(tempCover);
 		}
 
 		String[] tracks = request.getParameterValues("tracks[]");

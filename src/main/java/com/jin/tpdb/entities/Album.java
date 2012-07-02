@@ -1,6 +1,7 @@
 // cubo, k19, caelum-web, caelum-java+oo
 package com.jin.tpdb.entities;
 
+import java.io.File;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -174,7 +175,11 @@ public class Album {
 		return coverPath;
 	}
 
-	public void setCover() {
+	public void setCover(File cover) {
+		String path = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
+		String coverName = (artist.getName() + "-" + name + ".jpg")
+				.toLowerCase().replace(" ", "_");
 
+		cover.renameTo(new File(path + coverName));
 	}
 }
