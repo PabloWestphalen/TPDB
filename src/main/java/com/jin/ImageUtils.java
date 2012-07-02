@@ -51,7 +51,7 @@ public class ImageUtils {
 			}
 
 		} catch (Exception e) {
-			// TODO: catch these?
+			e.printStackTrace();
 		}
 		return output;
 	}
