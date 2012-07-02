@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.jin.ImageUtils;
 
 public class UploaderController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
@@ -53,7 +56,13 @@ public class UploaderController extends HttpServlet {
 					if (!fi.isFormField()) {
 						// Get the uploaded file parameters
 						String fieldName = fi.getFieldName();
-						String fileName = fi.getName();
+						int random = new Random().nextInt();
+						int extensionIndex = fi.getName().lastIndexOf(".");
+						String extension = fi.getName().substring(
+								extensionIndex);
+
+						String fileName = String.valueOf(System
+								.currentTimeMillis()) + random + extension;
 						String contentType = fi.getContentType();
 						boolean isInMemory = fi.isInMemory();
 						long sizeInBytes = fi.getSize();
@@ -74,7 +83,13 @@ public class UploaderController extends HttpServlet {
 											.lastIndexOf("/") + 1));
 						}
 						fi.write(file);
+						File thumbnail = ImageUtils.createThumbnail(file,
+								"jpg", false);
+
 						PrintWriter out = response.getWriter();
+						// JSONObject json = new JSONObject();
+						// json.put("name", thumbnail.getName());
+
 						/*
 						 * out.println("<img src=\"/images/covers/"
 						 * 
@@ -83,7 +98,7 @@ public class UploaderController extends HttpServlet {
 						 * );
 						 */
 
-						out.println(fileName);
+						out.println(thumbnail.getName());
 					}
 				}
 			} catch (Exception ex) {
