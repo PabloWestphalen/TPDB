@@ -1,3 +1,5 @@
+package com.jin;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Transparency;
@@ -26,6 +28,7 @@ public class ImageUtils {
 
 	public static File createThumbnail(File input, String format,
 			Boolean keepOriginal) {
+		File output = null;
 		try {
 			BufferedImage image = ImageIO.read(input);
 			String imageName = input.getPath();
@@ -33,7 +36,7 @@ public class ImageUtils {
 			String outputFileName = imageName.substring(0,
 					imageName.lastIndexOf("."));
 
-			File output = new File(outputFileName + "." + "jpg");
+			output = new File(outputFileName + "." + "jpg");
 			image = Scalr.resize(image, Scalr.Method.QUALITY,
 					Scalr.Mode.FIT_TO_WIDTH, 150, 100, Scalr.OP_ANTIALIAS);
 
@@ -47,10 +50,9 @@ public class ImageUtils {
 				input.delete();
 			}
 
-			return output;
-
 		} catch (Exception e) {
 			// TODO: catch these?
 		}
+		return output;
 	}
 }
