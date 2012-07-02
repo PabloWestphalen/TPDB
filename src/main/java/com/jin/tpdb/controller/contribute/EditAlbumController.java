@@ -1,6 +1,8 @@
 package com.jin.tpdb.controller.contribute;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -46,6 +48,34 @@ public class EditAlbumController extends HttpServlet {
 		 * DAO dao = new DAO(); dao.open(); dao.save(artist); dao.close();
 		 * dispatch(request, response); }
 		 */
+
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("</head>");
+		out.println("<body>");
+		Enumeration parms = request.getParameterNames();
+		String parmname;
+		String parmval;
+		out.println("<ul>");
+		while (parms.hasMoreElements()) {
+			parmname = (String) parms.nextElement();
+			parmval = request.getParameter(parmname);
+			out.print("<li><code>");
+			out.print(parmname);
+			out.print("</code> = ");
+			if (parmval == null)
+				out.print("&lt;null&gt;");
+			else {
+				out.print("<code>");
+				out.print(parmval);
+				out.print("</code>");
+			}
+			out.println();
+		}
+		out.println("</ul>");
+		out.println("</body>");
+		out.println("</html>");
 	}
 
 }
