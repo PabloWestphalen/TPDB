@@ -82,36 +82,5 @@ public class EditAlbumController extends HttpServlet {
 		dao.save(album);
 		dao.close();
 		dispatch(request, response);
-
-		/*
-		 * if (!request.getParameter("name").isEmpty()) { Artist artist = new
-		 * Artist(); artist.setName(request.getParameter("name"));
-		 * 
-		 * if (!request.getParameter("site").isEmpty()) {
-		 * artist.setSite(request.getParameter("site")); }
-		 * 
-		 * DAO dao = new DAO(); dao.open(); dao.save(artist); dao.close();
-		 * dispatch(request, response); }
-		 * 
-		 * 
-		 * PrintWriter out = response.getWriter(); out.println("<html>");
-		 * out.println("<head>"); out.println("</head>"); out.println("<body>");
-		 * Enumeration parms = request.getParameterNames(); String parmname;
-		 * String parmval; out.println("<ul>"); while (parms.hasMoreElements())
-		 * { parmname = (String) parms.nextElement(); parmval =
-		 * request.getParameter(parmname); out.print("<li><code>");
-		 * out.print(parmname); out.print("</code> = "); if (parmval == null)
-		 * out.print("&lt;null&gt;"); else { out.print("<code>");
-		 * out.print(parmval); out.print("</code>"); } out.println();
-		 * 
-		 * String[] tracks = request.getParameterValues("tracks[]"); for (String
-		 * t : tracks) { out.print("tracks[] = " + t); }
-		 * 
-		 * String hiddenField = request.getParameter("temp_cover_name");
-		 * out.print("yoyo, hidden field's value is = " + hiddenField);
-		 * 
-		 * } out.println("</ul>"); out.println("</body>");
-		 * out.println("</html>");
-		 */
 	}
 }
