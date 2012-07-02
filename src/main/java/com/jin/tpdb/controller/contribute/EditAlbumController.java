@@ -54,8 +54,8 @@ public class EditAlbumController extends HttpServlet {
 		String path = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
 		File cover = new File(path + request.getParameter("temp_cover_name"));
 		if (cover.exists()) {
-			String coverName = album.getArtist().getName() + "-"
-					+ album.getName() + ".jpg".toLowerCase().replace(" ", "_");
+			String coverName = (album.getArtist().getName() + "-"
+					+ album.getName() + ".jpg").toLowerCase().replace(" ", "_");
 			System.out.println("###### renaming to: " + coverName);
 			cover.renameTo(new File(path + coverName));
 		}
@@ -63,7 +63,7 @@ public class EditAlbumController extends HttpServlet {
 		String[] tracks = request.getParameterValues("tracks[]");
 		String[] lengths = request.getParameterValues("tracks_length[]");
 
-		for (int i = 0; i <= tracks.length - 1; i++) {
+		for (int i = 0; i <= tracks.length - 2; i++) {
 			Song s = new Song();
 			s.setAlbum(album);
 			s.setName(tracks[i]);

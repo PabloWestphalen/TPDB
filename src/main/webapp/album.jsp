@@ -19,7 +19,7 @@
     <img src="${album.cover}" width="100" height="100" style="margin: auto;" />
     <h3>Information</h3>
     <ul>
-      <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />
+      <li>Year: <fmt:formatDate pattern="YYYY" value="${album.releaseDate}" type="date" />
       <li>Length: ${album.length }</li>
       <li>Label: ${album.label}</li>
       <li>Site: <a href="${album.artist.site}">${album.artist.site}</a></li>

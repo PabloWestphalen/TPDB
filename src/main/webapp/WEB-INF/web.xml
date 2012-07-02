@@ -90,7 +90,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 	  <servlet-name>fileServing</servlet-name>
-	  <url-pattern>/images/covers/*</url-pattern>
+	  <url-pattern>/images/albums/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>Index</welcome-file>
