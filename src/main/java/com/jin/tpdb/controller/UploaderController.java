@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.json.simple.JSONObject;
 
 import com.jin.ImageUtils;
 
@@ -87,18 +88,11 @@ public class UploaderController extends HttpServlet {
 								"jpg", false);
 
 						PrintWriter out = response.getWriter();
-						// JSONObject json = new JSONObject();
-						// json.put("name", thumbnail.getName());
-
-						/*
-						 * out.println("<img src=\"/images/covers/"
-						 * 
-						 * + fileName +
-						 * "\" width=\"85\" height=\"85\" alt=\"Cover\" class=\"cover\" tabindex=\"3\" id=\"coverUploadButton\" />"
-						 * );
-						 */
-
-						out.println(thumbnail.getName());
+						JSONObject jsonResponse = new JSONObject();
+						jsonResponse
+								.put("temp_cover_name", thumbnail.getName());
+						response.setContentType("application/json");
+						out.println(jsonResponse.toString());
 					}
 				}
 			} catch (Exception ex) {

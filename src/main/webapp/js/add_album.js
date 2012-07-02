@@ -32,9 +32,12 @@ function lightBoxOff(success) {
 }
 
 //displays the uploaded image
-function addTriggers(responseText)  { 
+function addTriggers(response)  { 
 	$('#coverUploadButton').toggleClass('loading');
-	$('#coverUploadButton').attr("src", "/images/covers/" + responseText);   
+	$('#coverUploadButton').attr("src", "/images/covers/" + response.temp_name);
+	var temp_cover_name = '<input type="hidden" name="temp_cover_name" value="' + response.temp_cover_name + '" />';
+	$('#albumForm').prepend(temp_cover_name);
+	
 }
 
 //adds the fields for a new track
@@ -101,7 +104,8 @@ $(document).ready(function(){
     $('#coverUp').live('change',function(){
 		$('#coverUploadButton').toggleClass('loading');
     	$('#coverForm').ajaxForm({
-        success: addTriggers
+    		dataType: "json",
+    		success: addTriggers
         }).submit();
     });	
 	
