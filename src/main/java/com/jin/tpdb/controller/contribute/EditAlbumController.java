@@ -63,7 +63,7 @@ public class EditAlbumController extends HttpServlet {
 		String[] tracks = request.getParameterValues("tracks[]");
 		String[] lengths = request.getParameterValues("tracks_length[]");
 
-		for (int i = 0; i <= tracks.length; i++) {
+		for (int i = 0; i <= tracks.length - 1; i++) {
 			Song s = new Song();
 			s.setAlbum(album);
 			s.setName(tracks[i]);
