@@ -72,10 +72,23 @@ public class EditAlbumController extends HttpServlet {
 				out.print("</code>");
 			}
 			out.println();
+
+			String[] tracks = request.getParameterValues("tracks[]");
+			for (String t : tracks) {
+				out.print("tracks[] = " + t);
+			}
+
+			String[] lengths = request.getParameterValues("tracks_length");
+			for (String l : lengths) {
+				out.print("tracks_length = " + l);
+			}
+
+			String hiddenField = request.getParameter("temp_cover_name");
+			out.print("yoyo, hidden field's value is = " + hiddenField);
+
 		}
 		out.println("</ul>");
 		out.println("</body>");
 		out.println("</html>");
 	}
-
 }
