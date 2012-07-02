@@ -173,4 +173,8 @@ public class Album {
 
 		return coverPath;
 	}
+
+	public void setCover() {
+
+	}
 }

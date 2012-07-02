@@ -21,16 +21,15 @@
     <ul>
       <li>Year: <fmt:formatDate pattern="yyyy" value="${album.releaseDate}" type="date" />
       <li>Length: ${album.length }</li>
-      <li>Label: ${album.label}</li>
       <li>Site: <a href="${album.artist.site}">${album.artist.site}</a></li>
     </ul>
-    <h3>Download</h3>
+    <!-- <h3>Download</h3>
     <ul>
       <li>Bitrate: ${album.bitrate} kbps</li>
       <li>Size (rar): ${album.downloadSize} MB</li>
       <li>Downloaded: ${album.downloadCount} times</li>
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
-    </ul>
+    </ul> -->
     <h3>Rating</h3>
     8 stars rs
   </tpdb:sidebar>
