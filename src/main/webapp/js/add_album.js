@@ -34,7 +34,7 @@ function lightBoxOff(success) {
 //displays the uploaded image
 function addTriggers(response)  { 
 	$('#coverUploadButton').toggleClass('loading');
-	$('#coverUploadButton').attr("src", "/images/covers/" + response.temp_name);
+	$('#coverUploadButton').attr("src", "/images/covers/" + response.temp_cover_name);
 	var temp_cover_name = '<input type="hidden" name="temp_cover_name" value="' + response.temp_cover_name + '" />';
 	$('#albumForm').prepend(temp_cover_name);
 	
