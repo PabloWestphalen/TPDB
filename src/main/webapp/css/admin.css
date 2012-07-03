@@ -130,6 +130,7 @@
 }
 #fTracks input:nth-child(3) {
   width: 80px;
+  text-align: center;
 }
 #fTracks p {
   margin: 0;
