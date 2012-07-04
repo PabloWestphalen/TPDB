@@ -48,7 +48,7 @@ public class News {
 		this.user = user;
 	}
 
-	public Collection<Tag> getTag() {
+	public Collection<Tag> getTags() {
 		return tag;
 	}
 

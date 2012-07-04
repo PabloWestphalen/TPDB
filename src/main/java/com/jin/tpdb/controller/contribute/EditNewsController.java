@@ -52,13 +52,13 @@ public class EditNewsController extends HttpServlet {
 			ArrayList<Tag> tags = new ArrayList<Tag>();
 
 			Tag tag = new Tag();
-			tag.setName("aeae");
+			tag.setName(request.getParameter("tags"));
 			dao.save(tag);
 
-			tags.add(tag);
+			// tags.add(tag);
 
 			if (tags != null) {
-				news.setTags(tags);
+				news.getTags().add(tag);
 			}
 
 			dao.save(news);
