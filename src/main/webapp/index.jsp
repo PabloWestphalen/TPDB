@@ -26,7 +26,7 @@
           <a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
         </h3>
         <p>
-          <img src="${album.cover}" alt="${album.name} cover" width="380px" height="380px" /> ${album.description}
+          <img src="${album.cover}" alt="${album.name} cover" class="coverImage" /> ${album.description}
         </p>
         <p class="entry_info">
           Contributed by ${album.user.username} at
