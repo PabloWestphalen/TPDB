@@ -1,7 +1,7 @@
 package com.jin.tpdb.controller.contribute;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,7 +49,7 @@ public class EditNewsController extends HttpServlet {
 			news.setContent(content);
 			news.setUser(user);
 
-			Collection<Tag> tags = null;
+			ArrayList<Tag> tags = new ArrayList<Tag>();
 
 			Tag tag = new Tag();
 			tag.setName("aeae");
