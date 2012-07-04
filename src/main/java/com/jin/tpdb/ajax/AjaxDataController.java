@@ -30,7 +30,7 @@ public class AjaxDataController extends HttpServlet {
 
 			response.setContentType("application/json");
 			PrintWriter out = response.getWriter();
-			out.print(jsonResponse.toJSONString());
+			out.println(jsonResponse.toJSONString());
 
 		}
 
