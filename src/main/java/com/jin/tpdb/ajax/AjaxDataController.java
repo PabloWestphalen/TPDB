@@ -21,19 +21,20 @@ public class AjaxDataController extends HttpServlet {
 		// response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		String data = request.getParameter("data");
+		System.out.println("##########data = " + data);
 
-		if (request.getParameter("data").toString() == "tags") {
+		// if (request.getParameter("data").toString() == "tags") {
 
-			List<Tag> tags = DAO.getList(Tag.class);
-			JSONArray jsonResponse = new JSONArray();
+		List<Tag> tags = DAO.getList(Tag.class);
+		JSONArray jsonResponse = new JSONArray();
 
-			for (Tag t : tags) {
-				jsonResponse.add(t.getName());
-			}
-
-			out.println(jsonResponse.toJSONString());
-
+		for (Tag t : tags) {
+			jsonResponse.add(t.getName());
 		}
+		System.out.println(jsonResponse.toJSONString());
+		out.println(jsonResponse.toJSONString());
+
+		// }
 
 	}
 }
