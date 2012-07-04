@@ -12,8 +12,8 @@
         </p>
         <p>
           <label for="tags">Tags: </label>
-          <textarea name="tags" id="tags"></textarea>
-          <!-- <input type="text" name="tags" id="tags" /> -->
+          <!-- <textarea name="tags" id="tags"></textarea> -->
+          <input type="text" name="tags" id="tags" />
         </p>
         <p>
           <label for="content">Content: </label>
