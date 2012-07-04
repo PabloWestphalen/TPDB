@@ -52,7 +52,7 @@ public class News {
 		return tag;
 	}
 
-	public void setTag(Collection<Tag> tag) {
+	public void setTags(Collection<Tag> tag) {
 		this.tag = tag;
 	}
 

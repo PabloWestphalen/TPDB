@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller.contribute;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jin.Sanitizer;
 import com.jin.tpdb.entities.News;
+import com.jin.tpdb.entities.Tag;
 import com.jin.tpdb.entities.User;
 import com.jin.tpdb.persistence.DAO;
 
@@ -39,13 +41,26 @@ public class EditNewsController extends HttpServlet {
 		String content = Sanitizer.clean(request.getParameter("content"));
 
 		if (!title.isEmpty() && !content.isEmpty()) {
-			News news = new News();
-			news.setTitle(title);
-			news.setContent(content);
-			User user = DAO.load(User.class, 1);
-			news.setUser(user);
 			DAO dao = new DAO();
 			dao.open();
+			News news = new News();
+			User user = DAO.load(User.class, 1);
+			news.setTitle(title);
+			news.setContent(content);
+			news.setUser(user);
+
+			Collection<Tag> tags = null;
+
+			Tag tag = new Tag();
+			tag.setName("aeae");
+			dao.save(tag);
+
+			tags.add(tag);
+
+			if (tags != null) {
+				news.setTags(tags);
+			}
+
 			dao.save(news);
 			dao.close();
 			dispatch(request, response);
