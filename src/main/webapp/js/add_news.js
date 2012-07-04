@@ -3,7 +3,7 @@ $(document).ready(function(){
 	        plugins : 'tags prompt focus autocomplete ajax arrow',
 	        prompt : 'Add one...',
 	        ajax : {
-	            url : '/api',
+	            url : '/api/',
 	            dataType : 'json',
 	            cacheResults : true
 	        }
