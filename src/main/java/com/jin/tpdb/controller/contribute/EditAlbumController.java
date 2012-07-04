@@ -53,7 +53,7 @@ public class EditAlbumController extends HttpServlet {
 			album.setArtist(a);
 
 		} catch (Exception e) {
-			// artist não é número
+			// artist is not a number
 		}
 
 		String albumName = Sanitizer.clean(request.getParameter("name"));
