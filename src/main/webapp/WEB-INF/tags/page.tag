@@ -41,10 +41,8 @@
   <jsp:doBody />
   <script src="/js/jquery.js"></script>
   <script src="/js/jquery.form.js"></script>
-  <script src="/js/textext.js"></script> 
   <c:if test="${not empty script}">
-    <script src="/js/${script}.js"></script>
-    
+    <script src="/js/${script}.js"></script>    
   </c:if>
 </body>
 </html>
