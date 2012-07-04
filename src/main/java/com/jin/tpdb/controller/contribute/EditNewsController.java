@@ -55,10 +55,14 @@ public class EditNewsController extends HttpServlet {
 			tag.setName(request.getParameter("tags"));
 			dao.save(tag);
 
-			// tags.add(tag);
+			tags.add(tag);
+			news.setTags(tags);
 
-			if (tags != null) {
-				news.getTags().add(tag);
+			if (news.getTags() != null) {
+				Tag tag2 = new Tag();
+				tag2.setName("dynamic tag");
+				dao.save(tag2);
+				news.getTags().add(tag2);
 			}
 
 			dao.save(news);
