@@ -7,7 +7,7 @@
       <c:when test="${not empty param.id}">
         <article><h2>${news.title}</h2>
         <p>${news.content}</p>
-        <p>Tags: <c:forEach var="tag" items="${news.tags}">[${tag.name}] </c:forEach></p>
+        <p>Tags: <c:forEach var="tag" items="${news.tags}"><span class="tag">${tag.name}</span> </c:forEach></p>
         </article>
       </c:when>
       <c:otherwise>

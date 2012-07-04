@@ -348,3 +348,11 @@ aside {
   width: 100px;
   height: 100px;
 }
+
+.tag {
+  background-color: #A5BECF;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 2px 5px;
+  vertical-align: middle;
+}
