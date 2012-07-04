@@ -22,7 +22,7 @@ public class AjaxDataController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String data = request.getParameter("data");
 
-		if (request.getParameter("data") == "tags") {
+		if (request.getParameter("data").toString() == "tags") {
 
 			List<Tag> tags = DAO.getList(Tag.class);
 			JSONArray jsonResponse = new JSONArray();
