@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="contribute" type="admin">
+<tpdb:page name="contribute" type="admin" script="add_news">
   <tpdb:content type="admin">
     <form method="post" action="/contribute/news/add" >
       <fieldset>
@@ -12,7 +12,8 @@
         </p>
         <p>
           <label for="tags">Tags: </label>
-          <input type="text" name="tags" id="tags" />
+          <textarea name="tags" id="tags"></textarea>
+          <!-- <input type="text" name="tags" id="tags" /> -->
         </p>
         <p>
           <label for="content">Content: </label>
