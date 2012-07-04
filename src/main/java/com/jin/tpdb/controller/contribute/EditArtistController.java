@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
+import com.jin.Sanitizer;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.persistence.DAO;
 
@@ -36,17 +37,17 @@ public class EditArtistController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		if (!request.getParameter("artist_name").isEmpty()) {
-			Artist artist = new Artist();
-			artist.setName(request.getParameter("artist_name"));
+		String name = Sanitizer.clean(request.getParameter("name"));
+		String site = Sanitizer.clean(request.getParameter("site"));
 
-			if (!request.getParameter("site").isEmpty()) {
-				artist.setSite(request.getParameter("site"));
-			}
+		if (!name.isEmpty() && !site.isEmpty()) {
+
+			Artist artist = new Artist(name, site);
 
 			DAO dao = new DAO();
 			dao.open();
 			dao.save(artist);
+			dao.close();
 
 			if (request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
 				PrintWriter out = response.getWriter();
@@ -61,8 +62,6 @@ public class EditArtistController extends HttpServlet {
 				dispatch(request, response);
 			}
 
-			dao.close();
 		}
 	}
-
 }

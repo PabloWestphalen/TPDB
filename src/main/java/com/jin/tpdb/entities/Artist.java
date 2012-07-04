@@ -20,6 +20,14 @@ public class Artist {
 	@Column(length = 500)
 	String site;
 
+	public Artist(String name, String site) {
+
+		if (!name.isEmpty() && !site.isEmpty()) {
+			this.name = name;
+			this.site = site;
+		}
+	}
+
 	public int getId() {
 		return id;
 	}

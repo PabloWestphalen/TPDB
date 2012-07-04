@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jin.Sanitizer;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.User;
 import com.jin.tpdb.persistence.DAO;
@@ -34,11 +35,13 @@ public class EditNewsController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		if (!request.getParameter("title").isEmpty()
-				&& !request.getParameter("content").isEmpty()) {
+		String title = Sanitizer.clean(request.getParameter("title"));
+		String content = Sanitizer.clean(request.getParameter("content"));
+
+		if (!title.isEmpty() && !content.isEmpty()) {
 			News news = new News();
-			news.setTitle(request.getParameter("title"));
-			news.setContent(request.getParameter("content"));
+			news.setTitle(title);
+			news.setContent(content);
 			User user = DAO.load(User.class, 1);
 			news.setUser(user);
 			DAO dao = new DAO();
