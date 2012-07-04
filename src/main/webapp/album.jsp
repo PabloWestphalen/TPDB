@@ -1,4 +1,4 @@
-
+<%@taglib uri="Utils" prefix="Utils" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
@@ -6,7 +6,7 @@
   <tpdb:content>
   <article>
   <h2>${album.name} (${album.artist.name})</h2>
-    <p>${album.description}</p>
+    <p>${Utils:cleanHtml(album.description)}</p>
   <h3>Tracks</h3>
   <ol>
     <c:forEach var="song" items="${songs}">

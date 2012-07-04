@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jin.Sanitizer;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Song;
@@ -40,19 +41,31 @@ public class EditAlbumController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		String coversPath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
+
 		DAO dao = new DAO();
 		dao.open();
 		Album album = new Album();
 
-		Artist a = DAO.load(Artist.class,
-				Integer.parseInt(request.getParameter("artist")));
+		try {
+			int artist_id = Integer.parseInt(request.getParameter("artist"));
+			Artist a = DAO.load(Artist.class, artist_id);
+			album.setArtist(a);
 
-		album.setArtist(a);
-		album.setName(request.getParameter("name"));
-		album.setDescription(request.getParameter("description"));
-		album.setLabel(request.getParameter("label"));
-		String path = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
-		File tempCover = new File(path
+		} catch (Exception e) {
+			// artist não é número
+		}
+
+		String albumName = Sanitizer.clean(request.getParameter("name"));
+		String description = Sanitizer.clean(request
+				.getParameter("description"));
+		String label = Sanitizer.clean(request.getParameter("label"));
+
+		album.setName(albumName);
+		album.setDescription(description);
+		album.setLabel(label);
+
+		File tempCover = new File(coversPath
 				+ request.getParameter("temp_cover_name"));
 		if (tempCover.exists()) {
 			album.setCover(tempCover);
@@ -64,8 +77,8 @@ public class EditAlbumController extends HttpServlet {
 		for (int i = 0; i <= tracks.length - 2; i++) {
 			Song s = new Song();
 			s.setAlbum(album);
-			s.setName(tracks[i]);
-			s.setLength(lengths[i]);
+			s.setName(Sanitizer.clean(tracks[i]));
+			s.setLength(Sanitizer.clean(lengths[i]));
 			s.setNumber(i + 1);
 			dao.save(s);
 		}
