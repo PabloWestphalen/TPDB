@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.criterion.Restrictions;
+
 import com.jin.Sanitizer;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Tag;
@@ -39,6 +41,9 @@ public class EditNewsController extends HttpServlet {
 
 		String title = Sanitizer.clean(request.getParameter("title"));
 		String content = Sanitizer.clean(request.getParameter("content"));
+		String tags = Sanitizer.clean(request.getParameter("tags"));
+		String[] tagsArray = tags.replace(", ", "%SPLIT")
+				.replace(",", "%SPLIT").split("%SPLIT");
 
 		if (!title.isEmpty() && !content.isEmpty()) {
 			DAO dao = new DAO();
@@ -49,26 +54,34 @@ public class EditNewsController extends HttpServlet {
 			news.setContent(content);
 			news.setUser(user);
 
-			ArrayList<Tag> tags = new ArrayList<Tag>();
+			ArrayList<Tag> tagsCollection = new ArrayList<Tag>();
 
-			Tag tag = new Tag();
-			tag.setName(request.getParameter("tags"));
-			dao.save(tag);
-
-			tags.add(tag);
-			news.setTags(tags);
-
-			if (news.getTags() != null) {
-				Tag tag2 = new Tag();
-				tag2.setName("dynamic tag");
-				dao.save(tag2);
-				news.getTags().add(tag2);
+			for (String s : tagsArray) {
+				Tag x = (Tag) DAO.load(Tag.class, Restrictions.like("name", s));
+				if (x != null) {
+					tagsCollection.add(x);
+				} else {
+					Tag t = new Tag();
+					t.setName(s);
+					dao.save(t);
+					tagsCollection.add(t);
+				}
 			}
+
+			news.setTags(tagsCollection);
+
+			/*
+			 * if (news.getTags() != null) { Tag tag2 = new Tag();
+			 * tag2.setName("dynamic tag"); dao.save(tag2);
+			 * news.getTags().add(tag2); DAO.load(Tag.class,
+			 * Restrictions.like("name", tt));
+			 * 
+			 * }
+			 */
 
 			dao.save(news);
 			dao.close();
 			dispatch(request, response);
 		}
 	}
-
 }

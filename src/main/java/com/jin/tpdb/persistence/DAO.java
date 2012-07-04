@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.entities.Album;
@@ -158,6 +159,26 @@ public class DAO {
 		List<T> songsList = dao.listSongs(Song.class, id);
 		dao.close();
 		return songsList;
+	}
+
+	protected <T> T getUniqueResult(Class entity, Criterion... restrictions) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		if (restrictions != null) {
+			for (Criterion restriction : restrictions) {
+				c.add(restriction);
+			}
+		}
+		T uniqueResult = (T) c.uniqueResult();
+		return uniqueResult;
+	}
+
+	public static <T> T load(Class c, Criterion... restrictions) {
+		DAO dao = new DAO();
+		dao.open();
+		T result = dao.getUniqueResult(c, restrictions);
+		dao.close();
+		return result;
 	}
 
 }
