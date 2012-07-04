@@ -20,6 +20,10 @@ public class Artist {
 	@Column(length = 500)
 	String site;
 
+	public Artist() {
+
+	}
+
 	public Artist(String name, String site) {
 
 		if (!name.isEmpty() && !site.isEmpty()) {
