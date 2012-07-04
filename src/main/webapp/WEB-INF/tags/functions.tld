@@ -21,7 +21,7 @@
     <name>cleanHtml</name>
     <function-class>com.jin.Utils</function-class>
     <function-signature>
-      java.lang.String getYear(java.lang.String text)
+      java.lang.String getYear(java.lang.String)
     </function-signature>
   </function>
 </taglib>
