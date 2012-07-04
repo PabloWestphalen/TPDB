@@ -18,22 +18,21 @@ public class AjaxDataController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// String data = request.getParameter("data");
-		// if (data == "tags") {
-		response.setContentType("application/json");
+		String data = request.getParameter("data");
+		if (data == "tags") {
+			response.setContentType("application/json");
 
-		PrintWriter out = response.getWriter();
-		List<Tag> tags = DAO.getList(Tag.class);
-		JSONArray jsonResponse = new JSONArray();
+			PrintWriter out = response.getWriter();
+			List<Tag> tags = DAO.getList(Tag.class);
+			JSONArray jsonResponse = new JSONArray();
 
-		for (Tag t : tags) {
-			jsonResponse.add(t.getName());
-			out.println(t.getName());
+			for (Tag t : tags) {
+				jsonResponse.add(t.getName());
+			}
+
+			out.println(jsonResponse.toJSONString());
+
 		}
-
-		out.println(jsonResponse.toJSONString());
-
-		// }
 
 	}
 }
