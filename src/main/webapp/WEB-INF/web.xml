@@ -35,6 +35,10 @@
     <servlet-name>UploaderController</servlet-name>
     <servlet-class>com.jin.tpdb.controller.UploaderController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AjaxDataController</servlet-name>
+    <servlet-class>com.jin.tpdb.ajax.AjaxDataController</servlet-class>
+  </servlet>
 	<servlet>
 		<servlet-name>Search</servlet-name>
 		<servlet-class>com.jin.tpdb.Search</servlet-class>
@@ -92,6 +96,10 @@
 	  <servlet-name>fileServing</servlet-name>
 	  <url-pattern>/images/albums/*</url-pattern>
 	</servlet-mapping>
+	 <servlet-mapping>
+    <servlet-name>AjaxDataController</servlet-name>
+    <url-pattern>/api/</url-pattern>
+  </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>Index</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
