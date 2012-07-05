@@ -58,7 +58,7 @@
 	</servlet>
 	<servlet>
 	<servlet-name>AboutPage</servlet-name>
-	 <jsp-file>about.jsp</jsp-file>
+	 <jsp-file>/about.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>IndexController</servlet-name>
