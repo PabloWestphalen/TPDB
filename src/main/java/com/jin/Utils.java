@@ -28,10 +28,17 @@ public class Utils {
 	}
 
 	public static String trimLong(String msg, Integer limit) {
-		if (msg.length() > limit) {
-			msg = msg.substring(0, limit);
-		} else {
-			msg = msg.substring(0, msg.indexOf("\n\n"));
+		try {
+			if (msg.length() > limit) {
+				msg = msg.substring(0, limit);
+			} else {
+				msg = msg.substring(0, msg.indexOf("\n\n"));
+			}
+		} catch (Exception e) {
+			System.out.println("#####################");
+			System.out.println("deu pau");
+			System.out.println("msg = " + msg);
+			System.out.println("limit = " + limit);
 		}
 		return msg;
 	}
