@@ -30,14 +30,16 @@ public class Utils {
 	public static String trim(String msg, Integer limit) {
 		if (msg.length() > limit) {
 			msg = msg.substring(0, limit);
-			int lastDot = msg.lastIndexOf(".");
+			int lastDot = msg.lastIndexOf(".") + 1;
 			if (lastDot > 0) {
 				msg = msg.substring(0, lastDot);
 			}
+			msg += " [...]";
 		} else {
 			int nl = msg.indexOf("\n\n");
 			if (nl > 0) {
 				msg = msg.substring(0, nl);
+				msg += " [...]";
 			}
 		}
 		return msg;
