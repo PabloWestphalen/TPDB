@@ -17,7 +17,7 @@
       </p>
       <p>
         <label for="site">Site: </label>
-        <input type="text" name="site" id="site" />
+        <input type="text" name="site" value="http://" id="site" />
       </p>      
       <input type="submit" value="Add" />
       </fieldset>     

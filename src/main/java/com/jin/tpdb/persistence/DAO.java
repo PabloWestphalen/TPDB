@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.entities.Album;
@@ -116,6 +117,19 @@ public class DAO {
 		return uniqueResult;
 	}
 
+	protected <T> T list(Class entity, Order order, Criterion... restrictions) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		c.addOrder(order);
+		if (restrictions != null) {
+			for (Criterion restriction : restrictions) {
+				c.add(restriction);
+			}
+		}
+		T uniqueResult = (T) c.uniqueResult();
+		return uniqueResult;
+	}
+
 	protected <T> List<T> list(Class entity, FetchMode f, String joinField) {
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity).setFetchMode(joinField, f);
@@ -197,6 +211,15 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		List<T> results = dao.list(entity, restrictions);
+		dao.close();
+		return results;
+	}
+
+	public static <T> List<T> getList(Class entity, Order order,
+			Criterion... restrictions) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> results = dao.list(entity, order, restrictions);
 		dao.close();
 		return results;
 	}

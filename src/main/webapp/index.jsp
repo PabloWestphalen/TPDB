@@ -1,4 +1,4 @@
-
+<%@taglib uri="Utils" prefix="Utils" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
@@ -9,9 +9,9 @@
     <c:forEach var="news" items="${newsList}">
       <article>
         <h3>
-          <a href="news?id=${news.id}">${news.title}</a>
+          <a href="/news/?id=${news.id}">${news.title}</a>
         </h3>
-        <p>${news.content}</p>
+        {Utils:cleanHtml(news.content)}
         <p class="entry_info">
           Contributed by ${news.user.username} at
           <fmt:formatDate value="${news.date}" type="date" />
@@ -26,7 +26,7 @@
           <a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
         </h3>
         <p>
-          <img src="${album.cover}" alt="${album.name} cover" class="coverImage" /> ${album.description}
+          <img src="${album.cover}" alt="${album.name} cover" class="coverImage" /> ${Utils:cleanHtml(album.description)}
         </p>
         <p class="entry_info">
           Contributed by ${album.user.username} at
