@@ -25,7 +25,7 @@
    </function-signature>
  </function>
  <function>
-  <name>trim</name>
+  <name>trimLong</name>
   <function-class>com.jin.Utils</function-class>
   <function-signature>
     java.lang.String trimLong(java.lang.String, java.lang.Integer)
