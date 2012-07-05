@@ -11,6 +11,7 @@
         <h3>
           <a href="/news/?id=${news.id}">${news.title}</a>
         </h3>
+        <p>Tags: <c:forEach var="tag" items="${news.tags}"><span class="tag">${tag.name}</span> </c:forEach></p>
         <p>${news.content}</p>
         <p class="entry_info">
           Contributed by ${news.user.username} at
