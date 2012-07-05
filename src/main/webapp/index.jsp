@@ -11,7 +11,7 @@
         <h3>
           <a href="/news/?id=${news.id}">${news.title}</a>
         </h3>
-        <tpdb:format var="${news.content}" maxlength="400" html="true" />
+        <p>${news.content}</p>
         <p class="entry_info">
           Contributed by ${news.user.username} at
           <fmt:formatDate value="${news.date}" type="date" />
