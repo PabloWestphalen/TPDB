@@ -11,7 +11,7 @@
         <h3>
           <a href="/news/?id=${news.id}">${news.title}</a>
         </h3>
-        ${Utils:cleanHtml(news.content)}
+        <tpdb:format var="${news.content}" maxlength="200" html="true" />
         <p class="entry_info">
           Contributed by ${news.user.username} at
           <fmt:formatDate value="${news.date}" type="date" />
@@ -26,7 +26,8 @@
           <a href="album?id=${album.id}">${album.artist.name} - ${album.name}</a>
         </h3>
         <p>
-          <img src="${album.cover}" alt="${album.name} cover" class="coverImage" /> ${Utils:cleanHtml(album.description)}
+          <img src="${album.cover}" alt="${album.name} cover" class="coverImage" />
+          <tpdb:format var="${album.description}" maxlength="200" html="true" />          
         </p>
         <p class="entry_info">
           Contributed by ${album.user.username} at
