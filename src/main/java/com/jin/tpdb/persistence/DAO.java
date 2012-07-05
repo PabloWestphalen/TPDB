@@ -84,15 +84,6 @@ public class DAO {
 		Criteria c = hbs.createCriteria(entity).add(Restrictions.eq("id", i))
 				.setFetchMode(joinField, f);
 		T result = (T) c.uniqueResult();
-
-		/*
-		 * News n = (News) result;
-		 * 
-		 * System.out.println("got news with title = " + n.getTitle());
-		 * Collection<Tag> tags = n.getTags(); for (Tag t : tags) {
-		 * System.out.println("this tag's name is = " + t.getName()); }
-		 */
-
 		return result;
 	}
 

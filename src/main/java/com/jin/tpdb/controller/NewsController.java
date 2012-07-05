@@ -22,7 +22,7 @@ public class NewsController extends HttpServlet {
 		if (request.getParameter("id") != null) {
 			try {
 				int id = Integer.parseInt(request.getParameter("id"));
-				News news = DAO.load(News.class, id, FetchMode.JOIN, "tag");
+				News news = DAO.load(News.class, id, FetchMode.JOIN, "tags");
 				request.setAttribute("news", news);
 			} catch (Exception e) {
 				// irrelevant

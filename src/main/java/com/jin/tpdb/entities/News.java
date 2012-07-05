@@ -22,7 +22,7 @@ public class News {
 	private User user;
 
 	@ManyToMany
-	private Collection<Tag> tag;
+	private Collection<Tag> tags;
 
 	@Column(nullable = false)
 	private Date date;
@@ -49,11 +49,11 @@ public class News {
 	}
 
 	public Collection<Tag> getTags() {
-		return tag;
+		return tags;
 	}
 
-	public void setTags(Collection<Tag> tag) {
-		this.tag = tag;
+	public void setTags(Collection<Tag> tags) {
+		this.tags = tags;
 	}
 
 	public Date getDate() {
