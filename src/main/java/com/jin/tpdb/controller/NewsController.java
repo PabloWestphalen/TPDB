@@ -28,8 +28,7 @@ public class NewsController extends HttpServlet {
 				// irrelevant
 			}
 		} else {
-			List<News> newsList = DAO.getList(News.class, FetchMode.JOIN,
-					"tags");
+			List<News> newsList = DAO.getList(News.class);
 			request.setAttribute("newsList", newsList);
 		}
 
