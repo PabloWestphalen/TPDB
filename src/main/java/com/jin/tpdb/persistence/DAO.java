@@ -105,7 +105,7 @@ public class DAO {
 
 	}
 
-	protected <T> T list(Class entity, Criterion... restrictions) {
+	protected <T> List<T> list(Class entity, Criterion... restrictions) {
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity);
 		if (restrictions != null) {
@@ -113,11 +113,12 @@ public class DAO {
 				c.add(restriction);
 			}
 		}
-		T uniqueResult = (T) c.uniqueResult();
-		return uniqueResult;
+		List<T> results = c.list();
+		return results;
 	}
 
-	protected <T> T list(Class entity, Order order, Criterion... restrictions) {
+	protected <T> List<T> list(Class entity, Order order,
+			Criterion... restrictions) {
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity);
 		c.addOrder(order);
@@ -126,8 +127,8 @@ public class DAO {
 				c.add(restriction);
 			}
 		}
-		T uniqueResult = (T) c.uniqueResult();
-		return uniqueResult;
+		List<T> results = c.list();
+		return results;
 	}
 
 	protected <T> List<T> list(Class entity, FetchMode f, String joinField) {
