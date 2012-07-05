@@ -357,3 +357,25 @@ aside {
   padding: 1px 4px;
   vertical-align: middle;
 }
+
+#about blockquote {
+  box-sizing: border-box;
+  width: 90%;
+  margin: auto;
+  padding: 20px 30px;
+  font-style: italic;
+  background-color: #62798B;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-family: Verdana;
+}
+
+#about article ul {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+#about em.under {
+  border-bottom: dotted 1px white;
+}
