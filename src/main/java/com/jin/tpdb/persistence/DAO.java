@@ -81,7 +81,8 @@ public class DAO {
 
 	public <T> T get(Class entity, int i, FetchMode f, String joinField) {
 		Session hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(entity).setFetchMode(joinField, f);
+		Criteria c = hbs.createCriteria(entity).add(Restrictions.eq("id", i))
+				.setFetchMode(joinField, f);
 		T result = (T) c.uniqueResult();
 		return result;
 	}
