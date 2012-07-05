@@ -11,7 +11,7 @@
         <h3>
           <a href="/news/?id=${news.id}">${news.title}</a>
         </h3>
-        {Utils:cleanHtml(news.content)}
+        ${Utils:cleanHtml(news.content)}
         <p class="entry_info">
           Contributed by ${news.user.username} at
           <fmt:formatDate value="${news.date}" type="date" />
