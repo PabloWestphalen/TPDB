@@ -15,12 +15,12 @@
     with posts few and far between. With a quick analyzis one could determine that some of
     the reasons for this to happen were that:</p>
     <ul>
-    <li>The community was aimed at a very niche audience. Trip-Hop may be world-wide known,
+    <li><strong>The community was aimed at a very niche audience.</strong> Trip-Hop may be world-wide known,
     but it surely isn't popular.</li>
-    <li>Lack of feedback to the contributions. People used their time to craft and post a
+    <li><strong>Lack of feedback to the contributions.</strong> People used their time to craft and post a
     contribution, expecting to instigate a discussion, a quick comment if anything, but
     instead faced silence. Posting then may have felt like a waste of time.</li>
-    <li>The community simply ran its course. People did share what was there to share, but
+    <li><strong>The community simply ran its course.</strong> People did share what was there to share, but
     eventually ran out of material (i.e.: artists no longer produced music that fit the
     genre). For all intents and purposes, Trip-Hop was "dead".</li>
     </ul>
