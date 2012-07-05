@@ -131,6 +131,21 @@ public class DAO {
 		return results;
 	}
 
+	protected <T> List<T> list(Class entity, Order order, FetchMode f,
+			String fieldName, Criterion... restrictions) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		c.addOrder(order);
+		c.setFetchMode(fieldName, f);
+		if (restrictions != null) {
+			for (Criterion restriction : restrictions) {
+				c.add(restriction);
+			}
+		}
+		List<T> results = c.list();
+		return results;
+	}
+
 	protected <T> List<T> list(Class entity, FetchMode f, String joinField) {
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity).setFetchMode(joinField, f);
@@ -221,6 +236,15 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		List<T> results = dao.list(entity, order, restrictions);
+		dao.close();
+		return results;
+	}
+
+	public static <T> List<T> getList(Class entity, Order order, FetchMode f,
+			String fieldName, Criterion... restrictions) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> results = dao.list(entity, order, f, fieldName, restrictions);
 		dao.close();
 		return results;
 	}

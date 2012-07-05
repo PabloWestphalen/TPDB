@@ -22,20 +22,12 @@ public class NewsController extends HttpServlet {
 			HttpServletResponse response) throws IOException, ServletException {
 
 		if (request.getParameter("id") != null) {
-			try {
-				int id = Integer.parseInt(request.getParameter("id"));
-				News news = DAO.load(News.class, id, FetchMode.JOIN, "tags");
-				Collection<Tag> tags = news.getTags();
-				/*
-				 * System.out
-				 * .println("######################debug###############"); for
-				 * (Tag t : tags) { System.out.println("i did get this tag: " +
-				 * t.getName()); }
-				 */
-				request.setAttribute("news", news);
-			} catch (Exception e) {
-				// irrelevant
-			}
+
+			int id = Integer.parseInt(request.getParameter("id"));
+			News news = DAO.load(News.class, id, FetchMode.JOIN, "tags");
+			Collection<Tag> tags = news.getTags();
+			request.setAttribute("news", news);
+
 		} else {
 			List<News> newsList = DAO.getList(News.class);
 			request.setAttribute("newsList", newsList);
