@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.FetchMode;
+
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.persistence.DAO;
 
@@ -26,7 +28,8 @@ public class NewsController extends HttpServlet {
 				// irrelevant
 			}
 		} else {
-			List<News> newsList = DAO.getList(News.class);
+			List<News> newsList = DAO.getList(News.class, FetchMode.JOIN,
+					"tags");
 			request.setAttribute("newsList", newsList);
 		}
 

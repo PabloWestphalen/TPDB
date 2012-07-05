@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
@@ -66,6 +67,18 @@ public class DAO {
 		return (T) em.find(c, i);
 	}
 
+	public <T> T get(Class entity, int i, Criterion... restrictions) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		if (restrictions != null) {
+			for (Criterion restriction : restrictions) {
+				c.add(restriction);
+			}
+		}
+		T uniqueResult = (T) c.uniqueResult();
+		return uniqueResult;
+	}
+
 	protected <T> List<T> list(Class entity) {
 		/*
 		 * CriteriaBuilder cb = em.getCriteriaBuilder(); CriteriaQuery<T> query
@@ -81,6 +94,25 @@ public class DAO {
 		List<T> results = c.list();
 		return results;
 
+	}
+
+	protected <T> T list(Class entity, Criterion... restrictions) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		if (restrictions != null) {
+			for (Criterion restriction : restrictions) {
+				c.add(restriction);
+			}
+		}
+		T uniqueResult = (T) c.uniqueResult();
+		return uniqueResult;
+	}
+
+	protected <T> List<T> list(Class entity, FetchMode f, String joinField) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity).setFetchMode(joinField, f);
+		List<T> results = c.list();
+		return results;
 	}
 
 	protected <T> List<T> listSongs(Class entity, int id) {
@@ -141,6 +173,23 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		List<T> results = dao.list(c);
+		dao.close();
+		return results;
+	}
+
+	public static <T> List<T> getList(Class entity, Criterion... restrictions) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> results = dao.list(entity, restrictions);
+		dao.close();
+		return results;
+	}
+
+	public static <T> List<T> getList(Class entity, FetchMode f,
+			String joinField) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> results = dao.list(entity, f, joinField);
 		dao.close();
 		return results;
 	}
