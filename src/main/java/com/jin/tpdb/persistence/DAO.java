@@ -1,5 +1,6 @@
 package com.jin.tpdb.persistence;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -131,7 +132,7 @@ public class DAO {
 		return results;
 	}
 
-	protected <T> List<T> list(Class entity, Order order, FetchMode f,
+	protected <T> Collection<T> list(Class entity, Order order, FetchMode f,
 			String fieldName, Criterion... restrictions) {
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity);
@@ -142,7 +143,7 @@ public class DAO {
 				c.add(restriction);
 			}
 		}
-		List<T> results = c.list();
+		Collection<T> results = c.list();
 		return results;
 	}
 
@@ -240,11 +241,12 @@ public class DAO {
 		return results;
 	}
 
-	public static <T> List<T> getList(Class entity, Order order, FetchMode f,
-			String fieldName, Criterion... restrictions) {
+	public static <T> Collection<T> getList(Class entity, Order order,
+			FetchMode f, String fieldName, Criterion... restrictions) {
 		DAO dao = new DAO();
 		dao.open();
-		List<T> results = dao.list(entity, order, f, fieldName, restrictions);
+		Collection<T> results = dao.list(entity, order, f, fieldName,
+				restrictions);
 		dao.close();
 		return results;
 	}
