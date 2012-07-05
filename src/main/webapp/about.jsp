@@ -3,6 +3,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="about">
   <tpdb:content>
+  <article>
     <blockquote>If every day we find a new song over here, we're going to be happier people.
     Each one shares what they have, and everyone's got something to share.</blockquote>
     <p>This raw, yet inspiring statement was the premise of "1 Trip-Hop por dia"
@@ -28,6 +29,7 @@
     that focus on this loved genre of ours, but they all seem to eventually be abandoned,
     forgotten, leaving only traces of something that if was really active today, would
     surely be awesome.
+    </article>
   </tpdb:content>
   <tpdb:sidebar />
 </tpdb:page>
