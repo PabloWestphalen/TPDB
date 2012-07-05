@@ -33,7 +33,7 @@ public class Utils {
 		} else {
 			int nl = msg.indexOf("\n\n");
 			if (nl > 0) {
-				msg = msg.substring(0, msg.indexOf(nl));
+				msg = msg.substring(0, nl);
 			}
 		}
 		return msg;
