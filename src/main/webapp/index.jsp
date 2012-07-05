@@ -27,7 +27,7 @@
         </h3>
         <p>
           <img src="${album.cover}" alt="${album.name} cover" class="coverImage" />
-          <tpdb:format var="${album.description}" maxlength="400" html="true" />          
+          <tpdb:format var="${album.description}" maxlength="350" html="true" />          
         </p>
         <p class="entry_info">
           Contributed by ${album.user.username} at
