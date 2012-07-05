@@ -1,5 +1,6 @@
 package com.jin.tpdb.persistence;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import org.hibernate.criterion.Restrictions;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Song;
+import com.jin.tpdb.entities.Tag;
 
 public class DAO {
 	protected static EntityManagerFactory factory;
@@ -86,6 +88,12 @@ public class DAO {
 				.setFetchMode(joinField, f);
 		T result = (T) c.uniqueResult();
 		News n = (News) result;
+		System.out.println("got news with title = " + n.getTitle());
+		Collection<Tag> tags = n.getTags();
+		for (Tag t : tags) {
+			System.out.println("this tag's name is = " + t.getName());
+		}
+
 		return result;
 	}
 
