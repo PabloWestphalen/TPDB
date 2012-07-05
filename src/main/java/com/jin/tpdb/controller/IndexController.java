@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.Order;
 
 import com.jin.tpdb.entities.Album;
@@ -20,7 +21,8 @@ public class IndexController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		List<News> newsList = DAO.getList(News.class, Order.desc("date"));
+		List<News> newsList = DAO.getList(News.class, Order.desc("date"),
+				FetchMode.JOIN, "tags");
 
 		List<Album> albumsList = DAO.getList(Album.class,
 				Order.desc("uploadDate"));
