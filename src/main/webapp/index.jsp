@@ -17,7 +17,7 @@
           Contributed by ${news.user.username} at
           <fmt:formatDate value="${news.date}" type="date" />
           | Comments
-          <br />
+          |
           Tags: <c:forEach var="tag" items="${news.tags}"><span class="tag">${tag.name}</span> </c:forEach>
         </p>
       </article>
