@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.FetchMode;
 
 import com.jin.tpdb.entities.News;
+import com.jin.tpdb.entities.Tag;
 import com.jin.tpdb.persistence.DAO;
 
 public class NewsController extends HttpServlet {
@@ -23,6 +25,12 @@ public class NewsController extends HttpServlet {
 			try {
 				int id = Integer.parseInt(request.getParameter("id"));
 				News news = DAO.load(News.class, id, FetchMode.JOIN, "tags");
+				Collection<Tag> tags = news.getTags();
+				System.out
+						.println("######################debug###############");
+				for (Tag t : tags) {
+					System.out.println("i did get this tag: " + t.getName());
+				}
 				request.setAttribute("news", news);
 			} catch (Exception e) {
 				// irrelevant
