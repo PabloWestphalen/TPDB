@@ -5,7 +5,7 @@
 <%@attribute name="maxlength" description="The limit of characters." rtexprvalue="true" type="java.lang.Integer" required="false" %>
 <%@attribute name="html"  description="Wheter or not to convert to html." rtexprvalue="true" type="java.lang.Boolean" required="false"%>
 <c:if test="${not empty maxlength}">
-<c:set var="var">${Utils:trimLong(var, maxlength)}</c:set>
+<c:set var="var">${Utils:trim(var, maxlength)}</c:set>
 </c:if>
 <c:if test="${html}">
 <c:set var="var">${Utils:cleanHtml(var)}</c:set>

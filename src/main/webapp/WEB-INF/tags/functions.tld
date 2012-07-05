@@ -25,10 +25,10 @@
    </function-signature>
  </function>
  <function>
-  <name>trimLong</name>
+  <name>trim</name>
   <function-class>com.jin.Utils</function-class>
   <function-signature>
-    java.lang.String trimLong(java.lang.String, java.lang.Integer)
+    java.lang.String trim(java.lang.String, java.lang.Integer)
   </function-signature>
 </function>
 </taglib>

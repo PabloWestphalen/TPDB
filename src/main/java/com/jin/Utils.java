@@ -27,18 +27,14 @@ public class Utils {
 		return Sanitizer.cleanHtml(text);
 	}
 
-	public static String trimLong(String msg, Integer limit) {
-		try {
-			if (msg.length() > limit) {
-				msg = msg.substring(0, limit);
-			} else {
-				msg = msg.substring(0, msg.indexOf("\n\n"));
+	public static String trim(String msg, Integer limit) {
+		if (msg.length() > limit) {
+			msg = msg.substring(0, limit);
+		} else {
+			int nl = msg.indexOf("\n\n");
+			if (nl > 0) {
+				msg = msg.substring(0, msg.indexOf(nl));
 			}
-		} catch (Exception e) {
-			System.out.println("#####################");
-			System.out.println("deu pau");
-			System.out.println("msg = " + msg);
-			System.out.println("limit = " + limit);
 		}
 		return msg;
 	}
