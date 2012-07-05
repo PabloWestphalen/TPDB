@@ -79,6 +79,13 @@ public class DAO {
 		return uniqueResult;
 	}
 
+	public <T> T get(Class entity, int i, FetchMode f, String joinField) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity).setFetchMode(joinField, f);
+		T result = (T) c.uniqueResult();
+		return result;
+	}
+
 	protected <T> List<T> list(Class entity) {
 		/*
 		 * CriteriaBuilder cb = em.getCriteriaBuilder(); CriteriaQuery<T> query
@@ -165,6 +172,14 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		T result = dao.get(c, i);
+		dao.close();
+		return result;
+	}
+
+	public static <T> T load(Class c, int i, FetchMode f, String joinField) {
+		DAO dao = new DAO();
+		dao.open();
+		T result = dao.get(c, i, f, joinField);
 		dao.close();
 		return result;
 	}
