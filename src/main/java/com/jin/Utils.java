@@ -27,7 +27,7 @@ public class Utils {
 		return Sanitizer.cleanHtml(text);
 	}
 
-	public static String trim(String msg, int limit) {
+	public static String trimLong(String msg, int limit) {
 		if (msg.length() > limit) {
 			msg = msg.substring(0, limit);
 		} else {
