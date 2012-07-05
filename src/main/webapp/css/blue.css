@@ -23,10 +23,10 @@ section article, header, footer, aside {
   color: #64006B;
   text-decoration: none;
 }
-#home li.home, #news li.news, #artists li.artists, #contribute li.contribute, #requests li.requests, #community li.community a{
+#home li.home, #news li.news, #artists li.artists, #contribute li.contribute, #requests li.requests, #community li.community, #about li.about {
   background-color: #BFD936;
 }
-#home li.home a, #news li.news a, #artists li.artists a, #contribute li.contribute a, #requests li.requests a, #community li.community a {
+#home li.home a, #news li.news a, #artists li.artists a, #contribute li.contribute a, #requests li.requests a, #community li.community a, #about li.about a {
   color: #F5FFBF;
   font-weight: bold;
 }

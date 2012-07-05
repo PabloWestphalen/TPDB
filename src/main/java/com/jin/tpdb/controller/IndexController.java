@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class IndexController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		LinkedHashSet<News> newsList = new LinkedHashSet(DAO.getList(
-				News.class, Order.desc("date"), FetchMode.JOIN, "tags"));
+		Collection newsList = new LinkedHashSet(DAO.getList(News.class,
+				Order.desc("date"), FetchMode.JOIN, "tags"));
 
 		List<Album> albumsList = DAO.getList(Album.class,
 				Order.desc("uploadDate"));

@@ -16,6 +16,7 @@
       <li class="contribute"><a href="/contribute/">Contribute</a></li>
       <li class="requests"><a href="#">Requests</a></li>
       <li class="community"><a href="#">Community</a></li>
+      <li class="about"><a href="/about/">About</a></li>
     </ul>
   </nav>
   <c:choose>

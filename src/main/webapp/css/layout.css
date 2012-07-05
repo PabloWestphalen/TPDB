@@ -131,6 +131,7 @@ article .entry_info {
   clear: right;
   margin-right: 15px;
   text-align: right;
+  font-size: 14px;
 }
 
 
@@ -353,6 +354,6 @@ aside {
   background-color: #A5BECF;
   border-radius: 5px;
   font-size: 14px;
-  padding: 2px 5px;
+  padding: 1px 4px;
   vertical-align: middle;
 }
