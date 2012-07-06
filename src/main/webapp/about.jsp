@@ -5,7 +5,7 @@
   <tpdb:content>
   <article>
     <h2>About the Project</h2>
-    <h3>First, a Little Story</h3>
+    <h3>Background</h3>
     <blockquote>If every day we find a new song here, we're gonna be happier people.
     Each one shares what they have, and everyone's got something to share.</blockquote>
     <p>This motto was the premise of <em class="under" lang="pt-br" title="1 Trip-Hop [song] a day">1 Trip-Hop por dia</em>,
