@@ -34,7 +34,7 @@ public class FileServingServlet extends DefaultServlet
 
 		context.setDocBase(docBase);
 
-		resources = new ProxyDirContext(env, context);
+		// resources = new ProxyDirContext(env, context);
 
 		if (super.debug > 0) {
 
