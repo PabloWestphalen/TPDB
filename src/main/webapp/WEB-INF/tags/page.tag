@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>The Trip-Hop Database</title>
+<title>The Trip-Hop Database Live</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <c:choose>
   <c:when test="${not empty description}">
