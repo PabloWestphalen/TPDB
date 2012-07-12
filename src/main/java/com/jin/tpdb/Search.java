@@ -1,7 +1,5 @@
 package com.jin.tpdb;
-import com.jin.tpdb.entities.Pessoa;
 import com.jin.tpdb.entities.Artist;
-import com.jin.tpdb.entities.Album;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;

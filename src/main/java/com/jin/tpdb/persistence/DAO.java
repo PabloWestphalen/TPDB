@@ -18,6 +18,7 @@ import org.hibernate.criterion.Restrictions;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Song;
 
+@SuppressWarnings("unchecked")
 public class DAO {
 	protected static EntityManagerFactory factory;
 	protected EntityManager em;
@@ -65,6 +66,7 @@ public class DAO {
 		em.getTransaction().rollback();
 	}
 
+	
 	public <T> T get(Class c, int i) {
 		return (T) em.find(c, i);
 	}

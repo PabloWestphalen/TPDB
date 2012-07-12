@@ -10,13 +10,13 @@
   </header>
   <nav id="mainNav">
     <ul>
-      <li class="home"><a href="/">Home</a></li>
-      <li class="news"><a href="/news/">News</a></li>
-      <li class="artists"><a href="/artists/">Artists</a></li>
-      <li class="contribute"><a href="/contribute/">Contribute</a></li>
+      <li class="home"><a href="<c:url value="/" />">Home</a></li>
+      <li class="news"><a href="<c:url value="/news/" />">News</a></li>
+      <li class="artists"><a href="<c:url value="/artists/" />">Artists</a></li>
+      <li class="contribute"><a href="<c:url value="/contribute/" />">Contribute</a></li>
       <li class="requests"><a href="#">Requests</a></li>
       <li class="community"><a href="#">Community</a></li>
-      <li class="about"><a href="/about/">About</a></li>
+      <li class="about"><a href="<c:url value="/about/" />">About</a></li>
     </ul>
   </nav>
   <c:choose>
@@ -24,9 +24,9 @@
       <div id="adminContainer">
         <nav id="adminNav">
           <h3>Contribute</h3>
-          <a href="/contribute/news/add">Add news</a>
-          <a href="/contribute/artist/add">Add an Artist</a>
-          <a href="/contribute/album/add">Add an Album</a>
+          <a href="<c:url value="/contribute/news/add" />">Add news</a>
+          <a href="<c:url value="/contribute/artist/add" />">Add an Artist</a>
+          <a href="<c:url value="/contribute/album/add" />">Add an Album</a>
         </nav>
         <div id="adminBody">
           <jsp:doBody />

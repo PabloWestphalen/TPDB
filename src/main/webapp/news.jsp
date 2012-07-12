@@ -15,7 +15,7 @@
         <c:forEach var="news" items="${newsList}">
           <p>
             <fmt:formatDate value="${news.date}" type="date" />
-            - <a href="/news/?id=${news.id}">${news.title}</a>
+            - <a href="<c:url value="/news/?id=${news.id}" />">${news.title}</a>
           </p>
         </c:forEach>
         </div>

@@ -29,10 +29,10 @@
     <meta name="keywords" content="trip-hop, database, new, release, wiki">
   </c:otherwise>
 </c:choose>
-<link rel="stylesheet" href="/css/layout.css" type="text/css">
-<link rel="stylesheet" href="/css/blue.css" type="text/css">
+<link rel="stylesheet" href="<c:url value="/css/layout.css" />" type="text/css">
+<link rel="stylesheet" href="<c:url value="/css/blue.css" />" type="text/css">
 <c:if test="${type == 'admin'}">
-  <link rel="stylesheet" href="/css/admin.css" type="text/css">
+  <link rel="stylesheet" href="<c:url value="/css/admin.css" />" type="text/css">
 </c:if>
 <script type="text/javascript">
 
@@ -50,10 +50,10 @@
 </head>
 <body id="${name}">
   <jsp:doBody />
-  <script src="/js/jquery.js"></script>
-  <script src="/js/jquery.form.js"></script>
+  <script src="<c:url value="/js/jquery.js" />"></script>
+  <script src="<c:url value="/js/jquery.form.js" />"></script>
   <c:if test="${not empty script}">
-    <script src="/js/${script}.js"></script>    
+    <script src="<c:url value="/js/${script}.js" />"></script>    
   </c:if>
 </body>
 </html>
