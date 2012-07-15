@@ -25,7 +25,7 @@ public class AlbumController extends HttpServlet {
 		request.setAttribute("songs", songList);
 		request.setAttribute("album", album);
 		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher jsp = request.getRequestDispatcher("album.jsp");
+		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
 		jsp.forward(request, response);
 	}
 

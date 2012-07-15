@@ -26,9 +26,6 @@ function lightBoxOff(success) {
 		$('#lightbox, #artistPanel').fadeOut(250);
 		$('aside').css("opacity", ".98");			
 		setTabIndex();
-		if(success === true) {
-			$('#month').focus();
-		}			
 }
 
 //displays the uploaded image
@@ -117,7 +114,6 @@ $(document).ready(function(){
 		$('#lightbox').css("width", winW-30);			
 		$('#lightbox, #artistPanel').fadeIn(250);
 		$('aside').css("opacity", "1");
-		$('#artist_name').focus();
     $('input, textarea, select, img').not('#artistPanel input').attr('tabindex', '-1');
 		$('#artistPanel form').submit(function(event) {
 			event.preventDefault();			

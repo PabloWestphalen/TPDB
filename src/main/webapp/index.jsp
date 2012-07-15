@@ -26,7 +26,7 @@
     <c:forEach var="album" items="${albums}">
       <article>
         <h3>
-          <a href="<c:url value="album?id=${album.id}" />">${album.name} - ${album.artist.name}</a>
+          <a href="<c:url value="/album/?id=${album.id}" />">${album.name} - ${album.artist.name}</a>
         </h3>
         <p>
           <img src="${album.cover}" alt="${album.name} cover" class="coverImage" />
@@ -45,7 +45,7 @@
     <div id="featured_albums">
       <h3>Featured Albums</h3>
       <c:forEach var="fAlbum" items="${featuredAlbums}">
-        <a href="<c:url value="/album?id=${fAlbum.id}" />"><img src="${fAlbum.cover}"
+        <a href="<c:url value="/album/?id=${fAlbum.id}" />"><img src="${fAlbum.cover}"
           alt="${fAlbum.artist.name} - Cover" title="${fAlbum.name}" /></a>
       </c:forEach>
     </div>
