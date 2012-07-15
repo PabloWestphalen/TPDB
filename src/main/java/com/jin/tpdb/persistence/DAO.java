@@ -63,7 +63,7 @@ public class DAO {
 	}
 
 	public void rollback() {
-		em.getTransaction().rollback();
+		em.getTransaction().rollback();	
 	}
 
 	

@@ -44,6 +44,10 @@
 		<servlet-class>com.jin.tpdb.Search</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>RSS</servlet-name>
+		<servlet-class>com.jin.tpdb.controller.RssController</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>fileServing</servlet-name>
 		<servlet-class>com.jin.FileServingServlet</servlet-class>
 		<init-param>
@@ -62,7 +66,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AlbumController</servlet-name>
-		<url-pattern>/album</url-pattern>
+		<url-pattern>/album/</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>NewsController</servlet-name>
@@ -91,6 +95,10 @@
 	<servlet-mapping>
 		<servlet-name>Search</servlet-name>
 		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RSS</servlet-name>
+		<url-pattern>/feed</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>fileServing</servlet-name>
