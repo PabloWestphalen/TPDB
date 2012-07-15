@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import javax.persistence.CascadeType;
+
 @Entity
 public class Song {
 
@@ -13,7 +15,7 @@ public class Song {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Album album;
 
 	private int number;

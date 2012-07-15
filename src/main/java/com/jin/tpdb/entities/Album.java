@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.jin.tpdb.entities.User;
 import com.jin.tpdb.persistence.DAO;
 
 //lol
