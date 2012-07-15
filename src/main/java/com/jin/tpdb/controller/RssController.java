@@ -18,6 +18,8 @@ import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.persistence.DAO;
 
+
+
 public class RssController extends HttpServlet {
 
 	@Override
@@ -26,7 +28,7 @@ public class RssController extends HttpServlet {
 		
 		Collection newsList = new LinkedHashSet(DAO.getList(News.class,
 				Order.desc("date"), FetchMode.JOIN, "tags"));
-		
+		// teste
 		List<Album> albums = DAO.getList(Album.class, Order.desc("uploadDate"));
 		
 		request.setAttribute("newsList", newsList);

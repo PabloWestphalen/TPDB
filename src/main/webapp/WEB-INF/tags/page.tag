@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>The Trip-Hop Database Live</title>
+<title>The Trip-Hop Database</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <c:choose>
   <c:when test="${not empty description}">
@@ -29,6 +29,7 @@
     <meta name="keywords" content="trip-hop, database, new, release, wiki">
   </c:otherwise>
 </c:choose>
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<c:url value="/feed" />" />
 <link rel="stylesheet" href="<c:url value="/css/layout.css" />" type="text/css">
 <link rel="stylesheet" href="<c:url value="/css/blue.css" />" type="text/css">
 <c:if test="${type == 'admin'}">
