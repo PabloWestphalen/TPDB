@@ -19,7 +19,7 @@
 				<p>					
 					<img src="<c:url value="/${album.cover}" />"  />
 					<a href="<c:url value="/album/?id=${album.id}" />">${album.name} (<fmt:formatDate value="${album.releaseDate}" type="date" pattern="yyyy" />)</a>
-					<tpdb:format var="${album.description}" maxlength="135" />
+					<tpdb:format var="${album.description}" maxlength="130" />
 					<span>Length: ${album.length} | Tracks: 12 | Rating: ****</span>
 				</p>
 		        </c:forEach>        		
