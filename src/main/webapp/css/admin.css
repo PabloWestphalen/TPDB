@@ -42,7 +42,7 @@
 }
 
 #adminBody input,textarea {
-  width: 450px;
+  width: 100%;
   background-color: #A3C6D9;
   font-family: Helvetica, Arial;
   color: white;
@@ -99,7 +99,7 @@
 	color: #ffffff;
 }
 #fTracks input:nth-child(2) {
-  width: 425px;
+  width: 400px;
 }
 #fTracks input:nth-child(3) {
   width: 80px;
