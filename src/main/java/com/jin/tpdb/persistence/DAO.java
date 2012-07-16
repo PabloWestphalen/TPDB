@@ -107,6 +107,14 @@ public class DAO {
 		return results;
 
 	}
+	
+	protected <T> List<T> list(Class entity, Order order) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		c.addOrder(order);
+		List<T> results = c.list();
+		return results;
+	}
 
 	protected <T> List<T> list(Class entity, Criterion... restrictions) {
 		Session hbs = (Session) em.getDelegate();
@@ -222,6 +230,14 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		List<T> results = dao.list(c);
+		dao.close();
+		return results;
+	}
+	
+	public static <T> List<T> getList(Class entity, Order order) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> results = dao.list(entity, order);
 		dao.close();
 		return results;
 	}

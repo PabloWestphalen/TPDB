@@ -16,7 +16,7 @@
   </article>
   </tpdb:content>
   <tpdb:sidebar>
-    <img src="${album.cover}" class="coverImage"  />
+    <img src="<c:url value="/${album.cover}" />" class="coverImage"  />
     <h3>Information</h3>
     <ul>
       <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />

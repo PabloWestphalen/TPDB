@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.criterion.Order;
+
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.persistence.DAO;
 
@@ -16,7 +18,7 @@ public class ArtistsController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		List<Artist> artists = DAO.getList(Artist.class);
+		List<Artist> artists = DAO.getList(Artist.class, Order.asc("name"));
 		request.setAttribute("artistsList", artists);
 
 		request.setCharacterEncoding("UTF-8");

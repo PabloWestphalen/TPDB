@@ -382,3 +382,95 @@ aside {
 #about em.under {
   border-bottom: dotted 1px white;
 }
+
+#adminContainer {
+  padding: 0;
+  margin: 0;  
+  min-height: 500px;
+}
+
+#artistsNav {
+	padding-top: 50px;
+}
+
+#adminNav, #artistsNav {
+	display: block;
+	width: 175px;
+	background-color: #6B9BB3;
+	float: left;  
+	box-sizing: border-box;  
+}
+
+
+#artistsNav a {
+	margin: auto;
+	padding: 0 10px;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: #6B9BB3;
+	border-bottom: solid 1px #8FB8CC;		
+	font-family: Helvetica, Arial;
+	color: #D9F0FF;  
+	text-shadow: #444 1px 1px 1px;	
+	text-decoration: none;	
+}
+
+#artistsNav a:nth-child(1) {
+	border-top: solid 1px #8FB8CC;
+}
+
+#artistsNav a:hover {
+	background-color: #6592A8;
+}
+
+#adminBody, #artistsBody {
+  display: block;
+  width: 75%;
+  height: 100%;
+  background-color: #609EBF;
+  display: inline-block;
+  padding: 0;
+  box-shadow: none;
+}
+
+#artistsBody {
+	width: 75%;	
+}
+
+
+#artistsBody div {
+	display: none;
+}
+
+
+#artistsBody a {
+	font-size: 1.1em;
+	color: #FFFFBF;
+	text-shadow: 1px 1px 0px #666666;
+}
+
+#artistsBody img {
+	float: left;
+	margin-right: 10px;
+	width: 100px;
+	height: 100px;
+}
+
+#artistsBody p {
+	margin: 20px 0 0 0;
+	padding: 0;
+	width: 600px;
+	height: 100px;
+}
+#artistsBody p:nth-child(odd) {
+	background-color: #5C98B8;
+}
+
+#artistsBody span {
+	display: block;
+}
+
+#artistsBody div p a {
+	display: block;
+}

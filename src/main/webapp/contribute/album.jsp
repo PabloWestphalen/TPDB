@@ -46,7 +46,7 @@
           </p>
         </div>          
                <p>
-          <img src="/images/blank_cover.png" width="85" height="85" alt="Cover" class="cover"  id="coverUploadButton" />
+          <img src="<c:url value="/images/blank_cover.png" />" width="85" height="85" alt="Cover" class="cover"  id="coverUploadButton" />
         </p>          
         <p class="clrl">
           <label for="name" id="albumName">Album name</label>
