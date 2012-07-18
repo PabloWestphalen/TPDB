@@ -37,9 +37,6 @@ public class AlbumController extends HttpServlet {
 		dao.save(album);
 		dao.close();
 		
-		
-		dao.close();
-		
 		request.setAttribute("songs", songs);
 		request.setAttribute("album", album);
 		request.setCharacterEncoding("UTF-8");
