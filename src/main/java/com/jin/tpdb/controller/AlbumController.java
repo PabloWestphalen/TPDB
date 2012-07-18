@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.criterion.Restrictions;
 
+import com.jin.Utils;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.AlbumRating;
 import com.jin.tpdb.entities.Song;
@@ -23,6 +24,7 @@ public class AlbumController extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		Album album = DAO.load(Album.class, id);
+		Utils.assignTracksToAlbums();
 		List<Song> songs = DAO.getSongs(id);
 		request.setAttribute("songs", songs);
 		request.setAttribute("album", album);

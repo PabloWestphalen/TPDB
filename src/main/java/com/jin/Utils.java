@@ -66,7 +66,7 @@ public class Utils {
 				
 			}
 			a.setSongs(songsCollection);
-			// dao.em.merge(a);
+			dao.em.merge(a);
 		}
 		
 		dao.close();
