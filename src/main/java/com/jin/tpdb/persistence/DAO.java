@@ -188,6 +188,7 @@ public class DAO {
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity);
 		c.add(Restrictions.eq("album.id", id));
+		c.addOrder(Order.asc("number"));
 		List<T> results = c.list();
 		return results;
 	}
