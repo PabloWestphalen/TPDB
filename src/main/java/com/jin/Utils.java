@@ -60,7 +60,7 @@ public class Utils {
 		
 		for(Album a : albums) {
 			ArrayList<Song> songsCollection = new ArrayList<Song>();
-			Collection<Song> songs = a.getSongs();
+			Collection<Song> songs = DAO.getSongs(a.getId());
 			for(Song s : songs) {
 				songsCollection.add(s);
 				
