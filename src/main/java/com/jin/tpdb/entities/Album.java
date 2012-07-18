@@ -2,16 +2,24 @@
 package com.jin.tpdb.entities;
 
 import java.io.File;
+import java.text.DecimalFormat;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import com.jin.tpdb.entities.User;
+import org.hibernate.criterion.Restrictions;
+
+import com.jin.tpdb.entities.Song;
 import com.jin.tpdb.persistence.DAO;
 
 //lol
@@ -23,6 +31,9 @@ public class Album {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
+	@OneToMany
+	private Collection<Song> songs;
+	
 	// @Column(nullable = false) @ManyToOne
 	@ManyToOne
 	private Artist artist;
@@ -162,11 +173,25 @@ public class Album {
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
 	}
+	
+	public Collection<Song> getSongs() {
+		return songs;
+	}
+	
+	public void setSongs(Collection<Song> songs) {
+		this.songs = songs;
+	}
 
+	
 	// util methods
 
 	public Long getTotalComments() {
 		return DAO.countAlbumComments(id);
+	}
+	
+	public double getAverageRating() {
+		double rating = DAO.getAverage(AlbumRating.class, "rating", Restrictions.like("album.id", id));
+		return Math.floor(rating);		
 	}
 
 	public String getCover() {

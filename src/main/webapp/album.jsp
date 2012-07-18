@@ -1,8 +1,9 @@
 <%@taglib uri="Utils" prefix="Utils" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="album">
+<tpdb:page name="album" script="stars">
   <tpdb:content>
   <article>
   <h2>${album.name} (${album.artist.name})</h2>
@@ -32,6 +33,6 @@
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>
     <h3>Rating</h3>
-    8 stars rs
+	<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div>
   </tpdb:sidebar>
 </tpdb:page>

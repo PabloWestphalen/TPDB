@@ -20,6 +20,16 @@ public class AlbumRating {
 	private Album album;
 
 	private int rating;
+	
+	public AlbumRating() {
+		//no args constructor
+	}
+	
+	public AlbumRating(Album album, int value, User user) {
+		this.album = album;
+		this.rating = value;
+		this.user = user;
+	}
 
 	public int getId() {
 		return id;

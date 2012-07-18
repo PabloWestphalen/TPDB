@@ -24,7 +24,7 @@
     </form>   
   </div>
   <div id="lightbox"></div>
-  <form method="post" id="albumForm" action="/contribute/album/add">
+  <form method="post" id="albumForm" action="<c:url value="/contribute/album/add" />" >
       <fieldset id="fAlbum">
         <legend>Album Info</legend>
         <div class="coverLeft">

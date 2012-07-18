@@ -2,6 +2,7 @@ package com.jin.tpdb.controller.contribute;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -60,10 +61,17 @@ public class EditAlbumController extends HttpServlet {
 		String description = Sanitizer.clean(request
 				.getParameter("description"));
 		String label = Sanitizer.clean(request.getParameter("label"));
+		ArrayList<Song> songs = new ArrayList<Song>();
+		Calendar cal = Calendar.getInstance();
+		int year = Integer.parseInt(request.getParameter("year"));
+		int month = Integer.parseInt(request.getParameter("month"));
+		cal.set(year, month, 1);
 
 		album.setName(albumName);
 		album.setDescription(description);
 		album.setLabel(label);
+		album.setReleaseDate(cal.getTime());
+		album.setUploadDate(new Date());
 
 		File tempCover = new File(coversPath
 				+ request.getParameter("temp_cover_name"));
@@ -81,16 +89,10 @@ public class EditAlbumController extends HttpServlet {
 			s.setLength(Sanitizer.clean(lengths[i]));
 			s.setNumber(i + 1);
 			dao.save(s);
+			songs.add(s);
 		}
 
-		Calendar cal = Calendar.getInstance();
-		int year = Integer.parseInt(request.getParameter("year"));
-		int month = Integer.parseInt(request.getParameter("month"));
-
-		cal.set(year, month, 1);
-
-		album.setReleaseDate(cal.getTime());
-		album.setUploadDate(new Date());
+		album.setSongs(songs);
 
 		dao.save(album);
 		dao.close();

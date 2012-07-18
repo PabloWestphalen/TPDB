@@ -1,6 +1,7 @@
 <%@tag description="Standard page header and footer. Body goes inside." pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@attribute name="description" description="The page's description. Show's up in google"
   required="false"%>
 <%@attribute name="name" description="The page's name is used to mark as current in the navigation menu"
@@ -30,6 +31,9 @@
   </c:otherwise>
 </c:choose>
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<c:url value="/feed" />" />
+<c:if test="${not empty script && fn:contains(script, 'stars')}">
+<link href="<c:url value="/css/stars.css" />" rel="stylesheet" type="text/css">
+</c:if>
 <link rel="stylesheet" href="<c:url value="/css/layout.css" />" type="text/css">
 <link rel="stylesheet" href="<c:url value="/css/blue.css" />" type="text/css">
 <c:if test="${type == 'admin'}">
@@ -51,10 +55,13 @@
 </head>
 <body id="${name}">
   <jsp:doBody />
-  <script src="<c:url value="/js/jquery.js" />"></script>
+  <script src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />"></script>
   <script src="<c:url value="/js/jquery.form.js" />"></script>
   <c:if test="${not empty script}">
-    <script src="<c:url value="/js/${script}.js" />"></script>    
+  	<c:set var="scriptsList" value="${fn:split(script, ', ')}" />
+  	<c:forEach var="script" items="${scriptsList}" >
+  	<script src="<c:url value="/js/${script}.js" />"></script>   	
+  	</c:forEach>     
   </c:if>
 </body>
 </html>

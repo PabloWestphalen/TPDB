@@ -15,10 +15,8 @@
         <p>${news.content}</p>
         <p class="entry_info">
           Contributed by ${news.user.username} at
-          <fmt:formatDate value="${news.date}" type="date" />
-          | Comments
-          |
-          Tags: <c:forEach var="tag" items="${news.tags}"><span class="tag">${tag.name}</span> </c:forEach>
+          <fmt:formatDate value="${news.date}" type="date" />0
+          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" /> 0
         </p>
       </article>
     </c:forEach>
@@ -26,16 +24,16 @@
     <c:forEach var="album" items="${albums}">
       <article>
         <h3>
-          <a href="<c:url value="/album/?id=${album.id}" />">${album.name} - ${album.artist.name}</a>
+          <a href="<c:url value="/album/?id=${album.id}" />">${album.name} (${album.artist.name})</a>
         </h3>
         <p>
           <img src="${album.cover}" alt="${album.name} cover" class="coverImage" />
           <tpdb:format var="${album.description}" maxlength="350" html="true" />          
         </p>
-        <p class="entry_info">
+        <p class="entry_info" >
           Contributed by ${album.user.username} at
           <fmt:formatDate value="${album.uploadDate}" type="date" />
-          | ${album.totalComments} Comments
+          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" /> ${album.totalComments} 
         </p>
       </article>
     </c:forEach>

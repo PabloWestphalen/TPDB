@@ -10,9 +10,11 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.entities.Album;
@@ -69,6 +71,24 @@ public class DAO {
 	
 	public <T> T get(Class c, int i) {
 		return (T) em.find(c, i);
+	}
+	
+	public double avg(Class entity, String field, Criterion... restrictions) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		if (restrictions != null) {
+			for (Criterion restriction : restrictions) {
+				c.add(restriction);
+			}
+		}
+		c.setProjection(Projections.avg(field));
+		if(c.uniqueResult() != null) {
+			double uniqueResult = (Double) c.uniqueResult();
+			return uniqueResult;
+		} else {
+			return 0;
+		}
+		
 	}
 
 	public <T> T get(Class entity, int i, Criterion... restrictions) {
@@ -128,7 +148,7 @@ public class DAO {
 		return results;
 	}
 
-	protected <T> List<T> list(Class entity, Order order,
+	public <T> List<T> list(Class entity, Order order,
 			Criterion... restrictions) {
 		Session hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(entity);
@@ -206,6 +226,9 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		List<Album> albums = dao.listAlbums(id);
+		for(Album a : albums) {
+			Hibernate.initialize(a.getSongs());
+		}
 		dao.close();
 		return albums;
 	}
@@ -214,6 +237,14 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		T result = dao.get(c, i);
+		dao.close();
+		return result;
+	}
+	
+	public static double getAverage(Class c, String field, Criterion... restrictions) {
+		DAO dao = new DAO();
+		dao.open();
+		double result = dao.avg(c, field, restrictions);
 		dao.close();
 		return result;
 	}

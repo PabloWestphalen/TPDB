@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.FetchMode;
+import org.hibernate.criterion.Order;
 
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Tag;
@@ -29,7 +30,7 @@ public class NewsController extends HttpServlet {
 			request.setAttribute("news", news);
 
 		} else {
-			List<News> newsList = DAO.getList(News.class);
+			List<News> newsList = DAO.getList(News.class, Order.desc("date"));
 			request.setAttribute("newsList", newsList);
 		}
 

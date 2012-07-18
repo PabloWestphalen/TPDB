@@ -48,6 +48,10 @@
 		<servlet-class>com.jin.tpdb.controller.RssController</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>RatingController</servlet-name>
+		<servlet-class>com.jin.tpdb.controller.RatingController</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>fileServing</servlet-name>
 		<servlet-class>com.jin.FileServingServlet</servlet-class>
 		<init-param>
@@ -109,9 +113,14 @@
 		<url-pattern>/api/</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>RatingController</servlet-name>
+		<url-pattern>/vote</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>AboutPage</servlet-name>
 		<url-pattern>/about/</url-pattern>
 	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>Index</welcome-file>
 		<welcome-file>index.jsp</welcome-file>

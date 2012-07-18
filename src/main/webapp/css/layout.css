@@ -8,6 +8,8 @@
   padding: 0; 
 }
 
+
+
 a {
   text-decoration: none;
 }
@@ -15,7 +17,6 @@ a {
 a img {
   border: none;
 }
-
 
 h1,h2,h3,h4,h5,h6 {
   font-weight: normal;
@@ -137,21 +138,18 @@ article .entry_info {
   font-size: 14px;
 }
 
+.comments {
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+}
 
 
 article { 
   text-align: justify;
 }
 
-article p img {
-  
-  float: right;
-  margin-left: 5px;
-  border: none;
-  display: block;
-  width: 100px;
-  height: 100px;
-}
+
 
 article ol {
   list-style-position: inside;
@@ -348,9 +346,16 @@ aside {
 }
 
 .coverImage {
-  box-shadow: 4px 6px 5px 0px #566973;
   width: 100px;
   height: 100px;
+  border: none;
+  box-shadow: 4px 6px 5px 0px #566973;  
+}
+
+article p img.coverImage {
+	margin-left: 5px;
+	display: block;
+	float: right;
 }
 
 .tag {
@@ -387,10 +392,19 @@ aside {
   padding: 0;
   margin: 0;  
   min-height: 500px;
+  position: relative;
 }
+
+#artistsBody, #adminBody {
+	position: relative;
+	left: 175px;
+	
+}
+
 
 #artistsNav {
 	padding-top: 50px;
+	
 }
 
 #adminNav, #artistsNav {
@@ -398,7 +412,10 @@ aside {
 	width: 175px;
 	background-color: #6B9BB3;
 	float: left;  
-	box-sizing: border-box;  
+	box-sizing: border-box;
+	height: 100%;
+	position: absolute;
+	
 }
 
 
@@ -437,11 +454,9 @@ aside {
 	width: 75%;	
 }
 
-
-#artistsBody div {
-	display: none;
+#artistsBody .rateit {
+	
 }
-
 
 #artistsBody a {
 	font-size: 1.1em;
@@ -456,18 +471,32 @@ aside {
 	height: 100px;
 }
 
-#artistsBody p {
+#artistsBody .albumDiv {
+	display: none;
 	margin: 20px 0 0 0;
-	padding: 0;
+	padding-left: 20px;
 	width: 600px;
 	height: 100px;
 }
-#artistsBody p:nth-child(odd) {
+
+#artistsBody .albumDiv div span {
+	font-size: .9em;
+	vertical-align: text-bottom;
+}
+
+
+#artistsBody .albumDiv div:nth-child(even) {
 	background-color: #5C98B8;
 }
 
+#artistsBody .albumDiv div p {
+	margin: 0;
+	padding: 0;
+}
+
+
 #artistsBody span {
-	display: block;
+	
 }
 
 #artistsBody div p a {
