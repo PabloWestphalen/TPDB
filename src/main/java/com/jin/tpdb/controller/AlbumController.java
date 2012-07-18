@@ -34,7 +34,7 @@ public class AlbumController extends HttpServlet {
 		}
 		
 		album.setSongs(songsCollection);
-		dao.save(album);
+		dao.em.merge(album);
 		dao.close();
 		
 		request.setAttribute("songs", songs);
