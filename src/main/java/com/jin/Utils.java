@@ -3,8 +3,14 @@ package com.jin;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+import com.jin.Sanitizer;
+import com.jin.tpdb.entities.Album;
+import com.jin.tpdb.entities.Song;
+import com.jin.tpdb.persistence.DAO;
 
 public class Utils {
 
@@ -43,5 +49,26 @@ public class Utils {
 			}
 		}
 		return msg;
+	}
+	
+	@Deprecated
+	public static void assignTracksToAlbums() {
+		List<Album> albums = DAO.getList(Album.class);
+		
+		DAO dao = new DAO();
+		dao.open();		
+		
+		for(Album a : albums) {
+			ArrayList<Song> songsCollection = new ArrayList<Song>();
+			Collection<Song> songs = a.getSongs();
+			for(Song s : songs) {
+				songsCollection.add(s);
+				
+			}
+			a.setSongs(songsCollection);
+			// dao.em.merge(a);
+		}
+		
+		dao.close();
 	}
 }

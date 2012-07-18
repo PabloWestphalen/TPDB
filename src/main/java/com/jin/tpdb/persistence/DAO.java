@@ -23,7 +23,7 @@ import com.jin.tpdb.entities.Song;
 @SuppressWarnings("unchecked")
 public class DAO {
 	protected static EntityManagerFactory factory;
-	public EntityManager em;
+	protected EntityManager em;
 
 	public DAO() {
 		if (DAO.getManagerFactory() == null) {
