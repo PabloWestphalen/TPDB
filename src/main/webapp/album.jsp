@@ -7,7 +7,7 @@
 <fmt:formatDate value="${album.releaseDate}" type="date" pattern="yyyy" />
 </c:set>
 <c:set var="ogDesc">
-<tpdb:format var="${album.description}" maxlength="160" />
+<tpdb:format var="${album.description}" maxlength="110" />
 </c:set>
 <tpdb:page name="album" script="stars"
 	title="${album.name} - ${album.artist.name}"
