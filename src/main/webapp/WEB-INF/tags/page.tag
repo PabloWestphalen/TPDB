@@ -4,15 +4,27 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@attribute name="description" description="The page's description. Show's up in google"
   required="false"%>
+  <%@attribute name="title" description="The page's title." required="false"%>
 <%@attribute name="name" description="The page's name is used to mark as current in the navigation menu"
   required="false"%>
 <%@attribute name="keywords" description="The page's keywords." required="false"%>
 <%@attribute name="type" description="The page's type." required="false"%>
 <%@attribute name="script" description="A JavaScript file for the page" required="false"%>
+<%@attribute name="ogTitle" description="The OpenGraph title" required="false"%>
+<%@attribute name="ogImage" description="The OpenGraph image url" required="false"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+	xmlns:fb="http://www.facebook.com/2008/fbml" >
 <head>
+<c:choose>
+<c:when test="${not empty title}">
+<title>${title} | The Trip-Hop Database</title>
+</c:when>
+<c:otherwise>
 <title>The Trip-Hop Database</title>
+</c:otherwise>
+</c:choose>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <c:choose>
   <c:when test="${not empty description}">
@@ -30,6 +42,25 @@
     <meta name="keywords" content="trip-hop, database, new, release, wiki">
   </c:otherwise>
 </c:choose>
+<c:if test="${not empty title}">
+	<meta property="og:title" content="${ogTitle}" />
+</c:if>
+<c:choose>
+	<c:when test="${name == 'album' }" >
+		<meta property="og:type" content="music.album" />
+	</c:when>
+	<c:otherwise>
+		<meta property="og:type" content="website" />
+	</c:otherwise>
+</c:choose>
+<meta property="og:site_name" content="Trip-Hop Database" />
+<c:if test="${name == 'album'}">
+<meta property="og:url" content="http://pablow-tpdb.rhcloud.com/album/?${pageContext.request.queryString}" />
+</c:if>
+
+<meta property="og:image" content="https://pablow-tpdb.rhcloud.com/${ogImage}" />
+
+
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<c:url value="/feed" />" />
 <c:if test="${not empty script && fn:contains(script, 'stars')}">
 <link href="<c:url value="/css/stars.css" />" rel="stylesheet" type="text/css">
@@ -40,7 +71,6 @@
   <link rel="stylesheet" href="<c:url value="/css/admin.css" />" type="text/css">
 </c:if>
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-33198824-1']);
   _gaq.push(['_trackPageview']);
@@ -50,10 +80,17 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 </head>
 <body id="${name}">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
   <jsp:doBody />
   <script src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />"></script>
   <script src="<c:url value="/js/jquery.form.js" />"></script>

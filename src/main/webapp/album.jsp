@@ -3,11 +3,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="album" script="stars">
+<tpdb:page name="album" script="stars" ogTitle="${album.name}" title="${album.name} - ${album.artist.name}" ogImage="${album.cover}">
   <tpdb:content>
   <article>
   <h2>${album.name} (${album.artist.name})</h2>
-    ${Utils:cleanHtml(album.description)}
+  <div class="fb-like" data-send="false" data-width="10" data-show-faces="false" data-font="arial" data-layout="button_count"></div>
+  ${Utils:cleanHtml(album.description)}
   <h3>Tracks</h3>
   <ol>
     <c:forEach var="song" items="${songs}">
@@ -18,12 +19,13 @@
   </tpdb:content>
   <tpdb:sidebar>
     <img src="<c:url value="/${album.cover}" />" class="coverImage"  />
+    
     <h3>Information</h3>
     <ul>
       <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />
       <li>Length: ${album.length }</li>
       <li>Label: ${album.label}</li>
-      <li><a href="${album.artist.site}">Official Site</a></li>
+      <li><a href="${album.artist.site}" target="_blank">Official Site</a></li>
     </ul>
     <h3>Download</h3>
     <ul>
