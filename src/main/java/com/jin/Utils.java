@@ -40,12 +40,11 @@ public class Utils {
 			if (lastDot > 0) {
 				msg = msg.substring(0, lastDot);
 			}
-			msg += " [...]";
 		} else {
 			int nl = msg.indexOf("\n\n");
 			if (nl > 0) {
 				msg = msg.substring(0, nl);
-				msg += " [...]";
+				msg += " [-TRIMMED-]";
 			}
 		}
 		return msg;

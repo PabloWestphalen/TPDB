@@ -1,9 +1,15 @@
-<%@taglib uri="Utils" prefix="Utils" %>
+<%@taglib uri="Utils" prefix="Utils"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="album" script="stars" ogTitle="${album.name}" title="${album.name} - ${album.artist.name}" ogImage="${album.cover}" ogArtistName="${album.artist.name}" description="Album by ${album.artist.name}.">
+<tpdb:page name="album"
+	script="stars"
+	title="${album.name} - ${album.artist.name}" 
+	ogTitle="${album.artist.name} - ${album.name} (<fmt:formatDate value="${album.releaseDate}" type="date" pattern="yyyy" />)"
+	ogImage="${album.cover}"
+	ogDescription="<tpdb:format var="${album.description}" maxlength="160" />"
+	>
   <tpdb:content>
   <article>
   <h2>${album.name} (${album.artist.name})</h2>

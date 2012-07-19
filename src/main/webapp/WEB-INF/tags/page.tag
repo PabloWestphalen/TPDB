@@ -12,7 +12,7 @@
 <%@attribute name="script" description="A JavaScript file for the page" required="false"%>
 <%@attribute name="ogTitle" description="The OpenGraph title" required="false"%>
 <%@attribute name="ogImage" description="The OpenGraph image url" required="false"%>
-<%@attribute name="ogArtistName" description="The OpenGraph description" required="false"%>
+<%@attribute name="ogDescription" description="The OpenGraph description" required="false"%>
 <!DOCTYPE html>
 <html xmlns:og="http://opengraphprotocol.org/schema/"
 	xmlns:fb="http://www.facebook.com/2008/fbml" >
@@ -52,7 +52,7 @@
 <meta property="og:site_name" content="Trip-Hop Database" />
 </c:if>
 <meta property="og:image" content="https://pablow-tpdb.rhcloud.com/${ogImage}" />
-<meta property="og:description" content="Album by2 ${ogArtistName}." />
+<meta property="og:description" content="${ogDescription}" />
 
 
 
