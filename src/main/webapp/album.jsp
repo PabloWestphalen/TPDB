@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="album" script="stars" ogTitle="${album.name}" title="${album.name} - ${album.artist.name}" ogImage="${album.cover}">
+<tpdb:page name="album" script="stars" ogTitle="${album.name}" title="${album.name} - ${album.artist.name}" ogImage="${album.cover}" ogArtistName="${album.artist.name}" description="Album by ${album.artist.name}.">
   <tpdb:content>
   <article>
   <h2>${album.name} (${album.artist.name})</h2>

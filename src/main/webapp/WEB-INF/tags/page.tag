@@ -12,6 +12,7 @@
 <%@attribute name="script" description="A JavaScript file for the page" required="false"%>
 <%@attribute name="ogTitle" description="The OpenGraph title" required="false"%>
 <%@attribute name="ogImage" description="The OpenGraph image url" required="false"%>
+<%@attribute name="ogArtistName" description="The OpenGraph description" required="false"%>
 <!DOCTYPE html>
 <html xmlns:og="http://opengraphprotocol.org/schema/"
 	xmlns:fb="http://www.facebook.com/2008/fbml" >
@@ -43,22 +44,16 @@
   </c:otherwise>
 </c:choose>
 <c:if test="${not empty title}">
-	<meta property="og:title" content="${ogTitle}" />
+<meta property="og:title" content="${ogTitle}" />
 </c:if>
-<c:choose>
-	<c:when test="${name == 'album' }" >
-		<meta property="og:type" content="music.album" />
-	</c:when>
-	<c:otherwise>
-		<meta property="og:type" content="website" />
-	</c:otherwise>
-</c:choose>
-<meta property="og:site_name" content="Trip-Hop Database" />
+<meta property="og:type" content="website" />
 <c:if test="${name == 'album'}">
 <meta property="og:url" content="http://pablow-tpdb.rhcloud.com/album/?${pageContext.request.queryString}" />
+<meta property="og:site_name" content="Trip-Hop Database" />
 </c:if>
-
 <meta property="og:image" content="https://pablow-tpdb.rhcloud.com/${ogImage}" />
+<meta property="og:description" content="Album by2 ${ogArtistName}." />
+
 
 
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<c:url value="/feed" />" />
