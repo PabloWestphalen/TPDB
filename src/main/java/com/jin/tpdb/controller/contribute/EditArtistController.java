@@ -37,7 +37,7 @@ public class EditArtistController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String name = Sanitizer.clean(request.getParameter("name"));
+		String name = Sanitizer.clean(request.getParameter("artist_name"));
 		String site = Sanitizer.clean(request.getParameter("site"));
 
 		if (!name.isEmpty() && !site.isEmpty()) {

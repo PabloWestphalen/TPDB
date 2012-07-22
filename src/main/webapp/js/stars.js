@@ -16,7 +16,7 @@ $(document).ready(function() {
 		var albumId = e.target.id;
 		
 		$.ajax({
-			 url: '/pablow/vote', //your server side script
+			 url: '/vote', //your server side script
 			 data: { id: albumId, value: vl, type: 'album' }, //our data
 			 type: 'POST',
 			 success: function (data) {
