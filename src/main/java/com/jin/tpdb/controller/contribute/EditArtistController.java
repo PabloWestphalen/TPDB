@@ -49,7 +49,9 @@ public class EditArtistController extends HttpServlet {
 			dao.save(artist);
 			dao.close();
 
-			if (request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
+			String ajaxRequest = request.getHeader("X-Requested-With");
+			
+			if (!ajaxRequest.isEmpty() && ajaxRequest.equals("XMLHttpRequest")) {
 				PrintWriter out = response.getWriter();
 				response.setContentType("application/json");
 
