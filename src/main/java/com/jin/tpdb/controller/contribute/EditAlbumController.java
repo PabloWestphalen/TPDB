@@ -93,7 +93,7 @@ public class EditAlbumController extends HttpServlet {
 		}
 
 		//album.setSongs(songs);
-
+		//teste
 		dao.save(album);
 		dao.close();
 		dispatch(request, response);
