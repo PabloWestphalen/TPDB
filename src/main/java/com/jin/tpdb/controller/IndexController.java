@@ -26,8 +26,8 @@ public class IndexController extends HttpServlet {
 		List<News> newsList = DAO.getList(News.class, Order.desc("date"));
 
 		List<Album> albumsList = DAO.getList(Album.class,
-				Order.desc("uploadDate"));
-		List<Album> featuredAlbumsList = DAO.getList(Album.class);
+				Order.desc("uploadDate"), 4);
+		List<Album> featuredAlbumsList = DAO.getList(Album.class, Order.desc("name"), 3);
 
 		request.setAttribute("newsList", newsList);
 		request.setAttribute("albums", albumsList);

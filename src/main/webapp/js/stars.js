@@ -16,8 +16,8 @@ $(document).ready(function() {
 		var albumId = e.target.id;
 		
 		$.ajax({
-			 url: '/vote', //your server side script
-			 data: { id: albumId, value: vl, type: 'album' }, //our data
+			 url: '../vote', 
+			 data: { id: albumId, value: vl, type: 'album' }, 
 			 type: 'POST',
 			 success: function (data) {
 				 star.rateit('readonly', true);

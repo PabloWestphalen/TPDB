@@ -7,7 +7,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import com.jin.Sanitizer;
+import javax.servlet.http.HttpServletRequest;
+
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Song;
 import com.jin.tpdb.persistence.DAO;
@@ -69,5 +70,24 @@ public class Utils {
 		}
 		
 		dao.close();
+	}
+	
+	public static void reportError(HttpServletRequest request, Exception e) {
+		System.out.println(e.toString()); // exception type AND description	
+		// TODO find a way to get the stack trace
+		// get requested url and path
+		// get referer (previous page)
+		// get paramdata
+		System.out.println(e.getMessage());
+		System.out.println("##################### chupa essa, ronaldo");
+	}
+	
+	public static String urlEncode(String url) {
+		url = url.replace(" ", "-").toLowerCase();
+		return url;
+	}
+	
+	public static String urlDecode(String url) { 
+		return url.replace("-", " ");
 	}
 }

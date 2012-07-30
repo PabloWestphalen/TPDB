@@ -52,7 +52,7 @@
 <meta property="og:site_name" content="Trip-Hop Database" />
 </c:if>
 <meta property="og:image" content="https://pablow-tpdb.rhcloud.com/${ogImage}" />
-<meta property="og:description" content="${ogDescription}" />
+<meta property="og:description" content="<c:out value="${ogDescription}" escapeXml="true" />" />
 
 
 

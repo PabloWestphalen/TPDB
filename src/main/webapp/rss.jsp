@@ -41,7 +41,10 @@
 		<![CDATA[<tpdb:format var="${album.description}" maxlength="350" html="true" />]]>
 		</description>
 		<content:encoded>
-		<![CDATA[${Utils:cleanHtml(album.description)}]]>
+		<![CDATA[
+		<img src="${album.cover}" />
+		${Utils:cleanHtml(album.description)}
+		]]>
 		</content:encoded>
 	</item>
 	</c:forEach>

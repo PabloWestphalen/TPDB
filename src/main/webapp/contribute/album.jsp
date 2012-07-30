@@ -34,7 +34,16 @@
               <option>Select</option>
               <optgroup>  
               <c:forEach var="artist" items="${artists}">
+                <c:choose>
+                <c:when test="${not empty param.artist and artist.id eq param.artist}">
+                <option value="${artist.id}" selected="selected">${artist.name}</option>
+                </c:when>
+                <c:otherwise>
                 <option value="${artist.id}">${artist.name}</option>
+                </c:otherwise>
+                </c:choose>
+                
+                
               </c:forEach>
               </optgroup>  
             </select>  

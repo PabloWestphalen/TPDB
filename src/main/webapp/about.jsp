@@ -40,8 +40,8 @@
 				Man, now that'd be nice.</p>
 			<p>
 				But what am i saying? I'm a goddamn Web Developer! Though fairly
-				ambicious and probably doomed to fail, I could still try to make a
-				site like that come to life. In fact, I <em>must</em> try.
+				ambicious, I could still try to make a site like that come to
+				life. In fact, I <em>must</em> try.
 			</p>
 			<h3>Enter The Trip-Hop Database</h3>
 			<p>The Trip-Hop Database is my attempt at making the site I wish

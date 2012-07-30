@@ -51,7 +51,7 @@ public class EditArtistController extends HttpServlet {
 
 			String ajaxRequest = request.getHeader("X-Requested-With");
 			
-			if (!ajaxRequest.isEmpty() && ajaxRequest.equals("XMLHttpRequest")) {
+			if (ajaxRequest != null && ajaxRequest.equals("XMLHttpRequest")) {
 				PrintWriter out = response.getWriter();
 				response.setContentType("application/json");
 

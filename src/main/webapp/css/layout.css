@@ -458,7 +458,12 @@ article p img.coverImage {
 	
 }
 
-#artistsBody a {
+.albumDiv h3 {
+	width: 75%;
+	display: inline-block;
+}
+
+.albumDiv  a {
 	font-size: 1.1em;
 	color: #FFFFBF;
 	text-shadow: 1px 1px 0px #666666;
@@ -479,12 +484,19 @@ article p img.coverImage {
 	height: 100px;
 }
 
+#artistsBody .albumDiv.visible {
+	display: block;	
+}
+.hidden {
+	display: none;
+}
+
 #artistsBody .albumDiv div span {
 	font-size: .9em;
 	vertical-align: text-bottom;
 }
 
-#artistsBody .albumDiv div:nth-child(even) {
+#artistsBody .albumDiv div:nth-child(odd) {
 	background-color: #5C98B8;
 }
 
@@ -493,10 +505,55 @@ article p img.coverImage {
 	padding: 0;
 }
 
+.albumListing {
+	min-height: 100px;
+}
 #artistsBody span {
 	
 }
 
 #artistsBody div p a {
 	display: block;
+}
+
+
+/************* button code *************/
+
+a.button {
+  border: solid 1px #A5CD4E;
+  border-radius: 5px;
+  /* chrome/webkit */
+  background-image: -webkit-linear-gradient(top, #EBFF80, #A5CD4E); 
+  /*firefox */
+  background-image: -moz-linear-gradient(top, #EBFF80, #A5CD4E);
+  /* IE */
+  background-image: -ms-linear-gradient(top, #EBFF80, #A5CD4E);
+  /*opera */
+  background-image: -o-linear-gradient(top, #EBFF80, #A5CD4E); 
+  /*fallback color */
+  background-color: #EBFF80;
+  display: block;
+  font-family: Helvetica, Arial;
+  border-radius: 5px;
+  color: black;
+  text-shadow: white 1px 1px 2px;
+  font-weight: bold;
+  width: 90px;
+  padding: 1px;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.button:active {
+  background-image: -o-linear-gradient(top, #C7D96C 6px, #A5CD4E 100%);
+  position: relative;
+  left: 1px;
+  top: 1px;
+}
+
+a.button:hover {
+  border: solid 1px #64006B;
+  box-shadow: grey 0px 2px 5px 0px;
 }

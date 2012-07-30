@@ -161,6 +161,21 @@ public class DAO {
 		List<T> results = c.list();
 		return results;
 	}
+	
+	public <T> List<T> list(Class entity, Order order, int maxResults, 
+			Criterion... restrictions) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(entity);
+		c.addOrder(order);
+		if (restrictions != null) {
+			for (Criterion restriction : restrictions) {
+				c.add(restriction);
+			}
+		}
+		c.setMaxResults(maxResults);
+		List<T> results = c.list();
+		return results;
+	}
 
 	protected <T> Collection<T> list(Class entity, Order order, FetchMode f,
 			String fieldName, Criterion... restrictions) {
@@ -287,6 +302,15 @@ public class DAO {
 		DAO dao = new DAO();
 		dao.open();
 		List<T> results = dao.list(entity, order, restrictions);
+		dao.close();
+		return results;
+	}
+	
+	public static <T> List<T> getList(Class entity, Order order, int maxResults, 
+			Criterion... restrictions) {
+		DAO dao = new DAO();
+		dao.open();
+		List<T> results = dao.list(entity, order, maxResults, restrictions);
 		dao.close();
 		return results;
 	}

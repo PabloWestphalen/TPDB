@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-	var active = "#default";
 	var inactive;
 	var tmp;
 

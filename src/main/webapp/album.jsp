@@ -37,6 +37,7 @@
       <li>Label: ${album.label}</li>
       <li><a href="${album.artist.site}" target="_blank">Official Site</a></li>
     </ul>
+    <%--
     <h3>Download</h3>
     <ul>
       <li>Bitrate: ${album.bitrate} kbps</li>
@@ -44,6 +45,11 @@
       <li>Downloaded: ${album.downloadCount} times</li>
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>
+     --%>
+     <h3>Also from ${album.artist.name}</h3>
+     <ul>
+     	<li>Teste</li>
+     </ul>
     <h3>Rating</h3>
 	<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div>
   </tpdb:sidebar>

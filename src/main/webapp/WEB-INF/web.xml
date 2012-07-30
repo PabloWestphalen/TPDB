@@ -6,18 +6,22 @@
 	<servlet>
 		<servlet-name>IndexController</servlet-name>
 		<servlet-class>com.jin.tpdb.controller.IndexController</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>AlbumController</servlet-name>
 		<servlet-class>com.jin.tpdb.controller.AlbumController</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>NewsController</servlet-name>
 		<servlet-class>com.jin.tpdb.controller.NewsController</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>ArtistsController</servlet-name>
 		<servlet-class>com.jin.tpdb.controller.ArtistsController</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>EditNewsController</servlet-name>
@@ -34,6 +38,7 @@
 	<servlet>
 		<servlet-name>UploaderController</servlet-name>
 		<servlet-class>com.jin.tpdb.controller.UploaderController</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>AjaxDataController</servlet-name>
@@ -46,6 +51,7 @@
 	<servlet>
 		<servlet-name>RSS</servlet-name>
 		<servlet-class>com.jin.tpdb.controller.RssController</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>RatingController</servlet-name>
@@ -63,6 +69,7 @@
 	<servlet>
 		<servlet-name>AboutPage</servlet-name>
 		<jsp-file>/about.jsp</jsp-file>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>IndexController</servlet-name>
@@ -90,7 +97,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ArtistsController</servlet-name>
-		<url-pattern>/artists/</url-pattern>
+		<url-pattern>/artists/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>UploaderController</servlet-name>
@@ -120,9 +127,66 @@
 		<servlet-name>AboutPage</servlet-name>
 		<url-pattern>/about/</url-pattern>
 	</servlet-mapping>
-	
 	<welcome-file-list>
 		<welcome-file>Index</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/errorPage.jsp</location>
+	</error-page>
+	<filter>
+		<filter-name>imagesCache</filter-name>
+		<filter-class>com.samaxes.filter.CacheFilter</filter-class>
+		<init-param>
+			<param-name>static</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>expirationTime</param-name>
+			<param-value>2592000</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>cssCache</filter-name>
+		<filter-class>com.samaxes.filter.CacheFilter</filter-class>
+		<init-param>
+			<param-name>expirationTime</param-name>
+			<param-value>604800</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>jsCache</filter-name>
+		<filter-class>com.samaxes.filter.CacheFilter</filter-class>
+		<init-param>
+			<param-name>private</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>expirationTime</param-name>
+			<param-value>216000</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>gzipFilter</filter-name>
+		<filter-class>net.sf.ehcache.constructs.web.filter.GzipFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>gzipFilter</filter-name>
+		<url-pattern>*</url-pattern>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.js</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>imagesCache</filter-name>
+		<url-pattern>/images/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>cssCache</filter-name>
+		<url-pattern>*.css</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>jsCache</filter-name>
+		<url-pattern>*.js</url-pattern>
+	</filter-mapping>
 </web-app>
