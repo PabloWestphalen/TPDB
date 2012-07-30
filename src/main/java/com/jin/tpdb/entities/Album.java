@@ -185,9 +185,7 @@ public class Album {
 		return songs;
 	}
 	
-	/*public void setSongs(Collection<Song> songs) {
-		this.songs = songs;
-	}*/
+	
 
 	
 	// util methods
