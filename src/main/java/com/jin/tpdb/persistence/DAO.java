@@ -82,8 +82,8 @@ public class DAO {
 			}
 		}
 		c.setProjection(Projections.avg(field));
-		if(c.uniqueResult() != null) {
-			double uniqueResult = (Double) c.uniqueResult();
+		Double uniqueResult = (Double) c.uniqueResult();
+		if(uniqueResult != null) {
 			return uniqueResult;
 		} else {
 			return 0;

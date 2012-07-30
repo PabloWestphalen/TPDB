@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.persistence.DAO;
 
@@ -20,6 +23,9 @@ public class Artist {
 	@Column(length = 500)
 	String site;
 
+	@Transient
+	private List<Album> albums;
+	
 	public Artist() {
 
 	}
@@ -57,7 +63,13 @@ public class Artist {
 	}
 
 	public List<Album> getAlbums() {
-		List<Album> albums = DAO.getAlbums(this.id);
-		return albums;
+		if(albums == null) {
+			System.out.println("########getting albums from artist " + name + "###########");
+			this.albums = DAO.getList(Album.class,
+					Restrictions.eq("artist.id", this.id));
+			return albums;	
+		} else {
+			return albums;
+		}		
 	}
 }

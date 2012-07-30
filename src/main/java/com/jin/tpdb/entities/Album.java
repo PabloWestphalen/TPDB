@@ -5,6 +5,7 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.criterion.Restrictions;
 
@@ -30,9 +32,12 @@ public class Album {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
+	
+	@Transient
+	private Double rating;
 
-	@OneToMany
-	private Collection<Song> songs;
+	@Transient
+	private List<Song> songs;
 	
 	// @Column(nullable = false) @ManyToOne
 	@ManyToOne
@@ -174,13 +179,15 @@ public class Album {
 		this.downloadCount = downloadCount;
 	}
 	
-	public Collection<Song> getSongs() {
+	public List<Song> getSongs() {
+		System.out.println("########### gettings songs from album " + name + "#############");
+		this.songs = DAO.getList(Song.class, Restrictions.eq("album.id", this.id));
 		return songs;
 	}
 	
-	public void setSongs(Collection<Song> songs) {
+	/*public void setSongs(Collection<Song> songs) {
 		this.songs = songs;
-	}
+	}*/
 
 	
 	// util methods
@@ -190,8 +197,14 @@ public class Album {
 	}
 	
 	public double getAverageRating() {
-		double rating = DAO.getAverage(AlbumRating.class, "rating", Restrictions.like("album.id", id));
-		return Math.floor(rating);		
+		System.out.println("#### getting rating from album " + name + "#########");
+		if(rating == null) {
+			rating = Math.floor(DAO.getAverage(AlbumRating.class, "rating", Restrictions.like("album.id", id)));
+			return rating;
+		} else {
+			return rating;
+		}
+				
 	}
 
 	public String getCover() {
