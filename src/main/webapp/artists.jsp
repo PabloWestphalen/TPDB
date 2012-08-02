@@ -49,7 +49,15 @@
 						<strong>Length</strong>: ${album.length} |
 						</c:otherwise>
 						</c:choose>
-						<strong>Tracks:</strong>  | 
+						<c:choose>
+						<c:when test="${album.totalSongs eq 0}">
+						<strong>Tracks:</strong>  N/A
+						</c:when>
+						<c:otherwise>
+						<strong>Tracks:</strong>  ${album.totalSongs}
+						</c:otherwise>
+						</c:choose>
+						 | 
 						<strong>Rating:</strong>
 						</span>
 						<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>

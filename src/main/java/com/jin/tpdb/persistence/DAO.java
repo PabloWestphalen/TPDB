@@ -34,10 +34,6 @@ public class DAO {
 		}
 	}
 	
-	public DAO(EntityManager em) {
-		this();
-	}
-
 	protected static void setManagerFactory(EntityManagerFactory f) {
 		factory = f;
 	}
@@ -210,6 +206,23 @@ public class DAO {
 		c.addOrder(Order.asc("number"));
 		List<T> results = c.list();
 		return results;
+	}
+	
+	protected int countSongs(int albumId) {
+		Session hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(Song.class);
+		c.setProjection(Projections.rowCount());
+		c.add(Restrictions.eq("album.id", albumId));
+		int result = ((Number)c.uniqueResult()).intValue();
+		return result;
+	}
+	
+	public static int getSongsTotal(int albumId) {
+		DAO dao = new DAO();
+		dao.open();
+		int result = dao.countSongs(albumId);
+		dao.close();
+		return result;
 	}
 
 	protected Long getAlbumTotalComments(int id) {

@@ -75,6 +75,10 @@ public class Album {
 	public int getId() {
 		return id;
 	}
+	
+	public int getTotalSongs() {
+		return DAO.getSongsTotal(this.id);
+	}
 
 	public void setId(int id) {
 		this.id = id;
