@@ -57,11 +57,7 @@
 
 
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<c:url value="/feed" />" />
-<c:if test="${not empty script && fn:contains(script, 'stars')}">
-<link href="<c:url value="/css/stars.css" />" rel="stylesheet" type="text/css">
-</c:if>
 <link rel="stylesheet" href="<c:url value="/css/layout.css" />" type="text/css">
-<link rel="stylesheet" href="<c:url value="/css/blue.css" />" type="text/css">
 <c:if test="${type == 'admin'}">
   <link rel="stylesheet" href="<c:url value="/css/admin.css" />" type="text/css">
 </c:if>
@@ -87,8 +83,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
   <jsp:doBody />
-  <script src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />"></script>
-  <script src="<c:url value="/js/jquery.form.js" />"></script>
+  <script src="<c:url value="/js/jquery.js" />"></script>
   <c:if test="${not empty script}">
   	<c:set var="scriptsList" value="${fn:split(script, ', ')}" />
   	<c:forEach var="script" items="${scriptsList}" >

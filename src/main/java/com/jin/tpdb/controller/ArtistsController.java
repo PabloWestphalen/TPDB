@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,12 +17,21 @@ import org.hibernate.criterion.Restrictions;
 import com.jin.Utils;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.persistence.DAO;
+import com.jin.tpdb.persistence.Query;
 
 public class ArtistsController extends HttpServlet {
+	@Inject
+	private Query query;
+		
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		
+		//List<Artist> artists = query.getList(Artist.class, Order.asc("name"));
+		
+		
+		
 		List<Artist> artists = DAO.getList(Artist.class, Order.asc("name"));
+		
 		
 		if(request.getPathInfo() != null) {
 			String artistName = Utils.urlDecode(request.getPathInfo()).replace("/", "");
@@ -31,10 +41,7 @@ public class ArtistsController extends HttpServlet {
 		
 		request.setAttribute("artistsList", artists);
 		
-		request.setCharacterEncoding("UTF-8");
-		
 		RequestDispatcher jsp = request.getRequestDispatcher("/artists.jsp");
-		
 		jsp.forward(request, response);
 
 	}

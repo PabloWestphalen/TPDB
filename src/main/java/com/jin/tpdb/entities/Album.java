@@ -2,27 +2,21 @@
 package com.jin.tpdb.entities;
 
 import java.io.File;
-import java.text.DecimalFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.hibernate.criterion.Restrictions;
 
-import com.jin.tpdb.entities.Song;
 import com.jin.tpdb.persistence.DAO;
+import com.jin.tpdb.persistence.Query;
 
 //lol
 
@@ -35,6 +29,9 @@ public class Album {
 	
 	@Transient
 	private Double rating;
+	
+	//@Transient
+	//private Query query = new Query();
 
 	@Transient
 	private List<Song> songs;
@@ -181,6 +178,7 @@ public class Album {
 	
 	public List<Song> getSongs() {
 		System.out.println("########### gettings songs from album " + name + "#############");
+		
 		this.songs = DAO.getList(Song.class, Restrictions.eq("album.id", this.id));
 		return songs;
 	}

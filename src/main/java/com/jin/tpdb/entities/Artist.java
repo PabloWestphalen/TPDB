@@ -23,6 +23,10 @@ public class Artist {
 	@Column(length = 500)
 	String site;
 
+	//@Transient
+	//@Inject
+	//private Query query;
+	
 	@Transient
 	private List<Album> albums;
 	

@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="contribute" type="admin" script="add_news">
+<tpdb:page name="contribute" type="admin">
   <tpdb:content type="admin">
     <form method="post" action="/contribute/news/add" >
       <fieldset>
@@ -26,4 +26,17 @@
     </form>
   </tpdb:content>
   <tpdb:sidebar />
+<script>
+$(document).ready(function(){
+	   $('#tags').textext({
+	        plugins : 'tags prompt focus autocomplete ajax arrow',
+	        prompt : 'Add one...',
+	        ajax : {
+	            url : '/api/',
+	            dataType : 'json',
+	            cacheResults : true
+	        }
+	    });
+});
+</script>
 </tpdb:page>

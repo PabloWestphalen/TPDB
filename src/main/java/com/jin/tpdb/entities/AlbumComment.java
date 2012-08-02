@@ -28,6 +28,38 @@ public class AlbumComment {
 
 	@Column(length = 65535, columnDefinition = "Text")
 	private String comment;
+	
+	private String userIP;
+	
+	private String userName;
+	
+	private String userEmail;
+	
+	
+
+	public String getUserIP() {
+		return userIP;
+	}
+
+	public void setUserIP(String userIP) {
+		this.userIP = userIP;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 
 	public int getId() {
 		return id;

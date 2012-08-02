@@ -34,7 +34,6 @@ public class NewsController extends HttpServlet {
 			request.setAttribute("newsList", newsList);
 		}
 
-		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("/news.jsp");
 		jsp.forward(request, response);
 	}

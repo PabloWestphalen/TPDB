@@ -33,12 +33,16 @@ public class DAO {
 			factory = DAO.getManagerFactory();
 		}
 	}
+	
+	public DAO(EntityManager em) {
+		this();
+	}
 
 	protected static void setManagerFactory(EntityManagerFactory f) {
 		factory = f;
 	}
 
-	protected static EntityManagerFactory getManagerFactory() {
+	public static EntityManagerFactory getManagerFactory() {
 		return factory;
 	}
 

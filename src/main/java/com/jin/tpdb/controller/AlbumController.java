@@ -27,7 +27,6 @@ public class AlbumController extends HttpServlet {
 		List<Song> songs = DAO.getSongs(id);
 		request.setAttribute("songs", songs);
 		request.setAttribute("album", album);
-		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
 		jsp.forward(request, response);
 		

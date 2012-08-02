@@ -25,6 +25,23 @@
       <li>${song.name} - ${song.length}</li>
     </c:forEach>
   </ol>
+  <!-- 
+  <h3>Comments</h3>
+	<div class="comment">
+		<div class="commentUser">
+			<img src="<c:url value="/images/unregisteredUser.png" />" />
+		</div>
+		<div class="arrow-left"></div>
+		<form method="post" action="/comment" id="commentForm" >
+			<textarea tabindex="1" name="comment"></textarea>
+			<p>
+				<input tabindex="1" type="text" name="userName" value="Your name" />
+				<input tabindex="2" type="text" name="email" value="Email" />
+				<input tabindex="3" type="submit" value="Comment" />
+			</p>
+		</form>
+	</div>
+	 -->
   </article>
   </tpdb:content>
   <tpdb:sidebar>
@@ -46,7 +63,7 @@
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>
      --%>
-     <h3>Also from ${album.artist.name}</h3>
+     <h3>Also from this artist</h3>
      <ul>
      	<li>Teste</li>
      </ul>
