@@ -90,5 +90,6 @@
   	<script src="<c:url value="/js/${script}.js" />"></script>   	
   	</c:forEach>     
   </c:if>
+  <br style="clear: both" />
 </body>
 </html>

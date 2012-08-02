@@ -26,6 +26,7 @@ h1 {
 }
 
 h2 {
+	/*margin-left: -10px;*/
 	padding: 10px 0 10px 0px;
 }
 
@@ -42,7 +43,7 @@ h3 {
 	padding: 10px 0 10px 0;
 }
 
-div,p,header,footer {
+p,header,footer {
 	padding: 15px;
 }
 
@@ -136,6 +137,7 @@ article div {
 }
 
 article p {
+	/*margin: 10px 10px 10px 0;*/
 	margin: 10px;
 	padding: 0;
 }
@@ -509,6 +511,7 @@ article p img.coverImage {
 
 .albumListing {
 	min-height: 100px;
+	padding: 15px;
 }
 
 #artistsBody span {
