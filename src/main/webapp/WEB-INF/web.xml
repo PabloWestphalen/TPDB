@@ -45,10 +45,6 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
-		<servlet-name>AjaxDataController</servlet-name>
-		<servlet-class>com.jin.tpdb.ajax.AjaxDataController</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>Search</servlet-name>
 		<servlet-class>com.jin.tpdb.Search</servlet-class>
 	</servlet>
@@ -102,7 +98,7 @@
 	<servlet-mapping>
 		<servlet-name>CommentController</servlet-name>
 		<url-pattern>/comment</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ArtistsController</servlet-name>
 		<url-pattern>/artists/*</url-pattern>
@@ -122,10 +118,6 @@
 	<servlet-mapping>
 		<servlet-name>fileServing</servlet-name>
 		<url-pattern>/images/albums/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AjaxDataController</servlet-name>
-		<url-pattern>/api/</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RatingController</servlet-name>
@@ -187,16 +179,13 @@
 		<filter-name>CharsetFilter</filter-name>
 		<filter-class>com.jin.filter.CharsetFilter</filter-class>
 	</filter>
-	<!-- <filter-mapping> <filter-name>TimeFilter</filter-name> <url-pattern>/*</url-pattern> 
-		</filter-mapping> -->
-	<!-- <filter>
-		<filter-name>SimplePageCachingFilter</filter-name>
-		<filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
-	</filter> 
 	<filter-mapping>
-		<filter-name>SimplePageCachingFilter</filter-name>
-		<url-pattern>/artists/</url-pattern>
-	</filter-mapping>--> 
+		<filter-name>TimeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- <filter> <filter-name>SimplePageCachingFilter</filter-name> <filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>SimplePageCachingFilter</filter-name> 
+		<url-pattern>/artists/</url-pattern> </filter-mapping> -->
 	<filter-mapping>
 		<filter-name>CharsetFilter</filter-name>
 		<servlet-name>*</servlet-name>
