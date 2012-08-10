@@ -26,9 +26,8 @@ public class News {
 	@ManyToOne
 	private User user;
 
-	//@ManyToMany(fetch=FetchType.EAGER)
-	//@Fetch(FetchMode.SUBSELECT)
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	private Set<Tag> tags;
 
 	@Column(nullable = false)

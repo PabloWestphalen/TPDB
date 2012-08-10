@@ -7,15 +7,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import javax.persistence.Transient;
 
 //lol
 
@@ -26,15 +23,17 @@ public class Album {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
-	@Fetch(FetchMode.SUBSELECT)
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
+	//@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="album")
 	private Set<AlbumComment> comments;
 
 	// @Transient
 	// private Query query = new Query();
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
-	@Fetch(FetchMode.SUBSELECT)
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
+	//@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="album")
 	private Set<Song> songs;
 
 	// @Column(nullable = false) @ManyToOne
@@ -72,6 +71,12 @@ public class Album {
 	private int downloadSize;
 
 	private int downloadCount;
+	
+	@Transient
+	private int totalSongs;
+	
+	@Transient
+	private int averageRating;
 
 	public int getId() {
 		return id;
@@ -207,6 +212,23 @@ public class Album {
 	public void setSongs(Set<Song> songs) {
 		this.songs = songs;
 	}
+	
+	public int getTotalSongs() {
+		return this.totalSongs;
+	}
+	
+	public void setTotalSongs(int totalSongs) {
+		this.totalSongs = totalSongs;
+	}
+
+	public int getAverageRating() {
+		return averageRating;
+	}
+
+	public void setAverageRating(int averageRating) {
+		this.averageRating = averageRating;
+	}
+
 	
 	
 }

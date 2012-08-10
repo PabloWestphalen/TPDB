@@ -22,10 +22,8 @@ public class AlbumController extends HttpServlet {
 			HttpServletResponse response) throws IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		Album album = albumRepo.getAlbumById(id);
-		int rating = albumRepo.getAverageRating(album.getId());
+		Album album = albumRepo.getFullAlbumById(id);
 		request.setAttribute("album", album);
-		request.setAttribute("rating", rating);
 		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
 		jsp.forward(request, response);
 		

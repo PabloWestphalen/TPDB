@@ -86,6 +86,6 @@
      	<li>Teste</li>
      </ul>
     <h3>Rating</h3>
-	<div class="rateit" id="${album.id}" data-rateit-value="${rating}" data-rateit-ispreset="true"></div>
+	<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div>
   </tpdb:sidebar>
 </tpdb:page>

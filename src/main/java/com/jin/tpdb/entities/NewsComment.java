@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,11 +17,10 @@ public class NewsComment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 
-	@ManyToOne
-	// private Collection<Album> album;
+	@ManyToOne(fetch=FetchType.LAZY)
 	private News news;
 
 	@Column(nullable = false)

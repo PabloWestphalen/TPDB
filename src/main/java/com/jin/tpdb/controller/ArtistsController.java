@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jin.Utils;
 import com.jin.tpdb.entities.Artist;
+import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.tpdb.repositories.ArtistRepository;
 
 public class ArtistsController extends HttpServlet {
@@ -20,10 +21,13 @@ public class ArtistsController extends HttpServlet {
 	@EJB
 	private ArtistRepository artistRepo;
 
+	@EJB
+	private AlbumRepository albumRepo;
+
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		List<Artist> artists = artistRepo.getAllArtists();
+		List<Artist> artists = artistRepo.getFullArtistsListing();
 
 		if (request.getPathInfo() != null) {
 			String artistName = Utils.urlDecode(request.getPathInfo()).replace(

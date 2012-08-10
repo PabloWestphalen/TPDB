@@ -19,7 +19,7 @@
           <fmt:formatDate value="${news.date}" type="date" />0
           <a href="<c:url value="/news/?id=${news.id}#comments" />" >
           <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" />
-          ${fn:length(news.comments)}
+          ${newsRepository.getTotalComments(news.id)}
           </a>
         </p>
       </article>
@@ -38,7 +38,8 @@
           Contributed by ${album.user.username} at
           <fmt:formatDate value="${album.uploadDate}" type="date" />
           <a href="<c:url value="/album/?id=${album.id}#comments" />" >
-          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" /> ${fn:length(album.comments)}</a> 
+          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" /> 
+          ${albumRepository.getTotalComments(album.id)}</a> 
         </p>
       </article>
     </c:forEach>

@@ -9,7 +9,7 @@
         <p>${news.content}</p>
         <p>Tags: <c:forEach var="tag" items="${news.tags}"><span class="tag">${tag.name}</span> </c:forEach></p>
         <h3 id="comments">Comments</h3>
-		<c:forEach var="comment" items="${news.comments}">
+		<c:forEach var="comment" items="${newsRepository.getComments(news.id)}">
 		<div class="comment" id="cid${comment.id}">
 			<div class="commentUser">
 				<c:choose>

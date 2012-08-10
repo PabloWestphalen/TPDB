@@ -14,7 +14,7 @@ import org.hibernate.Session;
 @Stateless
 @Named
 public class GenericRepository {
-	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(unitName = "jin")
 	private EntityManager em;
 	private Session hbs;
 

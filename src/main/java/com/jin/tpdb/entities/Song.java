@@ -1,6 +1,7 @@
 package com.jin.tpdb.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ public class Song {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Album album;
 
 	private int number;
