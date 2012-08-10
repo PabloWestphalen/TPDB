@@ -16,6 +16,7 @@ import org.apache.naming.resources.ProxyDirContext;
 public class FileServingServlet extends DefaultServlet
 
 {
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void init() throws ServletException {

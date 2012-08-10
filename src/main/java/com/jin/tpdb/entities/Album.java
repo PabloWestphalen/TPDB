@@ -3,20 +3,19 @@ package com.jin.tpdb.entities;
 
 import java.io.File;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.OneToMany;
 
-import org.hibernate.criterion.Restrictions;
-
-import com.jin.tpdb.persistence.DAO;
-import com.jin.tpdb.persistence.Query;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 //lol
 
@@ -26,16 +25,18 @@ public class Album {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
-	@Transient
-	private Double rating;
-	
-	//@Transient
-	//private Query query = new Query();
 
-	@Transient
-	private List<Song> songs;
-	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
+	@Fetch(FetchMode.SUBSELECT)
+	private Set<AlbumComment> comments;
+
+	// @Transient
+	// private Query query = new Query();
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
+	@Fetch(FetchMode.SUBSELECT)
+	private Set<Song> songs;
+
 	// @Column(nullable = false) @ManyToOne
 	@ManyToOne
 	private Artist artist;
@@ -74,10 +75,6 @@ public class Album {
 
 	public int getId() {
 		return id;
-	}
-	
-	public int getTotalSongs() {
-		return DAO.getSongsTotal(this.id);
 	}
 
 	public void setId(int id) {
@@ -179,32 +176,13 @@ public class Album {
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
 	}
-	
-	public List<Song> getSongs() {
-		System.out.println("########### gettings songs from album " + name + "#############");
-		
-		this.songs = DAO.getList(Song.class, Restrictions.eq("album.id", this.id));
-		return songs;
-	}
-	
-	
 
-	
-	// util methods
-
-	public Long getTotalComments() {
-		return DAO.countAlbumComments(id);
+	public Set<AlbumComment> getComments() {
+		return comments;
 	}
-	
-	public double getAverageRating() {
-		System.out.println("#### getting rating from album " + name + "#########");
-		if(rating == null) {
-			rating = Math.floor(DAO.getAverage(AlbumRating.class, "rating", Restrictions.like("album.id", id)));
-			return rating;
-		} else {
-			return rating;
-		}
-				
+
+	public void setComments(Set<AlbumComment> comments) {
+		this.comments = comments;
 	}
 
 	public String getCover() {
@@ -221,4 +199,14 @@ public class Album {
 
 		cover.renameTo(new File(path + coverName));
 	}
+
+	public Set<Song> getSongs() {
+		return songs;
+	}
+
+	public void setSongs(Set<Song> songs) {
+		this.songs = songs;
+	}
+	
+	
 }

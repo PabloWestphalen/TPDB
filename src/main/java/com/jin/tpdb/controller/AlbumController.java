@@ -1,32 +1,31 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
-import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.criterion.Restrictions;
-
-import com.jin.Utils;
 import com.jin.tpdb.entities.Album;
-import com.jin.tpdb.entities.AlbumRating;
-import com.jin.tpdb.entities.Song;
-import com.jin.tpdb.persistence.DAO;
+import com.jin.tpdb.repositories.AlbumRepository;
 
 public class AlbumController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+	@EJB
+	private AlbumRepository albumRepo;
+	
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		Album album = DAO.load(Album.class, id);
-		List<Song> songs = DAO.getSongs(id);
-		request.setAttribute("songs", songs);
+		Album album = albumRepo.getAlbumById(id);
+		int rating = albumRepo.getAverageRating(album.getId());
 		request.setAttribute("album", album);
+		request.setAttribute("rating", rating);
 		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
 		jsp.forward(request, response);
 		

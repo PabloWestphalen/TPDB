@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
-	<persistence-unit name="jin" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="jin">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<non-jta-data-source>java:jboss/datasources/MysqlDS</non-jta-data-source>
+		<jta-data-source>java:jboss/datasources/MysqlDS</jta-data-source>
 		<class>com.jin.tpdb.entities.Pessoa</class>
 		<class>com.jin.tpdb.entities.User</class>
 		<class>com.jin.tpdb.entities.News</class>
@@ -14,6 +14,7 @@
 		<class>com.jin.tpdb.entities.Album</class>
 		<class>com.jin.tpdb.entities.AlbumComment</class>
 		<class>com.jin.tpdb.entities.AlbumRating</class>
+		<class>com.jin.tpdb.entities.NewsComment</class>
 		<class>com.jin.tpdb.entities.Song</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />

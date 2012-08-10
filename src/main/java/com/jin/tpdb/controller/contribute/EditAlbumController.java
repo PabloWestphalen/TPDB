@@ -2,11 +2,11 @@ package com.jin.tpdb.controller.contribute;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +17,18 @@ import com.jin.Sanitizer;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Song;
-import com.jin.tpdb.persistence.DAO;
+import com.jin.tpdb.persistence.GenericDAO;
+import com.jin.tpdb.repositories.ArtistRepository;
 
 public class EditAlbumController extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private GenericDAO dao;
+
+	@EJB
+	private ArtistRepository artistRepo;
 
 	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +42,7 @@ public class EditAlbumController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		List<Artist> artists = DAO.getList(Artist.class);
+		List<Artist> artists = artistRepo.getAllArtists();
 		request.setAttribute("artists", artists);
 		dispatch(request, response);
 	}
@@ -43,13 +52,11 @@ public class EditAlbumController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String coversPath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
 
-		DAO dao = new DAO();
-		dao.open();
 		Album album = new Album();
 
 		try {
 			int artist_id = Integer.parseInt(request.getParameter("artist"));
-			Artist a = DAO.load(Artist.class, artist_id);
+			Artist a = dao.load(Artist.class, artist_id);
 			album.setArtist(a);
 
 		} catch (Exception e) {
@@ -60,7 +67,6 @@ public class EditAlbumController extends HttpServlet {
 		String description = Sanitizer.clean(request
 				.getParameter("description"));
 		String label = Sanitizer.clean(request.getParameter("label"));
-		ArrayList<Song> songs = new ArrayList<Song>();
 		Calendar cal = Calendar.getInstance();
 		int year = Integer.parseInt(request.getParameter("year"));
 		int month = Integer.parseInt(request.getParameter("month"));
@@ -80,6 +86,7 @@ public class EditAlbumController extends HttpServlet {
 
 		String[] tracks = request.getParameterValues("tracks[]");
 		String[] lengths = request.getParameterValues("tracks_length[]");
+		dao.save(album);
 
 		for (int i = 0; i <= tracks.length - 2; i++) {
 			Song s = new Song();
@@ -88,13 +95,8 @@ public class EditAlbumController extends HttpServlet {
 			s.setLength(Sanitizer.clean(lengths[i]));
 			s.setNumber(i + 1);
 			dao.save(s);
-			songs.add(s);
 		}
 
-		//album.setSongs(songs);
-		//teste
-		dao.save(album);
-		dao.close();
 		dispatch(request, response);
 	}
 }

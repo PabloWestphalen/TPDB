@@ -4,8 +4,8 @@
            maxElementsOnDisk="1000"
            eternal="false"
            overflowToDisk="true"
-           timeToIdleSeconds="300"
-           timeToLiveSeconds="600"
+           timeToIdleSeconds="150"
+           timeToLiveSeconds="300"
            memoryStoreEvictionPolicy="LFU"
             />
 </ehcache>

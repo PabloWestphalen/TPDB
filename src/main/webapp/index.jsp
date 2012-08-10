@@ -1,6 +1,7 @@
 <%@taglib uri="Utils" prefix="Utils" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="home">
   <tpdb:content>
@@ -16,7 +17,10 @@
         <p class="entry_info">
           Contributed by ${news.user.username} at
           <fmt:formatDate value="${news.date}" type="date" />0
-          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" /> 0
+          <a href="<c:url value="/news/?id=${news.id}#comments" />" >
+          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" />
+          ${fn:length(news.comments)}
+          </a>
         </p>
       </article>
     </c:forEach>
@@ -33,7 +37,8 @@
         <p class="entry_info" >
           Contributed by ${album.user.username} at
           <fmt:formatDate value="${album.uploadDate}" type="date" />
-          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" /> ${album.totalComments} 
+          <a href="<c:url value="/album/?id=${album.id}#comments" />" >
+          <img class="comments" width="20" height="20" src="<c:url value="/images/comments_icon.png" />" /> ${fn:length(album.comments)}</a> 
         </p>
       </article>
     </c:forEach>

@@ -3,6 +3,7 @@ package com.jin.tpdb.controller.contribute;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +14,14 @@ import org.json.simple.JSONObject;
 
 import com.jin.Sanitizer;
 import com.jin.tpdb.entities.Artist;
-import com.jin.tpdb.persistence.DAO;
+import com.jin.tpdb.repositories.ArtistRepository;
 
 public class EditArtistController extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
+	@EJB
+	private ArtistRepository artistRepo;
 
 	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +38,7 @@ public class EditArtistController extends HttpServlet {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -43,10 +50,7 @@ public class EditArtistController extends HttpServlet {
 
 			Artist artist = new Artist(name, site);
 
-			DAO dao = new DAO();
-			dao.open();
-			dao.save(artist);
-			dao.close();
+			artistRepo.save(artist);
 
 			String ajaxRequest = request.getHeader("X-Requested-With");
 			

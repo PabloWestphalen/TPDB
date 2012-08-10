@@ -6,26 +6,26 @@ import javax.servlet.http.*;
 
 public class TimeFilter implements Filter {
 
-    private FilterConfig config = null;
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
+		long before = System.currentTimeMillis();
 
-    public void init(FilterConfig config) throws ServletException {
-        this.config = config;
-    }
+		chain.doFilter(request, response);
+		long after = System.currentTimeMillis();
+		String name = "";
+		if (request instanceof HttpServletRequest) {
+			name = ((HttpServletRequest) request).getRequestURI();
+		}
+		System.out.println(name + ": " + (after - before) + "ms");
+	}
 
-    public void destroy() {
-        config = null;
-    }
+	@Override
+	public void destroy() {
+		
+	}
 
-    public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain) throws IOException, ServletException {
-        long before = System.currentTimeMillis();
-
-        chain.doFilter(request, response);
-        long after = System.currentTimeMillis();
-        String name = "";
-        if (request instanceof HttpServletRequest) {
-            name = ((HttpServletRequest) request).getRequestURI();
-        }
-        System.out.println(name + ": " + (after - before) + "ms");
-    }
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+		
+	}
 }

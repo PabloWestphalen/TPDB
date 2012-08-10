@@ -3,35 +3,36 @@ package com.jin.tpdb.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Session;
-import org.hibernate.criterion.Order;
-
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.News;
-import com.jin.tpdb.persistence.DAO;
-import com.jin.tpdb.persistence.Query;
-import com.jin.util.Qualificado;
+import com.jin.tpdb.repositories.AlbumRepository;
+import com.jin.tpdb.repositories.NewsRepository;
 
 public class IndexController extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private NewsRepository newsRepo;
+	
+	@EJB
+	private AlbumRepository albumRepo;
 
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		
 		
-		List<News> newsList = DAO.getList(News.class, Order.desc("date"));
+		List<News> newsList = newsRepo.getLatestNews();
 
-		List<Album> albumsList = DAO.getList(Album.class,
-				Order.desc("uploadDate"), 4);
-		List<Album> featuredAlbumsList = DAO.getList(Album.class, Order.desc("name"), 3);
+		List<Album> albumsList = albumRepo.getAlbums(4);
+		List<Album> featuredAlbumsList = albumRepo.getFeaturedAlbums();
 
 		request.setAttribute("newsList", newsList);
 		request.setAttribute("albums", albumsList);

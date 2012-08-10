@@ -1,6 +1,7 @@
 <%@taglib uri="Utils" prefix="Utils" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib uri="Utils" prefix="Utils" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
@@ -50,17 +51,17 @@
 						</c:otherwise>
 						</c:choose>
 						<c:choose>
-						<c:when test="${album.totalSongs eq 0}">
+						<c:when test="${fn:length(album.songs) eq 0}">
 						<strong>Tracks:</strong>  N/A
 						</c:when>
 						<c:otherwise>
-						<strong>Tracks:</strong>  ${album.totalSongs}
+						<strong>Tracks:</strong>  ${fn:length(album.songs)}
 						</c:otherwise>
 						</c:choose>
 						 | 
 						<strong>Rating:</strong>
 						</span>
-						<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+						<div class="rateit" id="${album.id}" data-rateit-value="${albumRepository.getAverageRating(album.id)}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
 					</div>
 			        </c:forEach>
 			        

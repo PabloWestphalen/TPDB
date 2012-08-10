@@ -1,15 +1,20 @@
 package com.jin.tpdb.entities;
 
-import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class News {
@@ -21,8 +26,9 @@ public class News {
 	@ManyToOne
 	private User user;
 
-	@ManyToMany
-	private Collection<Tag> tags;
+	@ManyToMany(fetch=FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
+	private Set<Tag> tags;
 
 	@Column(nullable = false)
 	private Date date;
@@ -31,7 +37,23 @@ public class News {
 
 	@Column(length = 65535, columnDefinition = "Text")
 	private String content;
-
+	
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="news", orphanRemoval=true)
+	@Fetch(FetchMode.SUBSELECT)
+	private Set<NewsComment> comments;
+	
+	public News() {
+		date = new Date();
+	}
+	
+	public News(String title, String content, User user, Set<Tag> tags) {
+		this();
+		this.title = title;
+		this.content = content;
+		this.user = user;
+		this.tags = tags;
+		
+	}
 	public int getId() {
 		return id;
 	}
@@ -48,11 +70,11 @@ public class News {
 		this.user = user;
 	}
 
-	public Collection<Tag> getTags() {
+	public Set<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(Collection<Tag> tags) {
+	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
 	}
 
@@ -80,8 +102,14 @@ public class News {
 		this.content = content;
 	}
 
-	public News() {
-		date = new Date();
+	public Set<NewsComment> getComments() {
+		return comments;
 	}
+
+	public void setComments(Set<NewsComment> comments) {
+		this.comments = comments;
+	}
+	
+	
 
 }

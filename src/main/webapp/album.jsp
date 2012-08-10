@@ -21,27 +21,45 @@
   ${Utils:cleanHtml(album.description)}
   <h3>Tracks</h3>
   <ol>
-    <c:forEach var="song" items="${songs}">
+    <c:forEach var="song" items="${album.songs}">
       <li>${song.name} - ${song.length}</li>
     </c:forEach>
   </ol>
-  <!-- 
-  <h3>Comments</h3>
+  <h3 id="comments">Comments</h3>
+  <c:forEach var="comment" items="${album.comments}">
+	<div class="comment" id="cid${comment.id}">
+			<div class="commentUser">
+				<c:choose>
+				<c:when test="${empty comment.user}" > 
+				<img src="<c:url value="/images/unregisteredUser.png" />" />
+				</c:when>
+				<c:otherwise>
+				<img src="<c:url value="/images/users/${comment.user.username}.jpg" />" />
+				</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="arrow-left"></div>
+			<div class="commentBody">
+			<tpdb:format var="${comment.comment}" html="true" />
+			</div>
+			<span>${comment.userName} @ <fmt:formatDate value="${comment.date}" pattern="dd. MMM. yyyy" /></span>
+	</div>
+  </c:forEach>
 	<div class="comment">
 		<div class="commentUser">
 			<img src="<c:url value="/images/unregisteredUser.png" />" />
 		</div>
 		<div class="arrow-left"></div>
-		<form method="post" action="/comment" id="commentForm" >
-			<textarea tabindex="1" name="comment"></textarea>
+		<form method="post" action="<c:url value="/comment" />" id="commentForm" >
+			<textarea tabindex="1" name="commentBody"></textarea>
 			<p>
-				<input tabindex="1" type="text" name="userName" value="Your name" />
+				<input type="hidden" name="albumId" value="${album.id}" />
+				<input tabindex="1" type="text" name="userName" value="Your name" maxlength="12" />
 				<input tabindex="2" type="text" name="email" value="Email" />
 				<input tabindex="3" type="submit" value="Comment" />
 			</p>
 		</form>
-	</div>
-	 -->
+	</div>		 
   </article>
   </tpdb:content>
   <tpdb:sidebar>
@@ -68,6 +86,6 @@
      	<li>Teste</li>
      </ul>
     <h3>Rating</h3>
-	<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div>
+	<div class="rateit" id="${album.id}" data-rateit-value="${rating}" data-rateit-ispreset="true"></div>
   </tpdb:sidebar>
 </tpdb:page>

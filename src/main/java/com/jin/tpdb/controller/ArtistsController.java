@@ -1,46 +1,38 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
-
 import com.jin.Utils;
 import com.jin.tpdb.entities.Artist;
-import com.jin.tpdb.persistence.DAO;
-import com.jin.tpdb.persistence.Query;
+import com.jin.tpdb.repositories.ArtistRepository;
 
 public class ArtistsController extends HttpServlet {
-	@Inject
-	private Query query;
-		
+
+	private static final long serialVersionUID = 1L;
+	@EJB
+	private ArtistRepository artistRepo;
+
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
-		
-		//List<Artist> artists = query.getList(Artist.class, Order.asc("name"));
-		
-		
-		
-		List<Artist> artists = DAO.getList(Artist.class, Order.asc("name"));
-		
-		
-		if(request.getPathInfo() != null) {
-			String artistName = Utils.urlDecode(request.getPathInfo()).replace("/", "");
+
+		List<Artist> artists = artistRepo.getAllArtists();
+
+		if (request.getPathInfo() != null) {
+			String artistName = Utils.urlDecode(request.getPathInfo()).replace(
+					"/", "");
 			request.setAttribute("defaultArtist", artistName);
 		}
 
-		
 		request.setAttribute("artistsList", artists);
-		
+
 		RequestDispatcher jsp = request.getRequestDispatcher("/artists.jsp");
 		jsp.forward(request, response);
 

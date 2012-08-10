@@ -20,6 +20,10 @@ import org.json.simple.JSONObject;
 import com.jin.ImageUtils;
 
 public class UploaderController extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 

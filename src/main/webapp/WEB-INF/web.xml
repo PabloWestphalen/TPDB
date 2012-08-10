@@ -36,6 +36,10 @@
 		<servlet-class>com.jin.tpdb.controller.contribute.EditAlbumController</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>CommentController</servlet-name>
+		<servlet-class>com.jin.tpdb.controller.contribute.CommentController</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>UploaderController</servlet-name>
 		<servlet-class>com.jin.tpdb.controller.UploaderController</servlet-class>
 		<load-on-startup>1</load-on-startup>
@@ -95,6 +99,10 @@
 		<servlet-name>EditAlbumController</servlet-name>
 		<url-pattern>/contribute/album/add</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CommentController</servlet-name>
+		<url-pattern>/comment</url-pattern>
+	</servlet-mapping>	
 	<servlet-mapping>
 		<servlet-name>ArtistsController</servlet-name>
 		<url-pattern>/artists/*</url-pattern>
@@ -181,14 +189,14 @@
 	</filter>
 	<!-- <filter-mapping> <filter-name>TimeFilter</filter-name> <url-pattern>/*</url-pattern> 
 		</filter-mapping> -->
-	<filter>
+	<!-- <filter>
 		<filter-name>SimplePageCachingFilter</filter-name>
 		<filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
-	</filter>
+	</filter> 
 	<filter-mapping>
 		<filter-name>SimplePageCachingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+		<url-pattern>/artists/</url-pattern>
+	</filter-mapping>--> 
 	<filter-mapping>
 		<filter-name>CharsetFilter</filter-name>
 		<servlet-name>*</servlet-name>

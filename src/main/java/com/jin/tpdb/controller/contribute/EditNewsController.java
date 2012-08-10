@@ -1,24 +1,29 @@
 package com.jin.tpdb.controller.contribute;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.criterion.Restrictions;
-
 import com.jin.Sanitizer;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Tag;
 import com.jin.tpdb.entities.User;
-import com.jin.tpdb.persistence.DAO;
+import com.jin.tpdb.persistence.GenericDAO;
 
 public class EditNewsController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private GenericDAO dao;
+	
 	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher jsp = request
@@ -45,18 +50,11 @@ public class EditNewsController extends HttpServlet {
 				.replace(",", "%SPLIT").split("%SPLIT");
 
 		if (!title.isEmpty() && !content.isEmpty()) {
-			DAO dao = new DAO();
-			dao.open();
-			News news = new News();
-			User user = DAO.load(User.class, 1);
-			news.setTitle(title);
-			news.setContent(content);
-			news.setUser(user);
-
-			ArrayList<Tag> tagsCollection = new ArrayList<Tag>();
-
+			User user = dao.load(User.class, 1);
+			Set<Tag> tagsCollection = new HashSet<Tag>();
+			
 			for (String s : tagsArray) {
-				Tag x = (Tag) DAO.load(Tag.class, Restrictions.like("name", s));
+				Tag x = (Tag) dao.load(Tag.class, "name", s);
 				if (x != null) {
 					tagsCollection.add(x);
 				} else {
@@ -66,20 +64,9 @@ public class EditNewsController extends HttpServlet {
 					tagsCollection.add(t);
 				}
 			}
-
-			news.setTags(tagsCollection);
-
-			/*
-			 * if (news.getTags() != null) { Tag tag2 = new Tag();
-			 * tag2.setName("dynamic tag"); dao.save(tag2);
-			 * news.getTags().add(tag2); DAO.load(Tag.class,
-			 * Restrictions.like("name", tt));
-			 * 
-			 * }
-			 */
+			News news = new News(title, content, user, tagsCollection);
 
 			dao.save(news);
-			dao.close();
 			dispatch(request, response);
 		}
 	}

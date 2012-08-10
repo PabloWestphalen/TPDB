@@ -8,7 +8,7 @@
   </form>
   <div id="artistPanel">
     <span id="closeWindow">[ Close ]</span>
-    <form method="post" action="/contribute/artist/add" id="addArtistForm" >
+    <form method="post" action="<c:url value="/contribute/artist/add" />" id="addArtistForm" >
       <fieldset>
       <legend>New artist</legend>
       <p>
