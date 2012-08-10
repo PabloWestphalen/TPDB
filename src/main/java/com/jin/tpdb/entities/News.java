@@ -26,8 +26,9 @@ public class News {
 	@ManyToOne
 	private User user;
 
-	@ManyToMany(fetch=FetchType.EAGER)
-	@Fetch(FetchMode.SUBSELECT)
+	//@ManyToMany(fetch=FetchType.EAGER)
+	//@Fetch(FetchMode.SUBSELECT)
+	@ManyToMany
 	private Set<Tag> tags;
 
 	@Column(nullable = false)
@@ -38,8 +39,9 @@ public class News {
 	@Column(length = 65535, columnDefinition = "Text")
 	private String content;
 	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="news", orphanRemoval=true)
-	@Fetch(FetchMode.SUBSELECT)
+	//@OneToMany(fetch=FetchType.EAGER, mappedBy="news", orphanRemoval=true)
+	//@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="news")
 	private Set<NewsComment> comments;
 	
 	public News() {

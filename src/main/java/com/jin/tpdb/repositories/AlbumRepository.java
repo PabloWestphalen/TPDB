@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -19,7 +20,7 @@ import com.jin.tpdb.entities.AlbumRating;
 @Stateless
 @Named
 public class AlbumRepository {
-	@PersistenceContext(unitName = "jin")
+	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	private Session hbs;
 

@@ -25,8 +25,9 @@ public class Artist {
 	@Column(length = 500)
 	String site;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "artist", orphanRemoval = true)
-	@Fetch(FetchMode.SUBSELECT)
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "artist", orphanRemoval = true)
+	//@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="artist")
 	private List<Album> albums;
 
 	public Artist() {

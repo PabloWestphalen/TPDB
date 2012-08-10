@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -13,7 +14,7 @@ import org.hibernate.Session;
 @Stateless
 @Named
 public class GenericRepository {
-	@PersistenceContext(unitName = "jin")
+	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	private Session hbs;
 
