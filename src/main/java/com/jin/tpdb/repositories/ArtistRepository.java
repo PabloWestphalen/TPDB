@@ -23,20 +23,15 @@ public class ArtistRepository {
 	@EJB
 	private AlbumRepository albumRepo;
 	
-	private Long before, after;
-
 	public void save(Artist artist) {
 		em.merge(artist);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Artist> getAllArtists() {
-		before = System.currentTimeMillis();
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(Artist.class);
 		c.addOrder(Order.asc("name"));
-		after = System.currentTimeMillis();
-		System.out.println("Getting all artists. " + "Time: "+ (after - before) + "ms");
 		return (List<Artist>) c.list();
 		
 		
