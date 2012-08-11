@@ -194,7 +194,7 @@
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>gzipFilter</filter-name>
-		<url-pattern>*</url-pattern>
+		<servlet-name>*</servlet-name>
 		<url-pattern>*.css</url-pattern>
 		<url-pattern>*.js</url-pattern>
 	</filter-mapping>
@@ -209,7 +209,6 @@
 	<filter-mapping>
 		<filter-name>jsCache</filter-name>
 		<url-pattern>*.js</url-pattern>
-		<servlet-name>*</servlet-name>
 	</filter-mapping>
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
