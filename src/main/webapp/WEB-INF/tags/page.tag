@@ -17,6 +17,7 @@
 <html xmlns:og="http://opengraphprotocol.org/schema/"
 	xmlns:fb="http://www.facebook.com/2008/fbml" >
 <head>
+<link rel="shortcut icon" href="<c:url value="/favicon.ico" />" type="image/x-icon" />
 <c:choose>
 <c:when test="${not empty title}">
 <title>${title} | The Trip-Hop Database</title>
