@@ -44,8 +44,12 @@ public class ArtistRepository {
 
 	public List<Artist> getFullArtistsListing() {
 		List<Artist> artists = getAllArtists();
-		for (Artist artist : artists) {
-			artist.setAlbums(albumRepo.getFullArtistAlbums(artist.getId()));
+		
+		for(Artist a : artists) {
+			a.getAlbums();
+			for(Album ab : a.getAlbums()) {
+				ab.getSongs().size();
+			}
 		}
 		return artists;
 	}

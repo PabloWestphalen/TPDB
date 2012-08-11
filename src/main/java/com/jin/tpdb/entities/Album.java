@@ -7,12 +7,16 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 //lol
 
@@ -34,6 +38,7 @@ public class Album {
 	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
 	//@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(mappedBy="album")
+	@Fetch(FetchMode.SUBSELECT)
 	private Set<Song> songs;
 
 	// @Column(nullable = false) @ManyToOne
@@ -75,7 +80,6 @@ public class Album {
 	@Transient
 	private int totalSongs;
 	
-	@Transient
 	private int averageRating;
 
 	public int getId() {

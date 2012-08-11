@@ -28,6 +28,7 @@ public class Artist {
 	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "artist", orphanRemoval = true)
 	//@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(mappedBy="artist")
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Album> albums;
 
 	public Artist() {

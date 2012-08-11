@@ -51,11 +51,11 @@
 						</c:otherwise>
 						</c:choose>
 						<c:choose>
-						<c:when test="${album.totalSongs eq 0}">
+						<c:when test="${fn:length(album.songs) eq 0}">
 						<strong>Tracks:</strong>  N/A
 						</c:when>
 						<c:otherwise>
-						<strong>Tracks:</strong>  ${album.totalSongs}
+						<strong>Tracks:</strong>  ${fn:length(album.songs)}
 						</c:otherwise>
 						</c:choose>
 						 | 
