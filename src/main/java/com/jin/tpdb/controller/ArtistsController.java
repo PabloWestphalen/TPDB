@@ -23,11 +23,17 @@ public class ArtistsController extends HttpServlet {
 
 	@EJB
 	private AlbumRepository albumRepo;
+	
 
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
+		Long before, after;
 
+		
+		before = System.currentTimeMillis();		
 		List<Artist> artists = artistRepo.getFullArtistsListing();
+		after = System.currentTimeMillis();
+		System.out.println("Total time to get everything from the database: " + (after - before) + "ms");
 
 		if (request.getPathInfo() != null) {
 			String artistName = Utils.urlDecode(request.getPathInfo()).replace(

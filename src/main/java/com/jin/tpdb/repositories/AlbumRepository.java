@@ -24,6 +24,8 @@ public class AlbumRepository {
 	@PersistenceContext(unitName = "jin")
 	private EntityManager em;
 	private Session hbs;
+	
+	private Long before, after;
 
 	public void save(Album album) {
 		em.persist(album);
@@ -64,12 +66,15 @@ public class AlbumRepository {
 	
 	@SuppressWarnings("unchecked")
 	public List<Album> getFullArtistAlbums(int id) {
-		System.out.println("getting albums from artist" + id);
+		before = System.currentTimeMillis();
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(Album.class);
 		c.add(Restrictions.eq("artist.id", id));
 		c.addOrder(Order.desc("uploadDate"));
 		List<Album> albums = c.list();
+		after = System.currentTimeMillis();
+		System.out.println("Getting albums from artist " + id + ". Time: "+ (after - before) + "ms");
+
 		for(Album album : albums) {
 			album.setAverageRating(getAverageRating(album.getId()));
 			album.setTotalSongs(getTotalSongs(album.getId()));
@@ -106,13 +111,15 @@ public class AlbumRepository {
 	}
 	
 	public int getTotalSongs(int id) {
-		System.out.println("getting total songs from album " + id);
+		before = System.currentTimeMillis();
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(Song.class);
 		c.add(Restrictions.eq("album.id", id));
 		c.setProjection(Projections.countDistinct("id"));
 		Long result = (Long) c.uniqueResult();
+		after = System.currentTimeMillis();
 		if(result != null && result > 0) {
+			System.out.println("Getting total songs from album " + id + ". Time: "+ (after - before) + "ms");
 			return result.intValue();
 		} else {
 			return 0;
@@ -120,13 +127,15 @@ public class AlbumRepository {
 	}
 
 	public int getAverageRating(int id) {
-		System.out.println("######### getting rating from album with id of " + id);
+		before = System.currentTimeMillis();
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(AlbumRating.class);
 		c.add(Restrictions.eq("album.id", id));
 		c.setProjection(Projections.avg("rating"));
 		Double result = (Double) c.uniqueResult();
+		after = System.currentTimeMillis();
 		if (result != null && result > 0) {
+			System.out.println("Getting rating from album " + id + ". Time: "+ (after - before) + "ms");
 			return result.intValue();
 		} else {
 			return 0;
