@@ -81,7 +81,7 @@
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>
      --%>
-     <div id="sidebarAlbums">
+     <div id="sidebar_albums">
      <h3>Related Albums</h3>
      <c:forEach var="rAlbum" items="${relatedAlbums}">
 	     <a href="<c:url value="/album/?id=${rAlbum.id}" />">

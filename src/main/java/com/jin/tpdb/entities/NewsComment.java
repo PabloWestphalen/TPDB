@@ -2,6 +2,7 @@ package com.jin.tpdb.entities;
 
 import java.util.Date;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+@Cacheable
 public class NewsComment {
 
 	@Id

@@ -47,8 +47,9 @@ public class CommentController extends HttpServlet {
 				albumRepo.addComment(c, albumId);
 			}
 			try {
-				response.sendRedirect("album/?id=" + albumId + "#cid"
-						+ c.getId());
+				String s = "album/?id=" + albumId + "#cid" + c.getId();
+				System.out.println("Redirecting to...." + s);
+				response.sendRedirect(s);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -64,7 +65,9 @@ public class CommentController extends HttpServlet {
 				newsRepo.addComment(c, newsId);
 			}
 			try {
-				response.sendRedirect("news/?id=" + newsId + "#cid" + c.getId());
+				String s = "news/?id=" + newsId + "#cid" + c.getId();
+				System.out.println("Redirecting to..." + s);
+				response.sendRedirect(s);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

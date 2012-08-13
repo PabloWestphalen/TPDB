@@ -3,6 +3,7 @@ package com.jin.tpdb.entities;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 
 
 @Entity
@@ -39,7 +41,7 @@ public class News {
 	@Column(length = 65535, columnDefinition = "Text")
 	private String content;
 	
-	@OneToMany(mappedBy="news")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="news")
 	@OrderBy("date ASC")
 	private Set<NewsComment> comments;
 	
@@ -110,7 +112,4 @@ public class News {
 	public void setComments(Set<NewsComment> comments) {
 		this.comments = comments;
 	}
-	
-	
-
 }
