@@ -28,6 +28,9 @@ public class IndexController extends HttpServlet {
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		
+		Album a = albumRepo.getAlbumById(1);
+		albumRepo.remove(a);
+		
 		
 		List<News> newsList = newsRepo.getLatestNews();
 

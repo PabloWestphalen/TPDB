@@ -84,7 +84,11 @@ public class AlbumRepository {
 		Criteria c = hbs.createCriteria(Album.class);
 		c.addOrder(Order.desc("uploadDate"));
 		c.setMaxResults(limit);
-		return (List<Album>) c.list();
+		List<Album> albums =  c.list();
+		for(Album a : albums) {
+			a.getComments().size();
+		}
+		return albums;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -156,6 +160,11 @@ public class AlbumRepository {
 		Set<AlbumComment> results = new HashSet<AlbumComment>();
 		results.addAll(c.list());
 		return results;
+	}
+	
+	public void remove(Album a) {
+		Object deleting = em.find(Album.class, a.getId());
+		em.remove(deleting);
 	}
 
 }

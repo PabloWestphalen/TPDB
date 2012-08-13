@@ -2,10 +2,11 @@ package com.jin.tpdb.repositories;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -17,10 +18,10 @@ import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.NewsComment;
 import com.jin.tpdb.entities.Tag;
 
-@Stateless
+@Singleton
 @Named
 public class NewsRepository {
-	@PersistenceContext(unitName = "jin")
+	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
 	
 	private EntityManager em;	
 	private Session hbs;
@@ -37,6 +38,12 @@ public class NewsRepository {
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(News.class);
 		c.addOrder(Order.desc("date"));
+		c.setCacheable(true);
+		System.out.println("########Getting first... ");
+		c.list();
+		System.out.println("########Getting second... ");
+		c.list();
+		System.out.println("########Returning... ");
 		return (List<News>) c.list();
 	}
 	
@@ -46,7 +53,11 @@ public class NewsRepository {
 		Criteria c = hbs.createCriteria(News.class);
 		c.addOrder(Order.desc("date"));
 		c.setMaxResults(4);
-		return (List<News>) c.list();
+		List<News> newsList = c.list();
+		for(News n : newsList) {
+			n.getComments().size();
+		}
+		return newsList;
 	}
 	
 	public int getTotalComments(int id) {
