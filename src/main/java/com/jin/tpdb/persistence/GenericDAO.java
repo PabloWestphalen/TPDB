@@ -27,7 +27,7 @@ public class GenericDAO {
 	}
 	
 	public void refresh(Class c, int id) {
-		News o = em.find(c, id);
+		News o = (News) em.find(c, id);
 		o.getComments();
 		//em.merge(o);
 		em.refresh(o);
