@@ -81,12 +81,14 @@
       <li>Link: <a href="${album.downloadLink}">Here</a></li>
     </ul>
      --%>
+     <div id="sidebarAlbums">
      <h3>Related Albums</h3>
      <c:forEach var="rAlbum" items="${relatedAlbums}">
 	     <a href="<c:url value="/album/?id=${rAlbum.id}" />">
 	     <img src="<c:url value="/${rAlbum.cover}" />" alt="${rAlbum.artist.name} - Cover" title="${rAlbum.name}" />
 	     </a>
 	 </c:forEach>
+	 </div>
     <h3>Rating</h3>
 	<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div>
   </tpdb:sidebar>

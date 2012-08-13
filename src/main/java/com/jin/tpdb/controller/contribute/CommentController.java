@@ -62,7 +62,6 @@ public class CommentController extends HttpServlet {
 				c.setUserEmail(email);
 				c.setUserIP(request.getRemoteAddr());
 				newsRepo.addComment(c, newsId);
-
 			}
 			try {
 				response.sendRedirect("news/?id=" + newsId + "#cid" + c.getId());

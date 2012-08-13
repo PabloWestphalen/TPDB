@@ -214,12 +214,12 @@ aside input[name="Search"] {
 	border-color: transparent;
 }
 
-#featured_albums {
+#sidebar_albums {
 	margin: 0;
 	padding: 0;
 }
 
-#featured_albums img {
+#sidebar_albums img {
 	margin-right: 5px;
 	width: 50px;
 	height: 50px;

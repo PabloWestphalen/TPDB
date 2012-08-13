@@ -46,7 +46,7 @@
     </div>
   </tpdb:content>
   <tpdb:sidebar>
-    <div id="featured_albums">
+    <div id="sidebar_albums">
       <h3>Featured Albums</h3>
       <c:forEach var="fAlbum" items="${featuredAlbums}">
         <a href="<c:url value="/album/?id=${fAlbum.id}" />"><img src="${fAlbum.cover}"
