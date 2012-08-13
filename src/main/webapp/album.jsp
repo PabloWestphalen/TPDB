@@ -64,23 +64,14 @@
   </tpdb:content>
   <tpdb:sidebar>
     <img src="<c:url value="/${album.cover}" />" class="coverImage"  />
-    
     <h3>Information</h3>
     <ul>
       <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />
       <li>Length: ${album.length }</li>
       <li>Label: ${album.label}</li>
+      <li>Rating: <div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div></li>
       <li><a href="${album.artist.site}" target="_blank">Official Site</a></li>
     </ul>
-    <%--
-    <h3>Download</h3>
-    <ul>
-      <li>Bitrate: ${album.bitrate} kbps</li>
-      <li>Size (rar): ${album.downloadSize} MB</li>
-      <li>Downloaded: ${album.downloadCount} times</li>
-      <li>Link: <a href="${album.downloadLink}">Here</a></li>
-    </ul>
-     --%>
      <div id="sidebar_albums">
      <h3>Related Albums</h3>
      <c:forEach var="rAlbum" items="${relatedAlbums}">
@@ -89,7 +80,5 @@
 	     </a>
 	 </c:forEach>
 	 </div>
-    <h3>Rating</h3>
-	<div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div>
   </tpdb:sidebar>
 </tpdb:page>
