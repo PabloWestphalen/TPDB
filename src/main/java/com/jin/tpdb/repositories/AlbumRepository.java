@@ -1,12 +1,12 @@
 package com.jin.tpdb.repositories;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import javax.ejb.Stateless;
+import javax.ejb.EJB;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -15,32 +15,31 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.entities.Album;
-import com.jin.tpdb.entities.AlbumComment;
 import com.jin.tpdb.entities.AlbumRating;
-import com.jin.tpdb.entities.Song;
+import com.jin.tpdb.entities.Artist;
 
-@Stateless
+@Singleton
 public class AlbumRepository {
-	@PersistenceContext(unitName = "jin")
+	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	private Session hbs;
 	
-
-	public void save(Album album) {
-		em.persist(album);
-	}
-
-	public Album getAlbumById(int id) {
-		return em.find(Album.class, id);
-	}
+	@EJB
+	private ArtistRepository artistRepo;
 	
-	public Album getFullAlbumById(int id) {
-		Album album = getAlbumById(id);
-		album.setAverageRating(getAverageRating(album.getId()));
-		album.setSongs(getSongs(id));
-		album.setComments(getComments(id));
+	private Album album;
+	private List<Album> albums;
+
+	
+	public void save(Album album, int id) {
+		Artist artist = em.find(Artist.class, id);
+		album.setArtist(artist);
+		em.persist(album);
+	}	
+
+	public Album findById(int id) {
+		album = em.find(Album.class, id);
 		return album;
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -48,33 +47,7 @@ public class AlbumRepository {
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(Album.class);
 		c.addOrder(Order.desc("uploadDate"));
-		// c.setMaxResults(5);
-		return (List<Album>) c.list();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Album> getArtistAlbums(int id) {
-		System.out.println("getting albums from artist" + id);
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(Album.class);
-		c.add(Restrictions.eq("artist.id", id));
-		c.addOrder(Order.desc("uploadDate"));
-		// c.setMaxResults(5);
-		return (List<Album>) c.list();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Album> getFullArtistAlbums(int id) {
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(Album.class);
-		c.add(Restrictions.eq("artist.id", id));
-		c.addOrder(Order.desc("uploadDate"));
-		List<Album> albums = c.list();
-
-		for(Album album : albums) {
-			album.setAverageRating(getAverageRating(album.getId()));
-			album.setTotalSongs(getTotalSongs(album.getId()));
-		}
+		albums = c.list();
 		return albums;
 	}
 
@@ -84,10 +57,8 @@ public class AlbumRepository {
 		Criteria c = hbs.createCriteria(Album.class);
 		c.addOrder(Order.desc("uploadDate"));
 		c.setMaxResults(limit);
-		List<Album> albums =  c.list();
-		for(Album a : albums) {
-			a.getComments().size();
-		}
+		c.setCacheable(true);
+		albums =  c.list();
 		return albums;
 	}
 
@@ -96,33 +67,11 @@ public class AlbumRepository {
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(Album.class);
 		c.setMaxResults(3);
-		return (List<Album>) c.list();
+		c.setCacheable(true);
+		albums = c.list();
+		return albums;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public Set<Song> getSongs(int id) {
-		System.out.println("getting songs from album " + id);
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(Song.class);
-		c.add(Restrictions.eq("album.id", id));
-		Set<Song> results = new HashSet<Song>();
-		results.addAll(c.list());
-		return results;
-	}
-	
-	public int getTotalSongs(int id) {
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(Song.class);
-		c.add(Restrictions.eq("album.id", id));
-		c.setProjection(Projections.countDistinct("id"));
-		Long result = (Long) c.uniqueResult();
-		if(result != null && result > 0) {
-			return result.intValue();
-		} else {
-			return 0;
-		}
-	}
-
 	public int getAverageRating(int id) {
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(AlbumRating.class);
@@ -136,35 +85,17 @@ public class AlbumRepository {
 		}
 	}
 	
-	public int getTotalComments(int id) {
-		System.out.println("######### getting total comments");
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(AlbumComment.class);
-		c.add(Restrictions.eq("album.id", id));
-		c.setProjection(Projections.countDistinct("id"));
-		c.addOrder(Order.desc("date"));
-		Long result = (Long) c.uniqueResult();
-		if(result != null && result > 0) {
-			return result.intValue();
-		} else {
-			return 0;
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Set<AlbumComment> getComments(int id) {
-		System.out.println("######### getting comments");
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(AlbumComment.class);
-		c.add(Restrictions.eq("album.id", id));
-		Set<AlbumComment> results = new HashSet<AlbumComment>();
-		results.addAll(c.list());
-		return results;
-	}
-	
 	public void remove(Album a) {
 		Object deleting = em.find(Album.class, a.getId());
 		em.remove(deleting);
+	}
+
+	public void setRating(int albumId, AlbumRating rating) {
+		Album album = findById(albumId);
+		rating.setAlbum(album);
+		em.persist(rating);
+		album.setAverageRating(getAverageRating(albumId));
+		em.merge(album);
 	}
 
 }

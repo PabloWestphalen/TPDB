@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.AlbumRating;
 import com.jin.tpdb.entities.User;
-import com.jin.tpdb.persistence.GenericDAO;
+import com.jin.tpdb.repositories.AlbumRepository;
 
 public class RatingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private GenericDAO dao;
+	private AlbumRepository albumRepo;
+	
+	
 	
 	@Override
 	protected void doPost(HttpServletRequest request,
@@ -25,17 +27,16 @@ public class RatingController extends HttpServlet {
 
 		try {
 			String type = request.getParameter("type");
-			int id = Integer.parseInt(request.getParameter("id"));
+			int albumId = Integer.parseInt(request.getParameter("id"));
 			int value = Integer.parseInt(request.getParameter("value"));
 
-			if (type.equals("album") && id > 0) {
+			if (type.equals("album") && albumId > 0) {
 
-				Album album = dao.load(Album.class, id);
-				User user = dao.load(User.class, 1);
+				//User user = dao.load(User.class, 1);
 
-				AlbumRating rating = new AlbumRating(album, value, user);
-
-				dao.save(rating);
+				AlbumRating rating = new AlbumRating();
+				rating.setRating(value);
+				albumRepo.setRating(albumId, rating);
 			}
 
 		} catch (Exception e) {

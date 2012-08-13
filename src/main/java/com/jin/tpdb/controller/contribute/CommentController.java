@@ -14,6 +14,7 @@ import com.jin.tpdb.entities.AlbumComment;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.NewsComment;
 import com.jin.tpdb.persistence.GenericDAO;
+import com.jin.tpdb.repositories.NewsRepository;
 
 public class CommentController extends HttpServlet {
 
@@ -21,6 +22,9 @@ public class CommentController extends HttpServlet {
 	
 	@EJB
 	private GenericDAO dao;
+	
+	@EJB
+	private NewsRepository newsRepo;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		Integer albumId = null;
@@ -60,14 +64,13 @@ public class CommentController extends HttpServlet {
 			newsId = Integer.parseInt(request.getParameter("newsId"));
 			NewsComment c = new NewsComment();
 			if (!commentBody.isEmpty()) {
-				News n = dao.load(News.class, newsId);
-				c.setNews(n);
 				c.setComment(commentBody);
 				c.setDate(new Date());
 				c.setUserName(userName);
 				c.setUserEmail(email);
 				c.setUserIP(request.getRemoteAddr());
-				dao.save(c);
+				newsRepo.addComment(c, newsId);
+				
 			}
 			try {
 				response.sendRedirect("news/?id=" + newsId + "#cid" + c.getId());

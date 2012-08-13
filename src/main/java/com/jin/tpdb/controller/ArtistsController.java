@@ -37,9 +37,9 @@ public class ArtistsController extends HttpServlet {
 
 		
 		before = System.currentTimeMillis();		
-		List<Artist> artists = artistRepo.getFullArtistsListing();
+		List<Artist> artists = artistRepo.getAllArtists();
 		after = System.currentTimeMillis();
-		System.out.println("Total time to get everything from the database: " + (after - before) + "ms");
+		System.out.println("Total time to get all artists from the database: " + (after - before) + "ms");
 
 		if (request.getPathInfo() != null) {
 			String artistName = Utils.urlDecode(request.getPathInfo()).replace(

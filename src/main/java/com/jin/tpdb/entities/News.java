@@ -3,22 +3,22 @@ package com.jin.tpdb.entities;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 
 @Entity
-@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class News {
 
 	@Id
@@ -28,8 +28,7 @@ public class News {
 	@ManyToOne
 	private User user;
 
-	@ManyToMany(fetch=FetchType.EAGER)
-	@Fetch(FetchMode.SUBSELECT)
+	@ManyToMany
 	private Set<Tag> tags;
 
 	@Column(nullable = false)
@@ -40,9 +39,8 @@ public class News {
 	@Column(length = 65535, columnDefinition = "Text")
 	private String content;
 	
-	//@OneToMany(fetch=FetchType.EAGER, mappedBy="news", orphanRemoval=true)
-	//@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(mappedBy="news")
+	@OrderBy("date ASC")
 	private Set<NewsComment> comments;
 	
 	public News() {

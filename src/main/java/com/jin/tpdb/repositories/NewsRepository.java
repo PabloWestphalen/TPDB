@@ -3,7 +3,6 @@ package com.jin.tpdb.repositories;
 import java.util.List;
 
 import javax.ejb.Singleton;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -16,21 +15,29 @@ import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.NewsComment;
-import com.jin.tpdb.entities.Tag;
 
 @Singleton
-@Named
 public class NewsRepository {
+	//@PersistenceContext(unitName = "jin")
 	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
+	
 	
 	private EntityManager em;	
 	private Session hbs;
 	
-	private News news;
-	
 	public News getNewsById(int id) {
-		news = em.find(News.class, id);
-		return news;
+		/*hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(News.class);
+		c.add(Restrictions.eq("id", id));
+		c.setCacheable(true);
+		News news = (News)c.uniqueResult();
+		news.getComments().size();
+		news.getTags().size();
+		news.setComments(news.getComments());
+		news.setTags(news.getTags());
+		return news;*/
+		News n = em.find(News.class, id);
+		return n; 
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -39,12 +46,8 @@ public class NewsRepository {
 		Criteria c = hbs.createCriteria(News.class);
 		c.addOrder(Order.desc("date"));
 		c.setCacheable(true);
-		System.out.println("########Getting first... ");
-		c.list();
-		System.out.println("########Getting second... ");
-		c.list();
-		System.out.println("########Returning... ");
-		return (List<News>) c.list();
+		System.out.println();
+		return c.list();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -53,10 +56,8 @@ public class NewsRepository {
 		Criteria c = hbs.createCriteria(News.class);
 		c.addOrder(Order.desc("date"));
 		c.setMaxResults(4);
+		c.setCacheable(true);
 		List<News> newsList = c.list();
-		for(News n : newsList) {
-			n.getComments().size();
-		}
 		return newsList;
 	}
 	
@@ -73,21 +74,13 @@ public class NewsRepository {
 			return 0;
 		}
 	}
-	
-	@SuppressWarnings("unchecked")
-	public List<NewsComment> getComments(int id) {
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(NewsComment.class);
-		c.add(Restrictions.eq("news.id", id));
-		return (List<NewsComment>) c.list();
+
+	public void addComment(NewsComment c, int id) {
+		News n = getNewsById(id);
+		c.setNews(n);
+		em.persist(c);
+		em.refresh(n);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Tag> getTags(int id) {
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(Tag.class);
-		c.add(Restrictions.eq("news.id", id));
-		//return (List<Tag>) c.list();
-		return null;
-	}
+
 }

@@ -15,12 +15,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import javax.persistence.CascadeType;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 //lol
 
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Album {
 
 	@Id

@@ -27,16 +27,14 @@ public class IndexController extends HttpServlet {
 
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
-		
-		Album a = albumRepo.getAlbumById(1);
-		albumRepo.remove(a);
-		
-		
+		Long before, after;
+		before = System.currentTimeMillis();
 		List<News> newsList = newsRepo.getLatestNews();
 
 		List<Album> albumsList = albumRepo.getAlbums(4);
 		List<Album> featuredAlbumsList = albumRepo.getFeaturedAlbums();
-
+		after = System.currentTimeMillis();
+		System.out.println("Time to get everything from the database: " + (after - before) + "ms");
 		request.setAttribute("newsList", newsList);
 		request.setAttribute("albums", albumsList);
 		request.setAttribute("featuredAlbums", featuredAlbumsList);

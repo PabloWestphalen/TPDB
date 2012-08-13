@@ -1,19 +1,20 @@
 package com.jin.tpdb.entities;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Artist {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +29,8 @@ public class Artist {
 	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "artist", orphanRemoval = true)
 	//@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(mappedBy="artist")
-	@Fetch(FetchMode.SUBSELECT)
-	private List<Album> albums;
+	@OrderBy("releaseDate ASC")
+	private Set<Album> albums;
 
 	public Artist() {
 
@@ -67,11 +68,11 @@ public class Artist {
 		this.site = site;
 	}
 
-	public List<Album> getAlbums() {
+	public Set<Album> getAlbums() {
 		return albums;
 	}
 
-	public void setAlbums(List<Album> albums) {
+	public void setAlbums(Set<Album> albums) {
 		this.albums = albums;
 	}
 	

@@ -26,7 +26,11 @@ public class NewsController extends HttpServlet {
 		if (request.getParameter("id") != null) {
 
 			int id = Integer.parseInt(request.getParameter("id"));
+			Long after, before;
+			before = System.currentTimeMillis();
 			News news = newsRepo.getNewsById(id);
+			after = System.currentTimeMillis();
+			System.out.println("Time to get this news from db: " + (after - before) + "ms");
 			request.setAttribute("news", news);
 
 		} else {

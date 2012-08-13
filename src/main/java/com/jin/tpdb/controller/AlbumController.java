@@ -22,7 +22,7 @@ public class AlbumController extends HttpServlet {
 			HttpServletResponse response) throws IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		Album album = albumRepo.getFullAlbumById(id);
+		Album album = albumRepo.findById(id);
 		request.setAttribute("album", album);
 		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
 		jsp.forward(request, response);

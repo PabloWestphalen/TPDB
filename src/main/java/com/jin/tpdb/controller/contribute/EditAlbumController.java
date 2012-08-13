@@ -18,6 +18,7 @@ import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Song;
 import com.jin.tpdb.persistence.GenericDAO;
+import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.tpdb.repositories.ArtistRepository;
 
 public class EditAlbumController extends HttpServlet {
@@ -29,6 +30,11 @@ public class EditAlbumController extends HttpServlet {
 
 	@EJB
 	private ArtistRepository artistRepo;
+	
+	@EJB
+	private AlbumRepository albumRepo;
+	
+	
 
 	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -54,14 +60,8 @@ public class EditAlbumController extends HttpServlet {
 
 		Album album = new Album();
 
-		try {
-			int artist_id = Integer.parseInt(request.getParameter("artist"));
-			Artist a = dao.load(Artist.class, artist_id);
-			album.setArtist(a);
+		int artistId = Integer.parseInt(request.getParameter("artist"));
 
-		} catch (Exception e) {
-			// artist is not a number
-		}
 
 		String albumName = Sanitizer.clean(request.getParameter("name"));
 		String description = Sanitizer.clean(request
@@ -86,7 +86,8 @@ public class EditAlbumController extends HttpServlet {
 
 		String[] tracks = request.getParameterValues("tracks[]");
 		String[] lengths = request.getParameterValues("tracks_length[]");
-		dao.save(album);
+		albumRepo.save(album, artistId);
+		artistRepo.refresh(artistId);
 
 		for (int i = 0; i <= tracks.length - 2; i++) {
 			Song s = new Song();
