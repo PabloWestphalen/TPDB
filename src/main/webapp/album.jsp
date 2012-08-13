@@ -84,7 +84,7 @@
      <h3>Related Albums</h3>
      <c:forEach var="rAlbum" items="${relatedAlbums}">
 	     <a href="<c:url value="/album/?id=${rAlbum.id}" />">
-	     <img src="<c:url value="${rAlbum.cover}" />" alt="${rAlbum.artist.name} - Cover" title="${rAlbum.name}" />
+	     <img src="<c:url value="/${rAlbum.cover}" />" alt="${rAlbum.artist.name} - Cover" title="${rAlbum.name}" />
 	     </a>
 	 </c:forEach>
     <h3>Rating</h3>
