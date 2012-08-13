@@ -2,7 +2,6 @@ package com.jin.tpdb.repositories;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,31 +14,25 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.entities.Album;
+import com.jin.tpdb.entities.AlbumComment;
 import com.jin.tpdb.entities.AlbumRating;
 import com.jin.tpdb.entities.Artist;
 
 @Singleton
 public class AlbumRepository {
-	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(unitName = "jin", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	private Session hbs;
-	
-	@EJB
-	private ArtistRepository artistRepo;
-	
-	private Album album;
-	private List<Album> albums;
 
-	
-	public void save(Album album, int id) {
-		Artist artist = em.find(Artist.class, id);
-		album.setArtist(artist);
-		em.persist(album);
-	}	
+	public void addComment(AlbumComment c, int albumId) {
+		Album album = findById(albumId);
+		c.setAlbum(album);
+		em.persist(c);
+		em.refresh(album);
+	}
 
 	public Album findById(int id) {
-		album = em.find(Album.class, id);
-		return album;
+		return em.find(Album.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,8 +40,7 @@ public class AlbumRepository {
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(Album.class);
 		c.addOrder(Order.desc("uploadDate"));
-		albums = c.list();
-		return albums;
+		return c.list();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -58,20 +50,9 @@ public class AlbumRepository {
 		c.addOrder(Order.desc("uploadDate"));
 		c.setMaxResults(limit);
 		c.setCacheable(true);
-		albums =  c.list();
-		return albums;
+		return c.list();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Album> getFeaturedAlbums() {
-		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(Album.class);
-		c.setMaxResults(3);
-		c.setCacheable(true);
-		albums = c.list();
-		return albums;
-	}
-	
 	public int getAverageRating(int id) {
 		hbs = (Session) em.getDelegate();
 		Criteria c = hbs.createCriteria(AlbumRating.class);
@@ -84,10 +65,63 @@ public class AlbumRepository {
 			return 0;
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Album> getFeaturedAlbums() {
+		hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(Album.class);
+		c.setMaxResults(3);
+		c.setCacheable(true);
+		return c.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Album> getRelatedAlbums(Album a) {
+		hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(Album.class);
+		c.add(Restrictions.ne("id", a.getId()));
+		c.add(Restrictions.eq("artist", a.getArtist()));
+		c.addOrder(Order.asc("releaseDate"));
+		c.setMaxResults(3);
+		c.setCacheable(true);
+		return c.list();
+	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Album> getRandomAlbums(int limit, int albumId) {
+		hbs = (Session) em.getDelegate();
+		Criteria c = hbs.createCriteria(Album.class);
+		c.add(Restrictions.ne("id", albumId));
+		c.add(Restrictions.sqlRestriction("1=1 order by rand()"));
+		c.setMaxResults(limit);
+		return c.list();		
+	}
+
+	/*
+	 * stub for get random albums method
+	 * 
+	 * List<Album> result = c.list(); if(result == null || result.size() == 0) {
+	 * Criteria d = hbs.createCriteria(Album.class);
+	 * 
+	 * }
+	 * 
+	 * Criteria criteria = session.createCriteria(Table.class);
+	 * criteria.add(Restrictions.eq('fieldVariable', anyValue));
+	 * criteria.add(Restrictions.sqlRestriction("1=1 order by rand()"));
+	 * criteria.setMaxResults(5); return criteria.list();
+	 */
+	
+	
+
 	public void remove(Album a) {
 		Object deleting = em.find(Album.class, a.getId());
 		em.remove(deleting);
+	}
+
+	public void save(Album album, int id) {
+		Artist artist = em.find(Artist.class, id);
+		album.setArtist(artist);
+		em.persist(album);
 	}
 
 	public void setRating(int albumId, AlbumRating rating) {

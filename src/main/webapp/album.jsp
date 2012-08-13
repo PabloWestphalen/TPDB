@@ -82,6 +82,10 @@
     </ul>
      --%>
      <h3>Also from this artist</h3>
+     <c:forEach var="rAlbum" items="${relatedAlbums}">
+	     <a href="<c:url value="/album/?id=${rAlbum.id}" />"><img src="${rAlbum.cover}"
+	     alt="${rAlbum.artist.name} - Cover" title="${rAlbum.name}" /></a>
+	 </c:forEach>
      <ul>
      	<li>Teste</li>
      </ul>

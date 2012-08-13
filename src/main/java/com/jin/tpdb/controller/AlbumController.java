@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -23,6 +24,11 @@ public class AlbumController extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		Album album = albumRepo.findById(id);
+		List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
+		if(relatedAlbums == null || relatedAlbums.size() == 0) {
+			relatedAlbums = albumRepo.getRandomAlbums(3, album.getId());
+		}
+		request.setAttribute("relatedAlbums", relatedAlbums);
 		request.setAttribute("album", album);
 		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
 		jsp.forward(request, response);

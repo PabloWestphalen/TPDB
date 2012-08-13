@@ -11,21 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.jin.Sanitizer;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.AlbumComment;
-import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.NewsComment;
-import com.jin.tpdb.persistence.GenericDAO;
+import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.tpdb.repositories.NewsRepository;
 
 public class CommentController extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
-	
-	@EJB
-	private GenericDAO dao;
-	
-	@EJB
-	private NewsRepository newsRepo;
-	
+	@EJB private NewsRepository newsRepo;
+	@EJB private AlbumRepository albumRepo;
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		Integer albumId = null;
 		Integer newsId = null;
@@ -45,14 +39,12 @@ public class CommentController extends HttpServlet {
 			albumId = Integer.parseInt(request.getParameter("albumId"));
 			AlbumComment c = new AlbumComment();
 			if (!commentBody.isEmpty()) {
-				Album a = dao.load(Album.class, albumId);
-				c.setAlbum(a);
 				c.setComment(commentBody);
 				c.setDate(new Date());
 				c.setUserEmail(email);
 				c.setUserName(userName);
 				c.setUserIP(userIp);
-				dao.save(c);
+				albumRepo.addComment(c, albumId);
 			}
 			try {
 				response.sendRedirect("album/?id=" + albumId + "#cid"
@@ -70,7 +62,7 @@ public class CommentController extends HttpServlet {
 				c.setUserEmail(email);
 				c.setUserIP(request.getRemoteAddr());
 				newsRepo.addComment(c, newsId);
-				
+
 			}
 			try {
 				response.sendRedirect("news/?id=" + newsId + "#cid" + c.getId());
