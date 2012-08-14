@@ -3,7 +3,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
 <tpdb:page name="contribute" type="admin" script="add_album">
   <tpdb:content type="admin">
-  <form id="coverForm" method="post" enctype="multipart/form-data" action="/uploader">
+  <form id="coverForm" method="post" enctype="multipart/form-data" action="<c:url value="/uploader" />">
     <input type="file" name="coverUp" id="coverUp" class="testeUp" />
   </form>
   <div id="artistPanel">

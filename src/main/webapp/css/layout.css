@@ -149,6 +149,16 @@ article .entry_info {
 	font-size: 14px;
 }
 
+
+#comments_wrapper {
+	margin: 0;
+	padding: 0;
+}
+.forceReflow {
+	line-height: 160%;
+	
+}
+
 .comments {
 	vertical-align: middle;
 	width: 20px;
@@ -313,7 +323,7 @@ input:focus,textarea:focus,select:focus {
 	-webkit-box-shadow: 0px 0px 10px #DFF4FF;
 }
 
-input.input_invalid {
+input.input_invalid, textarea.input_invalid {
 	box-shadow: 2px 2px 20px #FF8C8C;
 	-moz-box-shadow: 0px 0px 10px red;
 	-webkit-box-shadow: 0px 0px 10px red;
@@ -568,18 +578,18 @@ a.button:hover {
 /************ comments *************/
 .comment {
 	padding: 5px 0;
+	clear: both;
 }
 
 .commentUser,.commentBody {
-	display: inline-block;
+	float: left;
+	display: block;
 }
 
 .commentUser {
 	padding: 0;
-	width: 12%;
+	width: 90px;
 }
-
-
 
 .commentUser img {
 	width: 70px;
@@ -593,14 +603,14 @@ a.button:hover {
 	margin: 0;
 	padding: 0;
 	padding-right: 20px;
-	margin-top: -15px;
+	/* margin-top: -15px; */
 }
 
 
 .commentBody,textarea {
 	vertical-align: top;
 	border: solid 4px #5994B3;
-	width: 80%;
+	width: 82%;
 	/*min-height: 10px;*/
 	background-color: #66A8CC;
 	padding: 15px;
@@ -619,7 +629,8 @@ a.button:hover {
 	border-bottom: 15px solid transparent;
 	border-right: 15px solid #5994B3;
 	padding: 0;
-	display: inline-block;
+	display: block;
+	float: left;
 	vertical-align: top;
 	margin-right: -8px;
 	margin-top: 15px;

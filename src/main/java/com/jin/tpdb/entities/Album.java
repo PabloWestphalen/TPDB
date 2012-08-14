@@ -24,25 +24,27 @@ import org.hibernate.annotations.FetchMode;
 //lol
 
 @Entity
-@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Album {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
-	//@Fetch(FetchMode.SUBSELECT)
-	@OneToMany(mappedBy="album")
+	// @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval =
+	// true)
+	// @Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy = "album")
 	@OrderBy("date ASC")
 	private Set<AlbumComment> comments;
 
 	// @Transient
 	// private Query query = new Query();
 
-	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval = true)
-	//@Fetch(FetchMode.SUBSELECT)
-	@OneToMany(mappedBy="album", cascade=CascadeType.REMOVE)
+	// @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", orphanRemoval =
+	// true)
+	// @Fetch(FetchMode.SUBSELECT)
+	@OneToMany(mappedBy = "album", cascade = CascadeType.REMOVE)
 	@Fetch(FetchMode.SUBSELECT)
 	private Set<Song> songs;
 
@@ -81,10 +83,10 @@ public class Album {
 	private int downloadSize;
 
 	private int downloadCount;
-	
+
 	@Transient
 	private int totalSongs;
-	
+
 	private int averageRating;
 
 	public int getId() {
@@ -210,7 +212,6 @@ public class Album {
 		String path = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
 		String coverName = (artist.getName() + "-" + name + ".jpg")
 				.toLowerCase().replace(" ", "_");
-
 		cover.renameTo(new File(path + coverName));
 	}
 
@@ -221,11 +222,11 @@ public class Album {
 	public void setSongs(Set<Song> songs) {
 		this.songs = songs;
 	}
-	
+
 	public int getTotalSongs() {
 		return this.totalSongs;
 	}
-	
+
 	public void setTotalSongs(int totalSongs) {
 		this.totalSongs = totalSongs;
 	}
@@ -238,6 +239,4 @@ public class Album {
 		this.averageRating = averageRating;
 	}
 
-	
-	
 }

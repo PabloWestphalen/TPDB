@@ -3,119 +3,52 @@ package com.jin.tpdb.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.simple.JSONObject;
 
 import com.jin.ImageUtils;
 
+@MultipartConfig
 public class UploaderController extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void processRequest(HttpServletRequest request,
-			HttpServletResponse response) throws IOException, ServletException {
-
-		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-		if (isMultipart) {
-
-			File file;
-			int maxFileSize = 5 * 1024 * 1024;
-			int maxMemSize = 5 * 1024 * 1024;
-			String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
-			//String filePath = System.getenv("OPENSHIFT_TMP_DIR") + "/uploads/";
-
-			// Check that we have a file upload request
-			isMultipart = ServletFileUpload.isMultipartContent(request);
-
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			// maximum size that will be stored in memory
-			factory.setSizeThreshold(maxMemSize);
-			// Location to save data that is larger than maxMemSize.
-			factory.setRepository(new File(System.getenv("OPENSHIFT_TMP_DIR")));
-
-			// Create a new file upload handler
-			ServletFileUpload upload = new ServletFileUpload(factory);
-			// maximum file size to be uploaded.
-			upload.setSizeMax(maxFileSize);
-
-			try {
-				// Parse the request to get file items.
-				List fileItems = upload.parseRequest(request);
-
-				// Process the uploaded file items
-				Iterator i = fileItems.iterator();
-
-				while (i.hasNext()) {
-					FileItem fi = (FileItem) i.next();
-					if (!fi.isFormField()) {
-						// Get the uploaded file parameters
-						String fieldName = fi.getFieldName();
-						int random = new Random().nextInt();
-						int extensionIndex = fi.getName().lastIndexOf(".");
-						String extension = fi.getName().substring(
-								extensionIndex);
-
-						String fileName = String.valueOf(System
-								.currentTimeMillis()) + random + extension;
-						String contentType = fi.getContentType();
-						boolean isInMemory = fi.isInMemory();
-						long sizeInBytes = fi.getSize();
-
-						System.out.println("####" + fieldName + " - "
-								+ fileName + " - " + contentType + " - "
-								+ isInMemory + " - " + sizeInBytes);
-
-						// Write the file
-
-						if (fileName.lastIndexOf("/") >= 0) {
-							file = new File(filePath
-									+ fileName.substring(fileName
-											.lastIndexOf("/")));
-						} else {
-							file = new File(filePath
-									+ fileName.substring(fileName
-											.lastIndexOf("/") + 1));
-						}
-						fi.write(file);
-						File thumbnail = ImageUtils.createThumbnail(file,
-								"jpg", false);
-
-						PrintWriter out = response.getWriter();
-						JSONObject jsonResponse = new JSONObject();
-						jsonResponse
-								.put("temp_cover_name", thumbnail.getName());
-						response.setContentType("application/json");
-						out.println(jsonResponse.toString());
-					}
-				}
-			} catch (Exception ex) {
-				System.out.println(ex);
-			}
-		}
-	}
-
-	@Override
+	@SuppressWarnings("unchecked") 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+		int random = new Random().nextInt();
+		Part cover = request.getPart("coverUp");
+		String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
+		String extension = getExtension(getFileName(cover));
+		String fileName = System.currentTimeMillis() + random + extension;
+		cover.write(filePath + fileName);
+		File thumbnail = new File(filePath + fileName);
+		thumbnail = ImageUtils.createThumbnail(thumbnail, "jpg", false);
+		PrintWriter out = response.getWriter();
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("temp_cover_name", thumbnail.getName());
+		response.setContentType("application/json");
+		out.println(jsonResponse.toString());
 	}
 
-	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+	private String getExtension(String fileName) {
+		return fileName.substring(fileName.lastIndexOf("."));
 	}
 
+	private String getFileName(Part part) {
+		for (String cd : part.getHeader("content-disposition").split(";")) {
+			if (cd.trim().startsWith("filename")) {
+				return cd.substring(cd.indexOf('=') + 1).trim()
+						.replace("\"", "");
+			}
+		}
+		return null;
+	}
 }

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class AlbumComment {
+public class AlbumComment implements Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,42 +38,82 @@ public class AlbumComment {
 	
 	
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#getUserIP()
+	 */
+	@Override
 	public String getUserIP() {
 		return userIP;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#setUserIP(java.lang.String)
+	 */
+	@Override
 	public void setUserIP(String userIP) {
 		this.userIP = userIP;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#getUserName()
+	 */
+	@Override
 	public String getUserName() {
 		return userName;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#setUserName(java.lang.String)
+	 */
+	@Override
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#getUserEmail()
+	 */
+	@Override
 	public String getUserEmail() {
 		return userEmail;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#setUserEmail(java.lang.String)
+	 */
+	@Override
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#getId()
+	 */
+	@Override
 	public int getId() {
 		return id;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#setId(int)
+	 */
+	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#getUser()
+	 */
+	@Override
 	public User getUser() {
 		return user;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#setUser(com.jin.tpdb.entities.User)
+	 */
+	@Override
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -86,18 +126,34 @@ public class AlbumComment {
 		this.album = album;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#getDate()
+	 */
+	@Override
 	public Date getDate() {
 		return date;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#setDate(java.util.Date)
+	 */
+	@Override
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#getComment()
+	 */
+	@Override
 	public String getComment() {
 		return comment;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jin.tpdb.entities.Comment#setComment(java.lang.String)
+	 */
+	@Override
 	public void setComment(String comment) {
 		this.comment = comment;
 	}

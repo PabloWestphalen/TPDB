@@ -41,7 +41,8 @@ public class News {
 	@Column(length = 65535, columnDefinition = "Text")
 	private String content;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="news")
+	//@OneToMany(cascade=CascadeType.ALL, mappedBy="news")
+	@OneToMany(mappedBy="news")
 	@OrderBy("date ASC")
 	private Set<NewsComment> comments;
 	

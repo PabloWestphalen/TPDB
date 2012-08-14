@@ -22,17 +22,14 @@ public class NewsController extends HttpServlet {
 	
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
-
 		if (request.getParameter("id") != null) {
-
 			int id = Integer.parseInt(request.getParameter("id"));
 			Long after, before;
 			before = System.currentTimeMillis();
-			News news = newsRepo.getNewsById(id);
+			News news = newsRepo.findById(id);
 			after = System.currentTimeMillis();
 			System.out.println("Time to get this news from db: " + (after - before) + "ms");
 			request.setAttribute("news", news);
-
 		} else {
 			List<News> newsList = newsRepo.getAllNews();
 			request.setAttribute("newsList", newsList);

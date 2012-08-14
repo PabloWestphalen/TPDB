@@ -5,7 +5,7 @@
 <%@taglib uri="Utils" prefix="Utils" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="artists" script="artists, stars">
+<tpdb:page name="artists" title="Artists" script="artists, stars">
   <tpdb:content>
     <div id="adminContainer">
         <nav id="artistsNav">

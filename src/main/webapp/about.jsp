@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="about">
+<tpdb:page name="about" title="About">
 	<tpdb:content>
 		<article>
 			<h2>About the Project</h2>

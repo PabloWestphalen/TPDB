@@ -17,7 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Cacheable
-public class NewsComment {
+public class NewsComment implements Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

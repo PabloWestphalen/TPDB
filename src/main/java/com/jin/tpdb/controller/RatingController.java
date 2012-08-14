@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.AlbumRating;
-import com.jin.tpdb.entities.User;
 import com.jin.tpdb.repositories.AlbumRepository;
 
 public class RatingController extends HttpServlet {
@@ -18,8 +16,6 @@ public class RatingController extends HttpServlet {
 	
 	@EJB
 	private AlbumRepository albumRepo;
-	
-	
 	
 	@Override
 	protected void doPost(HttpServletRequest request,

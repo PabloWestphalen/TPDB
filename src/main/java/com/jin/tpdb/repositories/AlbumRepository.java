@@ -17,6 +17,7 @@ import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.AlbumComment;
 import com.jin.tpdb.entities.AlbumRating;
 import com.jin.tpdb.entities.Artist;
+import com.jin.tpdb.entities.Song;
 
 @Singleton
 public class AlbumRepository {
@@ -97,24 +98,8 @@ public class AlbumRepository {
 		return c.list();		
 	}
 
-	/*
-	 * stub for get random albums method
-	 * 
-	 * List<Album> result = c.list(); if(result == null || result.size() == 0) {
-	 * Criteria d = hbs.createCriteria(Album.class);
-	 * 
-	 * }
-	 * 
-	 * Criteria criteria = session.createCriteria(Table.class);
-	 * criteria.add(Restrictions.eq('fieldVariable', anyValue));
-	 * criteria.add(Restrictions.sqlRestriction("1=1 order by rand()"));
-	 * criteria.setMaxResults(5); return criteria.list();
-	 */
-	
-	
-
 	public void remove(Album a) {
-		Object deleting = em.find(Album.class, a.getId());
+		Album deleting = em.find(Album.class, a.getId());
 		em.remove(deleting);
 	}
 
@@ -130,6 +115,14 @@ public class AlbumRepository {
 		em.persist(rating);
 		album.setAverageRating(getAverageRating(albumId));
 		em.merge(album);
+	}
+
+	public void addSong(Song song) {
+		em.persist(song);
+	}
+	
+	public void refresh(int albumId) {
+		em.refresh(em.find(Album.class, albumId));
 	}
 
 }

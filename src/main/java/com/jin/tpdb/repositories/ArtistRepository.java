@@ -2,7 +2,6 @@ package com.jin.tpdb.repositories;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -51,22 +50,8 @@ public class ArtistRepository {
 		return (List<Album>) c.list();
 	}
 
-	public List<Artist> getFullArtistsListing() {
-		List<Artist> artists = getAllArtists();
-
-		for (Artist a : artists) {
-			a.getAlbums();
-			for (Album ab : a.getAlbums()) {
-				ab.getSongs().size();
-			}
-		}
-		return artists;
-	}
-
 	public void refresh(int artistId) {
 		em.refresh(em.find(Artist.class, artistId));
-		//em.flush();
-
 	}
 
 }

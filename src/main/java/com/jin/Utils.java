@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 public class Utils {
@@ -63,5 +64,14 @@ public class Utils {
 
 	public static String urlDecode(String url) {
 		return url.replace("-", " ");
+	}
+
+	public static String getCookieValue(Cookie[] cookies, String cookieName) {
+		for (int i = 0; i < cookies.length; i++) {
+			Cookie cookie = cookies[i];
+			if (cookieName.equals(cookie.getName()))
+				return (cookie.getValue());
+		}
+		return null;
 	}
 }

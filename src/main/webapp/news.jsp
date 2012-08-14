@@ -1,7 +1,15 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="news" script="comments">
+<c:choose>
+<c:when test="${not empty param.id}">
+<c:set var="title" value="${news.title}" />
+</c:when>
+<c:otherwise>
+<c:set var="title" value="News" />
+</c:otherwise>
+</c:choose>
+<tpdb:page name="news" title="${title}" script="comments">
   <tpdb:content>
     <c:choose>
       <c:when test="${not empty param.id}">
@@ -9,40 +17,7 @@
         <p>${news.content}</p>
         <p>Tags: <c:forEach var="tag" items="${news.tags}"><span class="tag">${tag.name}</span> </c:forEach></p>
         <h3 id="comments">Comments</h3>
-		<c:forEach var="comment" items="${news.comments}">
-		<div class="comment" id="cid${comment.id}">
-			<div class="commentUser">
-				<c:choose>
-				<c:when test="${empty comment.user}" > 
-				<img src="<c:url value="/images/unregisteredUser.png" />" />
-				</c:when>
-				<c:otherwise>
-				<img src="<c:url value="/images/users/${comment.user.username}.jpg" />" />
-				</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="arrow-left"></div>
-			<div class="commentBody">
-				<tpdb:format var="${comment.comment}" html="true" />
-			</div>
-			<span>${comment.userName} @ <fmt:formatDate value="${comment.date}" pattern="dd. MMM. yyyy" /></span>
-		</div>
-		</c:forEach>
-		<div class="comment">
-			<div class="commentUser">
-				<img src="<c:url value="/images/unregisteredUser.png" />" />
-			</div>
-			<div class="arrow-left"></div>
-				<form method="post" action="<c:url value="/comment" />" id="commentForm" >
-					<textarea tabindex="1" name="commentBody"></textarea>
-					<p>
-						<input type="hidden" name="newsId" value="${news.id}" />
-						<input tabindex="1" type="text" name="userName" value="Your name" maxlength="12" />
-						<input tabindex="2" type="text" name="email" value="Email" />
-						<input tabindex="3" type="submit" value="Comment" />
-					</p>
-				</form>
-			</div>	
+		<tpdb:comments type="news" comments="${news.comments}" id="${news.id}" />
         </article>
       </c:when>
       <c:otherwise>
@@ -58,4 +33,8 @@
     </c:choose>
   </tpdb:content>
   <tpdb:sidebar />
+  <script>
+
+  
+  </script>
 </tpdb:page>

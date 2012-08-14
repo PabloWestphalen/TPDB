@@ -17,37 +17,25 @@ import com.jin.Sanitizer;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Song;
-import com.jin.tpdb.persistence.GenericDAO;
 import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.tpdb.repositories.ArtistRepository;
 
 public class EditAlbumController extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
-
-	@EJB
-	private GenericDAO dao;
-
 	@EJB
 	private ArtistRepository artistRepo;
-	
 	@EJB
 	private AlbumRepository albumRepo;
-	
-	
 
 	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher jsp = request
-				.getRequestDispatcher("/contribute/album.jsp");
+		RequestDispatcher jsp = request.getRequestDispatcher("/contribute/album.jsp");
 		jsp.forward(request, response);
-
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		List<Artist> artists = artistRepo.getAllArtists();
 		request.setAttribute("artists", artists);
 		dispatch(request, response);
@@ -61,7 +49,6 @@ public class EditAlbumController extends HttpServlet {
 		Album album = new Album();
 
 		int artistId = Integer.parseInt(request.getParameter("artist"));
-
 
 		String albumName = Sanitizer.clean(request.getParameter("name"));
 		String description = Sanitizer.clean(request
@@ -77,6 +64,7 @@ public class EditAlbumController extends HttpServlet {
 		album.setLabel(label);
 		album.setReleaseDate(cal.getTime());
 		album.setUploadDate(new Date());
+		albumRepo.save(album, artistId);
 
 		File tempCover = new File(coversPath
 				+ request.getParameter("temp_cover_name"));
@@ -86,8 +74,6 @@ public class EditAlbumController extends HttpServlet {
 
 		String[] tracks = request.getParameterValues("tracks[]");
 		String[] lengths = request.getParameterValues("tracks_length[]");
-		albumRepo.save(album, artistId);
-		artistRepo.refresh(artistId);
 
 		for (int i = 0; i <= tracks.length - 2; i++) {
 			Song s = new Song();
@@ -95,8 +81,10 @@ public class EditAlbumController extends HttpServlet {
 			s.setName(Sanitizer.clean(tracks[i]));
 			s.setLength(Sanitizer.clean(lengths[i]));
 			s.setNumber(i + 1);
-			dao.save(s);
+			albumRepo.addSong(s);
 		}
+		albumRepo.refresh(album.getId());
+		artistRepo.refresh(artistId);
 
 		dispatch(request, response);
 	}

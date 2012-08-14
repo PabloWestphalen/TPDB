@@ -15,34 +15,29 @@ import com.jin.Sanitizer;
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.Tag;
 import com.jin.tpdb.entities.User;
-import com.jin.tpdb.persistence.GenericDAO;
+import com.jin.tpdb.repositories.NewsRepository;
 
 public class EditNewsController extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
-
 	@EJB
-	private GenericDAO dao;
-	
+	private NewsRepository newsRepo;
+
 	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher jsp = request
 				.getRequestDispatcher("/contribute/news.jsp");
 		jsp.forward(request, response);
-
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		dispatch(request, response);
-
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		String title = Sanitizer.clean(request.getParameter("title"));
 		String content = Sanitizer.clean(request.getParameter("content"));
 		String tags = Sanitizer.clean(request.getParameter("tags"));
@@ -50,23 +45,23 @@ public class EditNewsController extends HttpServlet {
 				.replace(",", "%SPLIT").split("%SPLIT");
 
 		if (!title.isEmpty() && !content.isEmpty()) {
-			User user = dao.load(User.class, 1);
+			User user = newsRepo.getUser();
 			Set<Tag> tagsCollection = new HashSet<Tag>();
-			
-			for (String s : tagsArray) {
-				Tag x = (Tag) dao.load(Tag.class, "name", s);
+
+			for (String tagName : tagsArray) {
+				Tag x = (Tag) newsRepo.getTagByName(tagName);
 				if (x != null) {
 					tagsCollection.add(x);
 				} else {
 					Tag t = new Tag();
-					t.setName(s);
-					dao.save(t);
+					t.setName(tagName);
+					newsRepo.addTag(t);
 					tagsCollection.add(t);
 				}
 			}
 			News news = new News(title, content, user, tagsCollection);
 
-			dao.save(news);
+			newsRepo.save(news);
 			dispatch(request, response);
 		}
 	}

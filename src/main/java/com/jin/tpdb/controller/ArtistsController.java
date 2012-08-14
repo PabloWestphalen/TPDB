@@ -4,22 +4,14 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Order;
-
 import com.jin.Utils;
-import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Artist;
-import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.tpdb.repositories.ArtistRepository;
 
 public class ArtistsController extends HttpServlet {
@@ -28,9 +20,6 @@ public class ArtistsController extends HttpServlet {
 	@EJB
 	private ArtistRepository artistRepo;
 
-	@EJB
-	private AlbumRepository albumRepo;
-	
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		Long before, after;

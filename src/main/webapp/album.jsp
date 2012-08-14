@@ -9,7 +9,7 @@
 <c:set var="ogDesc">
 <tpdb:format var="${album.description}" maxlength="110" />
 </c:set>
-<tpdb:page name="album" script="stars"
+<tpdb:page name="album" script="stars, comments"
 	title="${album.name} - ${album.artist.name}"
 	ogTitle="${album.artist.name} - ${album.name} (${year})"
 	ogImage="${album.cover}"
@@ -26,40 +26,7 @@
     </c:forEach>
   </ol>
   <h3 id="comments">Comments</h3>
-  <c:forEach var="comment" items="${album.comments}">
-	<div class="comment" id="cid${comment.id}">
-			<div class="commentUser">
-				<c:choose>
-				<c:when test="${empty comment.user}" > 
-				<img src="<c:url value="/images/unregisteredUser.png" />" />
-				</c:when>
-				<c:otherwise>
-				<img src="<c:url value="/images/users/${comment.user.username}.jpg" />" />
-				</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="arrow-left"></div>
-			<div class="commentBody">
-			<tpdb:format var="${comment.comment}" html="true" />
-			</div>
-			<span>${comment.userName} @ <fmt:formatDate value="${comment.date}" pattern="dd. MMM. yyyy" /></span>
-	</div>
-  </c:forEach>
-	<div class="comment">
-		<div class="commentUser">
-			<img src="<c:url value="/images/unregisteredUser.png" />" />
-		</div>
-		<div class="arrow-left"></div>
-		<form method="post" action="<c:url value="/comment" />" id="commentForm" >
-			<textarea tabindex="1" name="commentBody"></textarea>
-			<p>
-				<input type="hidden" name="albumId" value="${album.id}" />
-				<input tabindex="1" type="text" name="userName" value="Your name" maxlength="12" />
-				<input tabindex="2" type="text" name="email" value="Email" />
-				<input tabindex="3" type="submit" value="Comment" />
-			</p>
-		</form>
-	</div>		 
+  <tpdb:comments type="album" comments="${album.comments}" id="${album.id}" />
   </article>
   </tpdb:content>
   <tpdb:sidebar>

@@ -10,34 +10,32 @@ import javax.persistence.PersistenceContextType;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.jin.tpdb.entities.News;
 import com.jin.tpdb.entities.NewsComment;
+import com.jin.tpdb.entities.Tag;
+import com.jin.tpdb.entities.User;
 
 @Singleton
 public class NewsRepository {
-	//@PersistenceContext(unitName = "jin")
 	@PersistenceContext(unitName = "jin", type=PersistenceContextType.EXTENDED)
-	
-	
 	private EntityManager em;	
 	private Session hbs;
 	
-	public News getNewsById(int id) {
-		/*hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(News.class);
-		c.add(Restrictions.eq("id", id));
-		c.setCacheable(true);
-		News news = (News)c.uniqueResult();
-		news.getComments().size();
-		news.getTags().size();
-		news.setComments(news.getComments());
-		news.setTags(news.getTags());
-		return news;*/
-		News n = em.find(News.class, id);
-		return n; 
+	public void addComment(NewsComment c, int id) {
+		News n = findById(id);
+		c.setNews(n);
+		em.persist(c);
+		em.refresh(n);
+	}
+	
+	public void addTag(Tag tag) {
+		em.persist(tag);
+	}
+	
+	public News findById(int id) {
+		return em.find(News.class, id);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -46,7 +44,6 @@ public class NewsRepository {
 		Criteria c = hbs.createCriteria(News.class);
 		c.addOrder(Order.desc("date"));
 		c.setCacheable(true);
-		System.out.println();
 		return c.list();
 	}
 	
@@ -61,26 +58,19 @@ public class NewsRepository {
 		return newsList;
 	}
 	
-	public int getTotalComments(int id) {
+	public Tag getTagByName(String name) {
 		hbs = (Session) em.getDelegate();
-		Criteria c = hbs.createCriteria(NewsComment.class);
-		c.add(Restrictions.eq("news.id", id));
-		c.setProjection(Projections.countDistinct("id"));
-		c.addOrder(Order.desc("date"));
-		Long result = (Long) c.uniqueResult();
-		if(result != null && result > 0) {
-			return result.intValue();
-		} else {
-			return 0;
-		}
-	}
-
-	public void addComment(NewsComment c, int id) {
-		News n = getNewsById(id);
-		c.setNews(n);
-		em.persist(c);
-		em.refresh(n);
+		Criteria c = hbs.createCriteria(Tag.class);
+		c.add(Restrictions.eq("name", name));
+		c.setCacheable(true);
+		return (Tag) c.uniqueResult();
 	}
 	
+	public User getUser() {
+		return em.find(User.class, 1);
+	}
 
+	public void save(News news) {
+		em.persist(news);
+	}
 }
