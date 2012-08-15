@@ -66,7 +66,7 @@ public class Utils {
 		return url.replace("-", " ");
 	}
 
-	public static String getCookieValue(Cookie[] cookies, String cookieName) {
+	public static String getCookie(Cookie[] cookies, String cookieName) {
 		for (int i = 0; i < cookies.length; i++) {
 			Cookie cookie = cookies[i];
 			if (cookieName.equals(cookie.getName()))

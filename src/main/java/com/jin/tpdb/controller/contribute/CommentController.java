@@ -16,7 +16,6 @@ import org.json.simple.JSONObject;
 import com.jin.Sanitizer;
 import com.jin.Utils;
 import com.jin.tpdb.entities.AlbumComment;
-import com.jin.tpdb.entities.Comment;
 import com.jin.tpdb.entities.NewsComment;
 import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.tpdb.repositories.NewsRepository;
@@ -75,12 +74,12 @@ public class CommentController extends HttpServlet {
 
 		Cookie[] cookies = request.getCookies();
 
-		if (Utils.getCookieValue(cookies, "userName") == null) {
+		if (Utils.getCookie(cookies, "userName") == null) {
 			Cookie userCookie = new Cookie("userName", userName);
 			response.addCookie(userCookie);
 
 		}
-		if (Utils.getCookieValue(cookies, "email") == null) {
+		if (Utils.getCookie(cookies, "email") == null) {
 			Cookie emailCookie = new Cookie("email", email);
 			response.addCookie(emailCookie);
 		}

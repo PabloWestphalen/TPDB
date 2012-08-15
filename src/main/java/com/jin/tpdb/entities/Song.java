@@ -22,6 +22,17 @@ public class Song {
 	private String name;
 
 	private String length;
+	
+	private String youtubeUrl;
+	
+
+	public String getYoutubeUrl() {
+		return youtubeUrl;
+	}
+
+	public void setYoutubeUrl(String youtubeUrl) {
+		this.youtubeUrl = youtubeUrl;
+	}
 
 	public int getId() {
 		return id;

@@ -9,7 +9,7 @@
 <c:set var="ogDesc">
 <tpdb:format var="${album.description}" maxlength="110" />
 </c:set>
-<tpdb:page name="album" script="stars, comments"
+<tpdb:page name="album" script="stars, comments, youtube"
 	title="${album.name} - ${album.artist.name}"
 	ogTitle="${album.artist.name} - ${album.name} (${year})"
 	ogImage="${album.cover}"
@@ -20,9 +20,16 @@
   <div class="fb-like" data-send="false" data-width="10" data-show-faces="false" data-font="arial" data-layout="button_count"></div>
   ${Utils:cleanHtml(album.description)}
   <h3>Tracks</h3>
-  <ol>
+  <ol id="tracksListing">
     <c:forEach var="song" items="${album.songs}">
+      <c:choose>
+      <c:when test="${not empty song.youtubeUrl}">
+      <li class="has_video" data-video="${song.youtubeUrl}">${song.name} - ${song.length}</li>
+      </c:when>
+      <c:otherwise>>
       <li>${song.name} - ${song.length}</li>
+      </c:otherwise>
+      </c:choose>
     </c:forEach>
   </ol>
   <h3 id="comments">Comments</h3>
@@ -47,5 +54,6 @@
 	     </a>
 	 </c:forEach>
 	 </div>
+	 <div id="player"></div>
   </tpdb:sidebar>
 </tpdb:page>
