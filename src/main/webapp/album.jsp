@@ -21,7 +21,6 @@
   <p>
   ${Utils:cleanHtml(album.description)}
   <%-- <img src="<c:url value="/${album.cover}" />" class="coverImage" style="float: right;"  /> --%>
-The sound of Czech band Khoiba is an inspired interplay of electronic music and clear, melodious guitar tunes. A creative down-tempo mix full of ideas, that creates an exceptional and special atmosphere. A great part in this surely is Ema Brabcova with her distinctive and expressive voice that immerses you in the partly spheric and catchy Khoiba tunes.The glitchy electronics combined with somewhat progressive live instruments make for a unique listening experience.
   </p>
   <h3>Tracks</h3>
   <ol id="tracksListing">
