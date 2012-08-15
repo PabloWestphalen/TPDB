@@ -6,7 +6,6 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -14,8 +13,6 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
-import com.jin.YouTubeManager;
-import com.jin.YouTubeVideo;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.AlbumComment;
 import com.jin.tpdb.entities.AlbumRating;
@@ -149,7 +146,7 @@ public class AlbumRepository {
 	}
 	
 	public String getYoutubeUrl(Song song)  {
-		System.out.println("#######################");
+	/*	System.out.println("#######################");
 		String artistName = song.getAlbum().getArtist().getName().toLowerCase();
 		String result = null;
 		System.out.println("Loading videos...");
@@ -175,7 +172,8 @@ public class AlbumRepository {
 		}
 		System.out.println("Returning result as: " + result);
 		System.out.println("#######################");
-		return result;
+		return result;*/
+		return null;
 	}
 
 }
