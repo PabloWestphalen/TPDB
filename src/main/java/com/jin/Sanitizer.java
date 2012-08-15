@@ -23,7 +23,7 @@ public class Sanitizer {
 		allowed.addTags("p", "br");
 		text = text.replace("[-LB-][-LB-]", "</p><p>");
 		text = text.replace("[-LB-]", "<br />");
-		text = "<p>" + text + "</p>";
+		//text = "<p>" + text + "</p>";
 		text = Jsoup.clean(text, allowed);
 		return text;
 

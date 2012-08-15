@@ -18,7 +18,11 @@
   <article>
   <h2>${album.name} (${album.artist.name})</h2>
   <div class="fb-like" data-send="false" data-width="10" data-show-faces="false" data-font="arial" data-layout="button_count"></div>
+  <p>
   ${Utils:cleanHtml(album.description)}
+  <%-- <img src="<c:url value="/${album.cover}" />" class="coverImage" style="float: right;"  /> --%>
+The sound of Czech band Khoiba is an inspired interplay of electronic music and clear, melodious guitar tunes. A creative down-tempo mix full of ideas, that creates an exceptional and special atmosphere. A great part in this surely is Ema Brabcova with her distinctive and expressive voice that immerses you in the partly spheric and catchy Khoiba tunes.The glitchy electronics combined with somewhat progressive live instruments make for a unique listening experience.
+  </p>
   <h3>Tracks</h3>
   <ol id="tracksListing">
     <c:forEach var="song" items="${album.songs}">
@@ -37,10 +41,12 @@
   </article>
   </tpdb:content>
   <tpdb:sidebar>
-    <img src="<c:url value="/${album.cover}" />" class="coverImage"  />
-    <h3>Information</h3>
+  <div style="text-align: center; margin: 15px 0;">
+  <img src="<c:url value="/${album.cover}" />" class="coverImage" style="margin: auto;"  />
+  </div>
+  <!-- <h3>Information</h3> -->
     <ul>
-      <li>Released: <fmt:formatDate value="${album.releaseDate}" dateStyle="long" type="date" />
+      <li>Released: <fmt:formatDate value="${album.releaseDate}" pattern="MMM, yyyy" type="date" />
       <li>Length: ${album.length }</li>
       <li>Label: ${album.label}</li>
       <li>Rating: <div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div></li>

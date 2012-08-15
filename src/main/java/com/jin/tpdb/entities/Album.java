@@ -46,6 +46,7 @@ public class Album {
 	// @Fetch(FetchMode.SUBSELECT)
 	@OneToMany(mappedBy = "album", cascade = CascadeType.REMOVE)
 	@Fetch(FetchMode.SUBSELECT)
+	@OrderBy("number ASC")
 	private Set<Song> songs;
 
 	// @Column(nullable = false) @ManyToOne

@@ -194,6 +194,8 @@ aside {
 	box-shadow: 0px 0px 20px #aaa;
 	-moz-box-shadow: 5px 5px 50px #aaa;
 	-webkit-box-shadow: 5px 5px 50px #aaa;
+	position: fixed;
+	margin-left: 51.3em;
 }
 
 aside fieldset,form,p {
@@ -227,7 +229,7 @@ aside input[name="Search"] {
 #sidebar_albums {
 	margin: 0;
 	padding: 0;
-	text-align: center;
+	/* text-align: center; */
 }
 
 #sidebar_albums img {
@@ -663,7 +665,7 @@ h2 {
 }
 h3 {
   color: #FFFFBF;
-  text-align: left; 
+  /* text-align: left; */ 
 }
 section article, header, footer, aside {
   background-color: #609EBF;  
