@@ -60,6 +60,42 @@
 			<artifactId>ehcache-web</artifactId>
 			<version>2.0.4</version>
 		</dependency>
+		<!-- youtube integration dependencies -->
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>gdata-client</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>gdata-core</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>gdata-maps</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>gdata-media</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>gdata-youtube</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>google-collect</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>google-mail</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
