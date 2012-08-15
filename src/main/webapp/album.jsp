@@ -26,7 +26,7 @@
       <c:when test="${not empty song.youtubeUrl}">
       <li class="has_video" data-video="${song.youtubeUrl}">${song.name} - ${song.length}</li>
       </c:when>
-      <c:otherwise>>
+      <c:otherwise>
       <li>${song.name} - ${song.length}</li>
       </c:otherwise>
       </c:choose>

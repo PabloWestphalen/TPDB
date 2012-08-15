@@ -811,6 +811,14 @@ div.rateit div.rateit-reset:hover
 	cursor: pointer;
 }
 
+#tracksListing {
+	list-style-position: outside;
+	margin-left: 20px;
+}
+#tracksListing li {
+	width: 99%;
+}
+
 .has_video:before {
 	content: "";
 	display: inline-block;
