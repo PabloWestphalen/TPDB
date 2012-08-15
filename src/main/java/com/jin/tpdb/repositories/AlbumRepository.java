@@ -24,8 +24,7 @@ import com.jin.tpdb.entities.Song;
 
 @Singleton
 public class AlbumRepository {
-	//@PersistenceContext(unitName = "jin", type = PersistenceContextType.EXTENDED)
-	@PersistenceContext(unitName = "jin")
+	@PersistenceContext(unitName = "jin", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	private Session hbs;
 	@EJB

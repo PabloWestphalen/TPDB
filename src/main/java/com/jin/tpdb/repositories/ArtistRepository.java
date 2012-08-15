@@ -17,8 +17,7 @@ import com.jin.tpdb.entities.Artist;
 
 @Singleton
 public class ArtistRepository {
-	//@PersistenceContext(unitName = "jin", type = PersistenceContextType.EXTENDED)
-	@PersistenceContext(unitName = "jin")
+	@PersistenceContext(unitName = "jin", type = PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	private Session hbs;
 

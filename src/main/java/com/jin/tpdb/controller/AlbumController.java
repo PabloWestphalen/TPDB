@@ -23,9 +23,6 @@ public class AlbumController extends HttpServlet {
 			HttpServletResponse response) throws IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		System.out.println("############ updating songs #########");
-		albumRepo.updateSongs();
-		System.out.println("############ done updating songs #########");
 		Album album = albumRepo.findById(id);
 		List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
 		if(relatedAlbums == null || relatedAlbums.size() == 0) {
