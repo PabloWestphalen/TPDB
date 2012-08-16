@@ -24,12 +24,16 @@ function onYouTubeIframeAPIReady() {
 }
 function onPlayerReady(evt) {
 	$('#tracksListing li').click(function() {
+		alert('handling click');
 		var video = $(this).data('video');
 		if (video != null) {
 			alert('mostrando');
 			alert('erro no fadeIn?');
 			//$('#player').fadeIn(1000);
 			alert('mostrado');
+			alert('mostrando de verdade agora...');
+			$('#player').fadeIn(1000);
+			alert('done!');
 			//$('#player').show();
 			player.cueVideoById(video);
 			player.playVideo();
