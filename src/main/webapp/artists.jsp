@@ -40,7 +40,9 @@
 					<div class="albumListing">					
 						<img src="<c:url value="/${album.cover}" />" class="coverImage"  />
 						<a href="<c:url value="/album/?id=${album.id}" />">${album.name} (<fmt:formatDate value="${album.releaseDate}" type="date" pattern="yyyy" />)</a>
+						<p>
 						<tpdb:format var="${album.description}" maxlength="115" html="true" />
+						</p>
 						<span>
 						<c:choose>
 						<c:when test="${empty album.length}" >
