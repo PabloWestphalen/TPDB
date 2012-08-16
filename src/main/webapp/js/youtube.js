@@ -8,6 +8,7 @@ $(document).ready(function() {
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 });
 function onYouTubeIframeAPIReady() {
+	$('#player').hide();
 	player = new YT.Player('player', {
 		/*height : '150',
 		width : '170',*/
@@ -20,7 +21,7 @@ function onYouTubeIframeAPIReady() {
 	});
 }
 function onPlayerReady(evt) {
-	$('#player').hide();
+	
 	$('#tracksListing li').click(function() {
 		var video = $(this).data('video');
 		if (video != null) {
@@ -28,7 +29,7 @@ function onPlayerReady(evt) {
 				player.pauseVideo();
 				$(this).data('playing', false);
 			} else {
-				$('#player').show();
+				//$('#player').show();
 				player.cueVideoById(video);
 				player.playVideo();
 				$('#player').fadeIn(1000);
