@@ -806,7 +806,7 @@ div.rateit div.rateit-reset:hover
 	content: "playing...";
 }
 #player {
-	display: none;	
+	/* display: none; */	
 }
 
 .has_video:hover {

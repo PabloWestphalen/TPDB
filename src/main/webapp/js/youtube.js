@@ -20,14 +20,15 @@ function onYouTubeIframeAPIReady() {
 	});
 }
 function onPlayerReady(evt) {
+	$('#player').hide();
 	$('#tracksListing li').click(function() {
-		$('#player').show();
 		var video = $(this).data('video');
 		if (video != null) {
 			if ($(this).data('playing') == true) {
 				player.pauseVideo();
 				$(this).data('playing', false);
 			} else {
+				$('#player').show();
 				player.cueVideoById(video);
 				player.playVideo();
 				$('#player').fadeIn(1000);
