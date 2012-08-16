@@ -18,24 +18,26 @@ function onYouTubeIframeAPIReady() {
 			'onStateChange' : onPlayerStateChange
 		}
 	});
-	alert('escondendo.');
+	//alert('escondendo.');
 	$('#player').fadeOut(0);
-	alert('escondido.');
-	alert('player api ready event fired');
+	//alert('escondido.');
+	//alert('player api ready event fired');
 	$('#tracksListing li').click(function() {
 		alert('handling click');
 		var video = $(this).data('video');
 		if (video != null) {
-			alert('mostrando');
-			alert('erro no fadeIn?');
+			//alert('mostrando');
+			//alert('erro no fadeIn?');
 			//$('#player').fadeIn(1000);
-			alert('mostrado');
-			alert('mostrando de verdade agora...');
+			//alert('mostrado');
+			//alert('mostrando de verdade agora...');
 			$('#player').fadeIn(1000);
 			alert('done!');
 			//$('#player').show();
-			player.cueVideoById(video);
-			player.playVideo();
+			setTimeout(function() {
+				player.cueVideoById(video);
+				player.playVideo();
+			}, 100);
 			//$('.playing').toggleClass('playing');
 			//$(this).toggleClass("playing");
 		}
