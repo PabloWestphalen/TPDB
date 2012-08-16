@@ -21,9 +21,7 @@ function onYouTubeIframeAPIReady() {
 	alert('escondendo.');
 	$('#player').fadeOut(0);
 	alert('escondido.');
-}
-function onPlayerReady(evt) {
-	alert('player ready event fired');
+	alert('player api ready event fired');
 	$('#tracksListing li').click(function() {
 		alert('handling click');
 		var video = $(this).data('video');
@@ -42,6 +40,9 @@ function onPlayerReady(evt) {
 			//$(this).toggleClass("playing");
 		}
 	});
+}
+function onPlayerReady(evt) {
+
 }
 function onPlayerStateChange(evt) {
 	/*if (evt.data == YT.PlayerState.PLAYING) {
