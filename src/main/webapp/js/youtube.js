@@ -23,7 +23,7 @@ function onYouTubeIframeAPIReady() {
 	//alert('escondido.');
 	//alert('player api ready event fired');
 	$('#tracksListing li').click(function() {
-		alert('handling click');
+		//alert('handling click');
 		var video = $(this).data('video');
 		if (video != null) {
 			//alert('mostrando');
@@ -32,7 +32,7 @@ function onYouTubeIframeAPIReady() {
 			//alert('mostrado');
 			//alert('mostrando de verdade agora...');
 			$('#player').fadeIn(1000);
-			alert('done!');
+			//alert('done!');
 			//$('#player').show();
 			setTimeout(function() {
 				player.cueVideoById(video);
