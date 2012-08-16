@@ -8,7 +8,7 @@ $(document).ready(function() {
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 });
 function onYouTubeIframeAPIReady() {
-	$('#player').hide();
+	$('#player').fadeOut(0);
 	player = new YT.Player('player', {
 		/*height : '150',
 		width : '170',*/
