@@ -8,7 +8,6 @@ $(document).ready(function() {
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 });
 function onYouTubeIframeAPIReady() {
-	$('#player').fadeOut(0);
 	player = new YT.Player('player', {
 		/*height : '150',
 		width : '170',*/
@@ -19,6 +18,7 @@ function onYouTubeIframeAPIReady() {
 			'onStateChange' : onPlayerStateChange
 		}
 	});
+	$('#player').fadeOut(0);
 }
 function onPlayerReady(evt) {
 	$('#tracksListing li').click(function() {
