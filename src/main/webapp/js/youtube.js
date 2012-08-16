@@ -27,6 +27,7 @@ function onPlayerReady(evt) {
 				player.pauseVideo();
 				$(this).data('playing', false);
 			} else {
+				$('#player').show();
 				player.cueVideoById(video);
 				player.playVideo();
 				$('#player').fadeIn(1000);
