@@ -25,16 +25,11 @@ function onPlayerReady(evt) {
 		var video = $(this).data('video');
 		if (video != null) {
 			$('#player').fadeIn(1000);
-			if ($(this).data('playing') == true) {
-				player.pauseVideo();
-				$(this).data('playing', false);
-			} else {
-				//$('#player').show();
-				player.cueVideoById(video);
-				player.playVideo();
-				//$('.playing').toggleClass('playing');
-				//$(this).toggleClass("playing");
-			}
+			//$('#player').show();
+			player.cueVideoById(video);
+			player.playVideo();
+			//$('.playing').toggleClass('playing');
+			//$(this).toggleClass("playing");
 		}
 	});
 }
