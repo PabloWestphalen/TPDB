@@ -23,6 +23,7 @@ function onYouTubeIframeAPIReady() {
 	alert('escondido.');
 }
 function onPlayerReady(evt) {
+	alert('player ready event fired');
 	$('#tracksListing li').click(function() {
 		alert('handling click');
 		var video = $(this).data('video');
