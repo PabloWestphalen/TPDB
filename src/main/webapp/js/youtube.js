@@ -18,13 +18,17 @@ function onYouTubeIframeAPIReady() {
 			'onStateChange' : onPlayerStateChange
 		}
 	});
+	alert('escondendo.');
 	$('#player').fadeOut(0);
+	alert('escondido.');
 }
 function onPlayerReady(evt) {
 	$('#tracksListing li').click(function() {
 		var video = $(this).data('video');
 		if (video != null) {
+			alert('mostrando');
 			$('#player').fadeIn(1000);
+			alert('mostrado');
 			//$('#player').show();
 			player.cueVideoById(video);
 			player.playVideo();
