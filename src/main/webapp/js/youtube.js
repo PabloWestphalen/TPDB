@@ -37,7 +37,7 @@ function onYouTubeIframeAPIReady() {
 			setTimeout(function() {
 				player.cueVideoById(video);
 				player.playVideo();
-			}, 100);
+			}, 500);
 			//$('.playing').toggleClass('playing');
 			//$(this).toggleClass("playing");
 		}
