@@ -27,7 +27,8 @@ function onPlayerReady(evt) {
 		var video = $(this).data('video');
 		if (video != null) {
 			alert('mostrando');
-			$('#player').fadeIn(1000);
+			alert('erro no fadeIn?');
+			//$('#player').fadeIn(1000);
 			alert('mostrado');
 			//$('#player').show();
 			player.cueVideoById(video);
