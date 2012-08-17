@@ -24,13 +24,13 @@ function onYouTubeIframeAPIReady() {
 		var video = $(this).data('video');
 		if (video != null) {
 			playUrl = video;
-			//$('#player').fadeIn(400, 'swing', playVideo);
-			$('#player').fadeIn();
-			if(queue) {
+			if(!queue) {
+				$('#player').fadeIn();
+			} else {
 				player.cueVideoById(playUrl);
 				player.playVideo();
+				queue = true;
 			}
-			
 		}
 	});
 }
@@ -42,9 +42,9 @@ function playVideo() {
 
 function onPlayerReady(evt) {
 	if(playUrl != null) {
-		queue = true;
 		player.cueVideoById(playUrl);
 		player.playVideo();
+		queue = true;
 		
 	}
 }
