@@ -8,7 +8,7 @@
 </c:set>
 <tpdb:page name="album" script="stars, comments, youtube"
 	title="${album.name} - ${album.artist.name}"
-	ogTitle="<${album.artist.name} - ${album.name} (${year})"
+	ogTitle="${album.artist.name} - ${album.name} (${year})"
 	ogImage="${album.cover}"
 	ogDescription="${ogDesc}">
   <tpdb:content>

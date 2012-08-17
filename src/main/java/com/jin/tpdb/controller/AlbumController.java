@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -28,7 +29,8 @@ public class AlbumController extends HttpServlet {
 		if(relatedAlbums == null || relatedAlbums.size() == 0) {
 			relatedAlbums = albumRepo.getRandomAlbums(3, album.getId());
 		}
-		request.setAttribute("year", album.getReleaseDate().getYear());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		request.setAttribute("year", sdf.format(album.getReleaseDate()));
 		request.setAttribute("relatedAlbums", relatedAlbums);
 		request.setAttribute("album", album);
 		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
