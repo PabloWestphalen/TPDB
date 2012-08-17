@@ -3,9 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<c:set var="year">
-<fmt:formatDate value="${album.releaseDate}" type="date" pattern="yyyy" />
-</c:set>
 <c:set var="ogDesc">
 <tpdb:format var="${album.description}" maxlength="110" />
 </c:set>

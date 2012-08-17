@@ -28,6 +28,7 @@ public class AlbumController extends HttpServlet {
 		if(relatedAlbums == null || relatedAlbums.size() == 0) {
 			relatedAlbums = albumRepo.getRandomAlbums(3, album.getId());
 		}
+		request.setAttribute("year", album.getReleaseDate().getYear());
 		request.setAttribute("relatedAlbums", relatedAlbums);
 		request.setAttribute("album", album);
 		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
