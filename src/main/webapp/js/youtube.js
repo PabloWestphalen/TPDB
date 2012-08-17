@@ -1,4 +1,5 @@
 var player;
+var playUrl;
 $(document).ready(function() {
 	// videoId: 'JW5meKfy3fY',
 	// Load player api asynchronously.
@@ -12,7 +13,7 @@ function onYouTubeIframeAPIReady() {
 		/*height : '150',
 		width : '170',*/
 		height : '200',
-		width : '200',
+		width : '250',
 		events : {
 			'onReady' : onPlayerReady,
 			'onStateChange' : onPlayerStateChange
@@ -34,17 +35,14 @@ function onYouTubeIframeAPIReady() {
 			$('#player').fadeIn(1000);
 			//alert('done!');
 			//$('#player').show();
-			setTimeout(function() {
-				player.cueVideoById(video);
-				player.playVideo();
-			}, 500);
+			player.cueVideoById(video);
 			//$('.playing').toggleClass('playing');
 			//$(this).toggleClass("playing");
 		}
 	});
 }
 function onPlayerReady(evt) {
-
+	player.playVideo();
 }
 function onPlayerStateChange(evt) {
 	/*if (evt.data == YT.PlayerState.PLAYING) {
