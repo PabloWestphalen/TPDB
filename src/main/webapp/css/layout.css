@@ -831,3 +831,7 @@ div.rateit div.rateit-reset:hover
 	vertical-align: middle;
 	margin-right: 5px;
 }
+#tracksListing li a {
+	color: white;
+	text-decoration: none;
+}
