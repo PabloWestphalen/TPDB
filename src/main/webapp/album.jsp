@@ -17,7 +17,6 @@
   <div class="fb-like" data-send="false" data-width="10" data-show-faces="false" data-font="arial" data-layout="button_count"></div>
   <p>
   ${Utils:cleanHtml(album.description)}
-  <%-- <img src="<c:url value="/${album.cover}" />" class="coverImage" style="float: right;"  /> --%>
   </p>
   <h3>Tracks</h3>
   <ol id="tracksListing">
@@ -44,7 +43,6 @@
   <div style="text-align: center; margin: 15px 0;">
   <img src="<c:url value="/${album.cover}" />" class="coverImage" style="margin: auto;"  />
   </div>
-  <!-- <h3>Information</h3> -->
     <ul>
       <li>Released: <fmt:formatDate value="${album.releaseDate}" pattern="MMM, yyyy" type="date" />
       <li>Length: ${album.length }</li>
