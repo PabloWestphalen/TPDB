@@ -42,8 +42,8 @@
 		</description>
 		<content:encoded>
 		<![CDATA[
-		<img src="${album.cover}" />
-		${Utils:cleanHtml(album.description)}
+		<img src="${album.cover}" /><p>
+		${Utils:cleanHtml(album.description)}</p>
 		]]>
 		</content:encoded>
 	</item>

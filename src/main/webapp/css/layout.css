@@ -25,8 +25,7 @@ h1 {
 	font-size: 2em;
 }
 
-h2 {
-	/*margin-left: -10px;*/
+h2 { /*margin-left: -10px;*/
 	padding: 10px 0 10px 0px;
 }
 
@@ -136,8 +135,7 @@ article div {
 	padding-left: 30px;
 }
 
-article p {
-	/*margin: 10px 10px 10px 0;*/
+article p { /*margin: 10px 10px 10px 0;*/
 	margin: 10px;
 	padding: 0;
 }
@@ -149,14 +147,13 @@ article .entry_info {
 	font-size: 14px;
 }
 
-
 #comments_wrapper {
 	margin: 0;
 	padding: 0;
 }
+
 .forceReflow {
 	line-height: 160%;
-	
 }
 
 .comments {
@@ -326,7 +323,7 @@ input:focus,textarea:focus,select:focus {
 	-webkit-box-shadow: 0px 0px 10px #DFF4FF;
 }
 
-input.input_invalid, textarea.input_invalid {
+input.input_invalid,textarea.input_invalid {
 	box-shadow: 2px 2px 20px #FF8C8C;
 	-moz-box-shadow: 0px 0px 10px red;
 	-webkit-box-shadow: 0px 0px 10px red;
@@ -609,7 +606,6 @@ a.button:hover {
 	/* margin-top: -15px; */
 }
 
-
 .commentBody,textarea {
 	vertical-align: top;
 	border: solid 4px #5994B3;
@@ -651,55 +647,64 @@ a.button:hover {
 }
 
 /************* blue theme *************/
-
 body {
-  background-color: #eee;
-  /*background-color: #DFF4FF;*/
-  color: #E6F6FF;
+	background-color: #eee;
+	/*background-color: #DFF4FF;*/
+	color: #E6F6FF;
 }
+
 h1 {
-  color: ##F2FFFB;
+	color: ##F2FFFB;
 }
+
 h2 {
-  color: #FFFFBF;
+	color: #FFFFBF;
 }
+
 h3 {
-  color: #FFFFBF;
-  /* text-align: left; */ 
+	color: #FFFFBF;
+	/* text-align: left; */
 }
-section article, header, footer, aside {
-  background-color: #609EBF;  
+
+section article,header,footer,aside {
+	background-color: #609EBF;
 }
+
 #mainNav {
-  background-color: #EBFF80;
-  color: black;
+	background-color: #EBFF80;
+	color: black;
 }
+
 #mainNav li a {
-  color: #64006B;
-  text-decoration: none;
+	color: #64006B;
+	text-decoration: none;
 }
-#home li.home, #news li.news, #artists li.artists, #contribute li.contribute, #requests li.requests, #community li.community, #about li.about {
-  background-color: #BFD936;
+
+#home li.home,#news li.news,#artists li.artists,#contribute li.contribute,#requests li.requests,#community li.community,#about li.about
+	{
+	background-color: #BFD936;
 }
-#home li.home a, #news li.news a, #artists li.artists a, #contribute li.contribute a, #requests li.requests a, #community li.community a, #about li.about a {
-  color: #F5FFBF;
-  font-weight: bold;
+
+#home li.home a,#news li.news a,#artists li.artists a,#contribute li.contribute a,#requests li.requests a,#community li.community a,#about li.about a
+	{
+	color: #F5FFBF;
+	font-weight: bold;
 }
+
 #mainNav li:hover {
-  background-color: #96B300;
-  
+	background-color: #96B300;
 }
+
 #mainNav li:hover a {
-  color: #F5FFBF;
+	color: #F5FFBF;
 }
 
 a {
-  color: #F5FFBF;
+	color: #F5FFBF;
 }
 /************** stars ************/
 /*data-rateit-readonly="true"*/
-
-div.rateit, div.rateit div {
+div.rateit,div.rateit div {
 	padding: 0;
 }
 
@@ -707,106 +712,91 @@ div.rateit[data-rateit-readonly="true"] {
 	cursor: default;
 }
 
-div.rateit
-{
-    margin-right: 15px;
-    display: -moz-inline-box;
-    display: inline-block;
-    position: relative;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    cursor: pointer;
+div.rateit {
+	margin-right: 15px;
+	display: -moz-inline-box;
+	display: inline-block;
+	position: relative;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	cursor: pointer;
 }
 
-div.rateit div.rateit-range
-{
-    position: relative;
-    display: -moz-inline-box;
-    display: inline-block;
-    background: url('../images/star.gif');
-    
-    height: 16px;
+div.rateit div.rateit-range {
+	position: relative;
+	display: -moz-inline-box;
+	display: inline-block;
+	background: url('../images/star.gif');
+	height: 16px;
 }
-
 
 /* for IE 6 */
-* html div.rateit, * html div.rateit div.rateit-range
-{
-    display: inline;
+* html div.rateit,* html div.rateit div.rateit-range {
+	display: inline;
 }
 
 /* for IE 7 */
-* + html div.rateit, * + html div.rateit div.rateit-range
-{
-    display: inline;
+*+html div.rateit,*+html div.rateit div.rateit-range {
+	display: inline;
 }
 
-div.rateit div.rateit-hover, div.rateit div.rateit-selected
-{
-    position: absolute;
-    left: 0px;
+div.rateit div.rateit-hover,div.rateit div.rateit-selected {
+	position: absolute;
+	left: 0px;
 }
 
-div.rateit div.rateit-hover-rtl, div.rateit div.rateit-selected-rtl
-{
-    left: auto;
-    right: 0px;
+div.rateit div.rateit-hover-rtl,div.rateit div.rateit-selected-rtl {
+	left: auto;
+	right: 0px;
 }
 
-div.rateit div.rateit-hover
-{
-    background: url('../images/star.gif') left -32px;
+div.rateit div.rateit-hover {
+	background: url('../images/star.gif') left -32px;
 }
 
-div.rateit div.rateit-hover-rtl
-{
-    background-position: right -32px;
+div.rateit div.rateit-hover-rtl {
+	background-position: right -32px;
 }
 
-div.rateit div.rateit-selected
-{
-    background: url('../images/star.gif') left -16px;
+div.rateit div.rateit-selected {
+	background: url('../images/star.gif') left -16px;
 }
 
-div.rateit div.rateit-selected-rtl
-{
-    background-position: right -16px;
+div.rateit div.rateit-selected-rtl {
+	background-position: right -16px;
 }
 
-div.rateit div.rateit-preset
-{
-    background: url('../images/star.gif') left -48px;
+div.rateit div.rateit-preset {
+	background: url('../images/star.gif') left -48px;
 }
 
-div.rateit div.rateit-preset-rtl
-{
-    background: url('../images/star.gif') left -48px;
+div.rateit div.rateit-preset-rtl {
+	background: url('../images/star.gif') left -48px;
 }
 
-div.rateit div.rateit-reset
-{
-    background: url('../images/delete.gif') 0 0;
-    width: 16px;
-    height: 16px;
-    display: -moz-inline-box;
-    display: inline-block;
-    float: left;
+div.rateit div.rateit-reset {
+	background: url('../images/delete.gif') 0 0;
+	width: 16px;
+	height: 16px;
+	display: -moz-inline-box;
+	display: inline-block;
+	float: left;
 }
 
-div.rateit div.rateit-reset:hover
-{
-    background-position: 0 -16px;
+div.rateit div.rateit-reset:hover {
+	background-position: 0 -16px;
 }
 /******* youtube ******/
 .playing:after {
 	content: "playing...";
 }
-#player {
-	/* display: none; */	
+
+#player { /* display: none; */
+	
 }
 
 .has_video:hover {
@@ -817,6 +807,7 @@ div.rateit div.rateit-reset:hover
 	list-style-position: outside;
 	margin-left: 20px;
 }
+
 #tracksListing li {
 	width: 99%;
 }
@@ -831,7 +822,22 @@ div.rateit div.rateit-reset:hover
 	vertical-align: middle;
 	margin-right: 5px;
 }
+
 #tracksListing li a {
 	color: white;
 	text-decoration: none;
+}
+
+.bulletList {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+
+.bulletList li {
+	font-weight: bold;
+}
+
+.bulletList span {
+	display: block;
+	padding-left: 1.5em;
 }
