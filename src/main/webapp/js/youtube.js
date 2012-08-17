@@ -32,9 +32,9 @@ function onYouTubeIframeAPIReady() {
 			//$('#player').fadeIn(1000);
 			//alert('mostrado');
 			//alert('mostrando de verdade agora...');
-			player.cueVideoById(video);
-			$('#player').fadeIn(1000, 'swing', player.playVideo);
-			//player.playVideo();
+			playUrl = video;
+			
+			$('#player').fadeIn(1000, 'swing', playVideo);
 			//alert('done!');
 			//$('#player').show();
 			//$('.playing').toggleClass('playing');
@@ -42,7 +42,16 @@ function onYouTubeIframeAPIReady() {
 		}
 	});
 }
+
+function playVideo() {
+	player.cueVideoById(playUrl);
+	player.playVideo();
+}
+
+
 function onPlayerReady(evt) {
+	alert("i'm ready to rock");
+	player.playVideo();
 }
 function onPlayerStateChange(evt) {
 	/*if (evt.data == YT.PlayerState.PLAYING) {
