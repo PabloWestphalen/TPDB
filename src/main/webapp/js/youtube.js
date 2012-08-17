@@ -23,17 +23,22 @@ function onYouTubeIframeAPIReady() {
 		var video = $(this).data('video');
 		if (video != null) {
 			playUrl = video;
-			$('#player').fadeIn(400, 'swing', playVideo);
+			//$('#player').fadeIn(400, 'swing', playVideo);
+			$('#player').fadeIn();
 		}
 	});
 }
 
 function playVideo() {
-	player.cueVideoById(playUrl);
-	player.playVideo();
+	//player.cueVideoById(playUrl);
+	//player.playVideo();
 }
 
 function onPlayerReady(evt) {
+	if(playUrl != null) {
+		player.cueVideoById(playUrl);
+		player.playVideo();
+	}
 }
 function onPlayerStateChange(evt) {
 }
