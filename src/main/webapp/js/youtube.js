@@ -1,5 +1,6 @@
 var player;
 var playUrl;
+var queue = false;
 $(document).ready(function() {
 	var tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/iframe_api";
@@ -25,6 +26,11 @@ function onYouTubeIframeAPIReady() {
 			playUrl = video;
 			//$('#player').fadeIn(400, 'swing', playVideo);
 			$('#player').fadeIn();
+			if(queue) {
+				player.cueVideoById(playUrl);
+				player.playVideo();
+			}
+			
 		}
 	});
 }
@@ -36,8 +42,10 @@ function playVideo() {
 
 function onPlayerReady(evt) {
 	if(playUrl != null) {
+		queue = true;
 		player.cueVideoById(playUrl);
 		player.playVideo();
+		
 	}
 }
 function onPlayerStateChange(evt) {
