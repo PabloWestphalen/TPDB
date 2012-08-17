@@ -50,8 +50,8 @@ function playVideo() {
 
 
 function onPlayerReady(evt) {
-	alert("i'm ready to rock");
-	player.playVideo();
+	//alert("i'm ready to rock");
+	//player.playVideo();
 }
 function onPlayerStateChange(evt) {
 	/*if (evt.data == YT.PlayerState.PLAYING) {
