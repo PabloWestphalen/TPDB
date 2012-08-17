@@ -32,17 +32,17 @@ function onYouTubeIframeAPIReady() {
 			//$('#player').fadeIn(1000);
 			//alert('mostrado');
 			//alert('mostrando de verdade agora...');
-			$('#player').fadeIn(1000);
+			player.cueVideoById(video);
+			$('#player').fadeIn(1000, 'swing', player.playVideo);
+			//player.playVideo();
 			//alert('done!');
 			//$('#player').show();
-			player.cueVideoById(video);
 			//$('.playing').toggleClass('playing');
 			//$(this).toggleClass("playing");
 		}
 	});
 }
 function onPlayerReady(evt) {
-	player.playVideo();
 }
 function onPlayerStateChange(evt) {
 	/*if (evt.data == YT.PlayerState.PLAYING) {
