@@ -12,8 +12,8 @@ function onYouTubeIframeAPIReady() {
 	player = new YT.Player('player', {
 		/*height : '150',
 		width : '170',*/
-		height : '200',
-		width : '250',
+		height : '201',
+		width : '201',
 		events : {
 			'onReady' : onPlayerReady,
 			'onStateChange' : onPlayerStateChange
