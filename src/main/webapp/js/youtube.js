@@ -34,7 +34,7 @@ function onYouTubeIframeAPIReady() {
 			//alert('mostrando de verdade agora...');
 			playUrl = video;
 			
-			$('#player').fadeIn(1000, 'swing', playVideo);
+			$('#player').fadeIn(400, 'swing', playVideo);
 			//alert('done!');
 			//$('#player').show();
 			//$('.playing').toggleClass('playing');
