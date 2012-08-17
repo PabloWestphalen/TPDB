@@ -45,6 +45,7 @@
   </c:otherwise>
 </c:choose>
 <c:if test="${not empty title}">
+<meta property="fb:admins" content="597985907" />
 <meta property="og:title" content="${ogTitle}" />
 </c:if>
 <meta property="og:type" content="website" />
