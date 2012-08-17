@@ -1,6 +1,5 @@
 var player;
 var playUrl;
-var queue = false;
 $(document).ready(function() {
 	var tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/iframe_api";
@@ -24,29 +23,17 @@ function onYouTubeIframeAPIReady() {
 		var video = $(this).data('video');
 		if (video != null) {
 			playUrl = video;
-			if(!queue) {
-				$('#player').fadeIn();
-			} else {
-				player.cueVideoById(playUrl);
-				player.playVideo();
-				queue = true;
-			}
+			$('#player').fadeIn(400, 'swing', playVideo);
 		}
 	});
 }
 
 function playVideo() {
-	//player.cueVideoById(playUrl);
-	//player.playVideo();
+	player.cueVideoById(playUrl);
+	player.playVideo();
 }
 
 function onPlayerReady(evt) {
-	if(playUrl != null) {
-		player.cueVideoById(playUrl);
-		player.playVideo();
-		queue = true;
-		
-	}
 }
 function onPlayerStateChange(evt) {
 }
