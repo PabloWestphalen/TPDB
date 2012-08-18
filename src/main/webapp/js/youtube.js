@@ -9,11 +9,11 @@ var player;
 var playUrl;
 var loaded = false;
 $(document).ready(function() {
-	$('#player').addClass('playerLoading');
+/*	$('#player').addClass('playerLoading');
 	var tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/iframe_api";
 	var firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);*/
 	$('#tracksListing li a').click(function(event) {
 		event.preventDefault();
 	});
@@ -38,8 +38,7 @@ function onPlayerReady(evt) {
 	$('#tracksListing li').click(function(event) {
 		var video = $(this).data('video');
 		if (video != null) {
-			playUrl = video;
-			player.loadVideoById(playUrl);
+			player.loadVideoById(video);
 			$('#player').removeClass('playerLoading');
 			$('#player').fadeIn();
 			//$('#player').fadeIn();
