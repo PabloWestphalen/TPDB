@@ -39,6 +39,7 @@ function onPlayerReady(evt) {
 		if (video != null) {
 			playUrl = video;
 			$('#player').fadeIn();
+			player.loadVideoById(playUrl);
 			//$('#player').fadeIn();
 			//onPlayerReady(null);
 		}
