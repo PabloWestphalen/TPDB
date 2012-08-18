@@ -33,17 +33,18 @@ function onYouTubeIframeAPIReady() {
 			playUrl = video;
 			//$('#player').fadeIn(400, 'swing', playVideo);
 			$('#player').fadeIn();
-			onPlayerReady();
+			//onPlayerReady(null);
+			player.loadVideoById(playUrl);
 		}
 	});
 }
 
 function playVideo() {
+	
 }
 
 function onPlayerReady(evt) {
-	player.cueVideoById(playUrl);
-	player.playVideo();
+	evt.target.playVideo();
 }
 function onPlayerStateChange(evt) {
 }
