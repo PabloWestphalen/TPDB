@@ -31,7 +31,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function playVideo() {
-	player.loadVideoById(playUrl);
+	//player.loadVideoById(playUrl);
 }
 
 function onPlayerReady(evt) {
