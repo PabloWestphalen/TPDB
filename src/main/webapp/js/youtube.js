@@ -27,6 +27,15 @@ function onYouTubeIframeAPIReady() {
 		}
 	});
 	$('#player').fadeOut(0);
+
+}
+
+function playVideo() {
+	player.loadVideoById(playUrl);
+}
+
+function onPlayerReady(evt) {
+	//evt.target.playVideo();
 	$('#tracksListing li').click(function(event) {
 		var video = $(this).data('video');
 		if (video != null) {
@@ -37,14 +46,6 @@ function onYouTubeIframeAPIReady() {
 			
 		}
 	});
-}
-
-function playVideo() {
-	player.loadVideoById(playUrl);
-}
-
-function onPlayerReady(evt) {
-	//evt.target.playVideo();
 }
 function onPlayerStateChange(evt) {
 }
