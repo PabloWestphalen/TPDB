@@ -31,20 +31,20 @@ function onYouTubeIframeAPIReady() {
 		var video = $(this).data('video');
 		if (video != null) {
 			playUrl = video;
-			//$('#player').fadeIn(400, 'swing', playVideo);
-			$('#player').fadeIn();
+			$('#player').fadeIn(400, 'swing', playVideo);
+			//$('#player').fadeIn();
 			//onPlayerReady(null);
-			player.loadVideoById(playUrl);
+			
 		}
 	});
 }
 
 function playVideo() {
-	
+	player.loadVideoById(playUrl);
 }
 
 function onPlayerReady(evt) {
-	evt.target.playVideo();
+	//evt.target.playVideo();
 }
 function onPlayerStateChange(evt) {
 }
