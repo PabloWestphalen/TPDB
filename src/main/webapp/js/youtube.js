@@ -26,8 +26,6 @@ function onYouTubeIframeAPIReady() {
 			'onStateChange' : onPlayerStateChange
 		}
 	});
-	$('#player').fadeOut(0);
-
 }
 
 function playVideo() {
@@ -40,12 +38,12 @@ function onPlayerReady(evt) {
 		var video = $(this).data('video');
 		if (video != null) {
 			playUrl = video;
-			$('#player').fadeIn(400, 'swing', playVideo);
+			$('#player').fadeIn();
 			//$('#player').fadeIn();
 			//onPlayerReady(null);
-			
 		}
 	});
+	$('#player').fadeOut(0);
 }
 function onPlayerStateChange(evt) {
 }
