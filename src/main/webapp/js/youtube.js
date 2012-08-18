@@ -1,12 +1,13 @@
 var player;
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 $(document).ready(function() {
-	/*$('#player').addClass('playerLoading');
-	var tag = document.createElement('script');
-	tag.src = "https://www.youtube.com/iframe_api";
-	var firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);*/
+	$('#player').addClass('playerLoading');
 	$('#tracksListing li a').click(function(event) {
-		event.preventDefault();
+		event.preventDefault();	
 	});
 });
 
@@ -25,9 +26,9 @@ function onPlayerReady(evt) {
 		var video = $(this).data('video');
 		if (video != null) {
 			player.loadVideoById(video);
-			//$('#player').removeClass('playerLoading');
+			$('#player').removeClass('playerLoading');
 			$('#player').fadeIn();
 		}
 	});
-	$('#player').fadeOut(0);
+	$('#player').hide();
 }

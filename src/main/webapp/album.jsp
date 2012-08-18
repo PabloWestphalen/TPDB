@@ -60,5 +60,4 @@
 	 </div>
 	 <div id="player"></div>
   </tpdb:sidebar>
-  <script src="https://www.youtube.com/iframe_api"></script>
 </tpdb:page>
