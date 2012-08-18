@@ -1,5 +1,13 @@
+/*firefox = ok
+ie deia = ok
+chrome deia = ok
+meu ie = crash
+meu opera = ok
+meu chrome = ok
+*/
 var player;
 var playUrl;
+var loaded = false;
 $(document).ready(function() {
 	var tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/iframe_api";
@@ -25,7 +33,7 @@ function onYouTubeIframeAPIReady() {
 			playUrl = video;
 			//$('#player').fadeIn(400, 'swing', playVideo);
 			$('#player').fadeIn();
-			onPlayerReady(null);
+			onPlayerReady();
 		}
 	});
 }
