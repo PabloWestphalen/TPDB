@@ -9,7 +9,7 @@ var player;
 var playUrl;
 var loaded = false;
 $(document).ready(function() {
-	$('#player').toggleClass('playerLoading');
+	$('#player').addClass('playerLoading');
 	var tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/iframe_api";
 	var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -39,9 +39,9 @@ function onPlayerReady(evt) {
 		var video = $(this).data('video');
 		if (video != null) {
 			playUrl = video;
-			$('#player').toggleClass('playerLoading');
-			$('#player').fadeIn();
 			player.loadVideoById(playUrl);
+			$('#player').removeClass('playerLoading');
+			$('#player').fadeIn();
 			//$('#player').fadeIn();
 			//onPlayerReady(null);
 		}
