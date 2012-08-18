@@ -15,7 +15,7 @@ function onYouTubeIframeAPIReady() {
 		height : '200',
 		width : '200',
 		events : {
-			'onReady' : onPlayerReady,
+			'onReady' : onPlayerReady
 		}
 	});
 }
