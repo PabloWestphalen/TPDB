@@ -7,13 +7,13 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 $(document).ready(function() {
 	$('#player').addClass('playerLoading');
 	$('#tracksListing li a').click(function(event) {
-		event.preventDefault();	
+		event.preventDefault();
 	});
 });
 
 function onYouTubeIframeAPIReady() {
 	player = new YT.Player('player', {
-		height : '200',
+		height : '220',
 		width : '200',
 		events : {
 			'onReady' : onPlayerReady

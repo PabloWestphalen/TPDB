@@ -230,9 +230,9 @@ aside input[name="Search"] {
 }
 
 #sidebar_albums img {
-	margin-right: 5px;
-	width: 58px;
-	height: 58px;
+	margin-right: 4px;
+	width: 60px;
+	height: 60px;
 	text-align: center;
 }
 
@@ -844,8 +844,4 @@ div.rateit div.rateit-reset:hover {
 .playerLoading {
 	position: absolute;
 	top: 900em;
-}
-.playerReady {
-	position: static;
-	top: 0;
 }
