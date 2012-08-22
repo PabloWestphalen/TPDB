@@ -6,7 +6,7 @@
 	required="true" rtexprvalue="true" type="java.util.Collection"%>
 <%@attribute name="id" description="ID of the item" required="true"
 	rtexprvalue="true"%>
-<%@attribute name="type" description="Type of the item. []album | news]"
+<%@attribute name="type" description="Type of the item. [album | news]"
 	required="true"%>
 <div id="comments_wrapper">
 <c:forEach var="comment" items="${comments}">

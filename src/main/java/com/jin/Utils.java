@@ -15,6 +15,7 @@ public class Utils {
 		List<String> months = new ArrayList<String>();
 		Collections.addAll(months, new DateFormatSymbols().getMonths());
 		try {
+            //comentário by dvlcube
 			months.remove(12);
 		} catch (IndexOutOfBoundsException e) {
 		}
