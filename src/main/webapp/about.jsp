@@ -51,7 +51,7 @@
 				exposure, and therefore is rendered hard to come across. With that
 				in mind, all it would need is just for people around the world to
 				help catalogue these records in a central database (much like a
-				collaborative wiki).</p>
+				collaborative wiki).</p>[edited at Cloud9]
 		</article>
 	</tpdb:content>
 	<tpdb:sidebar />
