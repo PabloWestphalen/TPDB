@@ -16,42 +16,43 @@ import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.tpdb.repositories.NewsRepository;
 
 public class IndexController extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
+  
+  private static final long serialVersionUID = 1L;
 
-	@EJB
-	private NewsRepository newsRepo;
-	
-	@EJB
-	private AlbumRepository albumRepo;
+  @EJB
+  private NewsRepository newsRepo;
+  
+  @EJB
+  private AlbumRepository albumRepo;
 
-	public void processRequest(HttpServletRequest request,
-			HttpServletResponse response) throws IOException, ServletException {
-		Long before, after;
-		before = System.currentTimeMillis();
-		List<News> newsList = newsRepo.getLatestNews();
+  public void processRequest(HttpServletRequest request,
+      HttpServletResponse response) throws IOException, ServletException {
+    Long before, after;
+    before = System.currentTimeMillis();
+    List<News> newsList = newsRepo.getLatestNews();
 
-		List<Album> albumsList = albumRepo.getAlbums(4);
-		List<Album> featuredAlbumsList = albumRepo.getFeaturedAlbums();
-		after = System.currentTimeMillis();
-		System.out.println("Time to get everything from the database: " + (after - before) + "ms");
-		request.setAttribute("newsList", newsList);
-		request.setAttribute("albums", albumsList);
-		request.setAttribute("featuredAlbums", featuredAlbumsList);
-		RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
-		jsp.forward(request, response);
+    List<Album> albumsList = albumRepo.getAlbums(4);
+    List<Album> featuredAlbumsList = albumRepo.getFeaturedAlbums();
+    after = System.currentTimeMillis();
+    System.out.println("Time to get everything from the database: " + (after - before) + "ms");
+    request.setAttribute("newsList", newsList);
+    request.setAttribute("albums", albumsList);
+    request.setAttribute("featuredAlbums", featuredAlbumsList);
+    RequestDispatcher jsp = request.getRequestDispatcher("index.jsp");
+    System.out.println("######## rodei no cloud-ide.com!!!!!!!#########");
+    jsp.forward(request, response);
 
-	}
+  }
 
-	@Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
-	}
+  @Override
+  protected void doPost(HttpServletRequest request,
+      HttpServletResponse response) throws ServletException, IOException {
+    processRequest(request, response);
+  }
 
-	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
-	}
+  @Override
+  protected void doGet(HttpServletRequest request,
+      HttpServletResponse response) throws ServletException, IOException {
+    processRequest(request, response);
+  }
 }
