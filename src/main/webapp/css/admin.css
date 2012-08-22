@@ -1,0 +1,232 @@
+#adminNav a {
+  border: solid 1px #A5CD4E;
+  border-radius: 5px;
+  /* chrome/webkit */
+  background-image: -webkit-linear-gradient(top, #EBFF80, #A5CD4E); 
+  /*firefox */
+  background-image: -moz-linear-gradient(top, #EBFF80, #A5CD4E);
+  /* IE */
+  background-image: -ms-linear-gradient(top, #EBFF80, #A5CD4E);
+  /*opera */
+  background-image: -o-linear-gradient(top, #EBFF80, #A5CD4E); 
+  /*fallback color */
+  background-color: #EBFF80;
+  display: block;
+  font-family: Helvetica, Arial;
+  border-radius: 5px;
+  color: black;
+  text-shadow: white 1px 1px 2px;
+  font-weight: bold;
+  width: 110px;
+  padding: 1px;
+  text-align: center;
+  text-decoration: none;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#adminNav a:active {
+  background-image: -o-linear-gradient(top, #C7D96C 6px, #A5CD4E 100%);
+  position: relative;
+  left: 1px;
+  top: 1px;
+}
+
+#adminNav a:hover {
+  border: solid 1px #64006B;
+  box-shadow: grey 0px 2px 5px 0px;
+}
+
+#adminBody form, #adminNav h3 {
+  padding: 20px;
+}
+
+#adminBody input,textarea {
+  width: 100%;
+  background-color: #A3C6D9;
+  font-family: Helvetica, Arial;
+  color: white;
+  padding: 5px;
+}
+
+#adminBody textarea {
+  height: 200px;
+}
+
+#adminBody fieldset p {
+  padding-bottom: 20px;
+}
+
+#adminBody label {
+  width: 100px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#adminBody fieldset {
+  padding-left: 15px;
+  border-top: solid 1px white;
+}
+
+#adminBody fieldset legend {
+  padding: 5px;
+  color: #FFFFBF;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #666666;
+  margin-left: -15px;
+}
+
+#adminBody input[type="submit"] {
+  margin-top: 20px;
+  width: 100px;
+}
+
+#fAlbum, #fTracks {
+  border-top: solid 1px white;
+  
+}
+
+#fAlbum legend, #fTracks legend {
+  margin-left: -15px;
+}
+
+#fTracks input:nth-child(1) {
+  width: 20px;
+  text-align: center;
+}
+
+#fTracks inut:nth-child(1):disabled {
+	color: #ffffff;
+}
+#fTracks input:nth-child(2) {
+  width: 74%;
+}
+#fTracks input:nth-child(3) {
+  width: 80px;
+  text-align: center;
+}
+#fTracks p {
+  margin: 0;
+  padding: 0;
+}
+#fAlbum select {
+  background-color: #A3C6D9;
+  color: #fff;
+  border: none;
+  padding: 5px;
+}
+
+#fAlbum #artist {
+  width: 190px;
+}
+#fAlbum #month {
+  width: 100px; 
+}
+
+#falbum #year {
+  width: 60px;
+  text-align: center;
+}
+
+.coverLeft {
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-right: 80px; 
+  
+}
+
+.coverFloat { 
+  width: 300px; 
+  border: solid 1px red;  
+}
+
+.cover {
+  cursor: pointer;
+}
+
+.clrl {
+  clear: left;
+}
+
+#fTracks .moreTracks {
+  text-align: right;
+  padding-right: 15px;
+}
+
+
+#fTracks .moreTracks input[type="button"] {
+  width: 50px;
+  border-radius: 5px;
+  text-align: right;
+}
+
+#albumBtn {
+  margin: 0 !important;
+  width: 120px !important;
+  margin-left: 200px !important;
+  
+}
+
+#trLength {
+  text-align: center;
+}
+
+#coverUp {
+  display: inline-block;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden;             
+}
+
+.loading {
+  opacity: 0.5;
+}
+
+#adminBody #coverForm {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.newTrack {
+  opacity: 0.5;
+}
+
+#adminBody #newArtist {
+  width: 40px;
+}
+
+#closeWindow {
+  position: absolute;
+  top: -35px;
+  right: 0;
+  cursor: pointer;
+}
+
+#artistPanel {
+  display: none;
+  position:fixed;
+  top: 20%;
+  left: 30%;
+  width:500px;
+  background:#609EBF;
+  padding:0 15px 0px 0px;
+  border:2px solid #CCCCCC;
+  z-index:2001;
+}
+
+
+#lightbox {
+  display:none;
+  background:#000;
+  opacity:0.7;
+  filter:alpha(opacity=30);
+  position: fixed;
+  top:0px;
+  left:0px;
+  z-index:2000;
+}
