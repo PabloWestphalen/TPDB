@@ -20,7 +20,6 @@ a img {
 
 h1,h2,h3,h4,h5,h6 {
   font-weight: normal;
-  font-family: "Segoe UI";
   text-shadow: black 1px 1px 2px;
   color: #FFDF40;
   font-family: 'Baumans', sans-serif;
@@ -61,7 +60,8 @@ body {
   width: 1050px;
   margin: 20px auto;
   font-size: 1em;
-  font-family: "Segoe UI";
+  /*font-family: "Segoe UI";*/
+  font-family: 'Baumans', sans-serif;
   line-height: 160%;
   overflow-y: scroll;
   /* added background */
@@ -444,6 +444,7 @@ article p img.coverImage {
 
 #artistsNav {
   padding-top: 50px;
+
 }
 
 #adminNav,#artistsNav {
@@ -466,7 +467,7 @@ article p img.coverImage {
   -moz-box-sizing: border-box;
   background-color: rgba(228, 125, 23, 0.102);  
   border-bottom: solid 1px #FF8000;
-  font-family: Helvetica, Arial;
+  font-family: 'Baumans', sans-serif;
   color: #D9F0FF;
   text-shadow: #444 1px 1px 1px;
   text-decoration: none;
@@ -506,8 +507,8 @@ article p img.coverImage {
 
 .albumDiv  a {
   font-size: 1.1em;
-  color: #FFFFBF;
-  text-shadow: 1px 1px 0px #666666;
+  color: #FFE359;
+  text-shadow: black 1px 1px 2px;;
 }
 
 #artistsBody img {
@@ -538,11 +539,14 @@ article p img.coverImage {
   vertical-align: text-bottom;
 }
 
-#artistsBody .albumDiv div:nth-child(odd) {
+#artistsBody .albumDiv .albumListing:nth-child(odd) {
   /*background-color: #5C98B8;
-  background-color: rgba(255, 127, 0, 0.702);
+
   */
+  background-color: rgba(50, 50, 50, 1);
 }
+
+
 
 #artistsBody .albumDiv div p {
   margin: 0;
@@ -552,7 +556,7 @@ article p img.coverImage {
 .albumListing {
   min-height: 100px;
   padding: 15px;
-  background-color: transparent;
+  background-color: rgba(50, 50, 50, 0);
 }
 
 #artistsBody span {
@@ -565,23 +569,23 @@ article p img.coverImage {
 
 /************* button code *************/
 a.button {
-  border: solid 1px #A5CD4E;
+  border: solid 1px black;
   border-radius: 5px;
   /* chrome/webkit */
-  background-image: -webkit-linear-gradient(top, orange, #A5CD4E);
+  background-image: -webkit-linear-gradient(top, #FFA500, #FF8000);
   /*firefox */
-  background-image: -moz-linear-gradient(top, orange, #A5CD4E);
+  background-image: -moz-linear-gradient(top, #FFA500, #FF8000);
   /* IE */
-  background-image: -ms-linear-gradient(top, orange, #A5CD4E);
+  background-image: -ms-linear-gradient(top, #FFA500, #FF8000);
   /*opera */
-  background-image: -o-linear-gradient(top, orange, #A5CD4E);
+  background-image: -o-linear-gradient(top, #FFA500, #FF8000);
   /*fallback color */
-  background-color: #FFA500
+  background-color: #FFA500;
   display: block;
   font-family: Helvetica, Arial;
   border-radius: 5px;
-  color: black;
-  text-shadow: white 1px 1px 2px;
+  color: white;
+  text-shadow: black 1px 1px 2px;
   font-weight: bold;
   width: 90px;
   padding: 1px;
@@ -592,15 +596,14 @@ a.button {
 }
 
 a.button:active {
-  background-image: -o-linear-gradient(top, #C7D96C 6px, #A5CD4E 100%);
+  background-image: -o-linear-gradient(top, #FFA500, #FF8000); /* todo add proper color */
   position: relative;
   left: 1px;
   top: 1px;
 }
 
 a.button:hover {
-  border: solid 1px #64006B;
-  box-shadow: grey 0px 2px 5px 0px;
+  /*border: solid 1px #64006B;*/
 }
 
 /************ comments *************/
@@ -867,4 +870,7 @@ div.rateit div.rateit-reset:hover {
 .playerLoading {
   position: absolute;
   top: 900em;
+}
+.rateit {
+background-color: none;
 }
