@@ -190,7 +190,8 @@ article ol {
 }
 
 article ol li:nth-child(odd) {
-  background-color: #66A8CC;
+  background-color: #383838;
+  border-radius: 0px 10px 10px 0px;
 }
 
 article {
@@ -389,7 +390,7 @@ aside { /* FIXME performance opacity: 0.95; */
   width: 100px;
   height: 100px;
   border: none;
-  box-shadow: 4px 6px 5px 0px #566973;
+  box-shadow: 4px 6px 5px 0px #242424;
 }
 
 article p img.coverImage {

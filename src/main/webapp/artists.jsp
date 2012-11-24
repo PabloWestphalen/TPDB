@@ -77,14 +77,14 @@
           </div>
           </c:forEach>        
         </div>
-        <br style="clear: both; content: none;" />
     </div>
+    <br style="clear: both; content: none;" />
   </tpdb:content>
   <tpdb:sidebar />
 
 <c:choose>
 <c:when test="${not empty activeArtist}">
-  <script>
+  <script>    
   var active = "#art${activeArtist}";
   </script>
 </c:when>
