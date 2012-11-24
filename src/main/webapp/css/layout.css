@@ -449,7 +449,8 @@ article p img.coverImage {
 #adminNav,#artistsNav {
   display: block;
   width: 175px;
-  background-color: #6B9BB3;
+  /*background-color: #6B9BB3;*/
+  background-color: rgba(228, 125, 23, 0.102);
   float: left;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -463,8 +464,8 @@ article p img.coverImage {
   display: block;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  background-color: #6B9BB3;
-  border-bottom: solid 1px #8FB8CC;
+  background-color: rgba(228, 125, 23, 0.102);  
+  border-bottom: solid 1px #FF8000;
   font-family: Helvetica, Arial;
   color: #D9F0FF;
   text-shadow: #444 1px 1px 1px;
@@ -472,11 +473,11 @@ article p img.coverImage {
 }
 
 #artistsNav a:nth-child(1) {
-  border-top: solid 1px #8FB8CC;
+  border-top: solid 1px #FF8000;
 }
 
 #artistsNav a:hover {
-  background-color: #6592A8;
+  background-color: #FF8000;
 }
 
 #adminBody,#artistsBody {
@@ -491,6 +492,7 @@ article p img.coverImage {
 
 #artistsBody {
   width: 75%;
+  background-color: transparent;
 }
 
 #artistsBody .rateit {
@@ -537,7 +539,9 @@ article p img.coverImage {
 }
 
 #artistsBody .albumDiv div:nth-child(odd) {
-  background-color: #5C98B8;
+  /*background-color: #5C98B8;
+  background-color: rgba(255, 127, 0, 0.702);
+  */
 }
 
 #artistsBody .albumDiv div p {
@@ -548,6 +552,7 @@ article p img.coverImage {
 .albumListing {
   min-height: 100px;
   padding: 15px;
+  background-color: transparent;
 }
 
 #artistsBody span {
