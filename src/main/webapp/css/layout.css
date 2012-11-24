@@ -1,10 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Baumans);
 /*@import url(http://fonts.googleapis.com/css?family=Cabin+Sketch);*/
 
-/*@font-face {
+h/*@font-face {
   font-family: Ubuntu;
   src: url("../font/ubuntum.ttf");
-}patch push*/
+}*/
 * {
   margin: 0;
   padding: 0;
@@ -65,16 +65,14 @@ body {
   line-height: 160%;
   overflow-y: scroll;
   /* added background */
-  background-image: url("../images/bg.jpg");
+  background-image: url("../bg2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
 
-input,textarea,select {
-  font-family: "Helvetica", "Arial", sans-serif;
-}
+
 
 section {
   width: 800px;
@@ -220,9 +218,13 @@ aside fieldset,form,p {
   margin-left: 0;
   border: 0;
 }
+input,textarea,select {
+  font-family: 'Baumans', sans-serif;
+}
 
 input {
-  background-color: #A3C6D9;
+  background-color: #463B31;
+  border: solid 1px #F07800; /* todo not working */
   color: white;
   padding: 5px;
 }
@@ -334,14 +336,14 @@ form p {
 }
 
 input,input.input_inactive,textarea { /*border: solid 2px #FFFCE6;*/
-  border: none;
+  
 }
 
-input:focus,textarea:focus,select:focus {
+/*input:focus,textarea:focus,select:focus {
   box-shadow: 0px 0px 10px #DFF4FF;
   -moz-box-shadow: 0px 0px 10px #DFF4FF;
   -webkit-box-shadow: 0px 0px 10px #DFF4FF;
-}
+}*/
 
 input.input_invalid,textarea.input_invalid {
   box-shadow: 2px 2px 20px #FF8C8C;
@@ -397,7 +399,8 @@ article p img.coverImage {
 }
 
 .tag {
-  background-color: #A5BECF;
+  font-family: 'Baumans', sans-serif;
+  background-color: #E67D17;
   border-radius: 5px;
   font-size: 14px;
   padding: 1px 4px;
@@ -628,10 +631,10 @@ a.button:hover {
 
 .commentBody,textarea {
   vertical-align: top;
-  border: solid 4px #5994B3;
-  width: 82%;
+  border: solid 1px #F07800;
+  width: 80%;
   /*min-height: 10px;*/
-  background-color: #66A8CC;
+  background-color: #463B31;
   padding: 15px;
 }
 
@@ -646,12 +649,12 @@ a.button:hover {
   height: 0;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-right: 15px solid #5994B3;
+  border-right: 15px solid rgba(240, 120, 0, 1);  
   padding: 0;
   display: block;
   float: left;
   vertical-align: top;
-  margin-right: -8px;
+  margin-right: -4px;
   margin-top: 15px;
 }
 
@@ -663,7 +666,7 @@ a.button:hover {
   margin: 0;
   padding: 0;
   text-align: right;
-  padding-right: 10px;
+  padding: 10px 15px 0px 0px;
 }
 
 /************* blue theme *************/
