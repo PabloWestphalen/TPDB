@@ -38,6 +38,6 @@
     </c:otherwise>
   </c:choose>
   <footer>
-    Created by <a href="mailto:pablo.westphalen@gmail.com">Pablo Westphalen</a> - Some rights reserved.
+    Back on eclipse. Created by <a href="mailto:pablo.westphalen@gmail.com">Pablo Westphalen</a> - Some rights reserved.
   </footer>
 </section>

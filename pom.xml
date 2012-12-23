@@ -60,7 +60,7 @@
 			<artifactId>ehcache-web</artifactId>
 			<version>2.0.4</version>
 		</dependency>
-		<!-- youtube integration dependencies -->
+<!-- 		<!-- youtube integration dependencies -->
 		<dependency>
 			<groupId>com.google</groupId>
 			<artifactId>gdata-client</artifactId>
@@ -96,7 +96,7 @@
 			<artifactId>google-mail</artifactId>
 			<version>1.0</version>
 		</dependency>
-	</dependencies>
+ -->	</dependencies>
 	<profiles>
 		<profile>
 			<!-- When built in OpenShift the 'openshift' profile will be used when 
