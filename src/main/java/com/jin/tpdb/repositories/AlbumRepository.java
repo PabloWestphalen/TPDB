@@ -146,26 +146,20 @@ public class AlbumRepository {
 	public void refresh(int albumId) {
 		em.refresh(em.find(Album.class, albumId));
 	}
-	
 	public String getYoutubeUrl(Song song)  {
+		YouTubeUtil u = new YouTubeUtil();
 		System.out.println("#######################");
 		String artistName = song.getAlbum().getArtist().getName().toLowerCase();
 		String result = null;
-		System.out.println("Loading videos...");
 		String query = song.getAlbum().getArtist().getName() + " - " + song.getName();
 		System.out.println("Query = " + query);
-		YouTubeManager ym = new YouTubeManager();
-		List<YouTubeVideo> videos = null;
-		try {
-			videos = ym.retrieveVideos("\"" + query + "\"", 15, true, 2000);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println("Loading videos...");
+		List<YouTubeVideo> videos = u.search(query, 15);
 		System.out.println("Found [" + videos.size() + "] videos.");
 		for (YouTubeVideo video : videos) {
 			String name = video.getName().toLowerCase();
 			if(name.contains(artistName) && name.contains(song.getName().toLowerCase())) {
-				System.out.println("This one matches: " + video.getWebPlayerUrl());
+				System.out.println("This one matches: " + name);
 				result = video.getId();
 				break;
 			} else {
@@ -176,5 +170,6 @@ public class AlbumRepository {
 		System.out.println("#######################");
 		return result;
 	}
+
 
 }
