@@ -14,7 +14,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
-import com.jin.YouTubeManager;
+import com.jin.YouTubeUtil;
 import com.jin.YouTubeVideo;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.AlbumComment;
