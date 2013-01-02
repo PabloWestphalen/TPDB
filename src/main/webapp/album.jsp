@@ -40,7 +40,7 @@
   </article>
   </tpdb:content>
   <tpdb:sidebar>
-  <div style="text-align: center; margin: 15px 0;">
+  <div style="text-align: center;">
   <img src="<c:url value="/${album.cover}" />" class="coverImage" style="margin: auto;"  />
   </div>
     <ul>
