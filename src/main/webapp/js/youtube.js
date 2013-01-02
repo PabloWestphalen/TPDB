@@ -33,13 +33,15 @@ function onPlayerReady(evt) {
 	$('#player').hide();
 	// start playAll
 	$('.playAll').click(function() {
+		var playlist = new Array();
 		$('ol li').each(function() {
 			var video = $(this).data('video');
+			var i = 0;
 			if (video != null) {
-				player.cueVideoById(video, 0, "small");
+				playlist[i++] = video;
 			}
 		});
-		player.playVideoAt(0);
+		player.loadPlaylist(playlist, 0, 0, "small");
 		$('#player').removeClass('playerLoading');
 		$('#player').fadeIn();
 	});
