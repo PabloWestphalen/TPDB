@@ -34,9 +34,9 @@ function onPlayerReady(evt) {
 	// start playAll
 	$('.playAll').click(function() {
 		var playlist = new Array();
+		var i = 0;
 		$('ol li').each(function() {
 			var video = $(this).data('video');
-			var i = 0;
 			if (video != null) {
 				playlist[i++] = video;
 			}
