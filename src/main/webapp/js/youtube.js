@@ -49,18 +49,18 @@ function onPlayerReady(evt) {
 	// finish playAll
 }
 //var artistName = "Portishead";
-var artistName = $('h2').text().replace("/\((.*)\)/", "$1");
+var artistName = $('h2').text().match(/\((.*)\)/, "$1")[1];
 var songName = "Glory Box";
 var coverUrl = ".." + $('.coverImage').attr('src');
 
 
 
 function showNotification() {
-	if (window.webkitNotificationscheckPermission() != 0) {
-		window.webkitNotificationsrequestPermission(permissionGranted);
+	if (window.webkitNotifications.checkPermission() != 0) {
+		window.webkitNotifications.requestPermission(permissionGranted);
 		return 0;
 	}
-	var notification = window.webkitNotificationscreateNotification(coverUrl, 'Now playing...',
+	var notification = window.webkitNotifications.createNotification(coverUrl, 'Now playing...',
 			artistName + songName);
 	notification.show();
 }
