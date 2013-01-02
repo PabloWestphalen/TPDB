@@ -39,6 +39,8 @@ function onPlayerReady(evt) {
 				player.cueVideoById(video, 0, "small");
 			}
 		});
+		player.playVideoAt(0);
+		$('#player').fadeIn();
 	});
 	// finish playAll
 }
