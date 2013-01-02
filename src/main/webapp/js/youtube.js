@@ -6,7 +6,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 $(document).ready(function() {
 	$('#player').addClass('playerLoading');
-	$('#tracksListing li a').click(function(event) {
+	$('#tracksListing li a, .playAll').click(function(event) {
 		event.preventDefault();
 	});
 });
@@ -40,6 +40,7 @@ function onPlayerReady(evt) {
 			}
 		});
 		player.playVideoAt(0);
+		$('#player').removeClass('playerLoading');
 		$('#player').fadeIn();
 	});
 	// finish playAll
