@@ -49,7 +49,7 @@ function onPlayerReady(evt) {
 	// finish playAll
 }
 //var artistName = "Portishead";
-var artistName = $('h2').text().replace("/\((.*)\)/", $1);
+var artistName = $('h2').text().replace("/\((.*)\)/", "$1");
 var songName = "Glory Box";
 var coverUrl = ".." + $('.coverImage').attr('src');
 
