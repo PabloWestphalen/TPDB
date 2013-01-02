@@ -19,6 +19,7 @@
   ${Utils:cleanHtml(album.description)}
   </p>
   <h3>Tracks</h3>
+    <a href="#" class="playAll">Play all</a>
   <ol id="tracksListing">
     <c:forEach var="song" items="${album.songs}">
       <c:choose>

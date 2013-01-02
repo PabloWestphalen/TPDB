@@ -31,4 +31,14 @@ function onPlayerReady(evt) {
 		}
 	});
 	$('#player').hide();
+	// start playAll
+	$('.playAll').click(function() {
+		$('ol li').each(function() {
+			var video = $(this).data('video');
+			if (video != null) {
+				player.cueVideoById(video, 0, "small");
+			}
+		});
+	});
+	// finish playAll
 }

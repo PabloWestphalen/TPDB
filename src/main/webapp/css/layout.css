@@ -878,3 +878,8 @@ div.rateit div.rateit-reset:hover {
 .rateit {
 	background-color: none;
 }
+.playAll {
+	text-align: center;
+	width: 100%;
+	display: block;
+}
