@@ -10,6 +10,9 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 	showNotification();
+	var link = '<a href="#" id="enableNotifications">Enable notifications</a>';
+	$('footer').append(link);
+	$('#enableNotifications').click(enableNotifications);
 });
 
 function onYouTubeIframeAPIReady() {
@@ -48,25 +51,20 @@ function onPlayerReady(evt) {
 	});
 	// finish playAll
 }
-//var artistName = "Portishead";
 var artistName = $('h2').text().match(/\((.*)\)/, "$1")[1];
 var songName = "Glory Box";
 var coverUrl = ".." + $('.coverImage').attr('src');
 
-
+function enableNotifications() {
+	window.webkitNotifications.requestPermission();
+}
 
 function showNotification() {
 	if (window.webkitNotifications.checkPermission() != 0) {
-		window.webkitNotifications.requestPermission(permissionGranted);
+		alert('permissions are not allowed');
 		return 0;
-	}
-	var notification = window.webkitNotifications.createNotification(coverUrl, 'Now playing...',
-			artistName + songName);
+	} 
+	var notification = window.webkitNotifications.createNotification(coverUrl,
+			'Now playing...', artistName + songName);
 	notification.show();
-}
-
-function permissionGranted() {
-	if (window.webkitNotifications.checkPermission() == 0) {
-		showNotification();
-	}
 }
