@@ -9,6 +9,7 @@ $(document).ready(function() {
 	$('#tracksListing li a, .playAll').click(function(event) {
 		event.preventDefault();
 	});
+	showNotification();
 });
 
 function onYouTubeIframeAPIReady() {
@@ -46,4 +47,26 @@ function onPlayerReady(evt) {
 		$('#player').fadeIn();
 	});
 	// finish playAll
+}
+//var artistName = "Portishead";
+var artistName = $('h2').text().replace("/\((.*)\)/", $1);
+var songName = "Glory Box";
+var coverUrl = ".." + $('.coverImage').attr('src');
+
+var notifier = window.webkitNotifications;
+
+function showNotification() {
+	if (notifier.checkPermission() != 0) {
+		notifier.requestPermission(permissionGranted);
+		return 0;
+	}
+	var notification = notifier.createNotification(coverUrl, 'Now playing...',
+			artistName + songName);
+	notification.show();
+}
+
+function permissionGranted() {
+	if (window.webkitNotifications.checkPermission() == 0) {
+		showNotification();
+	}
 }
