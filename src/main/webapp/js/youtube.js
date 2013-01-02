@@ -53,14 +53,14 @@ var artistName = $('h2').text().replace("/\((.*)\)/", "$1");
 var songName = "Glory Box";
 var coverUrl = ".." + $('.coverImage').attr('src');
 
-var notifier = window.webkitNotifications;
+
 
 function showNotification() {
-	if (notifier.checkPermission() != 0) {
-		notifier.requestPermission(permissionGranted);
+	if (window.webkitNotificationscheckPermission() != 0) {
+		window.webkitNotificationsrequestPermission(permissionGranted);
 		return 0;
 	}
-	var notification = notifier.createNotification(coverUrl, 'Now playing...',
+	var notification = window.webkitNotificationscreateNotification(coverUrl, 'Now playing...',
 			artistName + songName);
 	notification.show();
 }
