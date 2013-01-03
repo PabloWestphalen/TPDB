@@ -75,6 +75,9 @@ function showNotification(songName) {
 	var notification = window.webkitNotifications.createNotification(coverUrl,
 			'\u266c ' + songName, "by " + artistName);
 	notification.show();
+	setTimeout(function() {
+		notification.close();
+	}, 2000);
 }
 
 function onPlayerStateChange(event) {
