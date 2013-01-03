@@ -6,16 +6,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Set;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
-
-import com.jin.tpdb.repositories.AlbumRepository;
 
 import de.umass.lastfm.Album;
 import de.umass.lastfm.Artist;
@@ -58,7 +56,17 @@ public class LastfmClient extends HttpServlet {
 			}
 		}
 		// image
-		r.put("image", album.getImageURL(ImageSize.LARGE));
+		if(album.availableSizes() != null) {
+			if(album.availableSizes().contains(ImageSize.LARGE)) {
+				r.put("image", album.getImageURL(ImageSize.LARGE));
+			} else {
+				for(ImageSize img : album.availableSizes()) {				
+					r.put("image", album.getImageURL(img));
+					break;
+				}
+			}
+			
+		}
 		// date
 		Date releaseDate = album.getReleaseDate();
 		Calendar cal = Calendar.getInstance();
