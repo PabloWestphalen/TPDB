@@ -72,8 +72,9 @@ public class EditAlbumController extends HttpServlet {
 		album.setUploadDate(new Date());
 		albumRepo.save(album, artistId);
 
-		String coverUrl = request.getParameter("cover_url");
-		if(!coverUrl.isEmpty()) {
+		try {
+			String coverUrl = request.getParameter("cover_url");
+		if(coverUrl != null) {
 			File cover = ImageUtils.createThumbnail(ImageUtils.getFromURL(coverUrl), "jpg", false);
 			album.setCover(cover);
 		} else {
@@ -82,6 +83,9 @@ public class EditAlbumController extends HttpServlet {
 			if (tempCover.exists()) {
 				album.setCover(tempCover);
 			}
+		}
+		} catch(Exception ex) {
+			System.out.println("#########Could not set cover. ##########");
 		}
 
 		String[] tracks = request.getParameterValues("tracks[]");
