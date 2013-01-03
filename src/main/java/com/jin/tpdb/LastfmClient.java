@@ -57,13 +57,20 @@ public class LastfmClient extends HttpServlet {
 		}
 		// image
 		try {
-			r.put("image", album.getImageURL(ImageSize.LARGE));
+			if(album.availableSizes() != null) {
+				if(album.availableSizes().contains(ImageSize.LARGE)) {
+					r.put("image", album.getImageURL(ImageSize.LARGE));
+				} else {
+					for(ImageSize img : album.availableSizes()) {				
+						r.put("image", album.getImageURL(img));
+						break;
+					}
+				}
+			}	
 		} catch(NullPointerException ex) {
-			for(ImageSize img : album.availableSizes()) {				
-				r.put("image", album.getImageURL(img));
-				break;
-			}
+			
 		}
+		
 		// date
 		Date releaseDate = album.getReleaseDate();
 		Calendar cal = Calendar.getInstance();
