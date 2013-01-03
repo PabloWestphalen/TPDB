@@ -176,9 +176,9 @@ $('#name').blur(
 						.attr("selected", "selected");
 				$('#coverUploadButton').attr("src", data.image);
 				fillTracks(data.tracks);
-				var temp_cover_name = '<input type="hidden" name="cover_url" value="'
-					+ response.temp_cover_name + '" />';
-				$('#albumForm').prepend(temp_cover_name);
+				var cover = '<input type="hidden" name="cover_url" value="'
+					+ data.image + '" />';
+				$('#albumForm').prepend(cover);
 			}, 'json').error(function(){$.unblockUI();});
 
 		});

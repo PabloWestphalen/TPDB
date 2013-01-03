@@ -30,7 +30,8 @@ public class EditAlbumController extends HttpServlet {
 
 	protected void dispatch(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher jsp = request.getRequestDispatcher("/contribute/album.jsp");
+		RequestDispatcher jsp = request
+				.getRequestDispatcher("/contribute/album.jsp");
 		jsp.forward(request, response);
 	}
 
@@ -54,7 +55,7 @@ public class EditAlbumController extends HttpServlet {
 		String albumName = Sanitizer.clean(request.getParameter("name"));
 		String description = Sanitizer.clean(request
 				.getParameter("description"));
-		
+
 		Calendar cal = Calendar.getInstance();
 		int year = Integer.parseInt(request.getParameter("year"));
 		int month = Integer.parseInt(request.getParameter("month"));
@@ -65,7 +66,7 @@ public class EditAlbumController extends HttpServlet {
 		try {
 			String label = Sanitizer.clean(request.getParameter("label"));
 			album.setLabel(label);
-		} catch(NullPointerException ex) {
+		} catch (NullPointerException ex) {
 			System.out.println("##########No label##########");
 		}
 		album.setReleaseDate(cal.getTime());
@@ -74,17 +75,18 @@ public class EditAlbumController extends HttpServlet {
 
 		try {
 			String coverUrl = request.getParameter("cover_url");
-		if(coverUrl != null) {
-			File cover = ImageUtils.createThumbnail(ImageUtils.getFromURL(coverUrl), "jpg", false);
-			album.setCover(cover);
-		} else {
-			File tempCover = new File(coversPath
-					+ request.getParameter("temp_cover_name"));
-			if (tempCover.exists()) {
-				album.setCover(tempCover);
+			if (coverUrl != null) {
+				File cover = ImageUtils.createThumbnail(
+						ImageUtils.getFromURL(coverUrl), "jpg", false);
+				album.setCover(cover);
+			} else {
+				File tempCover = new File(coversPath
+						+ request.getParameter("temp_cover_name"));
+				if (tempCover.exists()) {
+					album.setCover(tempCover);
+				}
 			}
-		}
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("#########Could not set cover. ##########");
 		}
 
@@ -92,12 +94,14 @@ public class EditAlbumController extends HttpServlet {
 		String[] lengths = request.getParameterValues("tracks_length[]");
 
 		for (int i = 0; i <= tracks.length - 2; i++) {
-			Song s = new Song();
-			s.setAlbum(album);
-			s.setName(Sanitizer.clean(tracks[i]));
-			s.setLength(Sanitizer.clean(lengths[i]));
-			s.setNumber(i + 1);
-			albumRepo.addSong(s);
+			if (!Sanitizer.clean(tracks[i]).isEmpty()) {
+				Song s = new Song();
+				s.setAlbum(album);
+				s.setName(Sanitizer.clean(tracks[i]));
+				s.setLength(Sanitizer.clean(lengths[i]));
+				s.setNumber(i + 1);
+				albumRepo.addSong(s);
+			}
 		}
 		albumRepo.refresh(album.getId());
 		artistRepo.refresh(artistId);
