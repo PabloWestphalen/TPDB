@@ -143,9 +143,14 @@ public class AlbumRepository {
 		}
 	}
 	
+	public void merge(Album album) {
+		em.merge(album);
+	}
 	public void refresh(int albumId) {
 		em.refresh(em.find(Album.class, albumId));
 	}
+	
+	
 	public String getYoutubeUrl(Song song)  {
 		YouTubeUtil u = new YouTubeUtil();
 		System.out.println("#######################");
