@@ -108,6 +108,7 @@ public class EditAlbumController extends HttpServlet {
 				albumRepo.addSong(s);
 			}
 		}
+		System.out.println("###############Setting total album length as " + Utils.formatLength(totalLength) + "######################");
 		album.setLength(Utils.formatLength(totalLength));
 		albumRepo.refresh(album.getId());
 		artistRepo.refresh(artistId);
