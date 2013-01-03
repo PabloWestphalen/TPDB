@@ -71,7 +71,7 @@ function showNotification(songName) {
 }
 
 function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.ENDED) {
+	if (event.data == YT.PlayerState.CUED) {
 		alert('done');
 	}
 }
