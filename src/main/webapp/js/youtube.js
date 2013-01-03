@@ -1,4 +1,6 @@
 var player;
+var trackNames = new Array();
+var currentTrack;
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -43,6 +45,7 @@ function onPlayerReady(evt) {
 		$('ol li').each(function() {
 			var video = $(this).data('video');
 			if (video != null) {
+				trackNames[i] = $(this).data('trackName');
 				playlist[i++] = video;
 			}
 		});
@@ -71,8 +74,14 @@ function showNotification(songName) {
 }
 
 function onPlayerStateChange(event) {
-	var notification = window.webkitNotifications.createNotification(coverUrl,
+	/*var notification = window.webkitNotifications.createNotification(coverUrl,
 			"State is now " + event.data, "");
-	notification.show();
+	notification.show();*/
+	if(player.getPlaylistIndex() >= 0) {
+		if(event.data == 1 && currentTrack != player.getPlaylistIndex()) {
+			currentTrack = player.getPlaylistIndex();
+			showNotification(trackNames[currentTrack]);
+		}
+	}
 }
 //
