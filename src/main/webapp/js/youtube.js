@@ -19,6 +19,7 @@ $(document).ready(function() {
 	var i = 0;
 	trackNames = new Array();
 	$('ol li').each(function() {
+		var video = $(this).data('video');
 		if (video != null) {
 			trackNames[i++] = $(this).data('trackname');
 		}
