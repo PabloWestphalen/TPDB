@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="tpdb"%>
-<tpdb:page name="contribute" type="admin" script="add_album">
+<tpdb:page name="contribute" type="admin" script="add_album, blockui">
   <tpdb:content type="admin">
   <form id="coverForm" method="post" enctype="multipart/form-data" action="<c:url value="/uploader" />">
     <input type="file" name="coverUp" id="coverUp" class="testeUp" />

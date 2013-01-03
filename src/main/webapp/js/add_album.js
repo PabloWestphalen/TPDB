@@ -1,5 +1,5 @@
 var value = 2;
-
+var filled = false;
 // post-submit callback
 function showResponse(response, statusText, xhr, $form) {
 	var opt = '<option  id="createdArtist" value="' + response.id
@@ -146,45 +146,59 @@ $(document).ready(
 
 		});
 
-$('#name').blur(function() {
-	var artistName = $('#artist option:selected').text();
-	var albumName = $('#name').val();
+$('#name').blur(
+		function() {
+			   $.blockUI({ css: { 
+		            border: 'none', 
+		            padding: '15px', 
+		            backgroundColor: '#000', 
+		            '-webkit-border-radius': '10px', 
+		            '-moz-border-radius': '10px', 
+		            opacity: .5, 
+		            color: '#fff' 
+		        } }); 
+		 
+			var artistName = $('#artist option:selected').text();
+			var albumName = $('#name').val();
 
-	$.post('/lastfm', {
-		artist : artistName,
-		album : albumName
-	}, function(data) {
-		$('select[name="month"] option[value="' + data.month + '"]').attr("selected", "selected");
-		$('select[name="year"] option[value="' + data.year + '"]').attr("selected", "selected");
-		$('#coverUploadButton').attr("src", data.image);
-		fillTracks(data.tracks);
-	}, 'json');
+			$.post('/lastfm', {
+				artist : artistName,
+				album : albumName
+			}, function(data) {
+				$.unblockUI;
+				$('select[name="month"] option[value="' + data.month + '"]')
+						.attr("selected", "selected");
+				$('select[name="year"] option[value="' + data.year + '"]')
+						.attr("selected", "selected");
+				$('#coverUploadButton').attr("src", data.image);
+				fillTracks(data.tracks);
+			}, 'json');
 
-});
+		});
 
 function fillTracks(tracks) {
-	var newTrack = "";
-	for ( var i = 0; i < tracks.length - 1; i++) {
-		$('p[class="newTrack"] input').unbind('focus');
-		if (i < tracks.length - 2) {
-			newTrack += '<p>';
-		} else {
-			newTrack += '<p class="newTrack">';
+	if (!filled) {
+		var newTrack = "";
+		for ( var i = 0; i < tracks.length - 1; i++) {
+			$('p[class="newTrack"] input').unbind('focus');
+			if (i < tracks.length - 2) {
+				newTrack += '<p>';
+			} else {
+				newTrack += '<p class="newTrack">';
+			}
+			newTrack += '<input type="text" value="'
+					+ (value + 1)
+					+ '" disabled>\n<input id="tracks[]" name="tracks[]" type="text">'
+					+ '\n<input id="tracks_length[]" name="tracks_length[]" type="text"></p>';
+			value++;
 		}
-		newTrack += '<input type="text" value="'
-				+ (value + 1)
-				+ '" disabled>\n<input id="tracks[]" name="tracks[]" type="text">'
-				+ '\n<input id="tracks_length[]" name="tracks_length[]" type="text"></p>';
-		value++;
+		$('p[class="newTrack"]').toggleClass("newTrack");
+		$('#fTracks p:last-child').after(newTrack);
+		$('p[class="newTrack"] input').focus(addTracks);
+		setTabIndex();
+	} else {
+		
 	}
-
-	$('p[class="newTrack"]').toggleClass("newTrack");
-	$('#fTracks p:last-child').after(newTrack);
-	$('p[class="newTrack"] input').focus(addTracks);
-	$('html,body').animate({
-		scrollTop : $('footer').offset().top
-	}, 0);
-	setTabIndex();
 	$titles = $('input[name="tracks[]"]');
 	$lengths = $('input[name="tracks_length[]"]');
 	for ( var i = 0; i < tracks.length; i++) {
