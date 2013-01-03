@@ -52,7 +52,7 @@ public class LastfmClient extends HttpServlet {
 		String key = "c360ec64b75bdc863f5109da6bf7e3ca"; // this is the key used
 		Album album = null;
 		for (Album ab : Artist.getTopAlbums(artistName, key)) {
-			if (ab.getName().contains(albumName)) {
+			if (ab.getName().toLowerCase().contains(albumName.toLowerCase())) {
 				album = Album.getInfo(artistName, ab.getMbid(), key);
 				break;
 			}
