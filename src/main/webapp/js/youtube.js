@@ -71,7 +71,8 @@ function showNotification(songName) {
 }
 
 function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.CUED) {
-		alert('done');
-	}
+	var notification = window.webkitNotifications.createNotification(coverUrl,
+			"State is now " + event.data, "");
+	notification.show();
 }
+//
