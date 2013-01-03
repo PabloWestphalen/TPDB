@@ -169,12 +169,16 @@ $('#name').blur(
 				album : albumName
 			}, function(data) {
 				$.unblockUI();
+				$('#name').val(data.name);
 				$('select[name="month"] option[value="' + data.month + '"]')
 						.attr("selected", "selected");
 				$('select[name="year"] option[value="' + data.year + '"]')
 						.attr("selected", "selected");
 				$('#coverUploadButton').attr("src", data.image);
 				fillTracks(data.tracks);
+				var temp_cover_name = '<input type="hidden" name="cover_url" value="'
+					+ response.temp_cover_name + '" />';
+				$('#albumForm').prepend(temp_cover_name);
 			}, 'json').error(function(){$.unblockUI();});
 
 		});

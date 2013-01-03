@@ -26,7 +26,7 @@ public class UploaderController extends HttpServlet {
 		int random = new Random().nextInt();
 		Part cover = request.getPart("coverUp");
 		String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
-		String extension = getExtension(getFileName(cover));
+		String extension = ImageUtils.getExtension(getFileName(cover));
 		String fileName = System.currentTimeMillis() + random + extension;
 		cover.write(filePath + fileName);
 		File thumbnail = new File(filePath + fileName);
@@ -38,9 +38,7 @@ public class UploaderController extends HttpServlet {
 		out.println(jsonResponse.toString());
 	}
 
-	private String getExtension(String fileName) {
-		return fileName.substring(fileName.lastIndexOf("."));
-	}
+	
 
 	private String getFileName(Part part) {
 		for (String cd : part.getHeader("content-disposition").split(";")) {

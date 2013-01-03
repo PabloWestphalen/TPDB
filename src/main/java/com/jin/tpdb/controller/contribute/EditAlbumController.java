@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jin.ImageUtils;
 import com.jin.Sanitizer;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Artist;
@@ -66,10 +67,16 @@ public class EditAlbumController extends HttpServlet {
 		album.setUploadDate(new Date());
 		albumRepo.save(album, artistId);
 
-		File tempCover = new File(coversPath
-				+ request.getParameter("temp_cover_name"));
-		if (tempCover.exists()) {
-			album.setCover(tempCover);
+		String coverUrl = request.getParameter("cover_url");
+		if(!coverUrl.isEmpty()) {
+			File cover = ImageUtils.createThumbnail(ImageUtils.getFromURL(coverUrl), "jpg", false);
+			album.setCover(cover);
+		} else {
+			File tempCover = new File(coversPath
+					+ request.getParameter("temp_cover_name"));
+			if (tempCover.exists()) {
+				album.setCover(tempCover);
+			}
 		}
 
 		String[] tracks = request.getParameterValues("tracks[]");

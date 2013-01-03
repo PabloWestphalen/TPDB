@@ -55,6 +55,7 @@ public class LastfmClient extends HttpServlet {
 				break;
 			}
 		}
+		r.put("name", album.getName());
 		// image
 		try {
 			if (album.availableSizes() != null) {

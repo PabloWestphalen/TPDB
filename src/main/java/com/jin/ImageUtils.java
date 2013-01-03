@@ -5,6 +5,11 @@ import java.awt.Graphics2D;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -24,6 +29,27 @@ public class ImageUtils {
 		g.drawRenderedImage(image, null);
 		g.dispose();
 		return image2;
+	}
+	
+	public static String getExtension(String fileName) {
+		return fileName.substring(fileName.lastIndexOf("."));
+	}
+	
+	public static File getFromURL(String url) {
+		try {
+			URL website = new URL(url);
+			ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+			String filePath = System.getenv("OPENSHIFT_DATA_DIR") + "/uploads/";
+			String extension = getExtension(url);
+			int random = new Random().nextInt();
+			String fileName = System.currentTimeMillis() + random + extension;
+			FileOutputStream fos = new FileOutputStream(filePath + fileName);
+			fos.getChannel().transferFrom(rbc, 0, 1 << 24);
+			return new File(filePath + fileName);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
 	}
 
 	public static File createThumbnail(File input, String format,
