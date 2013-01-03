@@ -175,7 +175,7 @@ $('#name').blur(
 						.attr("selected", "selected");
 				$('#coverUploadButton').attr("src", data.image);
 				fillTracks(data.tracks);
-			}, 'json');
+			}, 'json').error(function(){$.unblockUI();});
 
 		});
 
