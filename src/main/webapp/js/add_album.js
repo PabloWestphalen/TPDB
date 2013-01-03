@@ -138,3 +138,8 @@ $(document).ready(function(){
 
 
 });
+
+$('#name').blur(function(){
+	var artistName = $('#artist option:selected').text();
+	var albumName = $('#name').val();
+});

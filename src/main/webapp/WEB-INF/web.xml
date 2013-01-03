@@ -58,6 +58,11 @@
 		<servlet-class>com.jin.tpdb.controller.RatingController</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>LastfmClient</servlet-name>
+		<servlet-class>com.jin.tpdb.LastfmClient</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>fileServing</servlet-name>
 		<servlet-class>com.jin.FileServingServlet</servlet-class>
 		<init-param>
@@ -122,6 +127,10 @@
 	<servlet-mapping>
 		<servlet-name>RatingController</servlet-name>
 		<url-pattern>/vote</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LastfmClient</servlet-name>
+		<url-pattern>/lastfm</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AboutPage</servlet-name>
@@ -199,10 +208,8 @@
 		<filter-name>gzipFilter</filter-name>
 		<url-pattern>*</url-pattern>
 	</filter-mapping>
-	<!-- <filter-mapping>
-		<filter-name>ServletCache</filter-name>
-		<url-pattern>*</url-pattern>
-	</filter-mapping> -->
+	<!-- <filter-mapping> <filter-name>ServletCache</filter-name> <url-pattern>*</url-pattern> 
+		</filter-mapping> -->
 	<filter-mapping>
 		<filter-name>imagesCache</filter-name>
 		<url-pattern>/images/*</url-pattern>
@@ -219,7 +226,7 @@
 		<filter-name>cssCache</filter-name>
 		<url-pattern>*.css</url-pattern>
 	</filter-mapping>
-	
+
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>

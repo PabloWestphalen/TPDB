@@ -27,7 +27,7 @@
 }
 
 #adminBody fieldset p {
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 #adminBody label {
@@ -44,7 +44,6 @@
 #adminBody fieldset legend {
   padding: 5px;
   color: #FFDF40;
-  font-weight: bold;
   text-shadow: 1px 1px 2px #000000;
   margin-left: -15px;
 }
