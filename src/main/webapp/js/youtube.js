@@ -20,7 +20,8 @@ function onYouTubeIframeAPIReady() {
 		height : '220',
 		width : '200',
 		events : {
-			'onReady' : onPlayerReady
+			'onReady' : onPlayerReady,
+			'onStateChange' : onPlayerStateChange,
 		}
 	});
 }
@@ -52,19 +53,25 @@ function onPlayerReady(evt) {
 	// finish playAll
 }
 var artistName = $('h2').text().match(/\((.*)\)/, "$1")[1];
-var songName = "Glory Box";
+// var songName = "Glory Box";
 var coverUrl = ".." + $('.coverImage').attr('src');
 
 function enableNotifications() {
 	window.webkitNotifications.requestPermission();
 }
 
-function showNotification() {
+function showNotification(songName) {
 	if (window.webkitNotifications.checkPermission() != 0) {
 		alert('permissions are not allowed');
 		return 0;
-	} 
+	}
 	var notification = window.webkitNotifications.createNotification(coverUrl,
-			'Now playing...', artistName + songName);
+			'\u266c ' + songName, "by " + artistName);
 	notification.show();
+}
+
+function onPlayerStateChange(event) {
+	if (event.data == YT.PlayerState.ENDED) {
+		alert('done');
+	}
 }
