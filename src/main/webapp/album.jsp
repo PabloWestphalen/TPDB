@@ -24,7 +24,7 @@
     <c:forEach var="song" items="${album.songs}">
       <c:choose>
       <c:when test="${not empty song.youtubeUrl}">
-      <li class="has_video" data-video="${song.youtubeUrl}" data-trackName="${song.name}">
+      <li class="has_video" data-video="${song.youtubeUrl}" data-trackname="${song.name}">
       <a href="http://www.youtube.com/watch?v=${song.youtubeUrl}" rel="nofollow">
       ${song.name} - ${song.length}
       </a>

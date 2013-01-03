@@ -1,5 +1,5 @@
 var player;
-var trackNames = new Array();
+var trackNames;
 var currentTrack;
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -15,6 +15,15 @@ $(document).ready(function() {
 	var link = '<a href="#" id="enableNotifications">Enable notifications</a>';
 	$('footer').append(link);
 	$('#enableNotifications').click(enableNotifications);
+    // set trackNames
+	var i = 0;
+	trackNames = new Array();
+	$('ol li').each(function() {
+		if (video != null) {
+			trackNames[i++] = $(this).data('trackname');
+		}
+	});
+
 });
 
 function onYouTubeIframeAPIReady() {
@@ -45,7 +54,6 @@ function onPlayerReady(evt) {
 		$('ol li').each(function() {
 			var video = $(this).data('video');
 			if (video != null) {
-				trackNames[i] = $(this).data('trackName');
 				playlist[i++] = video;
 			}
 		});
@@ -74,9 +82,6 @@ function showNotification(songName) {
 }
 
 function onPlayerStateChange(event) {
-	/*var notification = window.webkitNotifications.createNotification(coverUrl,
-			"State is now " + event.data, "");
-	notification.show();*/
 	if(player.getPlaylistIndex() >= 0) {
 		if(event.data == 1 && currentTrack != player.getPlaylistIndex()) {
 			currentTrack = player.getPlaylistIndex();
