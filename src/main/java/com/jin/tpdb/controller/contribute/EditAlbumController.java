@@ -54,7 +54,7 @@ public class EditAlbumController extends HttpServlet {
 		String albumName = Sanitizer.clean(request.getParameter("name"));
 		String description = Sanitizer.clean(request
 				.getParameter("description"));
-		String label = Sanitizer.clean(request.getParameter("label"));
+		
 		Calendar cal = Calendar.getInstance();
 		int year = Integer.parseInt(request.getParameter("year"));
 		int month = Integer.parseInt(request.getParameter("month"));
@@ -62,7 +62,12 @@ public class EditAlbumController extends HttpServlet {
 
 		album.setName(albumName);
 		album.setDescription(description);
-		album.setLabel(label);
+		try {
+			String label = Sanitizer.clean(request.getParameter("label"));
+			album.setLabel(label);
+		} catch(NullPointerException ex) {
+			System.out.println("##########No label##########");
+		}
 		album.setReleaseDate(cal.getTime());
 		album.setUploadDate(new Date());
 		albumRepo.save(album, artistId);
