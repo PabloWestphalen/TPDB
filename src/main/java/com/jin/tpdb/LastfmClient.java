@@ -19,6 +19,7 @@ import com.jin.tpdb.repositories.AlbumRepository;
 
 import de.umass.lastfm.Album;
 import de.umass.lastfm.Artist;
+import de.umass.lastfm.Caller;
 import de.umass.lastfm.ImageSize;
 import de.umass.lastfm.Track;
 
@@ -46,6 +47,7 @@ public class LastfmClient extends HttpServlet {
 
 	@SuppressWarnings("unchecked")
 	public static JSONObject getData(String artistName, String albumName) {
+		Caller.getInstance().setCache(null);
 		JSONObject r = new JSONObject();
 		String key = "c360ec64b75bdc863f5109da6bf7e3ca"; // this is the key used
 		Album album = null;
