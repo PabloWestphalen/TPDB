@@ -11,7 +11,6 @@ $(document).ready(function() {
 	$('#tracksListing li a, .playAll').click(function(event) {
 		event.preventDefault();
 	});
-	showNotification();
 	var link = '<a href="#" id="enableNotifications">Enable notifications</a>';
 	$('footer').append(link);
 	$('#enableNotifications').click(enableNotifications);
