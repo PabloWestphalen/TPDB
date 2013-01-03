@@ -570,7 +570,7 @@ article p img.coverImage {
 }
 
 /************* button code *************/
-a.button {
+a.button, #adminNav a {
 	border: solid 1px black;
 	border-radius: 5px;
 	/* chrome/webkit */

@@ -24,9 +24,9 @@
       <div id="adminContainer">
         <nav id="adminNav">
           <h3>Contribute</h3>
-          <a href="<c:url value="/contribute/news/add" class="button" />">Add news</a>
-          <a href="<c:url value="/contribute/artist/add" class="button" />">Add an Artist</a>
-          <a href="<c:url value="/contribute/album/add" class="button" />">Add an Album</a>
+          <a href="<c:url value="/contribute/news/add" />">Add news</a>
+          <a href="<c:url value="/contribute/artist/add" />">Add an Artist</a>
+          <a href="<c:url value="/contribute/album/add" />">Add an Album</a>
         </nav>
         <div id="adminBody">
           <jsp:doBody />
