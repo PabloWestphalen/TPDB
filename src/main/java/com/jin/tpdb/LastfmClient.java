@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
+
+import com.jin.Utils;
 
 import de.umass.lastfm.Album;
 import de.umass.lastfm.Artist;
@@ -85,11 +86,10 @@ public class LastfmClient extends HttpServlet {
 		// tracks
 		try {
 			ArrayList<HashMap<String, String>> tracks = new ArrayList<HashMap<String, String>>();
-
 			for (Track t : album.getTracks()) {
 				HashMap<String, String> map = new HashMap<String, String>();
 				map.put("title", t.getName());
-				map.put("length", formatLength(t.getDuration()));
+				map.put("length", Utils.formatLength(t.getDuration()));
 				tracks.add(map);
 			}
 			r.put("tracks", tracks);
@@ -99,11 +99,4 @@ public class LastfmClient extends HttpServlet {
 		return r;
 	}
 
-	public static String formatLength(int length) {
-		int minutes = length / 60;
-		int seconds = length % 60;
-		return ((minutes < 1 ? "0" : "") + minutes + ":"
-				+ (seconds < 10 ? "0" : "") + seconds);
-
-	}
 }

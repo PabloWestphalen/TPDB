@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jin.ImageUtils;
 import com.jin.Sanitizer;
+import com.jin.Utils;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.entities.Artist;
 import com.jin.tpdb.entities.Song;
@@ -92,17 +93,22 @@ public class EditAlbumController extends HttpServlet {
 
 		String[] tracks = request.getParameterValues("tracks[]");
 		String[] lengths = request.getParameterValues("tracks_length[]");
-
+		int totalLength = 0;
 		for (int i = 0; i <= tracks.length - 2; i++) {
 			if (!Sanitizer.clean(tracks[i]).isEmpty()) {
 				Song s = new Song();
 				s.setAlbum(album);
 				s.setName(Sanitizer.clean(tracks[i]));
 				s.setLength(Sanitizer.clean(lengths[i]));
+				String[] times = s.getLength().split(":");
+				int minutes = Integer.parseInt(times[0]);
+				int seconds = Integer.parseInt(times[1]);
+				totalLength += (minutes * 60) + seconds;
 				s.setNumber(i + 1);
 				albumRepo.addSong(s);
 			}
 		}
+		album.setLength(Utils.formatLength(totalLength));
 		albumRepo.refresh(album.getId());
 		artistRepo.refresh(artistId);
 

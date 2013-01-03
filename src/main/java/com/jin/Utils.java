@@ -75,4 +75,12 @@ public class Utils {
 		}
 		return null;
 	}
+	
+	public static String formatLength(int length) {
+		int minutes = length / 60;
+		int seconds = length % 60;
+		return ((minutes < 1 ? "0" : "") + minutes + ":"
+				+ (seconds < 10 ? "0" : "") + seconds);
+	}
+
 }
