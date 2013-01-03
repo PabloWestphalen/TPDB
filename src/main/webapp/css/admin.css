@@ -1,26 +1,6 @@
 #adminNav a {
-  border: solid 1px #A5CD4E;
-  border-radius: 5px;
-  /* chrome/webkit */
-  background-image: -webkit-linear-gradient(top, #EBFF80, #A5CD4E); 
-  /*firefox */
-  background-image: -moz-linear-gradient(top, #EBFF80, #A5CD4E);
-  /* IE */
-  background-image: -ms-linear-gradient(top, #EBFF80, #A5CD4E);
-  /*opera */
-  background-image: -o-linear-gradient(top, #EBFF80, #A5CD4E); 
-  /*fallback color */
-  background-color: #EBFF80;
   display: block;
-  font-family: Helvetica, Arial;
-  border-radius: 5px;
-  color: black;
-  text-shadow: white 1px 1px 2px;
-  font-weight: bold;
   width: 110px;
-  padding: 1px;
-  text-align: center;
-  text-decoration: none;
   margin: auto;
   margin-bottom: 10px;
 }
@@ -43,9 +23,6 @@
 
 #adminBody input,textarea {
   width: 100%;
-  background-color: #A3C6D9;
-  font-family: Helvetica, Arial;
-  color: white;
   padding: 5px;
 }
 
@@ -70,9 +47,9 @@
 
 #adminBody fieldset legend {
   padding: 5px;
-  color: #FFFFBF;
+  color: #FFDF40;
   font-weight: bold;
-  text-shadow: 1px 1px 0px #666666;
+  text-shadow: 1px 1px 2px #000000;
   margin-left: -15px;
 }
 
@@ -99,7 +76,7 @@
 	color: #ffffff;
 }
 #fTracks input:nth-child(2) {
-  width: 74%;
+  width: 73%;
 }
 #fTracks input:nth-child(3) {
   width: 80px;
@@ -213,9 +190,8 @@
   top: 20%;
   left: 30%;
   width:500px;
-  background:#609EBF;
+  background-color: rgba(50, 50, 50, 1);
   padding:0 15px 0px 0px;
-  border:2px solid #CCCCCC;
   z-index:2001;
 }
 

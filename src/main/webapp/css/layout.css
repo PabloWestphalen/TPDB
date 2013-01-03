@@ -222,7 +222,7 @@ input,textarea,select {
 	font-family: 'Baumans', sans-serif;
 }
 
-input {
+input, select{
 	background-color: #463B31;
 	border: solid 1px #F07800; /* todo not working */
 	color: white;
@@ -489,7 +489,7 @@ article p img.coverImage {
 	display: block;
 	width: 75%;
 	height: 100%;
-	background-color: #333;
+	background-color: rgba(50, 50, 50, .6);
 	display: inline-block;
 	padding: 0;
 	box-shadow: none;
