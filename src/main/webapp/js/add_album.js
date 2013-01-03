@@ -148,16 +148,19 @@ $(document).ready(
 
 $('#name').blur(
 		function() {
-			   $.blockUI({ css: { 
-		            border: 'none', 
-		            padding: '15px', 
-		            backgroundColor: '#000', 
-		            '-webkit-border-radius': '10px', 
-		            '-moz-border-radius': '10px', 
-		            opacity: .5, 
-		            color: '#fff' 
-		        } }); 
-		 
+			$.blockUI({
+				css : {
+					border : 'none',
+					padding : '15px',
+					backgroundColor : '#000',
+					'-webkit-border-radius' : '10px',
+					'-moz-border-radius' : '10px',
+					opacity : .5,
+					color : '#fff'
+				},
+				message : "Checking Last.fm..."
+			});
+
 			var artistName = $('#artist option:selected').text();
 			var albumName = $('#name').val();
 
@@ -165,7 +168,7 @@ $('#name').blur(
 				artist : artistName,
 				album : albumName
 			}, function(data) {
-				$.unblockUI;
+				$.unblockUI();
 				$('select[name="month"] option[value="' + data.month + '"]')
 						.attr("selected", "selected");
 				$('select[name="year"] option[value="' + data.year + '"]')
@@ -197,7 +200,7 @@ function fillTracks(tracks) {
 		$('p[class="newTrack"] input').focus(addTracks);
 		setTabIndex();
 	} else {
-		
+
 	}
 	$titles = $('input[name="tracks[]"]');
 	$lengths = $('input[name="tracks_length[]"]');
