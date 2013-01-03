@@ -176,14 +176,14 @@
 			<param-value>2592000</param-value>
 		</init-param>
 	</filter>
-	<!-- <filter>
+	<filter>
 		<filter-name>ServletCache</filter-name>
 		<filter-class>com.samaxes.filter.CacheFilter</filter-class>
 		<init-param>
 			<param-name>expirationTime</param-name>
 			<param-value>200</param-value>
 		</init-param>
-	</filter> -->
+	</filter>
 	<filter>
 		<filter-name>gzipFilter</filter-name>
 		<filter-class>net.sf.ehcache.constructs.web.filter.GzipFilter</filter-class>
