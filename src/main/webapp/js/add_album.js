@@ -154,7 +154,6 @@ $('#name').blur(function() {
 		artist : artistName,
 		album : albumName
 	}, function(data) {
-		alert(data.year);
 		$('select[name="month"] option[value="' + data.month + '"]').attr("selected", "selected");
 		$('select[name="year"] option[value="' + data.year + '"]').attr("selected", "selected");
 		$('#coverUploadButton').attr("src", data.image);
@@ -188,7 +187,7 @@ function fillTracks(tracks) {
 	setTabIndex();
 	$titles = $('input[name="tracks[]"]');
 	$lengths = $('input[name="tracks_length[]"]');
-	for ( var i = 0; i < data.tracks.length; i++) {
+	for ( var i = 0; i < tracks.length; i++) {
 		$titles[i].value = tracks[i]["title"];
 		$lengths[i].value = tracks[i]["length"];
 	}
