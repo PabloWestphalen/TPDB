@@ -47,7 +47,7 @@
     <ul>
       <li>Released: <fmt:formatDate value="${album.releaseDate}" pattern="MMM, yyyy" type="date" />
       <li>Length: ${album.length }</li>
-      <li>Label: ${album.label}</li>
+      <%--<li>Label: ${album.label}</li> --%>
       <li>Rating: <div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div></li>
       <li><a href="${album.artist.site}" target="_blank">Official Site</a></li>
     </ul>

@@ -50,25 +50,21 @@
             <input type="button" value="New" id="newArtist" />
           </p>
           <p>
-            <label for="date">Release date</label>
-            <tpdb:date_component tabindex="2" />          
-          </p>
+          <label for="name" id="albumName">Album name</label>
+          <input id="name" name="name" type="text" >
+        </p>
         </div>          
                <p>
           <img src="<c:url value="/images/blank_cover.png" />" width="85" height="85" alt="Cover" class="cover"  id="coverUploadButton" />
         </p>          
+        
         <p class="clrl">
-          <label for="name" id="albumName">Album name</label>
-          <input id="name" name="name" type="text" >
-        </p>
-        <p>
           <label for="description">Description</label>
           <textarea name="description" id="description" ></textarea>
         </p>
-        <p>
-          <label for="label">Label</label>
-          <input id="label" name="label" type="text" >
-        </p>
+          <p style="text-align: center;">
+            <tpdb:date_component tabindex="2" />          
+          </p>
       </fieldset>
       <fieldset id="fTracks" name="fTracks">
         <legend>Tracks</legend>
