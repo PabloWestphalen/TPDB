@@ -27,8 +27,8 @@ public class LastfmClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	// protected void doPost(HttpServletRequest request,
-	protected void doGet(HttpServletRequest request,
+	protected void doPost(HttpServletRequest request,
+	//protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String artistName = request.getParameter("artist");
 		String albumName = request.getParameter("album");

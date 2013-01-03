@@ -142,4 +142,10 @@ $(document).ready(function(){
 $('#name').blur(function(){
 	var artistName = $('#artist option:selected').text();
 	var albumName = $('#name').val();
+	
+	$.post('/lastfm', { artist: artistName,album : albumName }, function(data) {
+		alert(data.year);
+		alert(data.image);
+	}, 'json');
+	
 });
