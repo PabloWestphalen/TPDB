@@ -77,7 +77,7 @@ function showNotification(songName) {
 	notification.show();
 	setTimeout(function() {
 		notification.close();
-	}, 2000);
+	}, 3000);
 }
 
 function onPlayerStateChange(event) {
