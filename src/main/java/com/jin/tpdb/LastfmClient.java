@@ -26,7 +26,7 @@ public class LastfmClient extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request,
-	//protected void doGet(HttpServletRequest request,
+	// protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String artistName = request.getParameter("artist");
 		String albumName = request.getParameter("album");
@@ -57,35 +57,44 @@ public class LastfmClient extends HttpServlet {
 		}
 		// image
 		try {
-			if(album.availableSizes() != null) {
-				if(album.availableSizes().contains(ImageSize.LARGE)) {
+			if (album.availableSizes() != null) {
+				if (album.availableSizes().contains(ImageSize.LARGE)) {
 					r.put("image", album.getImageURL(ImageSize.LARGE));
 				} else {
-					for(ImageSize img : album.availableSizes()) {				
+					for (ImageSize img : album.availableSizes()) {
 						r.put("image", album.getImageURL(img));
 						break;
 					}
 				}
-			}	
-		} catch(NullPointerException ex) {
-			
+			}
+		} catch (NullPointerException ex) {
+			System.out.println("###########No images############");
 		}
-		
+
 		// date
-		Date releaseDate = album.getReleaseDate();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(releaseDate);
-		r.put("month", cal.get(Calendar.MONTH));
-		r.put("year", cal.get(Calendar.YEAR));
-		// tracks
-		ArrayList<HashMap<String, String>> tracks = new ArrayList<HashMap<String, String>>();
-		for (Track t : album.getTracks()) {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("title", t.getName());
-			map.put("length", formatLength(t.getDuration()));
-			tracks.add(map);
+		try {
+			Date releaseDate = album.getReleaseDate();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(releaseDate);
+			r.put("month", cal.get(Calendar.MONTH));
+			r.put("year", cal.get(Calendar.YEAR));
+		} catch (NullPointerException ex) {
+			System.out.println("###########No date############");
 		}
-		r.put("tracks", tracks);
+		// tracks
+		try {
+			ArrayList<HashMap<String, String>> tracks = new ArrayList<HashMap<String, String>>();
+
+			for (Track t : album.getTracks()) {
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put("title", t.getName());
+				map.put("length", formatLength(t.getDuration()));
+				tracks.add(map);
+			}
+			r.put("tracks", tracks);
+		} catch (NullPointerException ex) {
+			System.out.println("########No tracks########3");
+		}
 		return r;
 	}
 
