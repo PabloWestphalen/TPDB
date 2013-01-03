@@ -72,10 +72,6 @@ function enableNotifications() {
 }
 
 function showNotification(songName) {
-	if (window.webkitNotifications.checkPermission() != 0) {
-		alert('permissions are not allowed');
-		return 0;
-	}
 	var notification = window.webkitNotifications.createNotification(coverUrl,
 			'\u266c ' + songName, "by " + artistName);
 	notification.show();
