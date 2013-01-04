@@ -92,7 +92,7 @@ function showNotification(songName) {
 	            message: notificationDiv, 
 	            fadeIn: 700, 
 	            fadeOut: 700, 
-	            timeout: 2000, 
+	            timeout: 3000, 
 	            showOverlay: false, 
 	            centerY: false, 
 	            css: { 
