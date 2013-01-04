@@ -84,7 +84,8 @@ function showNotification(songName) {
 		}, 3000);
 	}
 	else {
-		var icon = 'background: url(' + coverUrl + ') no-repeat 10px 10px;';
+		var songName = "When i Go";
+		var icon = 'background: url(' + coverUrl + ') no-repeat 0 50%; background-size: 70px';
 		var notificationDiv = ' <div class="notification" style="' + icon + '"> ' +
             '<h1>\u266c ' + songName + '</h1>' +
             '<h2>by ' + artistName + '</h2></div>';
@@ -92,7 +93,7 @@ function showNotification(songName) {
 	            message: notificationDiv, 
 	            fadeIn: 700, 
 	            fadeOut: 700, 
-	            timeout: 2000, 
+	            timeout: 200000, 
 	            showOverlay: false, 
 	            centerY: false, 
 	            css: { 

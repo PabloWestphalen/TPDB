@@ -885,5 +885,11 @@ div.rateit div.rateit-reset:hover {
 }
 
 div.notification h1, div.notification h2 {
-    color: white; padding: 5px 5px 5px 75px; text-align: left
+    color: white; padding: 0 0 0 75px; text-align: left; margin: 0;
+}
+div.notification h1 {
+	font-size: 1.2em;
+}
+div.notification h2 {
+	font-size: 1em;
 }
