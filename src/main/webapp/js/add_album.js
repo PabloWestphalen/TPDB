@@ -155,32 +155,44 @@ $('#name').blur(
 					backgroundColor : '#000',
 					'-webkit-border-radius' : '10px',
 					'-moz-border-radius' : '10px',
-					opacity : .5,
+					//opacity : .5,
 					color : '#fff'
 				},
-				message : "Checking Last.fm..."
+				message : "Looking up information..."
 			});
 
 			var artistName = $('#artist option:selected').text();
 			var albumName = $('#name').val();
-
-			$.post('/lastfm', {
-				artist : artistName,
-				album : albumName
-			}, function(data) {
-				$.unblockUI();
-				$('#name').val(data.name);
-				$('select[name="month"] option[value="' + data.month + '"]')
-						.attr("selected", "selected");
-				$('select[name="year"] option[value="' + data.year + '"]')
-						.attr("selected", "selected");
-				$('#coverUploadButton').attr("src", data.image);
-				fillTracks(data.tracks);
-				var cover = '<input type="hidden" name="cover_url" value="'
-					+ data.image + '" />';
-				$('#albumForm').prepend(cover);
-			}, 'json').error(function(){$.unblockUI();});
-
+			
+			var url = 'http://api.discogs.com/database/search?artist=' + artist
+            + '&title=' + title + '&type=master&callback=?';
+			
+			$.getJSON(url, function(response){
+	            var albumId = response.data["results"][0]["id"];
+				url = 'http://api.discogs.com/masters/' + albumId + '?callback=?';
+				$.getJSON(url, function(response) {
+					var year = response.data["year"];
+					var title = response.data["title"];
+					var cover = response.data["images"][0]["resource_url"];
+					var tracks = response.data["tracklist"];
+					var tlist = "";
+					for(var i = 0; i < tracks.length; i++) {
+						tlist += tracks[i]["title"] + " - " + tracks[i]["duration"] + "\n";
+					}
+					$.unblockUI();
+					$('#name').val(title);
+					var randomMonth = Math.floor((Math.random()*11)+0);
+					$('select[name="month"] option[value="' + randomMonth + '"]')
+					.attr("selected", "selected");
+					$('select[name="year"] option[value="' + year + '"]')
+					.attr("selected", "selected");
+					$('#coverUploadButton').attr("src", cover);
+					fillTracks(tracks);
+					var img = '<input type="hidden" name="cover_url" value="'
+						+ cover + '" />';
+					$('#albumForm').prepend(img);
+				});
+			});
 		});
 
 function fillTracks(tracks) {
@@ -210,6 +222,6 @@ function fillTracks(tracks) {
 	$lengths = $('input[name="tracks_length[]"]');
 	for ( var i = 0; i < tracks.length; i++) {
 		$titles[i].value = tracks[i]["title"];
-		$lengths[i].value = tracks[i]["length"];
+		$lengths[i].value = tracks[i]["duration"];
 	}
 }
