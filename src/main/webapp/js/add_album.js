@@ -168,35 +168,31 @@ $('#name').blur(
             + '&title=' + albumName + '&type=master&callback=?';
 			
 			$.getJSON(url, function(response){
-				if(response.data.pagination.items > 0) {
-					var albumId = response.data["results"][0]["id"];
-					url = 'http://api.discogs.com/masters/' + albumId + '?callback=?';
-					$.getJSON(url, function(response) {
-						var year = response.data["year"];
-						var title = response.data["title"];
-						var cover = response.data["images"][0]["uri150"];
-						var tracks = response.data["tracklist"];
-						var tlist = "";
-						for(var i = 0; i < tracks.length; i++) {
-							tlist += tracks[i]["title"] + " - " + tracks[i]["duration"] + "\n";
-						}
-						$.unblockUI();
-						$('#name').val(title);
-						var randomMonth = Math.floor((Math.random()*11)+0);
-						$('select[name="month"] option[value="' + randomMonth + '"]')
-						.attr("selected", "selected");
-						$('select[name="year"] option[value="' + year + '"]')
-						.attr("selected", "selected");
-						$('#coverUploadButton').attr("src", cover);
-						fillTracks(tracks);
-						var img = '<input type="hidden" name="cover_url" value="'
-							+ cover + '" />';
-						$('#albumForm').prepend(img);
+				var albumId = response.data["results"][0]["id"];
+				url = 'http://api.discogs.com/masters/' + albumId + '?callback=?';
+				$.getJSON(url, function(response) {
+					var year = response.data["year"];
+					var title = response.data["title"];
+					var cover = response.data["images"][0]["uri150"];
+					var tracks = response.data["tracklist"];
+					var tlist = "";
+					for(var i = 0; i < tracks.length; i++) {
+						tlist += tracks[i]["title"] + " - " + tracks[i]["duration"] + "\n";
+					}
+					$('#name').val(title);
+					var randomMonth = Math.floor((Math.random()*11)+0);
+					$('select[name="month"] option[value="' + randomMonth + '"]')
+					.attr("selected", "selected");
+					$('select[name="year"] option[value="' + year + '"]')
+					.attr("selected", "selected");
+					$('#coverUploadButton').attr("src", cover);
+					fillTracks(tracks);
+					var img = '<input type="hidden" name="cover_url" value="'
+						+ cover + '" />';
+					$('#albumForm').prepend(img);
 					}).error(function(){$.unblockUI();});
-				} else {
-					$.unblockUI();
-				}
-			}).error(function(){$.unblockUI();});;
+			});
+			$.unblockUI();
 		});
 
 function fillTracks(tracks) {
