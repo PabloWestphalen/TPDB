@@ -192,10 +192,11 @@ $('#name').blur(
 					var img = '<input type="hidden" name="cover_url" value="'
 						+ cover + '" />';
 					$('#albumForm').prepend(img);
+					$.unblockUI();
 					}).error(function(){$.unblockUI();});
-				} 
+				} else { $.unblockUI(); } 
 			});
-			$.unblockUI();
+			
 		});
 
 function fillTracks(tracks) {
