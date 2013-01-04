@@ -95,7 +95,7 @@ public class EditAlbumController extends HttpServlet {
 		String[] lengths = request.getParameterValues("tracks_length[]");
 		int totalLength = 0;
 		for (int i = 0; i <= tracks.length - 2; i++) {
-			if (!Sanitizer.clean(tracks[i]).isEmpty()) {
+			if (!tracks[i].isEmpty()) {
 				Song s = new Song();
 				s.setAlbum(album);
 				s.setName(Sanitizer.clean(tracks[i]));
@@ -113,7 +113,6 @@ public class EditAlbumController extends HttpServlet {
 		albumRepo.merge(album);
 		albumRepo.refresh(album.getId());
 		artistRepo.refresh(artistId);
-
 		dispatch(request, response);
 	}
 }

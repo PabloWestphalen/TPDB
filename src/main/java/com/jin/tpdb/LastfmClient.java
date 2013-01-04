@@ -27,20 +27,15 @@ public class LastfmClient extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request,
-	// protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String artistName = request.getParameter("artist");
 		String albumName = request.getParameter("album");
 		String ajaxRequest = request.getHeader("X-Requested-With");
 
 		if (artistName != null && albumName != null) {
-			// if (ajaxRequest != null && ajaxRequest.equals("XMLHttpRequest"))
-			// {
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json");
 			out.print(getData(artistName, albumName));
-
-			// }
 		}
 	}
 
@@ -69,8 +64,9 @@ public class LastfmClient extends HttpServlet {
 					}
 				}
 			}
-		} catch (NullPointerException ex) {
+		} catch (Exception ex) {
 			System.out.println("###########No images############");
+			ex.printStackTrace();
 		}
 
 		// date

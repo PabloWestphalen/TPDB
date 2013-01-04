@@ -13,7 +13,10 @@ $(document).ready(function() {
 	});
 	var link = '<a href="#" id="enableNotifications">Enable notifications</a>';
 	$('footer').append(link);
-	$('#enableNotifications').click(enableNotifications);
+	$('#enableNotifications').click(function(event) {
+		event.preventDefault();
+		enableNotifications();
+	});
     // set trackNames
 	var i = 0;
 	trackNames = new Array();
