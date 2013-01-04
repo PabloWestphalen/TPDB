@@ -168,7 +168,9 @@ $('#name').blur(
             + '&title=' + albumName + '&type=master&callback=?';
 			
 			$.getJSON(url, function(response){
-				var albumId = response.data["results"][0]["id"];
+				if(response.data.pagination.items > 0) {
+					var albumId = response.data["results"][0]["id"];
+				
 				url = 'http://api.discogs.com/masters/' + albumId + '?callback=?';
 				$.getJSON(url, function(response) {
 					var year = response.data["year"];
@@ -191,6 +193,7 @@ $('#name').blur(
 						+ cover + '" />';
 					$('#albumForm').prepend(img);
 					}).error(function(){$.unblockUI();});
+				} 
 			});
 			$.unblockUI();
 		});
