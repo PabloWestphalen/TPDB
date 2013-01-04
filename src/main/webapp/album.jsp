@@ -19,7 +19,6 @@
   ${Utils:cleanHtml(album.description)}
   </p>
   <h3>Tracks</h3>
-    <a href="#" class="playAll">Play all</a>
   <ol id="tracksListing">
     <c:forEach var="song" items="${album.songs}">
       <c:choose>
@@ -49,6 +48,7 @@
       <li>Length: ${album.length }</li>
       <%--<li>Label: ${album.label}</li> --%>
       <li>Rating: <div class="rateit" id="${album.id}" data-rateit-value="${album.averageRating}" data-rateit-ispreset="true"></div></li>
+      <li class="playAll">Listen</li>
       <li><a href="${album.artist.site}" target="_blank">Official Site</a></li>
     </ul>
      <div id="sidebar_albums">

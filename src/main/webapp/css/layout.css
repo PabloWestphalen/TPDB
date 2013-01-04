@@ -827,7 +827,7 @@ div.rateit div.rateit-reset:hover {
 	
 }
 
-.has_video:hover {
+.has_video:hover, .playAll:hover {
 	cursor: pointer;
 }
 
@@ -840,7 +840,7 @@ div.rateit div.rateit-reset:hover {
 	width: 99%;
 }
 
-.has_video:before {
+.has_video:before, .playAll:before {
 	content: "";
 	display: inline-block;
 	background-image: url('../images/playIcon.png');
@@ -880,8 +880,9 @@ div.rateit div.rateit-reset:hover {
 }
 .playAll {
 	text-align: center;
-	width: 100%;
-	display: block;
+	margin-bottom: 1em;
+	/*width: 100%;
+	display: block;*/
 }
 
 div.notification h1, div.notification h2 {
