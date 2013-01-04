@@ -152,7 +152,7 @@ $('#name').blur(
 				css : {
 					border : 'none',
 					padding : '15px',
-					backgroundColor : '#000',
+					backgroundColor : '#222',
 					'-webkit-border-radius' : '10px',
 					'-moz-border-radius' : '10px',
 					//opacity : .5,
@@ -191,8 +191,8 @@ $('#name').blur(
 					var img = '<input type="hidden" name="cover_url" value="'
 						+ cover + '" />';
 					$('#albumForm').prepend(img);
-				});
-			});
+				}).error(function(){$.unblockUI();});;
+			}).error(function(){$.unblockUI();});;
 		});
 
 function fillTracks(tracks) {
