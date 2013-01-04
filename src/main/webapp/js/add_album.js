@@ -173,7 +173,7 @@ $('#name').blur(
 				$.getJSON(url, function(response) {
 					var year = response.data["year"];
 					var title = response.data["title"];
-					var cover = response.data["images"][0]["resource_url"];
+					var cover = response.data["images"][0]["uri150"];
 					var tracks = response.data["tracklist"];
 					var tlist = "";
 					for(var i = 0; i < tracks.length; i++) {
