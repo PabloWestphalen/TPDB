@@ -140,7 +140,7 @@ function() {
 
 });
 
-function block() {
+function blockUI() {
     $.blockUI({
         css: {
             border: 'none',
