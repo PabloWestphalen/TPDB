@@ -164,8 +164,8 @@ $('#name').blur(
 			var artistName = $('#artist option:selected').text();
 			var albumName = $('#name').val();
 			
-			var url = 'http://api.discogs.com/database/search?artist=' + artist
-            + '&title=' + title + '&type=master&callback=?';
+			var url = 'http://api.discogs.com/database/search?artist=' + artistName
+            + '&title=' + albumName + '&type=master&callback=?';
 			
 			$.getJSON(url, function(response){
 	            var albumId = response.data["results"][0]["id"];
