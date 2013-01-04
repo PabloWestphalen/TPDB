@@ -51,7 +51,11 @@ public class LastfmClient extends HttpServlet {
 				break;
 			}
 		}
-		r.put("name", album.getName());
+		try{
+			r.put("name", album.getName());
+		} catch(NullPointerException ex) {
+			System.out.println("########Could not find album########");
+		}
 		// image
 		try {
 			if (album.availableSizes() != null) {
