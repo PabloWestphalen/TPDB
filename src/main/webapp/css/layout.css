@@ -883,3 +883,7 @@ div.rateit div.rateit-reset:hover {
 	width: 100%;
 	display: block;
 }
+
+div.notification h1, div.notification h2 {
+    color: white; padding: 5px 5px 5px 75px; text-align: left
+}

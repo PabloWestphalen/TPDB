@@ -6,7 +6,7 @@
 <c:set var="ogDesc">
 <tpdb:format var="${album.description}" maxlength="110" />
 </c:set>
-<tpdb:page name="album" script="stars, comments, youtube"
+<tpdb:page name="album" script="stars, comments, youtube, blockui"
 	title="${album.name} - ${album.artist.name}"
 	ogTitle="${album.artist.name} - ${album.name} (${year})"
 	ogImage="${album.cover}"

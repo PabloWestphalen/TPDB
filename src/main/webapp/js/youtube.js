@@ -75,12 +75,41 @@ function enableNotifications() {
 }
 
 function showNotification(songName) {
-	var notification = window.webkitNotifications.createNotification(coverUrl,
-			'\u266c ' + songName, "by " + artistName);
-	notification.show();
-	setTimeout(function() {
-		notification.close();
-	}, 3000);
+	if (window.webkitNotifications && window.webkitNotifications.checkPermission() == 0) {
+		var notification = window.webkitNotifications.createNotification(coverUrl,
+				'\u266c ' + songName, "by " + artistName);
+		notification.show();
+		setTimeout(function() {
+			notification.close();
+		}, 3000);
+	}
+	else {
+		var icon = 'background: url(' + coverUrl + ') no-repeat 10px 10px;';
+		var notificationDiv = ' <div class="notification" style="' + icon + '"> ' +
+            '<h1>\u266c ' + songName + '</h1>' +
+            '<h2>by ' + artistName + '</h2></div>';
+		  $.blockUI({ 
+	            message: notificationDiv, 
+	            fadeIn: 700, 
+	            fadeOut: 700, 
+	            timeout: 2000, 
+	            showOverlay: false, 
+	            centerY: false, 
+	            css: { 
+	                width: '350px', 
+	                top: '10px', 
+	                left: '', 
+	                right: '10px', 
+	                border: 'none', 
+	                padding: '5px', 
+	                backgroundColor: '#222', 
+	                '-webkit-border-radius': '10px', 
+	                '-moz-border-radius': '10px', 
+	                //opacity: .5, 
+	                color: '#fff' 
+	            } 
+	        }); 
+	}
 }
 
 function onPlayerStateChange(event) {
