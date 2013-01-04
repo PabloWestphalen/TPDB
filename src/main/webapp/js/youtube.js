@@ -96,7 +96,8 @@ function showNotification(songName) {
 	            showOverlay: false, 
 	            centerY: false, 
 	            css: { 
-	                width: '350px', 
+	                width: '300px', 
+	                top: '',
 	                bottom: '10px', 
 	                left: '', 
 	                right: '10px', 
