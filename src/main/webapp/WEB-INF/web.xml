@@ -226,8 +226,9 @@
 		<filter-name>cssCache</filter-name>
 		<url-pattern>*.css</url-pattern>
 	</filter-mapping>
-
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
+		<tracking-mode>URL</tracking-mode>
+		<tracking-mode>SSL</tracking-mode>
 	</session-config>
 </web-app>
