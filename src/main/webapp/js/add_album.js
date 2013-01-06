@@ -194,7 +194,7 @@ function getData(artistName, albumName) {
         	}
         	
         	var albumId = response.data["results"][0]["id"];
-
+        	alert('albumType is [' + albumType + ']');
             url = 'http://api.discogs.com/' + albumType + '/' + albumId + '?callback=?';
             $.getJSON(
             url, function(response) {
