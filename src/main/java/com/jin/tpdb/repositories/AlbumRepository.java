@@ -136,7 +136,6 @@ public class AlbumRepository {
 	@SuppressWarnings("unchecked")
 	public List<Album> getRandomAlbums(int limit, int[] excludes) {
 		hbs = (Session) em.getDelegate();
-		
 		Criteria c = hbs.createCriteria(Album.class);
 		for(int id : excludes) {
 			c.add(Restrictions.ne("id", id));
