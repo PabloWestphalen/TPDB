@@ -1,4 +1,4 @@
-var value = 2;
+fvar value = 2;
 var filled = false;
 
 // post-submit callback
@@ -155,10 +155,10 @@ function blockUI() {
     });
 }
 $('#name').blur(function() {
-    blockUI();
-    var artistName = $('#artist option:selected').text();
-    var albumName = $('#name').val();
-    if (albumName != "" && artistName != "Select") {
+    if (albumName.length != 0 && artistName != "Select") {
+    	blockUI();
+    	var artistName = $('#artist option:selected').text();
+    	var albumName = $('#name').val();
         getData(artistName, albumName);
     }
 });
