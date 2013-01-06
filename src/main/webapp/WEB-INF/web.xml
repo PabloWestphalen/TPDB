@@ -228,7 +228,7 @@
 	</filter-mapping>
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
-		<tracking-mode>URL</tracking-mode>
+		<!-- <tracking-mode>URL</tracking-mode> -->
 		<tracking-mode>SSL</tracking-mode>
 	</session-config>
 </web-app>
