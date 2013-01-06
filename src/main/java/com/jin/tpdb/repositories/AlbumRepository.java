@@ -111,16 +111,28 @@ public class AlbumRepository {
 		if(previous != null) {
 			results.add(previous);
 		} else {
-			results.add(getRandomAlbums(1, a.getId()).get(0));
+			Album random = getRandomAlbums(1, a.getId()).get(0);
+			while(results.contains(random)) {
+				random = getRandomAlbums(1, a.getId()).get(0);
+			}
+			results.add(random);
 		}
 		//get next album
 		Album next = getSibling(a, NEXT_ALBUM);
 		if(next != null) {
 			results.add(next);
 		} else {
-			results.add(getRandomAlbums(1, a.getId()).get(0));
+			Album random = getRandomAlbums(1, a.getId()).get(0);
+			while(results.contains(random)) {
+				random = getRandomAlbums(1, a.getId()).get(0);
+			}
+			results.add(random);
 		}
-		results.add(getRandomAlbums(1, a.getId()).get(0));
+		Album random = getRandomAlbums(1, a.getId()).get(0);
+		while(results.contains(random)) {
+			random = getRandomAlbums(1, a.getId()).get(0);
+		}
+		results.add(random);
 		return results;
 	}
 	
