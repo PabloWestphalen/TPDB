@@ -444,7 +444,7 @@ article p img.coverImage {
 
 #artistsBody,#adminBody {
 	position: relative;
-	left: 175px;
+	left: 0;	
 }
 
 #artistsNav {
@@ -498,7 +498,6 @@ article p img.coverImage {
 #artistsBody {
 	width: 75%;
 	background-color: transparent;
-	left: 0;
 }
 
 #artistsBody .rateit {
