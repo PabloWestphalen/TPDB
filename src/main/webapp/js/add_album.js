@@ -231,7 +231,9 @@ function fillTracks(tracks) {
     $titles = $('input[name="tracks[]"]');
     $lengths = $('input[name="tracks_length[]"]');
     for (var i = 0; i < tracks.length; i++) {
-	        $titles[i].value = tracks[i]["title"];
+    	if(tracks[i]["position"].length > 0) {
+    		$titles[i].value = tracks[i]["title"];
 	        $lengths[i].value = tracks[i]["duration"];
+    	}
     }
 }
