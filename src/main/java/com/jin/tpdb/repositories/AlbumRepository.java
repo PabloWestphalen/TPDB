@@ -108,39 +108,39 @@ public class AlbumRepository {
 		hbs = (Session) em.getDelegate();
 		//get previous album
 		Album previous = getSibling(a, PREVIOUS_ALBUM);
+		int[] selected = new int[3];
+		selected[0] = a.getId();
 		if(previous != null) {
 			results.add(previous);
+			selected[1] = previous.getId();
 		} else {
-			Album random = getRandomAlbums(1, a.getId()).get(0);
-			while(results.contains(random)) {
-				random = getRandomAlbums(1, a.getId()).get(0);
-			}
+			Album random = getRandomAlbums(1, selected).get(0);
+			selected[1] = random.getId();
 			results.add(random);
 		}
 		//get next album
 		Album next = getSibling(a, NEXT_ALBUM);
 		if(next != null) {
+			selected[2] = next.getId();
 			results.add(next);
 		} else {
-			Album random = getRandomAlbums(1, a.getId()).get(0);
-			while(results.contains(random)) {
-				random = getRandomAlbums(1, a.getId()).get(0);
-			}
+			Album random = getRandomAlbums(1, selected).get(0);
+			selected[2] = random.getId();
 			results.add(random);
 		}
-		Album random = getRandomAlbums(1, a.getId()).get(0);
-		while(results.contains(random)) {
-			random = getRandomAlbums(1, a.getId()).get(0);
-		}
+		Album random = getRandomAlbums(1, selected).get(0);
 		results.add(random);
 		return results;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Album> getRandomAlbums(int limit, int albumId) {
+	public List<Album> getRandomAlbums(int limit, int[] excludes) {
 		hbs = (Session) em.getDelegate();
+		
 		Criteria c = hbs.createCriteria(Album.class);
-		c.add(Restrictions.ne("id", albumId));
+		for(int id : excludes) {
+			c.add(Restrictions.ne("id", id));
+		}
 		c.add(Restrictions.sqlRestriction("1=1 order by rand()"));
 		c.setMaxResults(limit);
 		return c.list();		
