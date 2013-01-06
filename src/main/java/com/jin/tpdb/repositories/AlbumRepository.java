@@ -1,5 +1,6 @@
 package com.jin.tpdb.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -29,6 +30,9 @@ public class AlbumRepository {
 	private Session hbs;
 	@EJB
 	private ArtistRepository artistRepo;
+	
+	public static final int NEXT_ALBUM = 0;
+	public static final int PREVIOUS_ALBUM = 1;
 	
 	public void addComment(AlbumComment c, int albumId) {
 		Album album = findById(albumId);
@@ -81,17 +85,43 @@ public class AlbumRepository {
 		c.setCacheable(true);
 		return c.list();
 	}
-
-	@SuppressWarnings("unchecked")
-	public List<Album> getRelatedAlbums(Album a) {
-		hbs = (Session) em.getDelegate();
+	
+	public Album getSibling(Album a, int position) {
 		Criteria c = hbs.createCriteria(Album.class);
 		c.add(Restrictions.ne("id", a.getId()));
 		c.add(Restrictions.eq("artist", a.getArtist()));
-		c.addOrder(Order.asc("releaseDate"));
-		c.setMaxResults(3);
+		if(position == PREVIOUS_ALBUM) {
+			c.add(Restrictions.le("releaseDate", a.getReleaseDate()));
+			c.addOrder(Order.desc("releaseDate"));
+		} else if(position == NEXT_ALBUM) {
+			c.add(Restrictions.ge("releaseDate", a.getReleaseDate()));
+			c.addOrder(Order.asc("releaseDate"));
+		}
+		c.setMaxResults(1);
 		c.setCacheable(true);
-		return c.list();
+		return (Album) c.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Album> getRelatedAlbums(Album a) {
+		List<Album> results = new ArrayList<Album>();
+		hbs = (Session) em.getDelegate();
+		//get previous album
+		Album previous = getSibling(a, PREVIOUS_ALBUM);
+		if(previous != null) {
+			results.add(previous);
+		} else {
+			results.add(getRandomAlbums(1, a.getId()).get(0));
+		}
+		//get next album
+		Album next = getSibling(a, NEXT_ALBUM);
+		if(next != null) {
+			results.add(next);
+		} else {
+			results.add(getRandomAlbums(1, a.getId()).get(0));
+		}
+		results.add(getRandomAlbums(1, a.getId()).get(0));
+		return results;
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -26,9 +26,9 @@ public class AlbumController extends HttpServlet {
 
 		Album album = albumRepo.findById(id);
 		List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
-		if(relatedAlbums == null || relatedAlbums.size() == 0) {
+		/*if(relatedAlbums == null || relatedAlbums.size() == 0) {
 			relatedAlbums = albumRepo.getRandomAlbums(3, album.getId());
-		}
+		}*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 		request.setAttribute("year", sdf.format(album.getReleaseDate()));
 		request.setAttribute("relatedAlbums", relatedAlbums);
