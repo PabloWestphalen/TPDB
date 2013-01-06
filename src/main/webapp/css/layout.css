@@ -460,7 +460,7 @@ article p img.coverImage {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	height: 100%;
-	position: absolute;
+	/* position: absolute; */
 }
 
 #artistsNav a {
@@ -498,6 +498,7 @@ article p img.coverImage {
 #artistsBody {
 	width: 75%;
 	background-color: transparent;
+	left: 0;
 }
 
 #artistsBody .rateit {
