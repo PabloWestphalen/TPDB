@@ -155,8 +155,8 @@ function blockUI() {
     });
 }
 $('#name').blur(function() {
-	var albumName = $('#name').val();
-	var artistName = $('#artist option:selected').text();
+	var albumName = encodeURIComponent($('#name').val());
+	var artistName = encodeURIComponent($('#artist option:selected').text());
     if (albumName.length != 0 && artistName != "Select") {
     	blockUI();
         getData(artistName, albumName);
@@ -186,6 +186,8 @@ function getData(artistName, albumName) {
         			} else if(response.data["results"][i]["type"] == "Release") {
         				alert('setting albumType to releases');
         				albumType = "releases";
+        			} else {
+        				alert('Desisto véi, não existe ' + response.data["results"][i]["type"]);
         			}
         			break;
         		} 
