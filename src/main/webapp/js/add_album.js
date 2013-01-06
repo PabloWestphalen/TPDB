@@ -176,13 +176,15 @@ function getData(artistName, albumName) {
     url, function(response) {
         if (response.data.pagination.items > 0) {
         	var albumId;
-        	var albumType;
+        	var albumType = "";
         	for(var i = 0; i <= response.data.results.length; i++) {
         		if($.inArray("Album", response.data["results"][i].format) > -1) {
         			albumId = response.data["results"][i]["id"];
         			if(response.data["results"][i]["type"] == "Master") {
+        				alert('setting albumType to masters');
         				albumType = "masters";
         			} else if(response.data["results"][i]["type"] == "Release") {
+        				alert('setting albumType to releases');
         				albumType = "releases";
         			}
         			break;
