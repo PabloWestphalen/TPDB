@@ -176,26 +176,16 @@ function getData(artistName, albumName) {
     url, function(response) {
         if (response.data.pagination.items > 0) {
         	var albumId;
-        	var albumType = "";
+        	var albumType;
         	for(var i = 0; i <= response.data.results.length; i++) {
         		if($.inArray("Album", response.data["results"][i].format) > -1) {
         			albumId = response.data["results"][i]["id"];
-        			if(response.data["results"][i]["type"] == "Master") {
-        				alert('setting albumType to masters');
-        				albumType = "masters";
-        			} else if(response.data["results"][i]["type"] == "Release") {
-        				alert('setting albumType to releases');
-        				albumType = "releases";
-        			} else {
-        				alert('Desisto véi, não existe ' + response.data["results"][i]["type"]);
-        			}
+        			albumType = response.data["results"][i]["type"]; 
         			break;
         		} 
         	}
-        	
         	var albumId = response.data["results"][0]["id"];
-        	alert('albumType is [' + albumType + ']');
-            url = 'http://api.discogs.com/' + albumType + '/' + albumId + '?callback=?';
+            url = 'http://api.discogs.com/' + albumType + 's/' + albumId + '?callback=?';
             $.getJSON(
             url, function(response) {
                 var year = response.data["year"];
