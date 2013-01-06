@@ -1,4 +1,4 @@
-fvar value = 2;
+var value = 2;
 var filled = false;
 
 // post-submit callback
