@@ -212,17 +212,20 @@ function getData(artistName, albumName) {
 
 function fillTracks(tracks) {
     var newTrack = "";
-    for (var i = 0; i < tracks.length - 1; i++) {
-    	if(tracks[i]["position"].length > 0) {
-	        $('p[class="newTrack"] input').unbind('focus');
-	        if (i < tracks.length - 2) {
-	            newTrack += '<p>';
-	        } else {
-	            newTrack += '<p class="newTrack">';
-	        }
-	        newTrack += '<input type="text" value="' + (value + 1) + '" disabled>\n<input id="tracks[]" name="tracks[]" type="text">' + '\n<input id="tracks_length[]" name="tracks_length[]" type="text"></p>';
-	        value++;
+    for(var i = 0; i < tracks.length; i++) {
+    	if(tracks[i].position == "") {
+    		tracks.splice(i, 1);
     	}
+    }
+    for (var i = 0; i < tracks.length - 1; i++) {
+        $('p[class="newTrack"] input').unbind('focus');
+        if (i < tracks.length - 2) {
+            newTrack += '<p>';
+        } else {
+            newTrack += '<p class="newTrack">';
+        }
+        newTrack += '<input type="text" value="' + (value + 1) + '" disabled>\n<input id="tracks[]" name="tracks[]" type="text">' + '\n<input id="tracks_length[]" name="tracks_length[]" type="text"></p>';
+        value++;
     }
     $('p[class="newTrack"]').toggleClass("newTrack");
     $('#fTracks p:last-child').after(newTrack);
@@ -231,9 +234,7 @@ function fillTracks(tracks) {
     $titles = $('input[name="tracks[]"]');
     $lengths = $('input[name="tracks_length[]"]');
     for (var i = 0; i < tracks.length; i++) {
-    	if(tracks[i]["position"].length > 0) {
-    		$titles[i].value = tracks[i]["title"];
-	        $lengths[i].value = tracks[i]["duration"];
-    	}
+		$titles[i].value = tracks[i]["title"];
+        $lengths[i].value = tracks[i]["duration"];
     }
 }
