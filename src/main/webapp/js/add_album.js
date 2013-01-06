@@ -155,8 +155,8 @@ function blockUI() {
     });
 }
 $('#name').blur(function() {
-	var albumName = encodeURIComponent($('#name').val());
-	var artistName = encodeURIComponent($('#artist option:selected').text());
+	var albumName = encodeURIComponent($('#name').val().replace(/\?/g, ""));
+	var artistName = encodeURIComponent($('#artist option:selected').text().replace(/\?/g, ""));
     if (albumName.length != 0 && artistName != "Select") {
     	blockUI();
         getData(artistName, albumName);
@@ -184,7 +184,7 @@ function getData(artistName, albumName) {
         			break;
         		} 
         	}
-        	var albumId = response.data["results"][0]["id"];
+        	//var albumId = response.data["results"][0]["id"];
             url = 'http://api.discogs.com/' + albumType + 's/' + albumId + '?callback=?';
             $.getJSON(
             url, function(response) {
@@ -213,14 +213,16 @@ function getData(artistName, albumName) {
 function fillTracks(tracks) {
     var newTrack = "";
     for (var i = 0; i < tracks.length - 1; i++) {
-        $('p[class="newTrack"] input').unbind('focus');
-        if (i < tracks.length - 2) {
-            newTrack += '<p>';
-        } else {
-            newTrack += '<p class="newTrack">';
-        }
-        newTrack += '<input type="text" value="' + (value + 1) + '" disabled>\n<input id="tracks[]" name="tracks[]" type="text">' + '\n<input id="tracks_length[]" name="tracks_length[]" type="text"></p>';
-        value++;
+    	if(tracks[i]["position"].length > 0) {
+	        $('p[class="newTrack"] input').unbind('focus');
+	        if (i < tracks.length - 2) {
+	            newTrack += '<p>';
+	        } else {
+	            newTrack += '<p class="newTrack">';
+	        }
+	        newTrack += '<input type="text" value="' + (value + 1) + '" disabled>\n<input id="tracks[]" name="tracks[]" type="text">' + '\n<input id="tracks_length[]" name="tracks_length[]" type="text"></p>';
+	        value++;
+    	}
     }
     $('p[class="newTrack"]').toggleClass("newTrack");
     $('#fTracks p:last-child').after(newTrack);
@@ -229,9 +231,7 @@ function fillTracks(tracks) {
     $titles = $('input[name="tracks[]"]');
     $lengths = $('input[name="tracks_length[]"]');
     for (var i = 0; i < tracks.length; i++) {
-        if(tracks[i]["position"].length > 0) {
 	        $titles[i].value = tracks[i]["title"];
 	        $lengths[i].value = tracks[i]["duration"];
-        }
     }
 }
