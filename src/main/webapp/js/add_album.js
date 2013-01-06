@@ -162,25 +162,42 @@ $('#name').blur(function() {
         getData(artistName, albumName);
     }
 });
+/*if(results[i]["type"] == "Master") {
+	 /masters/
+	} else {
+	 /releases/
+	}
+	 */
 
 function getData(artistName, albumName) {
-    var url = 'http://api.discogs.com/database/search?artist=' + artistName + '&title=' + albumName + '&type=master&callback=?';
+    //var url = 'http://api.discogs.com/database/search?artist=' + artistName + '&title=' + albumName + '&type=master&callback=?';
+	var url = 'http://api.discogs.com/database/search?artist=' + artistName + '&title=' + albumName + '&callback=?';
     $.getJSON(
     url, function(response) {
         if (response.data.pagination.items > 0) {
-            var albumId = response.data["results"][0]["id"];
+        	var albumId;
+        	var albumType;
+        	for(var i = 0; i <= response.data.results.length; i++) {
+        		if($.inArray("Album", response.data["results"][i].format) > -1) {
+        			albumId = response.data["results"][i]["id"];
+        			if(response.data["results"][i]["type"] == "Master") {
+        				albumType = "masters";
+        			} else if(response.data["results"][i]["type"] == "Release") {
+        				albumType = "releases";
+        			}
+        			break;
+        		} 
+        	}
+        	
+        	var albumId = response.data["results"][0]["id"];
 
-            url = 'http://api.discogs.com/masters/' + albumId + '?callback=?';
+            url = 'http://api.discogs.com/' + albumType + '/' + albumId + '?callback=?';
             $.getJSON(
             url, function(response) {
                 var year = response.data["year"];
                 var title = response.data["title"];
                 var cover = response.data["images"][0]["uri150"];
                 var tracks = response.data["tracklist"];
-                var tlist = "";
-                for (var i = 0; i < tracks.length; i++) {
-                    tlist += tracks[i]["title"] + " - " + tracks[i]["duration"] + "\n";
-                }
                 $('#name').val(title);
                 var randomMonth = Math.floor((Math.random() * 11) + 0);
                 $('select[name="month"] option[value="' + randomMonth + '"]').attr("selected", "selected");
@@ -218,7 +235,9 @@ function fillTracks(tracks) {
     $titles = $('input[name="tracks[]"]');
     $lengths = $('input[name="tracks_length[]"]');
     for (var i = 0; i < tracks.length; i++) {
-        $titles[i].value = tracks[i]["title"];
-        $lengths[i].value = tracks[i]["duration"];
+        if(tracks[i]["position"].length > 0) {
+	        $titles[i].value = tracks[i]["title"];
+	        $lengths[i].value = tracks[i]["duration"];
+        }
     }
 }
