@@ -155,10 +155,10 @@ function blockUI() {
     });
 }
 $('#name').blur(function() {
+	var albumName = $('#name').val();
+	var artistName = $('#artist option:selected').text();
     if (albumName.length != 0 && artistName != "Select") {
     	blockUI();
-    	var artistName = $('#artist option:selected').text();
-    	var albumName = $('#name').val();
         getData(artistName, albumName);
     }
 });
