@@ -162,12 +162,6 @@ $('#name').blur(function() {
         getData(artistName, albumName);
     }
 });
-/*if(results[i]["type"] == "Master") {
-	 /masters/
-	} else {
-	 /releases/
-	}
-	 */
 
 function getData(artistName, albumName) {
     //var url = 'http://api.discogs.com/database/search?artist=' + artistName + '&title=' + albumName + '&type=master&callback=?';

@@ -6,17 +6,22 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+function showEnableNotificationsLink() {
+	if(window.webkitNotifications && window.webkitNotifications.checkPermission() != 0){
+		var link = '<a href="#" id="enableNotifications">Enable notifications</a>';
+		$('footer').append(link);
+		$('#enableNotifications').click(function(event) {
+			event.preventDefault();
+			enableNotifications();
+		});
+	}
+}
 $(document).ready(function() {
 	$('#player').addClass('playerLoading');
 	$('#tracksListing li a, .playAll').click(function(event) {
 		event.preventDefault();
 	});
-	var link = '<a href="#" id="enableNotifications">Enable notifications</a>';
-	$('footer').append(link);
-	$('#enableNotifications').click(function(event) {
-		event.preventDefault();
-		enableNotifications();
-	});
+	setEnablePermissions();
     // set trackNames
 	var i = 0;
 	trackNames = new Array();

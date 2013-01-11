@@ -101,9 +101,13 @@ public class EditAlbumController extends HttpServlet {
 				s.setName(Sanitizer.clean(tracks[i]));
 				s.setLength(Sanitizer.clean(lengths[i]));
 				String[] times = s.getLength().split(":");
-				int minutes = Integer.parseInt(times[0]);
-				int seconds = Integer.parseInt(times[1]);
-				totalLength += (minutes * 60) + seconds;
+				try {
+					int minutes = Integer.parseInt(times[0]);
+					int seconds = Integer.parseInt(times[1]);
+					totalLength += (minutes * 60) + seconds;
+				} catch(Exception ex) {
+					
+				}
 				s.setNumber(i + 1);
 				albumRepo.addSong(s);
 			}
