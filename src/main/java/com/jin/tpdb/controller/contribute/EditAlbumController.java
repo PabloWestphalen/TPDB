@@ -106,7 +106,7 @@ public class EditAlbumController extends HttpServlet {
 					int seconds = Integer.parseInt(times[1]);
 					totalLength += (minutes * 60) + seconds;
 				} catch(Exception ex) {
-					
+					System.out.println("####Deu pau nessa track '" + s.getName() + "'");
 				}
 				s.setNumber(i + 1);
 				albumRepo.addSong(s);

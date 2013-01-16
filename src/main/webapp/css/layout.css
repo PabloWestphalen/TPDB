@@ -1,5 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Baumans);
-/*@import url(http://fonts.googleapis.com/css?family=Cabin+Sketch);*/
+@font-face {
+  font-family: 'Baumans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Baumans'), local('Baumans-Regular'), url('../fonts/baumans.woff') format('woff');
+}
+
 h /*@font-face {
   font-family: Ubuntu;
   src: url("../font/ubuntum.ttf");
