@@ -2,7 +2,7 @@
   font-family: 'Baumans';
   font-style: normal;
   font-weight: 400;
-  src: local('Baumans'), local('Baumans-Regular'), url('../fonts/baumans.woff') format('woff');
+  src: local('Baumans'), local('Baumans-Regular'), url('../font/baumans.woff') format('woff');
 }
 
 h /*@font-face {
