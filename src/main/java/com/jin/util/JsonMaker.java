@@ -3,9 +3,9 @@ package com.jin.util;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -14,7 +14,7 @@ public class JsonMaker {
 		return toJson(m);
 	}
 
-	public static String from(List<?> l) {
+	public static String from(Collection<?> l) {
 		return toJson(l);
 	}
 
@@ -90,9 +90,9 @@ public class JsonMaker {
 				json.append(o);
 			} else if (o instanceof String) {
 				json.append("\"" + o + "\"");
-			} else if (o instanceof List) {
+			} else if (o instanceof Collection) {
 				json.append("[");
-				Iterator<?> it = ((List<?>) o).iterator();
+				Iterator<?> it = ((Collection<?>) o).iterator();
 				while (it.hasNext()) {
 					json.append(toJson(it.next()));
 					if (it.hasNext()) {
