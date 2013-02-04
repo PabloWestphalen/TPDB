@@ -33,7 +33,7 @@ public class JsonMaker {
 
 	public static String serialize(Object o) {
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
-		//System.out.println("Dealing with a " + o.getClass().getName());
+		System.out.println("Dealing with a " + o.getClass().getName());
 		for (Method m : o.getClass().getMethods()) {
 			if (m.getDeclaringClass().equals(o.getClass())) {
 				if (m.getName().startsWith("get")
@@ -44,8 +44,9 @@ public class JsonMaker {
 							try {
 								f.setAccessible(true);
 								Object val = f.get(o);
-								// System.out.println("Val is" + toJson(val));
+								System.out.println("Val is" + toJson(val));
 								map.put(fieldName, val);
+								System.out.println("Map atm is " + map);
 							} catch (IllegalArgumentException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
