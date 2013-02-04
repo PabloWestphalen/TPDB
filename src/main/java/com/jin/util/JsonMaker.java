@@ -44,7 +44,8 @@ public class JsonMaker {
 							try {
 								f.setAccessible(true);
 								Object val = f.get(o);
-								System.out.println("Val is" + toJson(val));
+								System.out.println("About to call toJson for the field \"" + fieldName + "\" of class \"" + o.getClass().getName() + "\"");
+								//System.out.println("Val is" + toJson(val));
 								map.put(fieldName, val);
 								System.out.println("Map atm is " + map);
 							} catch (IllegalArgumentException e) {
@@ -60,6 +61,7 @@ public class JsonMaker {
 			}
 		}
 		if (map.size() > 0) {
+			System.out.println("Done dealing with \"" + o.getClass().getName() + "\"");
 			return toJson(map);
 		} else {
 			return null;
@@ -70,65 +72,75 @@ public class JsonMaker {
 
 	private static String toJson(Object o) {
 		StringBuilder json = new StringBuilder();
-		if (o instanceof Map) {
-			json.append("{");
-			Iterator<?> it = ((Map<?, ?>) o).entrySet().iterator();
-			while (it.hasNext()) {
-				Entry<?, ?> key = ((Entry<?, ?>) it.next());
-				json.append(toJson(key.getKey()) + ": "
-						+ toJson(key.getValue()));
-				if (it.hasNext()) {
-					json.append(",");
+		if(o != null) {
+			if (o instanceof Map) {
+				json.append("{");
+				Iterator<?> it = ((Map<?, ?>) o).entrySet().iterator();
+				while (it.hasNext()) {
+					Entry<?, ?> key = ((Entry<?, ?>) it.next());
+					json.append(toJson(key.getKey()) + ": "
+							+ toJson(key.getValue()));
+					if (it.hasNext()) {
+						json.append(",");
+					}
 				}
-			}
-			json.append("}");
-		} else if (o instanceof Number) {
-			json.append(o);
-		} else if (o instanceof String) {
-			json.append("\"" + o + "\"");
-		} else if (o instanceof List) {
-			json.append("[");
-			Iterator<?> it = ((List<?>) o).iterator();
-			while (it.hasNext()) {
-				json.append(toJson(it.next()));
-				if (it.hasNext()) {
-					json.append(",");
-				}
-			}
-			json.append("]");
-		} else if (o instanceof Object[]) {
-			if (o.getClass().isArray()) {
+				json.append("}");
+			} else if (o instanceof Number) {
+				json.append(o);
+			} else if (o instanceof String) {
+				json.append("\"" + o + "\"");
+			} else if (o instanceof List) {
 				json.append("[");
-			}
-			// deal with array of objects
-			for (int i = 0; i < ((Object[]) o).length; i++) {
-
-				json.append("" + toJson(((Object[]) o)[i]) + "");
-				if (i + 1 < ((Object[]) o).length) {
-					json.append(",");
+				Iterator<?> it = ((List<?>) o).iterator();
+				while (it.hasNext()) {
+					json.append(toJson(it.next()));
+					if (it.hasNext()) {
+						json.append(",");
+					}
 				}
-			}
-			if (o.getClass().isArray()) {
 				json.append("]");
+			} else if(o instanceof Enum) {
+				json.append("\"" + o + "\"");
 			}
-		} else if (o.getClass().isArray()) {
-			// deal with array of primitives
-			json.append("[");
-			for (int i = 0; i < Array.getLength(o); i++) {
-				if (o instanceof char[]) {
-					json.append("\"" + Array.get(o, i) + "\"");
-				} else {
-					json.append(Array.get(o, i));
+			
+			
+			else if (o instanceof Object[]) {
+				if (o.getClass().isArray()) {
+					json.append("[");
 				}
-				if (i + 1 < Array.getLength(o)) {
-					json.append(",");
+				// deal with array of objects
+				for (int i = 0; i < ((Object[]) o).length; i++) {
+
+					json.append("" + toJson(((Object[]) o)[i]) + "");
+					if (i + 1 < ((Object[]) o).length) {
+						json.append(",");
+					}
 				}
+				if (o.getClass().isArray()) {
+					json.append("]");
+				}
+			} else if (o.getClass().isArray()) {
+				
+				// deal with array of primitives
+				json.append("[");
+				for (int i = 0; i < Array.getLength(o); i++) {
+					if (o instanceof char[]) {
+						json.append("\"" + Array.get(o, i) + "\"");
+					} else {
+						json.append(Array.get(o, i));
+					}
+					if (i + 1 < Array.getLength(o)) {
+						json.append(",");
+					}
+				}
+				json.append("]");
+			} else {
+				json.append(serialize(o));
 			}
-			json.append("]");
+			return json.toString();
 		} else {
-			json.append(serialize(o));
+			return "\"\"";
 		}
-		return json.toString();
 	}
 
 }
