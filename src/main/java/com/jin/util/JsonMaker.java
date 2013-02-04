@@ -32,7 +32,7 @@ public class JsonMaker {
 	}
 
 	public static String serialize(Object o) {
-		HashMap<Object, Object> map = new HashMap<>();
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		//System.out.println("Dealing with a " + o.getClass().getName());
 		for (Method m : o.getClass().getMethods()) {
 			if (m.getDeclaringClass().equals(o.getClass())) {
