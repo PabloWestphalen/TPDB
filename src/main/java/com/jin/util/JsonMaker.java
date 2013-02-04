@@ -10,12 +10,18 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class JsonMaker {
+	int depth = 0;
+	
 	public static String from(Map<?, ?> m) {
-		return toJson(m);
+		return toJson(m, 0);
 	}
 
 	public static String from(Collection<?> l) {
-		return toJson(l);
+		return toJson(l, 0);
+	}
+	
+	public static String serialize(Object o) {
+		return serialize(o, 0);
 	}
 
 	private static String getter2field(String name) {
@@ -31,7 +37,8 @@ public class JsonMaker {
 		return null;
 	}
 
-	public static String serialize(Object o) {
+	public static String serialize(Object o, int depth) {
+		System.out.println("Current level of recursion is " + depth++);
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		System.out.println("Dealing with a " + o.getClass().getName());
 		for (Method m : o.getClass().getMethods()) {
@@ -63,15 +70,13 @@ public class JsonMaker {
 		}
 		if (map.size() > 0) {
 			System.out.println("Done dealing with \"" + o.getClass().getName() + "\"");
-			return toJson(map);
+			return toJson(map, depth);
 		} else {
 			return "\"" + o.toString() + "\"";
 		}
 	}
 
-	// FIXME faltou SET
-
-	private static String toJson(Object o) {
+	private static String toJson(Object o, int depth) {
 		StringBuilder json = new StringBuilder();
 		if(o != null) {
 			if (o instanceof Map) {
@@ -79,8 +84,8 @@ public class JsonMaker {
 				Iterator<?> it = ((Map<?, ?>) o).entrySet().iterator();
 				while (it.hasNext()) {
 					Entry<?, ?> key = ((Entry<?, ?>) it.next());
-					json.append(toJson(key.getKey()) + ": "
-							+ toJson(key.getValue()));
+					json.append(toJson(key.getKey(), depth) + ": "
+							+ toJson(key.getValue(), depth));
 					if (it.hasNext()) {
 						json.append(",");
 					}
@@ -94,7 +99,7 @@ public class JsonMaker {
 				json.append("[");
 				Iterator<?> it = ((Collection<?>) o).iterator();
 				while (it.hasNext()) {
-					json.append(toJson(it.next()));
+					json.append(toJson(it.next(), depth));
 					if (it.hasNext()) {
 						json.append(",");
 					}
@@ -112,7 +117,7 @@ public class JsonMaker {
 				// deal with array of objects
 				for (int i = 0; i < ((Object[]) o).length; i++) {
 
-					json.append("" + toJson(((Object[]) o)[i]) + "");
+					json.append("" + toJson(((Object[]) o)[i], depth) + "");
 					if (i + 1 < ((Object[]) o).length) {
 						json.append(",");
 					}
@@ -136,8 +141,12 @@ public class JsonMaker {
 				}
 				json.append("]");
 			} else {
-				System.out.println("About to serialize " + o.getClass().getName());
-				json.append(serialize(o));
+				if(depth < 2) {
+					System.out.println("About to serialize " + o.getClass().getName());
+					json.append(serialize(o, depth));
+				} else {
+					json.append("\"" + o.toString() + "\"");
+				}
 			}
 			return json.toString();
 		} else {
