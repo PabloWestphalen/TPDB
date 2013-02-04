@@ -48,6 +48,7 @@ public class JsonMaker {
 								//System.out.println("Val is" + toJson(val));
 								map.put(fieldName, val);
 								System.out.println("Map atm is " + map);
+								
 							} catch (IllegalArgumentException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -64,7 +65,7 @@ public class JsonMaker {
 			System.out.println("Done dealing with \"" + o.getClass().getName() + "\"");
 			return toJson(map);
 		} else {
-			return null;
+			return "\"" + o.toString() + "\"";
 		}
 	}
 
@@ -135,6 +136,7 @@ public class JsonMaker {
 				}
 				json.append("]");
 			} else {
+				System.out.println("About to serialize " + o.getClass().getName());
 				json.append(serialize(o));
 			}
 			return json.toString();
