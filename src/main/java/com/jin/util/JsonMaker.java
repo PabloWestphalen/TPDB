@@ -3,7 +3,9 @@ package com.jin.util;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -87,6 +89,8 @@ public class JsonMaker {
 			return "\"" + escapeString(o.toString()) + "\"";
 		} else if(o instanceof Number) {
 			return escapeString(o.toString());
+		} else if(o instanceof Timestamp || o instanceof Date) {
+			return "\"" + o.toString() + "\""; 
 		}
 		
 		else if(o instanceof Collection){
