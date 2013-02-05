@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,29 +21,25 @@ public class AlbumController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private AlbumRepository albumRepo;
-	
+
 	public void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
-
 		Album album = albumRepo.findById(id);
-		System.out.println("###################################################################################");
-		System.out.println("Serializing begin");
-		PrintWriter out = response.getWriter();
-		out.write(JsonMaker.serialize(album));
-		System.out.println("Serializing end");
-		System.out.println("###################################################################################");
-		List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
-		/*if(relatedAlbums == null || relatedAlbums.size() == 0) {
-			relatedAlbums = albumRepo.getRandomAlbums(3, album.getId());
-		}*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-		request.setAttribute("year", sdf.format(album.getReleaseDate()));
-		request.setAttribute("relatedAlbums", relatedAlbums);
-		request.setAttribute("album", album);
-		//RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
-		//jsp.forward(request, response);
-		
+		if (!request.getParameter("json").isEmpty()
+				&& request.getParameter("json").equals("true")) {
+			PrintWriter out = response.getWriter();
+			out.write(JsonMaker.serialize(album));
+		} else {
+			List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+			request.setAttribute("year", sdf.format(album.getReleaseDate()));
+			request.setAttribute("relatedAlbums", relatedAlbums);
+			request.setAttribute("album", album);
+			RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
+			jsp.forward(request, response);
+		}
+
 	}
 
 	@Override

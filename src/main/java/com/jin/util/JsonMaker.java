@@ -13,8 +13,13 @@ public class JsonMaker {
 	private static Map<Object, Long> _objsVisited = new IdentityHashMap<Object, Long>();
 	private static long _identity = 0;
 
-
+	
 	public static String serialize(Object o) {
+		_objsVisited.clear();
+		return doSerialize(o);
+	}
+
+	private static String doSerialize(Object o) {
 		StringBuilder json = new StringBuilder();
 		json.append("{");
 		
@@ -89,7 +94,7 @@ public class JsonMaker {
 		}
 		//System.err.println("getV put " + o + " in the visited list");
 		// último else
-		String returnString = serialize(o);
+		String returnString = doSerialize(o);
 		//System.out.println("getV is returning " + returnString);
 		return returnString;
 	}
