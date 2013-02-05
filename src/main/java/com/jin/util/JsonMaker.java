@@ -37,6 +37,7 @@ public class JsonMaker {
 		Field[] fields = o.getClass().getDeclaredFields();
 		for(int i = 0; i < fields.length; i++) {
 			if(fields[i].getName().startsWith("this$")) {
+				json.append("problema com this");
 				continue;
 			}
 			try {
@@ -172,6 +173,7 @@ public class JsonMaker {
 				if(it.hasNext()) {
 					json.append(", ");
 				}*/
+				json.append("problema com elemento na coleção referindo-se a um objeto que já foi serializado");
 				continue;
 			} else {
 				json.append(getValue(e));
