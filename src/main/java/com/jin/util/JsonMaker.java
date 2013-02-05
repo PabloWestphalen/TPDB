@@ -156,10 +156,10 @@ public class JsonMaker {
 		while(it.hasNext()) {
 			Object e = it.next();
 			if(_objsVisited.containsKey(e)) {
-				json.append("\"@object" +  _objsVisited.get(e) + "\"");
+				/*json.append("\"@object" +  _objsVisited.get(e) + "\"");
 				if(it.hasNext()) {
 					json.append(", ");
-				}
+				}*/
 				continue;
 			} else {
 				json.append(getValue(e));
