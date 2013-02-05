@@ -26,7 +26,7 @@ public class AlbumController extends HttpServlet {
 			HttpServletResponse response) throws IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Album album = albumRepo.findById(id);
-		if (!request.getParameter("json").isEmpty()
+		if (request.getParameter("json") != null
 				&& request.getParameter("json").equals("true")) {
 			PrintWriter out = response.getWriter();
 			out.write(JsonMaker.serialize(album));
