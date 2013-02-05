@@ -68,9 +68,9 @@ public class JsonMaker {
 		
 		if(o instanceof String || o instanceof Enum) {
 			//System.out.println("done. returning " + "\"" + o + "\"");
-			return "\"" + o + "\"";
+			return "\"" + escapeString(o.toString()) + "\"";
 		} else if(o instanceof Number) {
-			return o.toString();
+			return escapeString(o.toString());
 		}
 		
 		else if(o instanceof Collection){
@@ -89,7 +89,7 @@ public class JsonMaker {
 		}
 		//System.err.println("getV put " + o + " in the visited list");
 		// último else
-		String returnString = serialize(o);
+		String returnString = escapeString(serialize(o));
 		//System.out.println("getV is returning " + returnString);
 		return returnString;
 	}
@@ -142,8 +142,10 @@ public class JsonMaker {
 		}
 		json.append("]");
 		return json.toString();
-
-		
+	}
+	
+	public static String escapeString(String s) {
+		return s.replaceAll("\"", "\\\\\"").replaceAll("\n", "\\\\n");
 	}
 	
 	public static String getCollectionValues(Collection<?> o) {
