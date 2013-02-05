@@ -42,6 +42,16 @@ public class JsonMaker {
 			}
 			try {
 				fields[i].setAccessible(true);
+				
+				if(fields[i].getName().equals("youtubeUrl")) {
+					if(fields[i].get(o) == null) {
+						json.append("aNullVideo");
+					}
+				}
+				
+				
+				
+				
 				if(_objsVisited.containsKey(fields[i].get(o))) {
 					json.append("\"" + fields[i].getName() + "\" : \"@object" + _objsVisited.get(fields[i].get(o)) + "\"");
 					if(i+1 < fields.length) {
