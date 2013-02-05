@@ -117,8 +117,11 @@ public class JsonMaker {
 		Iterator<?> it = ((Map<?, ?>) o).entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<?, ?> key = ((Entry<?, ?>) it.next());
-			json.append(getValue(key.getKey()) + ": "
+			/*json.append(getValue(key.getKey()) + ": "
+					+ getValue(key.getValue()));*/
+			json.append("\"" + key.getKey().toString() + "\": "
 					+ getValue(key.getValue()));
+			
 			if (it.hasNext()) {
 				json.append(",");
 			}
@@ -145,7 +148,7 @@ public class JsonMaker {
 	}
 	
 	public static String escapeString(String s) {
-		return s.replaceAll("\"", "\\\"").replaceAll("\r\n", "\\\\n").replaceAll("\n", "\\\\n");
+		return s.replaceAll("\"", "\\" + "\"").replaceAll("\r\n", "\\\\n").replaceAll("\n", "\\\\n");
 	}
 	
 	public static String getCollectionValues(Collection<?> o) {
