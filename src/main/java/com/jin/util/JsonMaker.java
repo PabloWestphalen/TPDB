@@ -14,8 +14,9 @@ public class JsonMaker {
 	private static long _identity = 0;
 
 	
-	public static String serialize(Object o) {
+	public static synchronized String serialize(Object o) {
 		_objsVisited.clear();
+		_identity = 0;
 		return doSerialize(o);
 	}
 
