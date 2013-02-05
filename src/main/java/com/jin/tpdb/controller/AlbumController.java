@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.repositories.AlbumRepository;
-import com.jin.util.JsonMaker;
+import com.cedarsoftware.util.io.*;
 
 public class AlbumController extends HttpServlet {
 
@@ -27,8 +27,10 @@ public class AlbumController extends HttpServlet {
 
 		Album album = albumRepo.findById(id);
 		System.out.println("###################################################################################");
-		System.out.println("Serializing begin");
-		System.out.println(JsonMaker.serialize(album));
+		//System.out.println("Serializing begin");
+		System.out.println("JSON-IO Serializing begin");
+		//System.out.println(JsonMaker.serialize(album));
+		System.out.println(JsonWriter.objectToJson(album));
 		System.out.println("Serializing end");
 		System.out.println("###################################################################################");
 		List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);

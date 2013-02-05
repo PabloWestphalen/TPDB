@@ -156,17 +156,20 @@ public class JsonMaker {
 		while(it.hasNext()) {
 			Object e = it.next();
 			if(_objsVisited.containsKey(e)) {
-				json.append("\"@object" +  _objsVisited.get(o) + "\"");
+				json.append("\"@object" +  _objsVisited.get(e) + "\"");
 				if(it.hasNext()) {
 					json.append(", ");
 				}
 				continue;
+			} else {
+				json.append(getValue(e));
+				if(it.hasNext()) {
+					json.append(", ");
+				}
+				_objsVisited.put(e, ++_identity);
 			}
 			//System.out.println("Passing '" + e + "' which is a " + e.getClass().getName() + " to getV");
-			json.append(getValue(e));
-			if(it.hasNext()) {
-				json.append(", ");
-			}
+			
 		}
 		json.append("]");
 		_objsVisited.put(o, ++_identity);
