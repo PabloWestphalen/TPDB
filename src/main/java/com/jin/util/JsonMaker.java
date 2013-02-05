@@ -117,9 +117,7 @@ public class JsonMaker {
 		Iterator<?> it = ((Map<?, ?>) o).entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<?, ?> key = ((Entry<?, ?>) it.next());
-			/*json.append(getValue(key.getKey()) + ": "
-					+ getValue(key.getValue()));*/
-			json.append("\"" + key.getKey().toString() + "\": "
+			json.append(getValue(key.getKey()) + ": "
 					+ getValue(key.getValue()));
 			
 			if (it.hasNext()) {
