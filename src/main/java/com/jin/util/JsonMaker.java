@@ -76,7 +76,7 @@ public class JsonMaker {
 	}
 	
 	public static String getValue(Object o) {
-		//System.out.println("getting the value of " + o.getClass().getName() + " whose toString returns " + o.toString());
+		System.out.println("getting the value of " + o.getClass().getName() + " whose toString returns " + o.toString());
 		if(_objsVisited.containsKey(o)) {
 			//System.out.println("abort, because it has already been visited");
 			return "REF2";
