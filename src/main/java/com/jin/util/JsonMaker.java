@@ -60,7 +60,7 @@ public class JsonMaker {
 	}
 	
 	public static String getValue(Object o) {
-		System.out.println("getting the value of " + o.getClass().getName() + " whose toString returns " + o.toString());
+		//System.out.println("getting the value of " + o.getClass().getName() + " whose toString returns " + o.toString());
 		if(_objsVisited.containsKey(o)) {
 			//System.out.println("abort, because it has already been visited");
 			return "REF2";
@@ -89,7 +89,7 @@ public class JsonMaker {
 		}
 		//System.err.println("getV put " + o + " in the visited list");
 		// último else
-		String returnString = escapeString(serialize(o));
+		String returnString = serialize(o);
 		//System.out.println("getV is returning " + returnString);
 		return returnString;
 	}
@@ -117,8 +117,11 @@ public class JsonMaker {
 		Iterator<?> it = ((Map<?, ?>) o).entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<?, ?> key = ((Entry<?, ?>) it.next());
-			json.append(getValue(key.getKey()) + ": "
+			/*json.append(getValue(key.getKey()) + ": "
+					+ getValue(key.getValue()));*/
+			json.append(key.getKey().toString() + ": "
 					+ getValue(key.getValue()));
+			
 			
 			if (it.hasNext()) {
 				json.append(",");
