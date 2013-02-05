@@ -1,6 +1,7 @@
 package com.jin.tpdb.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -28,7 +29,8 @@ public class AlbumController extends HttpServlet {
 		Album album = albumRepo.findById(id);
 		System.out.println("###################################################################################");
 		System.out.println("Serializing begin");
-		System.out.println(JsonMaker.serialize(album));
+		PrintWriter out = response.getWriter();
+		out.write(JsonMaker.serialize(album));
 		System.out.println("Serializing end");
 		System.out.println("###################################################################################");
 		List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
