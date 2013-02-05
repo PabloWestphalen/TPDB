@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,8 +40,8 @@ public class AlbumController extends HttpServlet {
 		request.setAttribute("year", sdf.format(album.getReleaseDate()));
 		request.setAttribute("relatedAlbums", relatedAlbums);
 		request.setAttribute("album", album);
-		RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
-		jsp.forward(request, response);
+		//RequestDispatcher jsp = request.getRequestDispatcher("/album.jsp");
+		//jsp.forward(request, response);
 		
 	}
 

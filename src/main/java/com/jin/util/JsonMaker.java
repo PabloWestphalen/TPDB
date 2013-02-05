@@ -145,7 +145,8 @@ public class JsonMaker {
 	}
 	
 	public static String escapeString(String s) {
-		return s.replaceAll("\"", "\\\"").replaceAll("\n", "\\\\n");
+		//return s.replaceAll("\"", "\\\"").replaceAll("\n", "\\\\n");
+		return s.replaceAll("\"", "\\\"").replaceAll("\r\n", "\\\\n").replaceAll("\n", "\\\\n");
 	}
 	
 	public static String getCollectionValues(Collection<?> o) {
