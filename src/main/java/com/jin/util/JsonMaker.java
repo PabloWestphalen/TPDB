@@ -156,7 +156,11 @@ public class JsonMaker {
 		while(it.hasNext()) {
 			Object e = it.next();
 			if(_objsVisited.containsKey(e)) {
-				return "ABORTING PARSE OF COLLECTION VALUE " + e.toString();
+				json.append("\"@object" +  _objsVisited.get(o) + "\"");
+				if(it.hasNext()) {
+					json.append(", ");
+				}
+				continue;
 			}
 			//System.out.println("Passing '" + e + "' which is a " + e.getClass().getName() + " to getV");
 			json.append(getValue(e));
