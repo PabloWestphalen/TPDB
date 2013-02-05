@@ -1,3 +1,4 @@
+
 package com.jin.util;
 
 import java.lang.reflect.Array;
@@ -37,20 +38,18 @@ public class JsonMaker {
 		Field[] fields = o.getClass().getDeclaredFields();
 		for(int i = 0; i < fields.length; i++) {
 			if(fields[i].getName().startsWith("this$")) {
-				json.append("problema com this");
 				continue;
 			}
 			try {
 				fields[i].setAccessible(true);
 				
-				if(fields[i].getName().equals("youtubeUrl")) {
-					if(fields[i].get(o) == null) {
-						json.append("aNullVideo");
+				if(fields[i].get(o) == null) {
+					json.append("\"" + fields[i].getName() + "\": null");
+					if(i+1 < fields.length) {
+						json.append(", ");
 					}
-				}
-				
-				
-				
+					continue;
+				} 
 				
 				if(_objsVisited.containsKey(fields[i].get(o))) {
 					json.append("\"" + fields[i].getName() + "\" : \"@object" + _objsVisited.get(fields[i].get(o)) + "\"");
@@ -183,7 +182,6 @@ public class JsonMaker {
 				if(it.hasNext()) {
 					json.append(", ");
 				}*/
-				json.append("problema com elemento na coleção referindo-se a um objeto que já foi serializado");
 				continue;
 			} else {
 				json.append(getValue(e));
