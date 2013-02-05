@@ -37,12 +37,15 @@ public class JsonMaker {
 				fields[i].setAccessible(true);
 				if(_objsVisited.containsKey(fields[i].get(o))) {
 					json.append("\"" + fields[i].getName() + "\" : \"@object" + _objsVisited.get(fields[i].get(o)) + "\"");
+					if(i+1 < fields.length) {
+						json.append(", ");
+					}	
 					continue;
 				} else {
 					json.append("\"" + fields[i].getName() + "\": " + getValue(fields[i].get(o)));
 					
 				}
-				if(i+2 < fields.length) {
+				if(i+1 < fields.length) {
 					json.append(", ");
 				}
 			} catch (Exception e) {
