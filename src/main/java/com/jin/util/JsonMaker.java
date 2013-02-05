@@ -16,7 +16,7 @@ public class JsonMaker {
 
 	public static String serialize(Object o) {
 		StringBuilder json = new StringBuilder();
-		json.append("{\n");
+		json.append("{");
 		
 		//System.out.println("visiting object " + o.toString());
 		if(_objsVisited.containsKey(o)) {
@@ -25,7 +25,7 @@ public class JsonMaker {
 		} else {
 			////System.err.println("visitObject put  " + o + " in the visited list");
 			_objsVisited.put(o, ++_identity);
-			json.append("\"@objectID\": " +  _objsVisited.get(o) + ",\n");
+			json.append("\"@objectID\": " +  _objsVisited.get(o) + ", ");
 			
 		}
 		Field[] fields = o.getClass().getDeclaredFields();
@@ -43,7 +43,7 @@ public class JsonMaker {
 					
 				}
 				if(i+2 < fields.length) {
-					json.append(",\n");
+					json.append(", ");
 				}
 			} catch (Exception e) {
 				
