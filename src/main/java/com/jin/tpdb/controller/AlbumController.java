@@ -29,7 +29,7 @@ public class AlbumController extends HttpServlet {
 		if (request.getParameter("json") != null
 				&& request.getParameter("json").equals("true")) {
 			PrintWriter out = response.getWriter();
-			out.write(JsonMaker.serialize(album));
+			out.write(new JsonMaker().serialize(album));
 		} else {
 			List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
