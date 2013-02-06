@@ -23,11 +23,12 @@ public class JsonMaker {
 	private static String doSerialize(Object o) {
 		StringBuilder json = new StringBuilder();
 		json.append("{");
+		_objsVisited.put(o, ++_identity);
 		Field[] fields = o.getClass().getDeclaredFields();
 		for (int i = 0; i < fields.length; i++) {
 			try {
 				fields[i].setAccessible(true);
-				json.append(getFieldValue(fields[i], fields[i].get(o)));
+				json.append(getFieldValue(fields[i].getName(), fields[i].get(o)));
 			} catch (Exception e) {	}
 			if (i + 1 < fields.length) {
 				json.append(", ");
@@ -37,18 +38,21 @@ public class JsonMaker {
 		return json.toString();
 	}
 
-	private static String getFieldValue(Field field, Object value) {
-		if (field.getName().startsWith("this$")) {
+	private static String getFieldValue(String field, Object value) {
+		if(_objsVisited.containsKey(value)) {
+			return "\"" + field + "\" : \"@object" + _objsVisited.get(value) + "\"";
+		}
+		if (field.startsWith("this$")) {
 			return "";
 		}
 		if (value == null) {
-			return "\"" + field.getName() + "\": null";
+			return "\"" + field + "\": null";
 		}
 		if (_objsVisited.containsKey(value)) {
-			return "\"" + field.getName() + "\" : \"@object"
+			return "\"" + field + "\" : \"@object"
 					+ _objsVisited.get(value) + "\"";
 		} else {
-			return "\"" + field.getName() + "\": " + getValue(value);
+			return "\"" + field + "\": " + getValue(value);
 		}
 	}
 
