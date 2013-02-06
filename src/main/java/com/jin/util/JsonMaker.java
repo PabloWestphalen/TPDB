@@ -30,6 +30,7 @@ public class JsonMaker {
 		_objsVisited.put(o, ++_identity);
 		StringBuilder json = new StringBuilder();
 		json.append("{");
+		json.append("\"@objectID\": " + _objsVisited.get(o) + ", ");
 		Field[] fields = o.getClass().getDeclaredFields();
 		for (int i = 0; i < fields.length; i++) {
 			try {
