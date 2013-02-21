@@ -22,8 +22,8 @@ public class ExternalAPIs extends HttpServlet {
 		String url = new String();
 		if(site != null) {
 			if (site.equals("discogs_search")) {
-				String artistName = request.getParameter("artist");
-				String albumName = request.getParameter("album");
+				String artistName = URLEncoder.encode(request.getParameter("artist"), "utf-8");
+				String albumName = URLEncoder.encode(request.getParameter("album"), "utf-8");
 				url = "http://api.discogs.com/database/search?type=master&artist="
 						+ artistName + "&title=" + albumName;
 			}
@@ -32,7 +32,7 @@ public class ExternalAPIs extends HttpServlet {
 			}
 			response.setContentType("application/json");
 			System.out.println("######Fetching from URL " + url + "##################");
-			out.print(JsonMaker.getJson(URLEncoder.encode(url, "utf-8")));
+			out.print(JsonMaker.getJson(url));
 		}
 	}
 }
