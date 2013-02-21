@@ -168,13 +168,13 @@ function getData(artistName, albumName) {
 	var url = '/externalData?site=discogs_search&artist=' + artistName + '&album=' + albumName;
     $.getJSON(
     url, function(response) {
-        if (response.data.pagination.items > 0) {
+        if (response.pagination.items > 0) {
         	var albumId;
         	var albumType;
-        	for(var i = 0; i <= response.data.results.length; i++) {
-        		if($.inArray("Album", response.data["results"][i].format) > -1) {
-        			albumId = response.data["results"][i]["id"];
-        			albumType = response.data["results"][i]["type"]; 
+        	for(var i = 0; i <= response.results.length; i++) {
+        		if($.inArray("Album", response["results"][i].format) > -1) {
+        			albumId = response["results"][i]["id"];
+        			albumType = response["results"][i]["type"]; 
         			break;
         		} 
         	}
@@ -182,10 +182,10 @@ function getData(artistName, albumName) {
             url = '/externalData?site=discogs_masterdetails&path=' + albumType + 's/' + albumId;
             $.getJSON(
             url, function(response) {
-                var year = response.data["year"];
-                var title = response.data["title"];
-                var cover = response.data["images"][0]["uri150"];
-                var tracks = response.data["tracklist"];
+                var year = response["year"];
+                var title = response["title"];
+                var cover = response["images"][0]["uri150"];
+                var tracks = response["tracklist"];
                 $('#name').val(title);
                 var randomMonth = Math.floor((Math.random() * 11) + 0);
                 $('select[name="month"] option[value="' + randomMonth + '"]').attr("selected", "selected");
