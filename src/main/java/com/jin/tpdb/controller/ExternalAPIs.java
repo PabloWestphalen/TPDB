@@ -19,15 +19,19 @@ public class ExternalAPIs extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String site = request.getParameter("site");
 		String url = new String();
-		if(site != null && site.equals("discogs_search")) {
-			String artistName = request.getParameter("artist");
-			String albumName = request.getParameter("album");
-			url = "http://api.discogs.com/database/search?type=master&artist=" + artistName + "&title=" + albumName;
+		if(site != null) {
+			if (site.equals("discogs_search")) {
+				String artistName = request.getParameter("artist");
+				String albumName = request.getParameter("album");
+				url = "http://api.discogs.com/database/search?type=master&artist="
+						+ artistName + "&title=" + albumName;
+			}
+			if (site.equals("discogs_master")) {
+				url = "http://api.discogs.com/" + request.getParameter("path");
+			}
+			response.setContentType("application/json");
+			System.out.println("######Fetching from URL " + url + "##################");
+			out.print(JsonMaker.getJson(url));
 		}
-		if(site != null && site.equals("discogs_master")) {
-			url = "http://api.discogs.com/" + request.getParameter("path");
-		}
-		response.setContentType("application/json");
-		out.print(JsonMaker.getJson(url));
 	}
 }
