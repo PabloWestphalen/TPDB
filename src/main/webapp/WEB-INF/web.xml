@@ -59,7 +59,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>ExternalAPIs</servlet-name>
-		<servlet-class>com.jin.tpdb.controllers.ExternalAPIs</servlet-class>
+		<servlet-class>com.jin.tpdb.controller.ExternalAPIs</servlet-class>
 	</servlet>
 
 	<servlet>
