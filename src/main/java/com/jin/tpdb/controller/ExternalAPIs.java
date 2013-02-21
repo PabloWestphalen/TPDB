@@ -24,7 +24,7 @@ public class ExternalAPIs extends HttpServlet {
 			String albumName = request.getParameter("album");
 			url = "http://api.discogs.com/database/search?type=master&artist=" + artistName + "&title=" + albumName;
 		}
-		if(site != null && site.equals("discogs_masterdetail")) {
+		if(site != null && site.equals("discogs_master")) {
 			url = "http://api.discogs.com/" + request.getParameter("path");
 		}
 		response.setContentType("application/json");

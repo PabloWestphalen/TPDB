@@ -179,7 +179,7 @@ function getData(artistName, albumName) {
         		} 
         	}
         	//var albumId = response.data["results"][0]["id"];
-            url = '/externalData?site=discogs_masterdetails&path=' + albumType + 's/' + albumId;
+            url = '/externalData?site=discogs_master&path=' + albumType + 's/' + albumId;
             $.getJSON(
             url, function(response) {
                 var year = response["year"];
