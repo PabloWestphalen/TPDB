@@ -2,6 +2,7 @@ package com.jin.tpdb.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ public class ExternalAPIs extends HttpServlet {
 			}
 			response.setContentType("application/json");
 			System.out.println("######Fetching from URL " + url + "##################");
-			out.print(JsonMaker.getJson(url));
+			out.print(JsonMaker.getJson(URLEncoder.encode(url, "utf-8")));
 		}
 	}
 }
