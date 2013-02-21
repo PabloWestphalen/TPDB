@@ -1,7 +1,12 @@
 package com.jin.util;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;
@@ -10,24 +15,79 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class JsonMaker {
+/**
+ * An utility with simple static methods to serialize Java objects into JSON-formatted
+ * ones.
+ * 
+ * @author Pablo Westphalen
+ */
+public final class JsonMaker {
 	private final Map<Object, Long> _objsVisited = new IdentityHashMap<Object, Long>();
-	private long _identity = 0;
+	private long _identity = 1;
 	
-	public String serialize(Collection<?> col) {
-		return getCollectionValues(col);
+	private JsonMaker() {
+		
 	}
 
-	public String serialize(Map<?, ?> m) {
-		return getMapValues(m);
+	/**
+	 * Returns a JSON-formatted array containing the elements
+	 * of the specified Collection.
+	 * 
+	 * @param c
+	 *            the Collection to be evaluated.
+	 * @return A String containing a JSON-formatted array based on the contents
+	 *         of the specified Collection;
+	 */
+	public static String serialize(Collection<?> c) {
+		return new JsonMaker().getCollectionValues(c);
 	}
 
-	public String serialize(Object o) {
-		return doSerialize(o);
+	/**
+	 * Returns a String containing a JSON-formatted object based on the contents
+	 * of the specified Map.
+	 * 
+	 * @param m
+	 *            the Map to be evaluated.
+	 * @return A String containing a JSON-formatted object based on the contents
+	 *         of the specified Map.
+	 */
+	public static String serialize(Map<?, ?> m) {
+		return new JsonMaker().getMapValues(m);
 	}
 
+	/**
+	 * Serializes an object into its JSON-formatted equivalent.
+	 * 
+	 * @param o
+	 *            the object to be serialized.
+	 * @return A String containing a JSON-formatted object based on the
+	 *         attributes of the specified object.
+	 */
+	public static String serialize(Object o) {
+		return new JsonMaker().doSerialize(o);
+	}
+	
+	public static String getJson(String url) {
+		try {
+			URLConnection con = new URL(url).openConnection();
+			con.setConnectTimeout(1000);
+			con.setReadTimeout(1000);
+			StringBuilder out = new StringBuilder();
+			String line;
+			  BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			    while ((line = in.readLine()) != null) {
+			    	out.append(line);
+			    }
+			    in.close();
+			    return out.toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	private String doSerialize(Object o) {
-		_objsVisited.put(o, ++_identity);
+		_objsVisited.put(o, _identity++);
 		StringBuilder json = new StringBuilder();
 		json.append("{");
 		json.append("\"@objectID\": " + _objsVisited.get(o) + ", ");
@@ -37,6 +97,10 @@ public class JsonMaker {
 				fields[i].setAccessible(true);
 				json.append(getFieldValue(fields[i].getName(), fields[i].get(o)));
 			} catch (Exception e) {
+				System.err.println("Could not process field "
+						+ fields[i].getName() + " of class "
+						+ o.getClass().getName());
+				continue;
 			}
 			if (i + 1 < fields.length) {
 				json.append(", ");
@@ -54,13 +118,21 @@ public class JsonMaker {
 			return "";
 		}
 		if (_objsVisited.containsKey(value)) {
-			return "\"" + field + "\" : \"@object" + _objsVisited.get(value)
+			return "\"" + field + "\" : \"@object_" + _objsVisited.get(value)
 					+ "\"";
 		} else {
 			return "\"" + field + "\": " + getValue(value);
 		}
 	}
 
+	/**
+	 * Converts an Object's meaningful value to its JSON-formatted equivalent.
+	 * 
+	 * @param o
+	 *            the Object to be evaluated.
+	 * @return a JSON-formatted String equivalent to the specified object's
+	 *         value.
+	 */
 	private String getValue(Object o) {
 		if (o instanceof String || o instanceof Enum) {
 			return "\"" + escapeString(o.toString()) + "\"";
@@ -127,11 +199,6 @@ public class JsonMaker {
 		return json.toString();
 	}
 
-	private String escapeString(String s) {
-		return s.replaceAll("\"", "\\\\" + "\"").replaceAll("\r\n", "\\\\n")
-				.replaceAll("\n", "\\\\n").replaceAll("\t", " ");
-	}
-
 	private String getCollectionValues(Collection<?> o) {
 		StringBuilder json = new StringBuilder();
 		Iterator<?> it = o.iterator();
@@ -145,11 +212,16 @@ public class JsonMaker {
 				if (it.hasNext()) {
 					json.append(", ");
 				}
-				_objsVisited.put(e, ++_identity);
+				_objsVisited.put(e, _identity++);
 			}
 		}
 		json.append("]");
-		_objsVisited.put(o, ++_identity);
+		_objsVisited.put(o, _identity++);
 		return json.toString();
+	}
+
+	private String escapeString(String s) {
+		return s.replaceAll("\"", "\\\\" + "\"").replaceAll("\r\n", "\\\\n")
+				.replaceAll("\n", "\\\\n").replaceAll("\t", " ");
 	}
 }

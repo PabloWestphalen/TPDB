@@ -165,7 +165,7 @@ $('#name').blur(function() {
 
 function getData(artistName, albumName) {
     //var url = 'http://api.discogs.com/database/search?artist=' + artistName + '&title=' + albumName + '&type=master&callback=?';
-	var url = 'http://api.discogs.com/database/search?artist=' + artistName + '&title=' + albumName + '&callback=?';
+	var url = '/externalData?site=discogs_search&artist=' + artistName + '&album=' + albumName;
     $.getJSON(
     url, function(response) {
         if (response.data.pagination.items > 0) {
@@ -179,7 +179,7 @@ function getData(artistName, albumName) {
         		} 
         	}
         	//var albumId = response.data["results"][0]["id"];
-            url = 'http://api.discogs.com/' + albumType + 's/' + albumId + '?callback=?';
+            url = '/externalData?site=discogs_masterdetails&path=' + albumType + 's/' + albumId;
             $.getJSON(
             url, function(response) {
                 var year = response.data["year"];

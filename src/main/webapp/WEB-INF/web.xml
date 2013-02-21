@@ -58,8 +58,8 @@
 		<servlet-class>com.jin.tpdb.controller.RatingController</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>LastfmClient</servlet-name>
-		<servlet-class>com.jin.tpdb.LastfmClient</servlet-class>
+		<servlet-name>ExternalAPIs</servlet-name>
+		<servlet-class>com.jin.tpdb.controllers.ExternalAPIs</servlet-class>
 	</servlet>
 
 	<servlet>
@@ -129,8 +129,8 @@
 		<url-pattern>/vote</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>LastfmClient</servlet-name>
-		<url-pattern>/lastfm</url-pattern>
+		<servlet-name>ExternalAPIs</servlet-name>
+		<url-pattern>/externalData</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AboutPage</servlet-name>
