@@ -171,7 +171,7 @@ function getData(artistName, albumName) {
         if (response.pagination.items > 0) {
         	var albumId;
         	var albumType;
-        	for(var i = 0; i <= response.results.length; i++) {
+        	for(var i = 0; i < response.results.length; i++) {
         		if($.inArray("Album", response["results"][i].format) > -1) {
         			albumId = response["results"][i]["id"];
         			albumType = response["results"][i]["type"]; 
