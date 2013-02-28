@@ -12,10 +12,10 @@
 		<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 	<dependencies>
-	<dependency>
+		<dependency>
 			<groupId>com.jin</groupId>
-			<artifactId>utils</artifactId>
-			<version>1.0</version>
+			<artifactId>jinUtils</artifactId>
+			<version>1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.spec</groupId>
