@@ -53,7 +53,7 @@ public class Utils {
 		// TODO find a way to get the stack trace
 		// get requested url and path
 		// get referer (previous page)
-		// get paramdata
+		// get paramdataalgo
 		System.out.println(e.getMessage());
 		System.out.println("##################### chupa essa, ronaldo");
 	}
