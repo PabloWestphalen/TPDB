@@ -1,13 +1,19 @@
 package com.jin;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+
+import com.jin.util.mail.Mail;
 
 public class Utils {
 
@@ -48,14 +54,23 @@ public class Utils {
 		return msg;
 	}
 
-	public static void reportError(HttpServletRequest request, Exception e) {
-		System.out.println(e.toString()); // exception type AND description
-		// TODO find a way to get the stack trace
-		// get requested url and path
-		// get referer (previous page)
-		// get paramdata
-		System.out.println(e.getMessage());
-		System.out.println("##################### chupa essa, ronaldo");
+	public static void reportError(HttpServletRequest request, Exception ex) {
+		StringBuilder msg = new StringBuilder();
+		msg.append("Requested URL: " + request.getRequestURL() + "\n\n");
+		msg.append("Coming from: " + request.getHeader("referer"));
+		msg.append("Params:\n");
+		for(Entry<String, String[]> e : request.getParameterMap().entrySet()) {
+			msg.append("\"" + e.getKey() + "\" : \"" + e.getValue() + "\"\n");
+		}
+		Writer w = new StringWriter();
+		PrintWriter pw = new PrintWriter(w);
+		ex.printStackTrace(pw);
+		
+		msg.append("Exception: " + w.toString());
+		String subject = "A " + ex + " occurred in TPDB";
+		String myAddr = "gotjin@gmail.com";
+		System.out.println(msg.toString());
+		new Mail(subject, msg.toString(), myAddr, myAddr).send();
 	}
 
 	public static String urlEncode(String url) {
