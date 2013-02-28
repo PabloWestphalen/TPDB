@@ -55,22 +55,26 @@ public class Utils {
 	}
 
 	public static void reportError(HttpServletRequest request, Exception ex) {
-		StringBuilder msg = new StringBuilder();
-		msg.append("Requested URL: " + request.getRequestURL() + "\n\n");
-		msg.append("Coming from: " + request.getHeader("referer"));
-		msg.append("Params:\n");
-		for(Entry<String, String[]> e : request.getParameterMap().entrySet()) {
-			msg.append("\"" + e.getKey() + "\" : \"" + e.getValue() + "\"\n");
+		if(request != null) {
+			StringBuilder msg = new StringBuilder();
+			msg.append("Requested URL: " + request.getRequestURL() + "\n\n");
+			msg.append("Coming from: " + request.getHeader("referer"));
+			msg.append("Params:\n");
+			for(Entry<String, String[]> e : request.getParameterMap().entrySet()) {
+				msg.append("\"" + e.getKey() + "\" : \"" + e.getValue() + "\"\n");
+			}
+			Writer w = new StringWriter();
+			PrintWriter pw = new PrintWriter(w);
+			ex.printStackTrace(pw);
+			
+			msg.append("Exception: " + w.toString());
+			String subject = "A " + ex + " occurred in TPDB";
+			String myAddr = "gotjin@gmail.com";
+			System.out.println(msg.toString());
+			new Mail(subject, msg.toString(), myAddr, myAddr).send();
+		} else {
+			new Mail("requestVazia", "chatao", "gotjin@gmail.com", "gotjin@gmail.com").send();
 		}
-		Writer w = new StringWriter();
-		PrintWriter pw = new PrintWriter(w);
-		ex.printStackTrace(pw);
-		
-		msg.append("Exception: " + w.toString());
-		String subject = "A " + ex + " occurred in TPDB";
-		String myAddr = "gotjin@gmail.com";
-		System.out.println(msg.toString());
-		new Mail(subject, msg.toString(), myAddr, myAddr).send();
 	}
 
 	public static String urlEncode(String url) {
