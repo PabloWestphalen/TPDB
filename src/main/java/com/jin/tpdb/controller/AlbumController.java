@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jin.tpdb.entities.Album;
 import com.jin.tpdb.repositories.AlbumRepository;
 import com.jin.util.JsonMaker;
+import com.jin.util.mail.Mailer;
 
 public class AlbumController extends HttpServlet {
 
@@ -28,8 +29,9 @@ public class AlbumController extends HttpServlet {
 		Album album = albumRepo.findById(id);
 		if (request.getParameter("json") != null
 				&& request.getParameter("json").equals("true")) {
-			PrintWriter out = response.getWriter();
-			out.write(JsonMaker.serialize(album));
+			//PrintWriter out = response.getWriter();
+			//out.write(JsonMaker.serialize(album));
+			Mailer.mailStackTrace(new Exception("AE"));
 		} else {
 			List<Album> relatedAlbums = albumRepo.getRelatedAlbums(album);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy");

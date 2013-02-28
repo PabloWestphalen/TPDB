@@ -12,6 +12,11 @@
 		<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 	<dependencies>
+	<dependency>
+			<groupId>com.jin</groupId>
+			<artifactId>utils</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.jboss.spec</groupId>
 			<artifactId>jboss-javaee-6.0</artifactId>
@@ -72,7 +77,6 @@
 			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 			<id>openshift</id>
 			<build>
-
 				<finalName>pablow</finalName>
 				<plugins>
 					<plugin>
