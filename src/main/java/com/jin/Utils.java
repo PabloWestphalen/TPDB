@@ -57,11 +57,19 @@ public class Utils {
 	public static void reportError(HttpServletRequest request, Exception ex) {
 		if(request != null) {
 			StringBuilder msg = new StringBuilder();
-			msg.append("Requested URL: " + request.getRequestURL() + "\n\n");
-			msg.append("Coming from: " + request.getHeader("referer"));
+			msg.append("Requested URL: " + request.getHeader("referer") + "\n\n");
 			msg.append("Params:\n");
 			for(Entry<String, String[]> e : request.getParameterMap().entrySet()) {
-				msg.append("\"" + e.getKey() + "\" : \"" + e.getValue() + "\"\n");
+				msg.append("\"" + e.getKey() + "\" : ");
+				if(e.getValue().length == 1) {
+					msg.append("\"" + e.getValue()[0] + "\"\n");
+				} else {
+					msg.append("[");
+					for(String s : e.getValue()) {
+						msg.append("\"" + s + "\", ");
+					}
+					msg.append("]\n	");
+				}
 			}
 			Writer w = new StringWriter();
 			PrintWriter pw = new PrintWriter(w);
