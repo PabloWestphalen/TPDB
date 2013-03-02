@@ -91,8 +91,6 @@ public class JsonReader {
 	}
 	
 	/**
-	 * //FIXME: lidar com arrays ou objetos vazios -> [], {}
-	 * 
 	 * @return
 	 */
 	private Object getValue(){
@@ -262,18 +260,29 @@ public class JsonReader {
 	
 	private String readString(){
 		String value = "";
-		boolean escaping = false;
 		Character c;
 		c = read();
-		while ((!escaping && c != '"') || (escaping && c == '\\')
-				|| (escaping && c == '"')) {
-			value += c;
-			c = read();
-			if (!escaping && c == '\\') {
-				escaping = true;
-			}
-			if (escaping && c != '\\' && c != '"') {
-				escaping = false;
+		boolean string_end = false;
+		while (!string_end) {
+			if ((c != '"')) {
+				if (c == '\\' && nextNonWhitespaceChar() == '"') {
+					// escaped quote, don't add it now
+				} else {
+					value += c; // normal char, add it
+				}
+				c = read();
+			} else {
+				// dealing with a "
+				char previous = json.charAt(currentChar - 2);
+				if (previous == '\\') { // if it is an escaped ", add it
+					value += String.valueOf('"'); // will add the previously
+					// skipped \ and the actual
+					// "
+					c = read();
+				} else {
+					string_end = true; // is a regular " meaning the end of this
+					// string
+				}
 			}
 		}
 		return value;
