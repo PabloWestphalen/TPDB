@@ -1,5 +1,10 @@
 package com.jin.util;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 /**
@@ -15,6 +20,26 @@ public class JsonReader {
 	
 	private JsonReader(String json) {
 		this.json = json;
+	}
+	
+	public static JsonObject getJson(String url){
+		try {
+			URLConnection con = new URL(url).openConnection();
+			con.setConnectTimeout(1000);
+			con.setReadTimeout(1000);
+			StringBuilder out = new StringBuilder();
+			String line;
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					con.getInputStream()));
+			while ((line = in.readLine()) != null) {
+				out.append(line);
+			}
+			in.close();
+			return JsonReader.toJava(out.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
@@ -155,7 +180,7 @@ public class JsonReader {
 	private Object readArray(){
 		Character c = nextNonWhitespaceChar();
 		if (c == '"') { // array of strings
-			ArrayList<String> elements = new ArrayList<>();
+			ArrayList<String> elements = new ArrayList<String>();
 			do {
 				readSkipWhitespace();
 				String element = readString();
@@ -164,7 +189,7 @@ public class JsonReader {
 			return elements;
 		}
 		if (c == '{') { // array of objects
-			ArrayList<JsonObject> objs = new ArrayList<>();
+			ArrayList<JsonObject> objs = new ArrayList<JsonObject>();
 			Character d = null;
 			boolean withinString = false;
 			do {
@@ -196,7 +221,7 @@ public class JsonReader {
 			return objs;
 		}
 		if (Character.isDigit(c)) { // array of numbers
-			ArrayList<Number> elements = new ArrayList<>();
+			ArrayList<Number> elements = new ArrayList<Number>();
 			do {
 				String element = "";
 				do {

@@ -3,17 +3,15 @@ package com.jin.tpdb.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.jin.util.JsonMaker;
+import com.jin.util.JsonReader;
 
 public class ExternalAPIs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +30,7 @@ public class ExternalAPIs extends HttpServlet {
 			}
 			response.setContentType("application/json");
 			System.out.println("######Fetching from URL " + url + "##################");
-			out.print(JsonMaker.getJson(url));
+			out.print(JsonReader.getJson(url));
 		}
 	}
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class JsonObject {
-	private final LinkedHashMap<String, Object> map = new LinkedHashMap<>();
+	private final LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
 	
 	public Object get(String k){
 		return map.get(k);
