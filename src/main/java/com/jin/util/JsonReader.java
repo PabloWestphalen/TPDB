@@ -17,6 +17,7 @@ public class JsonReader {
 	private boolean done;
 	private final String json;
 	private final JsonObject obj = new JsonObject();
+	private final boolean debug = false;
 	
 	private JsonReader(String json) {
 		this.json = json;
@@ -25,8 +26,8 @@ public class JsonReader {
 	public static JsonObject getJson(String url){
 		try {
 			URLConnection con = new URL(url).openConnection();
-			con.setConnectTimeout(1000);
-			con.setReadTimeout(1000);
+			con.setConnectTimeout(10 * 1000);
+			con.setReadTimeout(10 * 1000);
 			StringBuilder out = new StringBuilder();
 			String line;
 			BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -68,11 +69,17 @@ public class JsonReader {
 					Object value = null;
 					if (readSkipWhitespace() == '"') { // temos um field
 						field = readString();
+						if (debug) {
+							System.out.println("Read field " + field);
+						}
 					} else {
 						System.out.println("problema em ler o fieldName");
 					}
 					if (readSkipWhitespace() == ':') {
 						value = getValue();
+						if (debug) {
+							System.out.println("Read value " + value);
+						}
 					} else {
 						System.out.println("problema em ler o fieldValue");
 					}
@@ -216,17 +223,19 @@ public class JsonReader {
 						} else if (d == '"' && !withinString) {
 							withinString = true;
 						}
-					}
-					if (d == '{' && !withinString) {
-						openedBraces++;
-					}
-					if (d == '}' && !withinString) {
-						closedBraces++;
-						if (openedBraces == closedBraces) {
-							bracesBalanced = true;
+						if (d == '{' && !withinString) {
+							openedBraces++;
 						}
+						if (d == '}' && !withinString) {
+							closedBraces++;
+							if (openedBraces == closedBraces) {
+								bracesBalanced = true;
+							}
+						}
+						objectString += d;
+					} else {
+						return objs;
 					}
-					objectString += d;
 				}
 				objs.add(JsonReader.toJava(objectString));
 			} while (readSkipWhitespace() == ',');
