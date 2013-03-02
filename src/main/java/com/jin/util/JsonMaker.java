@@ -25,8 +25,6 @@ public final class JsonMaker {
 		
 	}
 	
-	
-
 	/**
 	 * Returns a JSON-formatted array containing the elements
 	 * of the specified Collection.
@@ -37,6 +35,10 @@ public final class JsonMaker {
 	 */
 	public static String serialize(Collection<?> c) {
 		return new JsonMaker().getCollectionValues(c);
+	}
+	
+	public static String serialize(JsonObject o){
+		return new JsonMaker().getMapValues(o.getMap());
 	}
 	
 	/**
@@ -60,7 +62,7 @@ public final class JsonMaker {
 	 * @return A String containing a JSON-formatted object based on the
 	 *         attributes of the specified object.
 	 */
-	public static String serialize(Object o) {
+	public static String serialize(Object o){
 		return new JsonMaker().doSerialize(o);
 	}
 	
@@ -80,8 +82,6 @@ public final class JsonMaker {
 		
 		json.append("\"@objectID\": " + _objsVisited.get(o) + ", ");
 		Field[] fields = o.getClass().getDeclaredFields();
-		
-		
 		
 		for (int i = 0; i < fields.length; i++) {
 			try {
@@ -147,6 +147,8 @@ public final class JsonMaker {
 			return getObjectArray(o);
 		} else if (o.getClass().isArray()) {
 			return getArrayOfPrimitives(o);
+		} else if (o instanceof JsonObject) {
+			return getMapValues(((JsonObject) o).getMap());
 		}
 		return doSerialize(o);
 	}
@@ -170,9 +172,9 @@ public final class JsonMaker {
 		json.append("{");
 		Iterator<?> it = ((Map<?, ?>) o).entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<?, ?> key = ((Entry<?, ?>) it.next());
-			json.append("\"" + key.getKey().toString() + "\": "
-					+ getValue(key.getValue()));
+			Entry<?, ?> e = ((Entry<?, ?>) it.next());
+			json.append("\"" + e.getKey().toString() + "\": "
+					+ getValue(e.getValue()));
 			if (it.hasNext()) {
 				json.append(",");
 			}
