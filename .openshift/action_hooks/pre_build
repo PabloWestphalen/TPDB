@@ -11,3 +11,4 @@
 #mvn install:install-file -Dfile=../../pablow/repo/google-collect-1.0.jar -DgroupId=com.google -DartifactId=google-collect -Dversion=1.0 -Dpackaging=jar
 #mvn install:install-file -Dfile=../../pablow/repo/mail.jar -DgroupId=com.google -DartifactId=google-mail -Dversion=1.0 -Dpackaging=jar
 mvn install:install-file -Dfile=../../app-root/repo/src/main/webapp/WEB-INF/lib/JinUtils.jar -DgroupId=com.jin -DartifactId=jinUtils -Dversion=1 -Dpackaging=jar
+mvn install:install-file -Dfile=../../app-root/repo/src/main/webapp/WEB-INF/lib/JsonMaker.jar -DgroupId=com.jin.util -DartifactId=jsonmaker -Dversion=1 -Dpackaging=jar

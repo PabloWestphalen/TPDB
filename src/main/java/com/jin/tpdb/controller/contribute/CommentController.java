@@ -24,8 +24,8 @@ public class CommentController extends HttpServlet {
 	@EJB
 	private AlbumRepository albumRepo;
 	
-	private static final int ALBUM = 0;
-	private static final int NEWS = 1 ;
+	// private static final int ALBUM = 0;
+	// private static final int NEWS = 1 ;
 	
 	/*public void dispatch(Comment c, int option, String requestType, HttpServletResponse response) {
 		if (requestType != null && requestType.equals("XMLHttpRequest")) {
@@ -54,7 +54,6 @@ public class CommentController extends HttpServlet {
 	}
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		Integer albumId = null;

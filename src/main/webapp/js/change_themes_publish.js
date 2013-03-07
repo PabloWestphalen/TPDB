@@ -1,6 +1,6 @@
 function changeColor() {
 	var styleSheet = document.getElementsByTagName("link")[1];
-	var chosenTheme;
+	var chosenTheme = "theme=";
 	if(this.className === "changeOrange") {
 		styleSheet.href = "css/orange.css";
 		chosenTheme = "theme=orange";
@@ -51,4 +51,4 @@ window.onload = function() {
 			j.addEventListener("click", formValidation.handleSubmit, false);
 		}
 	}
-}
+};

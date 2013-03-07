@@ -15,7 +15,7 @@
 <%@attribute name="ogDescription" description="The OpenGraph description" required="false"%>
 <!DOCTYPE html>
 <html xmlns:og="http://opengraphprotocol.org/schema/"
-	xmlns:fb="http://www.facebook.com/2008/fbml" >
+	xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 <link rel="shortcut icon" href="<c:url value="/favicon.ico" />" type="image/x-icon" />
 <c:choose>

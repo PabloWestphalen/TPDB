@@ -169,8 +169,8 @@ function getData(artistName, albumName) {
     $.getJSON(
     url, function(response) {
         if (response.pagination.items > 0) {
-        	var albumId;
-        	var albumType;
+        	var albumId = null;
+        	var albumType = null;
         	for(var i = 0; i < response.results.length; i++) {
         		if($.inArray("Album", response["results"][i].format) > -1) {
         			albumId = response["results"][i]["id"];

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var inactive;
+	//var inactive;
 	var tmp;
 
 	$('#artistsNav a').click(function(event) {

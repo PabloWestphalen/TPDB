@@ -2,19 +2,16 @@ package com.jin.tpdb.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-
 import com.jin.YouTubeUtil;
 import com.jin.YouTubeVideo;
 import com.jin.tpdb.entities.Album;
@@ -102,7 +99,6 @@ public class AlbumRepository {
 		return (Album) c.uniqueResult();
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Album> getRelatedAlbums(Album a) {
 		List<Album> results = new ArrayList<Album>();
 		hbs = (Session) em.getDelegate();
