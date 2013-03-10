@@ -30,7 +30,7 @@ public class ExternalAPIs extends HttpServlet {
 			}
 			response.setContentType("application/json");
 			System.out.println("######Fetching from URL " + url + "##################");
-			out.print("funcionou2" + JsonReader.getJson(url));
+			out.print(JsonReader.getJson(url));
 		}
 	}
 }
