@@ -428,7 +428,8 @@ article p img.coverImage {
 	box-shadow: 1px 1px 1px 1px #ccc;
 	margin-top: 10px;
 	margin-bottom: 20px;
-	font-family: Verdana;
+	font-family: Sans;
+	font-size: 1.3em;
 }
 
 #about article ul {
